@@ -1,14 +1,17 @@
-// pages/index.js
+// Login page for user to login with email and password
+// or link to registration pages
 
-const Login = () => (
-  <div>
-    <h1>Login page</h1>
-  </div>
-);
-export default Login;
-
-{
-  /* <input type='text'>Email</input>
-    <input type='text'>Password</input>
-    <button>Register</button> */
+function Login() {
+  return (
+    <div>
+      <h1>Login page</h1>
+      <input type='text' placeholder='email' />
+      <input type='text' placeholder='password' />
+      <br />
+      <button>Submit</button>
+      <p>Not yet registered?</p>
+      <button>Register</button>
+    </div>
+  );
 }
+export default Login;
