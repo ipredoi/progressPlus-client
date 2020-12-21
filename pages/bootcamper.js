@@ -1,13 +1,12 @@
-
 import { Link } from '@material-ui/core';
-import TemporaryDrawer from '../components/temporaryDrawer';
-import BadgeAvatars from '../components/badgeAvatars';
-import MenuListComposition from '../components/menuListComposition';
+import TemporaryDrawerBootcamper from '../Components/temporaryDrawerBootcamper';
+import BadgeAvatars from '../Components/badgeAvatars';
+import MenuListComposition from '../Components/menuListComposition';
 
-export default function Home() {
+export default function Bootcamper() {
   return (
     <div>
-      <TemporaryDrawer />
+      <TemporaryDrawerBootcamper />
       <h1 className='h1'>
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
@@ -35,8 +34,6 @@ export default function Home() {
         <Link target="_blank" href='https://developer.mozilla.org/en-US/'>
         MDN Web Docs
         </Link> */}
-
     </div>
   );
-
-import 'semantic-ui-css/semantic.min.css';
+}

@@ -1,18 +1,19 @@
-
 import { Link } from '@material-ui/core';
-import TemporaryDrawer from '../components/temporaryDrawer';
-import BadgeAvatars from '../components/badgeAvatars';
-import MenuListComposition from '../components/menuListComposition';
+import TemporaryDrawerCoach from '../Components/temporaryDrawerCoach';
+import BadgeAvatars from '../Components/badgeAvatars';
+import MenuListComposition from '../Components/menuListComposition';
+import CoachPortalButton from '../Components/CoachPortalButton';
 
-export default function Home() {
+export default function Coach() {
   return (
     <div>
-      <TemporaryDrawer />
+      <TemporaryDrawerCoach />
       <h1 className='h1'>
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
       <BadgeAvatars />
       <MenuListComposition />
+      <CoachPortalButton />
       <Link
         target='_blank'
         id='gitHubLink'
@@ -35,8 +36,6 @@ export default function Home() {
         <Link target="_blank" href='https://developer.mozilla.org/en-US/'>
         MDN Web Docs
         </Link> */}
-
     </div>
   );
-
-import 'semantic-ui-css/semantic.min.css';
+}
