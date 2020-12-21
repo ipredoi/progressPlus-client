@@ -12,7 +12,7 @@ function Register() {
       <input type='text' placeholder='confirm password' />
       <br />
       <Link href='./login'>
-        <button>Submit</button>
+        <button id='regButtonß'>Submit</button>
       </Link>
     </div>
   );
