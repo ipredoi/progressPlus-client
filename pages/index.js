@@ -12,7 +12,11 @@ export default function Home() {
       </h1>
       <BadgeAvatars />
       <MenuListComposition />
-      <Link target='_blank' className='links' href='https://github.com/'>
+      <Link
+        target='_blank'
+        id='gitHubLink'
+        className='links'
+        href='https://github.com/'>
         Git Hub
       </Link>
       {/* <Link target="_blank" href='http://freecodecamp.org/'>
