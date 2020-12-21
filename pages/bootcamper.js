@@ -3,7 +3,7 @@ import TemporaryDrawer from '../Componants/temporaryDrawer';
 import BadgeAvatars from '../Componants/badgeAvatars';
 import MenuListComposition from '../Componants/menuListComposition';
 
-export default function Home() {
+export default function Bootcamper() {
   return (
     <div>
       <TemporaryDrawer />
