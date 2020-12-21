@@ -1,7 +1,7 @@
 import { Link } from '@material-ui/core';
-import TemporaryDrawer from '../Componants/temporaryDrawer';
-import BadgeAvatars from '../Componants/badgeAvatars';
-import MenuListComposition from '../Componants/menuListComposition';
+import TemporaryDrawer from '../components/temporaryDrawer';
+import BadgeAvatars from '../components/badgeAvatars';
+import MenuListComposition from '../components/menuListComposition';
 
 export default function Home() {
   return (
