@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawerBootcamper() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,

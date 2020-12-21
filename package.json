@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "front-end-final-project-ismail-esta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,9 @@
     "@material-ui/core": "^4.11.2",
     "next": "10.0.3",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1"
   },
   "devDependencies": {
     "cypress": "^6.1.0"
