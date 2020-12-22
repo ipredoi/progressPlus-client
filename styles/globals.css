@@ -100,3 +100,9 @@ header {
   left: 90%;
   top: 10%;
 }
+
+.ui.cards {
+  width: 700px;
+  height: 200px;
+  line-height: 2;
+}
