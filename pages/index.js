@@ -1,4 +1,4 @@
-
+import 'semantic-ui-css/semantic.min.css';
 import { Link } from '@material-ui/core';
 import TemporaryDrawer from '../components/temporaryDrawer';
 import BadgeAvatars from '../components/badgeAvatars';
@@ -35,8 +35,6 @@ export default function Home() {
         <Link target="_blank" href='https://developer.mozilla.org/en-US/'>
         MDN Web Docs
         </Link> */}
-
     </div>
   );
-
-import 'semantic-ui-css/semantic.min.css';
+}
