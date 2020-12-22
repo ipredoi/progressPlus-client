@@ -21,12 +21,12 @@ a {
 }
 
 .links {
-  position: fixed;
+  position: absolute;
   top: 90%;
-  left: 50%;
+  left: 20%;
 }
 
-.MuiAvatar-root.MuiAvatar-circle.MuiAvatar-colorDefault {
+.avatar {
   position: fixed;
   top: 0;
   right: 0;
@@ -57,4 +57,46 @@ header {
   padding: 60px;
   text-align: center;
   background: black;
+}
+
+.form.ui.form {
+  margin: 0;
+  width: 500px;
+  position: relative;
+  top: 100;
+  right: 100;
+}
+
+.coachButton {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.MuiPaper-root.makeStyles-paper-60.MuiPaper-elevation1.MuiPaper-rounded,
+.MuiList-root.MuiList-padding {
+  left: 100%;
+}
+
+.card {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.header {
+  /* background-color: white; */
+  margin-bottom: -30px;
+}
+
+.header {
+  background-color: white;
+  padding: 1;
+  border-bottom: black;
+}
+
+.signout {
+  position: absolute;
+  left: 90%;
+  top: 10%;
 }
