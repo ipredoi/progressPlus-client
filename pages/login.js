@@ -1,29 +1,23 @@
-// Login page for user to login with email and password
-// or link to registration pages
-
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../components/authentication/authContext';
 import firebase from 'firebase';
-
-if (!firebase.apps.length) {
-  firebase.initializeApp({
-    apiKey: 'AIzaSyCOLswdT4u003FCM5Q1RHXddpTlrnBB0tc',
-    authDomain: 'ismail-esta.firebaseapp.com',
-    projectId: 'ismail-esta',
-    storageBucket: 'ismail-esta.appspot.com',
-    messagingSenderId: '656502733705',
-    appId: '1:656502733705:web:2180f0b277f0c3893d7f58',
-  });
-}
-
-// const auth = config.auth();
+import 'firebase/auth';
+import { FaGithub } from 'react-icons/fa';
 
 export default function Login() {
+  const { user } = useContext(AuthContext);
+
   function login() {
     var provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithRedirect(provider);
-    console.log(user);
-    window.location = 'bootcamper.js';
   }
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      window.location = '/bootcamper'; //After successful login, user will be redirected to bootcamper or coach page
+    }
+  });
+  //code above means when user is logged in, it goes straight to the bootcamper page. Atm the sign out button only works on the login page so if you want to access this then comment out the above AuthState code.
 
   firebase
     .auth()
@@ -34,27 +28,19 @@ export default function Login() {
         var token = result.credential.accessToken;
         // ...
       }
-      // The signed-in user info.
-      var user = result.user;
-     console.log(user);
     })
     .catch(function (error) {
       // Handle Errors here.
       var errorCode = error.code;
+      console.log(errorCode);
       var errorMessage = error.message;
+      console.log(errorMessage);
       // The email of the user's account used.
       var email = error.email;
       console.log(email);
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
     });
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      window.location = './login'; //After successful login, user will be redirected to bootcamper or coach html
-    }
-  });
+  console.log(user);
 
   function signOut() {
     firebase
@@ -68,13 +54,23 @@ export default function Login() {
         // An error happened.
         console.log(error.message);
       });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location = '/login'; //After successful login, user will be redirected to bootcamper or coach page
+      }
+      console.log(user);
+    });
   }
 
   return (
     <div>
       <h1>Login page</h1>
-      <button onClick={login}>Login</button>
-      <p>Not yet registered?</p>
+      <button onClick={login}>
+        Login with GitHub
+        <FaGithub />
+      </button>
+      <br />
+      <br />
       <button onClick={signOut}>Sign Out</button>
     </div>
   );
