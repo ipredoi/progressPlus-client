@@ -36,7 +36,7 @@ export default function Login() {
       }
       // The signed-in user info.
       var user = result.user;
-      // console.log(user);
+     console.log(user);
     })
     .catch(function (error) {
       // Handle Errors here.
@@ -52,7 +52,7 @@ export default function Login() {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      window.location = './bootcamper'; //After successful login, user will be redirected to bootcamper or coach html
+      window.location = './login'; //After successful login, user will be redirected to bootcamper or coach html
     }
   });
 
