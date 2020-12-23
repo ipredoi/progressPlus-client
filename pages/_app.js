@@ -1,7 +1,8 @@
-// import 'firebaseui/dist/firebaseui.css';
+import React, { useContext } from 'react';
 import { AuthProvider } from '../Components/authentication/authContext';
 
 function MyApp({ Component, pageProps }) {
+  console.log(AuthProvider);
   return (
     <AuthProvider>
       <Component {...pageProps} />;
