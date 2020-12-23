@@ -6,11 +6,13 @@ import StudentCard from '../components/studentCard';
 import SignOut from '../components/signOut';
 import BootcampterListLink from '../components/bootcamperListLink';
 import { AuthContext } from '../components/authentication/authContext';
+import { useAuth } from '../components/authentication/authContext';
 import { useContext } from 'react';
 
 export default function Bootcamper() {
-  const user = useContext(AuthContext);
-  console.log(user);
+  const context = useContext(AuthContext);
+
+  console.log(context);
 
   return (
     <div>
@@ -23,7 +25,7 @@ export default function Bootcamper() {
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
       <StudentCard />
-      <img src={user.photoURL} alt='profile photo' />
+      {/* <img src={user.photoURL} alt='profile photo' /> */}
       {/* <MenuListComposition /> */}
       <footer className='footer'>
         <UsefulLinks />
