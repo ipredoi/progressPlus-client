@@ -1,23 +1,15 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../components/authentication/authContext';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { FaGithub } from 'react-icons/fa';
 
 export default function Login() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   function login() {
     var provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithRedirect(provider);
   }
-
-  // firebase.auth().onAuthStateChanged((user) => {
-  //   if (user) {
-  //     window.location = '/bootcamper'; //After successful login, user will be redirected to bootcamper or coach page
-  //   }
-  // });
-  //code above means when user is logged in, it goes straight to the bootcamper page. Atm the sign out button only works on the login page so if you want to access this then comment out the above AuthState code.
 
   firebase
     .auth()
@@ -41,6 +33,12 @@ export default function Login() {
       var email = error.email;
       console.log(email);
     });
+  // firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     window.location = '/bootcamper'; //After successful login, user will be redirected to bootcamper or coach page
+  //   }
+  // });
+  //code above means when user is logged in, it goes straight to the bootcamper page. Atm the sign out button only works on the login page so if you want to access this then comment out the above AuthState code.
 
   function signOut() {
     firebase

@@ -10,9 +10,9 @@ import { useAuth } from '../components/authentication/authContext';
 import { useContext } from 'react';
 
 export default function Bootcamper() {
-  const context = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  console.log(context);
+  console.log(user);
 
   return (
     <div>

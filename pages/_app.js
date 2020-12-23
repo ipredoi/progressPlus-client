@@ -1,8 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { AuthProvider } from '../Components/authentication/authContext';
+import app from '../components/authentication/firebase';
+import firebase from 'firebase/app';
 
 function MyApp({ Component, pageProps }) {
-  console.log(AuthProvider);
+  if (!firebase.apps.length) {
+    try {
+      firebase.initializeApp(app);
+    } catch (err) {
+      console.error('Firebase initialization error raised', err.stack);
+    }
+  }
+  //this if statement is to prevent firebase constantly rerendering and producing an error
+
   return (
     <AuthProvider>
       <Component {...pageProps} />;
