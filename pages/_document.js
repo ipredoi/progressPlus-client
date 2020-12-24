@@ -4,8 +4,11 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel='icon' type='image/x-icon' href='/public/favicon.ico' />
+        </Head>
         <body>
+          <title>School of Code</title>
           <Main />
           <NextScript />
           {/* <!-- Firebase App (the core Firebase SDK) is always required and must be listed first --> */}

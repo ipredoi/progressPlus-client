@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { FaGithub } from 'react-icons/fa';
+import '../styles/authentication.css';
+import Image from 'next/image';
 
 export default function Login() {
   // const { user } = useContext(AuthContext);
@@ -61,15 +63,28 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h1>Login page</h1>
-      <button onClick={login}>
-        Login with GitHub
-        <FaGithub />
-      </button>
-      <br />
-      <br />
-      <button onClick={signOut}>Sign Out</button>
+    <div className='auth'>
+      <div className='auth-main'>
+        <div className='soc-image'>
+          <Image
+            src='/Logo.png'
+            alt='School of Code Logo'
+            width={100}
+            height={100}
+          />
+        </div>
+        <h1>Platform Name Here</h1>
+
+        <button className='auth-buttons' onClick={login}>
+          Login with GitHub
+          <FaGithub />
+        </button>
+        <br />
+        <br />
+        <button className='auth-buttons' onClick={signOut}>
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 }
