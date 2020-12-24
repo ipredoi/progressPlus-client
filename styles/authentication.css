@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+  background-image: url('/authBackground.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #e0e0e0;
+}
+
+.auth {
+  text-align: center;
+}
+
+.auth-main {
+  align-content: center;
+  margin: auto;
+  width: 300px;
+  height: 450px;
+  background-color: whitesmoke;
+  border-radius: 5%;
+  border-color: #31986a;
+  border-width: 4px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-direction: column;
+  /* padding: 5vw; */
+  font-family: 'Roboto', sans-serif;
+}
+
+.soc-image {
+  text-align: center;
+  padding: 2vw;
+  margin-top: 2vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2vw;
+  padding: 2vw;
+  text-decoration: underline;
+  text-decoration-color: #4a90e2;
+  text-decoration-thickness: 2px;
+}
+
+.auth-buttons {
+  text-align: center;
+  font-size: 1vw;
+  background-color: #31986a;
+  color: white;
+  width: 150px;
+  height: 27px;
+  margin: auto;
+  border: none;
+  opacity: 80%;
+}

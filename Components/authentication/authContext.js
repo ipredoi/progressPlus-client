@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       // firebase.auth().onAuthStateChanged(setUser);
     });
   }, []);
-  console.log(user);
+  // console.log(user);
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );
