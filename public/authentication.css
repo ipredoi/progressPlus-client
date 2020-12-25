@@ -27,20 +27,20 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  flex-direction: column;
+  /* flex-direction: column; */
   /* padding: 5vw; */
   font-family: 'Roboto', sans-serif;
 }
 
 .soc-image {
   text-align: center;
-  padding: 2vw;
+  padding: 1vw;
   margin-top: 2vw;
 }
 
 h1 {
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.5vw;
   padding: 2vw;
   text-decoration: underline;
   text-decoration-color: #4a90e2;
@@ -57,4 +57,14 @@ h1 {
   margin: auto;
   border: none;
   opacity: 80%;
+}
+
+p {
+  flex-direction: column;
+  color: black;
+  font-size: 1vw;
+}
+
+input {
+  width: 150px;
 }
