@@ -34,14 +34,23 @@ body {
 
 .soc-image {
   text-align: center;
+<<<<<<< HEAD:styles/authentication.css
   padding: 20px 0px 20px 0px;
+=======
+  padding: 1vw;
+>>>>>>> 8294b23a9da8f84ae8e64f10c7240076b8adde40:public/authentication.css
   margin-top: 2vw;
 }
 
 h1 {
   text-align: center;
+<<<<<<< HEAD:styles/authentication.css
   font-size: 25px;
   padding: 20px 0px 50px 0px;
+=======
+  font-size: 1.5vw;
+  padding: 2vw;
+>>>>>>> 8294b23a9da8f84ae8e64f10c7240076b8adde40:public/authentication.css
   text-decoration: underline;
   text-decoration-color: #4a90e2;
   text-decoration-thickness: 2px;
@@ -51,6 +60,16 @@ h1 {
   background-color: #31986a !important;
   position: retlative !important;
   border-radius: 10px !important;
+}
+
+p {
+  flex-direction: column;
+  color: black;
+  font-size: 1vw;
+}
+
+input {
+  width: 150px;
 }
 
 p {
