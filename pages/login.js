@@ -19,11 +19,12 @@ export default function Login() {
         {/* <button className='auth-buttons' onClick={login}>
           Login with GitHub
           <FaGithub />
-        </button> */}
+          </button> */}
         <br />
         <br />
         {/* <button className='auth-buttons' onClick={signOut}>
           Sign Out
+          </button>
         </button> */}
       </div>
     </div>
