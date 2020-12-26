@@ -7,13 +7,10 @@ body {
   background-color: #e0e0e0;
 }
 
-.auth {
-  text-align: center;
-}
-
-.auth-main {
+.register-form {
+  display: flex;
+  flex-wrap: wrap;
   align-content: center;
-  margin: auto;
   width: 300px;
   height: 450px;
   background-color: whitesmoke;
@@ -28,27 +25,33 @@ body {
   right: 0;
   margin: auto;
   flex-direction: column;
-  /* padding: 5vw; */
   font-family: 'Roboto', sans-serif;
 }
-
-.soc-image {
-  text-align: center;
-  padding: 20px 0px 20px 0px;
-  margin-top: 2vw;
-}
-
 h1 {
   text-align: center;
   font-size: 25px;
   padding: 20px 0px 50px 0px;
   text-decoration: underline;
-  text-decoration-color: #4a90e2;
+  color: white;
   text-decoration-thickness: 2px;
 }
 
-.firebaseui-idp-button {
-  background-color: #31986a !important;
-  position: retlative !important;
-  border-radius: 10px !important;
+button {
+  background-color: #31986a;
+  position: retlative;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  height: 40px;
+  width: 244px;
+  color: white;
+  font-size: 14px;
+  padding-left: 16px;
+  text-transform: none;
+  vertical-align: middle;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  border: white;
+
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
