@@ -1,4 +1,4 @@
-// useUser --> react custom hook to pass the user data trough pages components
+// useUser --> react custom hook to pass the user data through pages components
 
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
