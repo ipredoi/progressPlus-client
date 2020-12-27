@@ -9,10 +9,10 @@ import {
   setUserAuthCookie,
   removeUserAuthCookie,
   getUserDataFromCookie,
-} from '../firebaseAuth/userCookies';
+} from '../firebaseAuthUtils/userCookies';
 
 // import function to get user data & token
-import { getUserData } from '../firebaseAuth/userData';
+import { getUserData } from '../firebaseAuthUtils/userData';
 
 // import firebase initialisation function
 import firebaseInit from './firebaseInit';

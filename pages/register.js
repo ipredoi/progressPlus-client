@@ -1,6 +1,6 @@
 // Registration page for user to regist with email and create password
 // register button links to Login page
-import { useUser } from '../firebaseAuth/useUser';
+import { useUser } from '../firebaseAuthUtils/useUser';
 import '../public/register.css';
 /* import Link from 'next/link'; */
 import Image from 'next/image';

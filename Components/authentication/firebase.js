@@ -3,7 +3,7 @@
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseInit from '../../firebaseAuth/firebaseInit';
+import firebaseInit from '../../firebaseAuthUtils/firebaseInit';
 
 //call the function for Firebase Initialisation
 firebaseInit();
