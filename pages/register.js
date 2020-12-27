@@ -1,20 +1,33 @@
 // Registration page for user to regist with email and create password
 // register button links to Login page
 import { useUser } from '../firebaseAuth/useUser';
-import '../styles/register.css';
+import '../public/register.css';
 /* import Link from 'next/link'; */
+import Image from 'next/image';
 
 function Register() {
   const { user, logOut } = useUser();
   console.log(user);
   if (!user) {
-    return <></>;
+    return (
+      <div class='register-form'>
+        <Image
+          src='/source.gif'
+          alt='School of Code Logo'
+          width={100}
+          height={100}
+        />
+      </div>
+    );
   }
   return (
     <div>
-      <h1>Hi, {user.displayName}</h1>
-      <h1>Welcome to APP NAME</h1>
+      <h1 class='h1-welcome'>Hi, {user.displayName}!</h1>
+      <h1 class='h1-welcome'>Welcome to APP NAME!</h1>
+      <br />
+
       <div class='register-form'>
+        <img id='profile-picture' src={user.photoURL} alt='profile picture' />
         <form>
           <label>
             Name:

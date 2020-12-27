@@ -16,16 +16,8 @@ export default function Login() {
         </div>
         <h1>Platform Name Here</h1>
         <FirebaseAuth />
-        {/* <button className='auth-buttons' onClick={login}>
-          Login with GitHub
-          <FaGithub />
-          </button> */}
         <br />
         <br />
-        {/* <button className='auth-buttons' onClick={signOut}>
-          Sign Out
-          </button>
-        </button> */}
       </div>
     </div>
   );
