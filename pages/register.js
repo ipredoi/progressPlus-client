@@ -11,12 +11,7 @@ function Register() {
   if (!user) {
     return (
       <div class='register-form'>
-        <Image
-          src='/source.gif'
-          alt='School of Code Logo'
-          width={100}
-          height={100}
-        />
+        <img class='loadingImg' src='/source.gif' alt='loadingImg' />
       </div>
     );
   }
@@ -45,7 +40,7 @@ function Register() {
           <label for='role'>SoC Role:</label>
           <select id='role' name='SocRole'>
             <option value='bootcamper'>Bootcamper</option>
-            <option value='mentor'>Mentor</option>
+            <option value='coach'>Coach</option>
           </select>
           <br />
 
