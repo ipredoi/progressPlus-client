@@ -106,3 +106,14 @@ header {
   height: 200px;
   line-height: 2;
 }
+
+.mdl-card .firebaseui-callback-indicator-container {
+  height: 8px;
+  background-color: #31986a;
+}
+
+.mdl-card.firebaseui-container {
+  min-height: 0px;
+  margin-top: 65px;
+  width: 200px;
+}

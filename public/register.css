@@ -68,3 +68,13 @@ form {
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
 }
+
+.loadingImg {
+ 
+ 
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  margin-top:150px;
+    align-self: center;
+}
