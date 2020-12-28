@@ -8,6 +8,7 @@ import getFeedback from '../libs/functions/getFeedback';
 export default function Bootcamper() {
   const { user } = useUser;
 
+  //hard coded userID, solely to test out fetch request
   user = { ...user, id: 'd6587569589dk3r437890584gjfni' };
 
   getFeedback(url, user.id, recap);

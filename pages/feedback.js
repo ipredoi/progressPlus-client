@@ -1,5 +1,5 @@
 import FeedbackForm from '../components/feedbackForm';
-import CoachListLink from '../components/coachListLink';
+import CoachListLink from '../components/coach/CoachListLink';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
