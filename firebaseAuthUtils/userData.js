@@ -1,12 +1,12 @@
 async function getUserData(user) {
   console.log(user);
-  const token = await user.getIdToken(true);
-  //console.log(token);
+  const  = await user.getId(true);
+  //console.log();
   const { email, uid, photoURL, metadata, displayName } = user;
   return {
     id: uid,
     email,
-    token,
+    ,
     photoURL,
     metadata,
     displayName,

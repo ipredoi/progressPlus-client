@@ -1,8 +1,8 @@
-import FeedbackForm from '../Components/feedbackForm';
-import CoachListLink from '../Components/coachListLink';
-import Avatar from '../Components/avatar';
-import UsefulLinks from '../Components/usefulLinks';
-import SignOut from '../Components/signOut';
+import FeedbackForm from '../components/feedbackForm';
+import CoachListLink from '../components/coachListLink';
+import Avatar from '../components/avatar';
+import UsefulLinks from '../components/usefulLinks';
+import SignOut from '../components/signOut';
 
 export default function Feedback() {
   return (

@@ -1,4 +1,4 @@
-import FirebaseAuth from '../Components/authentication/firebase';
+import FirebaseAuth from '../components/authentication/firebase';
 import '../public/authentication.css';
 import Image from 'next/image';
 

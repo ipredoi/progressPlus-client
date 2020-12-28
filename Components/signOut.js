@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { useUser } from '../firebaseAuth/useUser';
+import { useUser } from '../firebaseAuthUtils/useUser';
 
 export default function SignOut() {
   const { user, logOut } = useUser();
