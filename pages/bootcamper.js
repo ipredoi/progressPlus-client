@@ -1,10 +1,9 @@
-import { Link } from '@material-ui/core';
-import Avatar from '../Components/avatar';
+import Avatar from '../components/avatar';
 // import MenuListComposition from '../Components/menuListComposition';
-import UsefulLinks from '../Components/usefulLinks';
-import StudentCard from '../Components/studentCard';
-import SignOut from '../Components/signOut';
-import BootcampterListLink from '../Components/bootcamperListLink';
+import UsefulLinks from '../components/usefulLinks';
+import StudentCard from '../components/bootcamper/studentCard';
+import SignOut from '../components/signOut';
+import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
 
 export default function Bootcamper() {
   return (
@@ -18,6 +17,7 @@ export default function Bootcamper() {
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
       <StudentCard />
+      {/* <img src={user.photoURL} alt='profile photo' /> */}
       {/* <MenuListComposition /> */}
       <footer className='footer'>
         <UsefulLinks />

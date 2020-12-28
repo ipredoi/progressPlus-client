@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+  background-image: url('/authBackground.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #e0e0e0;
+}
+
+.h1-welcome {
+  text-align: center;
+  font-size: 25px;
+  padding: 10px 0px 10px 0px;
+  text-decoration: underline;
+  color: white;
+  text-decoration-thickness: 2px;
+}
+
+button {
+  background-color: #31986a;
+  position: retlative;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  height: 40px;
+  width: 244px;
+  color: white;
+  font-size: 14px;
+  padding-left: 16px;
+  text-transform: none;
+  vertical-align: middle;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  border: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  margin-top: 8px;
+}
+
+#profile-picture {
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  margin: 30px;
+  align-self: center;
+}
+
+form {
+  align-self: center;
+}
+
+.register-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 300px;
+  height: 450px;
+  background-color: whitesmoke;
+  border-radius: 5%;
+  border-color: #31986a;
+  border-width: 4px;
+  border-style: solid;
+  position: absolute;
+  top: 1vw;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+.loadingImg {
+ 
+ 
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  margin-top:150px;
+    align-self: center;
+}
