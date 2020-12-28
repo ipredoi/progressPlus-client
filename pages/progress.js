@@ -1,10 +1,10 @@
-import CoachListLink from '../Components/coachListLink';
-import Avatar from '../Components/avatar';
-import UsefulLinks from '../Components/usefulLinks';
-import SignOut from '../Components/signOut';
-// import ProgressList from '../Components/ProgressList';
-import ProgressButton from '../Components/progressButton';
-import FeedbackTable from '../Components/table';
+import CoachListLink from '../components/coachListLink';
+import Avatar from '../components/avatar';
+import UsefulLinks from '../components/usefulLinks';
+import SignOut from '../components/signOut';
+// import ProgressList from '../components/ProgressList';
+import ProgressButton from '../components/progressButton';
+import FeedbackTable from '../components/table';
 
 export default function Feedback() {
   return (

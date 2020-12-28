@@ -1,5 +1,5 @@
 import Avatar from '../components/avatar';
-// import MenuListComposition from '../Components/menuListComposition';
+// import MenuListComposition from '../components/menuListComposition';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/signOut';
