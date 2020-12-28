@@ -1,5 +1,5 @@
-import FirebaseAuth from '../Components/authentication/FirebaseAuth';
-import '../styles/authentication.css';
+import FirebaseAuth from '../components/authentication/firebase';
+import '../public/authentication.css';
 import Image from 'next/image';
 
 export default function Login() {
@@ -16,16 +16,8 @@ export default function Login() {
         </div>
         <h1>Platform Name Here</h1>
         <FirebaseAuth />
-        {/* <button className='auth-buttons' onClick={login}>
-          Login with GitHub
-          <FaGithub />
-          </button> */}
         <br />
         <br />
-        {/* <button className='auth-buttons' onClick={signOut}>
-          Sign Out
-          </button>
-        </button> */}
       </div>
     </div>
   );

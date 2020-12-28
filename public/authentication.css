@@ -62,3 +62,14 @@ p {
 input {
   width: 150px;
 }
+
+p {
+  flex-direction: column;
+  color: black;
+  font-size: 1vw;
+}
+
+input {
+  width: 150px;
+}
+

@@ -1,10 +1,10 @@
 import { Link } from '@material-ui/core';
-import CoachListLink from '../Components/coachListLink';
-import Avatar from '../Components/avatar';
-// import MenuListComposition from '../Components/menuListComposition';
-import CoachButton from '../Components/coachButton';
-import UsefulLinks from '../Components/usefulLinks';
-import SignOut from '../Components/signOut';
+import CoachListLink from '../components/coach/CoachListLink';
+import Avatar from '../components/avatar';
+// import MenuListComposition from '../components/menuListComposition';
+import CoachButton from '../components/coach/CoachButton';
+import UsefulLinks from '../components/usefulLinks';
+import SignOut from '../components/signOut';
 
 export default function Coach() {
   return (

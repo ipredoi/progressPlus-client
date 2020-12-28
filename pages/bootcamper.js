@@ -1,19 +1,11 @@
-import { Link } from '@material-ui/core';
 import Avatar from '../components/avatar';
-// import MenuListComposition from '../Components/menuListComposition';
+// import MenuListComposition from '../components/menuListComposition';
 import UsefulLinks from '../components/usefulLinks';
-import StudentCard from '../components/studentCard';
+import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/signOut';
-import BootcampterListLink from '../components/bootcamperListLink';
-import { AuthContext } from '../components/authentication/authContext';
-import { useAuth } from '../components/authentication/authContext';
-import { useContext } from 'react';
+import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
 
 export default function Bootcamper() {
-  const { user } = useContext(AuthContext);
-
-  console.log(user);
-
   return (
     <div>
       <header className='header'>
