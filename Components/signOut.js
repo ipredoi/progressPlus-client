@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react';
 import { useUser } from '../firebaseAuthUtils/useUser';
 
 export default function SignOut() {
-  const { user, logOut } = useUser();
+  const { logOut } = useUser();
 
   return (
     <div>
