@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { useUser } from '../firebaseAuthUtils/useUser';
-
+import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 export default function SignOut() {
-  const { logOut } = useUser();
+  const { logOut } = useAuthContext();
 
   return (
     <div>

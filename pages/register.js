@@ -40,7 +40,7 @@ export default function Register({ session }) {
       </div>
     );
   }
-  console.log(session);
+  //console.log(session);
   return (
     <div>
       <h1 class='h1-welcome'>Hi,{session.name} !</h1>
