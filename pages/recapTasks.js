@@ -1,17 +1,17 @@
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
-import BootcampterListLink from '../components/bootcamperListLink';
-import useUser from '../firebaseAuthUtils/useUser';
+import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
+import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import getFeedback from '../libs/functions/getFeedback';
 
 export default function Bootcamper() {
-  const { user } = useUser;
+  const { user } = useAuthContext();
 
   //hard coded userID, solely to test out fetch request
-  user = { ...user, id: 'd6587569589dk3r437890584gjfni' };
+  // user = { ...user, id: 'd6587569589dk3r437890584gjfni' };
 
-  getFeedback(url, user.id, recap);
+  // getFeedback(url, user.id, recap);
 
   return (
     <div>

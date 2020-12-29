@@ -3,13 +3,13 @@ import { List } from 'semantic-ui-react';
 
 const BootcampterListLink = () => (
   <List link>
-    <List.Item active href='http://localhost:3000/bootcamper'>
+    <List.Item active href='/bootcamper'>
       Home
     </List.Item>
-    <List.Item as='a' href='http://localhost:3000/masteryTasks'>
+    <List.Item as='a' href='/masteryTasks'>
       Mastery Tasks
     </List.Item>
-    <List.Item as='a' href='http://localhost:3000/recapTasks'>
+    <List.Item as='a' href='/recapTasks'>
       Recap Tasks
     </List.Item>
   </List>
