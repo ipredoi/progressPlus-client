@@ -6,9 +6,9 @@ import 'semantic-ui-css/semantic.min.css';
 
 const CoachButton = () => (
   <Button.Group className='coachButton' size='large'>
-    <Button href='http://localhost:3000/feedback'>Submit Feedback</Button>
+    <Button href='http://localhost:8080/feedback'>Submit Feedback</Button>
     <Button.Or />
-    <Button href='http://localhost:3000/progress'>Track Progress</Button>
+    <Button href='http://localhost:8080/progress'>Track Progress</Button>
   </Button.Group>
 );
 

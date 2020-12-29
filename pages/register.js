@@ -1,27 +1,14 @@
-// Registration page for user to regist with email and create password
-// register button links to Login page
+// Registration page for user to submit a form with details 
+// submit button sends the user information to database
+
+
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import '../public/register.css';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 
-export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
 
-    return {
-      props: { session: { name, uid, email, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  }
-}
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
@@ -115,4 +102,23 @@ export default function Register({ session }) {
   );
 }
 
+
+export async function getServerSideProps(context) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    console.log(token);
+    const { uid, email, name, picture } = token;
+
+    return {
+      props: { session: { name, uid, email, picture } },
+    };
+  } catch (err) {
+    context.res.writeHead(302, { Location: '/login' });
+    context.res.end();
+    return { props: {} };
+  }
+}
+
 //this async function is getting the cookies and allowing them to be used on this page
+
