@@ -6,10 +6,10 @@ const BootcampterListLink = () => (
     <List.Item active href='/bootcamper'>
       Home
     </List.Item>
-    <List.Item as='a' href='/masteryTasks'>
+    <List.Item as='a' href='/masterytasks'>
       Mastery Tasks
     </List.Item>
-    <List.Item as='a' href='/recapTasks'>
+    <List.Item as='a' href='/recaptasks'>
       Recap Tasks
     </List.Item>
   </List>
