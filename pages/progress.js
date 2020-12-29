@@ -1,9 +1,9 @@
-import CoachListLink from '../components/coachListLink';
+import CoachListLink from '../components/coach/CoachListLink';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 // import ProgressList from '../components/ProgressList';
-import ProgressButton from '../components/progressButton';
+import ProgressButton from '../components/coach/progressButton';
 import FeedbackTable from '../components/table';
 
 export default function Feedback() {

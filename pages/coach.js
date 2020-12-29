@@ -1,7 +1,6 @@
 import { Link } from '@material-ui/core';
 import CoachListLink from '../components/coach/CoachListLink';
 import Avatar from '../components/avatar';
-// import MenuListComposition from '../components/menuListComposition';
 import CoachButton from '../components/coach/CoachButton';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
