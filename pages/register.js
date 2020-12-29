@@ -4,11 +4,11 @@
 
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import '../public/register.css';
+import nookies from 'nookies';
+import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 
- import nookies from 'nookies';
 
-import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
@@ -102,6 +102,7 @@ export default function Register({ session }) {
   );
 }
 
+
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -118,3 +119,6 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
 }
+
+//this async function is getting the cookies and allowing them to be used on this page
+

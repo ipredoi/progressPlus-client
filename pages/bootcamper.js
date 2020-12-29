@@ -1,7 +1,10 @@
 import Avatar from '../components/avatar';
-// import MenuListComposition from '../components/menuListComposition';
+
+
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+
+
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/signOut';

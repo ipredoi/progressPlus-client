@@ -2,27 +2,47 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
-import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
-import getFeedback from '../libs/functions/getFeedback';
+import nookies from 'nookies';
+import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 
-export default function Bootcamper() {
-  const { user } = useAuthContext();
-
-  //hard coded userID, solely to test out fetch request
-  // user = { ...user, id: 'd6587569589dk3r437890584gjfni' };
-
-  // getFeedback(url, user.id, recap);
-
+export default function RecapTasks({ session }) {
   return (
     <div>
       <header className='header'>
         <SignOut />
         <Avatar />
         <BootcampterListLink />
+        <button
+          onClick={() => {
+            console.log(session.data);
+          }}>
+          Testing data in console
+        </button>
       </header>
       <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    console.log(token);
+    const { uid, email, name, picture } = token;
+
+    const res = await fetch(`http://localhost:5000/feedback/${uid}/recap`);
+    const data = await res.json();
+
+    return {
+      props: { session: { name, uid, data } },
+    };
+  } catch (err) {
+    context.res.writeHead(302, { Location: '/login' });
+    context.res.end();
+    console.log(err.message);
+    return { props: {} };
+  }
 }
