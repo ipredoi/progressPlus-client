@@ -1,14 +1,11 @@
-// Registration page for user to submit a form with details 
+// Registration page for user to submit a form with details
 // submit button sends the user information to database
-
 
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import '../public/register.css';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
-
-
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
@@ -45,7 +42,7 @@ export default function Register({ session }) {
   //console.log(session);
   return (
     <div>
-      <h1 class='h1-welcome'>Hi,{session.name} !</h1>
+      <h1 class='h1-welcome'>Hi {session.name}!</h1>
       <h1 class='h1-welcome'>Welcome to APP NAME!</h1>
       <br />
 
@@ -102,7 +99,6 @@ export default function Register({ session }) {
   );
 }
 
-
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -121,4 +117,3 @@ export async function getServerSideProps(context) {
 }
 
 //this async function is getting the cookies and allowing them to be used on this page
-

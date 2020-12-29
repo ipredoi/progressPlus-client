@@ -6,19 +6,15 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 
-const StudentCard = () => (
-  <Card>
-    <Image
-      src='https://ca.slack-edge.com/T6L933W4X-U01AAKNKAU9-2f9d3108ad84-512'
-      wrapped
-      ui={false}
-    />
-    <Card.Content>
-      <Card.Header>Patrick</Card.Header>
-      &nbsp;
-      <Card.Meta>Cohort 4</Card.Meta>
-    </Card.Content>
-  </Card>
-);
-
-export default StudentCard;
+export default function StudentCard({ session }) {
+  return (
+    <Card>
+      <Image src={session.picture} alt='Profile Picture' />
+      <Card.Content>
+        <Card.Header>{session.name}</Card.Header>
+        <br />
+        <Card.Meta>Cohort 4</Card.Meta>
+      </Card.Content>
+    </Card>
+  );
+}

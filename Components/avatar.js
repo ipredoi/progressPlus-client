@@ -3,17 +3,15 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
-function Avatar({src,name,imgStyle}) {
+
+export default function Avatar({ src, name, imgStyle }) {
   const { user } = useAuthContext();
   console.log(user);
 
-    return (
-      <div className='avatar'>
-        <Image src={src} style={imgStyle} />
-        <span className='profileName'>{name}</span>
-      </div>
-    );
-  
+  return (
+    <div className='avatar'>
+      <Image src={src} style={imgStyle} />
+      <span className='profileName'>{name}</span>
+    </div>
+  );
 }
-
-export default Avatar;

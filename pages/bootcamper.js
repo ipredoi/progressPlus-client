@@ -1,13 +1,9 @@
-import Avatar from '../components/avatar';
-
-
+import Avatar from '../components/Avatar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-
-
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
-import SignOut from '../components/signOut';
+import SignOut from '../components/SignOut';
 import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
 
 export default function Bootcamper({ session }) {
@@ -19,16 +15,13 @@ export default function Bootcamper({ session }) {
     <div>
       <header className='header'>
         <SignOut />
-        <Avatar />
+        <Avatar session={session} />
         <BootcampterListLink />
       </header>
       <h1 className='h1'>
-        {session.name}
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
-      <StudentCard />
-      {/* <img src={user.photoURL} alt='profile photo' /> */}
-      {/* <MenuListComposition /> */}
+      <StudentCard session={session} />
       <footer className='footer'>
         <UsefulLinks />
       </footer>
