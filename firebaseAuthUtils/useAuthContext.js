@@ -26,7 +26,7 @@ export function AuthContextProvider({ children }) {
 
   // logOut function
 
-  async function logOut() {
+  function logOut() {
     // after user logs out, he will be redirected to the login page using next useRouter hook
     return firebase
       .auth()

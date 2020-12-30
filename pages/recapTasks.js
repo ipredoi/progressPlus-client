@@ -26,6 +26,9 @@ export default function RecapTasks({ session }) {
   );
 }
 
+const url = process.env.NEXT_APP_BACKEND_URL;
+// uncomment when backend tables are sorted
+
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -34,6 +37,7 @@ export async function getServerSideProps(context) {
     const { uid, email, name, picture } = token;
 
     const res = await fetch(`http://localhost:5000/feedback/${uid}/recap`);
+    // const res = await fetch(`${url}feedback/${uid}/recap`);
     const data = await res.json();
 
     return {

@@ -26,6 +26,9 @@ export default function MasteryTasks({ session }) {
   );
 }
 
+const url = process.env.NEXT_APP_BACKEND_URL;
+// uncomment when backend tables are sorted
+
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -33,7 +36,10 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
+    //when backend tables are sorted, change fetch re
+
     const res = await fetch(`http://localhost:5000/feedback/${uid}/mastery`);
+    // const res = await fetch(`${url}feedback/${uid}/mastery`)
     const data = await res.json();
 
     return {
