@@ -1,6 +1,6 @@
 import { Link } from '@material-ui/core';
 import Navbar from '../components/NavBar';
-import coachNavBarArr from '../libs/global variables/navBarArrays';
+import coachNavBarArr from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
 // import MenuListComposition from '../components/menuListComposition';
 import CoachButton from '../components/coach/CoachButton';

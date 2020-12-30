@@ -7,7 +7,7 @@ import ProgressButton from '../components/coach/progressButton';
 //import FeedbackTable from '../components/table';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import nookies from 'nookies';
-import url from '../libs/global variables/backendUrl';
+import url from '../libs//backendUrl';
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;

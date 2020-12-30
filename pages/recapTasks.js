@@ -2,10 +2,10 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
-import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
+import bootcamperNavBarArr from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import url from '../libs/global variables/backendUrl';
+import url from '../libs/globalvariables/backendUrl';
 
 export default function RecapTasks({ session }) {
   return (

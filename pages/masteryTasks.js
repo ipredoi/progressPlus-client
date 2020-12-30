@@ -4,8 +4,8 @@ import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
-import url from '../libs/global variables/backendUrl';
+import bootcamperNavBarArr from '../libs/globalvariables/navBarArrays';
+import url from '../libs/globalvariables/backendUrl';
 
 export default function MasteryTasks({ session }) {
   return (
