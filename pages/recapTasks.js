@@ -2,10 +2,10 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
-import {bootcamperNavBarArr} from '../libs/globalvariables/navBarArrays';
+import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import {url} from '../libs/globalvariables/backendUrl';
+import { url } from '../libs/globalvariables/backendUrl';
 
 export default function RecapTasks({ session }) {
   return (
@@ -28,7 +28,7 @@ export default function RecapTasks({ session }) {
   );
 }
 
-const url = process.env.NEXT_APP_BACKEND_URL;
+// const url = process.env.NEXT_APP_BACKEND_URL;
 // uncomment when backend tables are sorted
 
 export async function getServerSideProps(context) {
@@ -38,12 +38,8 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-<<<<<<< HEAD
-    const res = await fetch(`http://localhost:5000/feedback/${uid}/recap`);
-    // const res = await fetch(`${url}feedback/${uid}/recap`);
-=======
-    const res = await fetch(`${url}/feedback/${uid}/recap`);
->>>>>>> 61
+    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`);
+
     const data = await res.json();
 
     return {

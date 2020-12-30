@@ -38,7 +38,8 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`${url}feedback/${uid}/mastery`);
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
+    // http://ismail-esta-final-project.herokuapp.com/feedback?uid=d658756956bd37r43788hjtrertrt&type=mastery
     const data = await res.json();
 
     return {
