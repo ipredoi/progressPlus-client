@@ -1,32 +1,43 @@
-import Avatar from '../components/Avatar';
-import nookies from 'nookies';
-import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import Avatar from '../components/avatar';
+// import MenuListComposition from '../components/menuListComposition';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/SignOut';
-import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
+import NavBar from '../components/NavBar';
+import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
 
 export default function Bootcamper({ session }) {
-  if (!session) {
-    return <p>Loading</p>;
-  }
+  let navBarArr = [
+    { link: '/bootcamper', title: 'Home' },
+    { link: '/masterytasks', title: 'Mastery Tasks' },
+    { link: '/recaptasks', title: 'Recap Tasks' },
+  ];
   console.log(session);
-  return (
-    <div>
-      <header className='header'>
-        <SignOut />
-        <Avatar session={session} />
-        <BootcampterListLink />
-      </header>
-      <h1 className='h1'>
-        "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
-      </h1>
-      <StudentCard session={session} />
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
-    </div>
-  );
+  if (!session) {
+    return (
+      <div className='register-form'>
+        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
+      </div>
+    );
+  } else
+    return (
+      <div>
+        <header className='header'>
+          <SignOut />
+          <Avatar />
+          <NavBar linksAndTitles={bootcamperNavBarArr} />
+        </header>
+        <h1 className='h1'>
+          "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
+        </h1>
+        <StudentCard />
+        <img src={session.photoURL} alt='profile photo' />
+        {/* <MenuListComposition /> */}
+        <footer className='footer'>
+          <UsefulLinks />
+        </footer>
+      </div>
+    );
 }
 
 export async function getServerSideProps(context) {
