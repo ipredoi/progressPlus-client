@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import url from '../libs/global variables/backendUrl';
 
 export default function RecapTasks({ session }) {
   return (
@@ -37,8 +38,12 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
+<<<<<<< HEAD
     const res = await fetch(`http://localhost:5000/feedback/${uid}/recap`);
     // const res = await fetch(`${url}feedback/${uid}/recap`);
+=======
+    const res = await fetch(`${url}/feedback/${uid}/recap`);
+>>>>>>> 61
     const data = await res.json();
 
     return {
