@@ -4,8 +4,8 @@ import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import bootcamperNavBarArr from '../libs/globalvariables/navBarArrays';
-import url from '../libs/globalvariables/backendUrl';
+import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
+import { url } from '../libs/globalvariables/backendUrl';
 
 export default function MasteryTasks({ session }) {
   return (
@@ -28,7 +28,7 @@ export default function MasteryTasks({ session }) {
   );
 }
 
-const url = process.env.NEXT_APP_BACKEND_URL;
+// const url = process.env.NEXT_APP_BACKEND_URL;
 // uncomment when backend tables are sorted
 
 export async function getServerSideProps(context) {

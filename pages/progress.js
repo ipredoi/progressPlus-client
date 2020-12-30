@@ -1,4 +1,4 @@
-import CoachListLink from '../components/coach/CoachListLink';
+import NavBar from '../components/NavBar';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
@@ -7,7 +7,7 @@ import ProgressButton from '../components/coach/progressButton';
 //import FeedbackTable from '../components/table';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import nookies from 'nookies';
-import url from '../libs//backendUrl';
+import { url } from '../libs/globalVariables/backendUrl';
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;
@@ -19,7 +19,7 @@ export default function Feedback({ session }) {
           src={session.picture}
           imgStyle={{ 'border-radius': '50%', height: 80 }}
         />
-        <CoachListLink />
+        <NavBar />
       </header>
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
