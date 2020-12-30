@@ -67,7 +67,7 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`${url}allbootcamperfeedback`);
+    const res = await fetch(`${url}feedback`);
     const data = await res.json();
     //console.log(data);
 
