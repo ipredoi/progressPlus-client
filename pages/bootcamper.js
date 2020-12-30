@@ -4,14 +4,9 @@ import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/SignOut';
 import NavBar from '../components/NavBar';
-import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
+import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
-  let navBarArr = [
-    { link: '/bootcamper', title: 'Home' },
-    { link: '/masterytasks', title: 'Mastery Tasks' },
-    { link: '/recaptasks', title: 'Recap Tasks' },
-  ];
   console.log(session);
   if (!session) {
     return (

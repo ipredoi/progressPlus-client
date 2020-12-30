@@ -42,17 +42,17 @@ export default function Register({ session }) {
   //console.log(session);
   return (
     <div>
-      <h1 class='h1-welcome'>Hi {session.name}!</h1>
+      {/* <h1 class='h1-welcome'>Hi {session.name}!</h1> */}
       <h1 class='h1-welcome'>Welcome to APP NAME!</h1>
       <br />
 
       <div class='register-form'>
         <img id='profile-picture' src={session.picture} alt='profile picture' />
         <form>
-          <label>
+          {/* <label>
             Name:
             <input type='text' name='displayName' value={session.name}></input>
-          </label>
+          </label> */}
           <br />
           <label>
             Email:
