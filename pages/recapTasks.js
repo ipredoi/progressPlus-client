@@ -2,7 +2,7 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
-import bootcamperNavBarArr from '../libs/globalvariables/navBarArrays';
+import {bootcamperNavBarArr} from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import url from '../libs/globalvariables/backendUrl';
