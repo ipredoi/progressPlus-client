@@ -4,7 +4,8 @@ import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import bootcamperNavBarArr from ''..
+import bootcamperNavBarArr from '../libs/global variables/navBarArrays';
+import url from '../libs/global variables/backendUrl';
 
 export default function MasteryTasks({ session }) {
   return (
@@ -34,7 +35,7 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`http://localhost:5000/feedback/${uid}/mastery`);
+    const res = await fetch(`${url}feedback/${uid}/mastery`);
     const data = await res.json();
 
     return {
