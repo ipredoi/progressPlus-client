@@ -3,8 +3,8 @@
 //personal profile
 //name and pic should be uploaded from database(firebase)
 //i manually inserted data for show
-import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import React from "react";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 export default function StudentCard({ session }) {
   return (

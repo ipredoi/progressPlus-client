@@ -1,3 +1,4 @@
+import RecapGraph from "../Components/bootcamper/RecapGraph";
 import Avatar from "../components/avatar";
 import UsefulLinks from "../components/usefulLinks";
 import SignOut from "../components/signOut";
@@ -5,20 +6,16 @@ import BootcampterListLink from "../components/bootcamper/bootcamperListLink";
 import nookies from "nookies";
 import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
 
-export default function RecapTasks({ session }) {
+export default function GraphTest({ session }) {
+  console.log(`test: ${session.name}`);
   return (
     <div>
       <header className='header'>
         <SignOut />
         <Avatar />
         <BootcampterListLink />
-        <button
-          onClick={() => {
-            console.log(session.data);
-          }}>
-          Testing data in console
-        </button>
       </header>
+      <RecapGraph session={session} />
       <footer className='footer'>
         <UsefulLinks />
       </footer>
@@ -33,16 +30,12 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`http://localhost:5000/feedback/${uid}/recap`);
-    const data = await res.json();
-
     return {
-      props: { session: { name, uid, data } },
+      props: { session: { name, uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: "/login" });
     context.res.end();
-    console.log(err.message);
     return { props: {} };
   }
 }
