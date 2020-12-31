@@ -24,7 +24,7 @@ export default function Bootcamper({ session }) {
         <h1 className='h1'>
           "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
         </h1>
-        <StudentCard />
+        <StudentCard img={session.picture} name={session.name} />
         <img src={session.photoURL} alt='profile photo' />
         <footer className='footer'>
           <UsefulLinks />
