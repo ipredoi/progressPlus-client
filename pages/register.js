@@ -12,6 +12,7 @@ export default function Register({ session }) {
   const [role, setRole] = useState('Bootcamper');
   const [cohort, setCohort] = useState('4');
   console.log(role);
+
   function registerUser(e) {
     e.preventDefault();
     fetch('http://localhost:5000/', {

@@ -7,7 +7,6 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import { url } from '../libs/globalvariables/backendUrl';
 
-console.log(url);
 export default function MasteryTasks({ session }) {
   return (
     <div>
@@ -29,9 +28,6 @@ export default function MasteryTasks({ session }) {
   );
 }
 
-// const url = process.env.NEXT_APP_BACKEND_URL;
-// uncomment when backend tables are sorted
-
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -40,7 +36,6 @@ export async function getServerSideProps(context) {
     const { uid, email, name, picture } = token;
 
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
-    // http://ismail-esta-final-project.herokuapp.com/feedback?uid=d658756956bd37r43788hjtrertrt&type=mastery
     const data = await res.json();
 
     return {

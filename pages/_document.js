@@ -18,3 +18,5 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
+
+//This page is basically Next.js' version of the HTML page
