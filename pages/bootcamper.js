@@ -1,5 +1,4 @@
 import Avatar from '../components/Avatar';
-// import MenuListComposition from '../components/menuListComposition';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import SignOut from '../components/SignOut';
@@ -27,7 +26,6 @@ export default function Bootcamper({ session }) {
         </h1>
         <StudentCard />
         <img src={session.photoURL} alt='profile photo' />
-        {/* <MenuListComposition /> */}
         <footer className='footer'>
           <UsefulLinks />
         </footer>
