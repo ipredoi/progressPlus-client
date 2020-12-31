@@ -1,12 +1,9 @@
-// next.config.js
-const withCSS = require('@zeit/next-css');
+// // next.config.js
 
-module.exports = withCSS({
-  cssLoaderOptions: {
-    url: false,
-  },
-});
+module.exports = {
+  basePath: '/login',
+};
 
-//not entirely sure what this page is doing but I saw online that it might be necessary for importing CSS files?
-//Link here: https://stackoverflow.com/questions/50149729/next-js-import-css-file-does-not-work
-//Once we tackle the CSS we can probs see if this page is needed or not
+//next.config.js is a regular Node.js module, not a JSON file. It gets used by the Next.js server and build phases, and it's not included in the browser build.
+//basePath allows you to set a path prefix for the application.
+
