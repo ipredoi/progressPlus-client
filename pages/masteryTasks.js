@@ -7,6 +7,7 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import { url } from '../libs/globalvariables/backendUrl';
 
+console.log(url);
 export default function MasteryTasks({ session }) {
   return (
     <div>

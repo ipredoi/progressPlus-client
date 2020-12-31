@@ -34,19 +34,19 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-      <div class='register-form'>
-        <img class='loadingImg' src='/source.gif' alt='loadingImg' />
+      <div className='register-form'>
+        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
       </div>
     );
   }
   //console.log(session);
   return (
     <div>
-      {/* <h1 class='h1-welcome'>Hi {session.name}!</h1> */}
-      <h1 class='h1-welcome'>Welcome to APP NAME!</h1>
+      {/* <h1 className='h1-welcome'>Hi {session.name}!</h1> */}
+      <h1 className='h1-welcome'>Welcome to APP NAME!</h1>
       <br />
 
-      <div class='register-form'>
+      <div className='register-form'>
         <img id='profile-picture' src={session.picture} alt='profile picture' />
         <form>
           {/* <label>
@@ -56,7 +56,11 @@ export default function Register({ session }) {
           <br />
           <label>
             Email:
-            <input type='email' name='email' value={session.email}></input>
+            <input
+              type='email'
+              name='email'
+              readOnly
+              value={session.email}></input>
           </label>
           <br />
           <label role='role'>SoC Role:</label>
