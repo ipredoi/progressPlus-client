@@ -1,5 +1,5 @@
 import NavBar from '../components/NavBar';
-import Avatar from '../components/avatar';
+import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 // import ProgressList from '../components/ProgressList';
