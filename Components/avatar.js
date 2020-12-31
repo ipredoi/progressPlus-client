@@ -2,12 +2,8 @@
 //need to work on a drop down onclick to show sign out option
 import React from 'react';
 import { Image } from 'semantic-ui-react';
-import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 
 export default function Avatar({ src, name, imgStyle }) {
-  const { user } = useAuthContext();
-  console.log(user);
-
   return (
     <div className='avatar'>
       <Image src={src} style={imgStyle} />
