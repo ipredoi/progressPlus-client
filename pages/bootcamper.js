@@ -1,4 +1,4 @@
-import Avatar from '../components/avatar';
+import Avatar from '../components/Avatar';
 // import MenuListComposition from '../components/menuListComposition';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
