@@ -1,12 +1,12 @@
-import Avatar from '../components/avatar';
+import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
-import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 
-export default function RecapTasks({ session }) {
+export default function MasteryTasks({ session }) {
   return (
     <div>
       <header className="header">
@@ -17,7 +17,7 @@ export default function RecapTasks({ session }) {
           onClick={() => {
             console.log(session.data);
           }}>
-          Testing data in console
+          Testing data
         </button>
       </header>
       <footer className="footer">
@@ -37,8 +37,7 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`);
-
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
     const data = await res.json();
 
     return {
@@ -51,3 +50,5 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
 }
+
+//function to get the feedback from the backend, may need some refactoring to have consistancy with variable names

@@ -1,18 +1,11 @@
-import { Link } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
-// import MenuListComposition from '../components/menuListComposition';
 import CoachButton from '../components/coach/CoachButton';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/SignOut';
 
 export default function Coach() {
-  let navBarArr = [
-    { link: '/coach', title: 'Home' },
-    { link: '/feedback', title: 'Submit Feedback' },
-    { link: '/progress', title: 'Track Progress' },
-  ];
   return (
     <div>
       <header className='header'>
@@ -24,7 +17,6 @@ export default function Coach() {
         "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
       </h1>
       <Avatar />
-      {/* <MenuListComposition /> */}
       <CoachButton />
       <footer className='footer'>
         <UsefulLinks />

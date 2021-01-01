@@ -2,12 +2,11 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
 import NavBar from '../components/NavBar';
+import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 
-console.log(url);
-export default function MasteryTasks({ session }) {
+export default function RecapTasks({ session }) {
   return (
     <div>
       <header className="header">
@@ -18,7 +17,7 @@ export default function MasteryTasks({ session }) {
           onClick={() => {
             console.log(session.data);
           }}>
-          Testing data
+          Testing data in console
         </button>
       </header>
       <footer className="footer">
@@ -38,8 +37,7 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
-    // http://ismail-esta-final-project.herokuapp.com/feedback?uid=d658756956bd37r43788hjtrertrt&type=mastery
+    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`);
     const data = await res.json();
 
     return {
@@ -52,5 +50,3 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
 }
-
-//function to get the feedback from the backend, may need some refactoring to have consistancy with variable names

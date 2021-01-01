@@ -1,12 +1,12 @@
 import FirebaseAuth from '../components/authentication/firebase';
-import '../public/authentication.css';
+import styles from '../styles/login.module.css';
 import Image from 'next/image';
 
 export default function Login() {
   return (
-    <div className='auth'>
-      <div className='auth-main'>
-        <div className='soc-image'>
+    <div className={styles.auth}>
+      <div className={styles.authMain}>
+        <div className={styles.socImage}>
           <Image
             src='/Logo.png'
             alt='School of Code Logo'
@@ -14,7 +14,7 @@ export default function Login() {
             height={100}
           />
         </div>
-        <h1>Platform Name Here</h1>
+        <h1 className={styles.h1}>Platform Name Here</h1>
         <FirebaseAuth />
         <br />
         <br />

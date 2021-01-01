@@ -117,3 +117,9 @@ header {
   margin-top: 65px;
   width: 200px;
 }
+
+.firebaseui-idp-button {
+  background-color: #31986a !important;
+  position: retlative !important;
+  border-radius: 10px !important;
+}

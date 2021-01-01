@@ -2,12 +2,14 @@
 // submit button sends the user information to database
 
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
-import '../public/register.css';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
+
 import { useRouter } from 'next/router';
 import { url } from '../libs/globalVariables/backendUrl';
+
+import styles from '../styles/register.module.css';
 
 
 export default function Register({ session }) {
@@ -15,8 +17,11 @@ export default function Register({ session }) {
   const [role, setRole] = useState('Bootcamper');
   const [cohort, setCohort] = useState('4');
 
+
   //we are using router to redirect the user after register to the coach/bootcamper page 
   const router = useRouter();
+
+
 
   function registerUser(e) {
     e.preventDefault();
@@ -42,21 +47,30 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-      <div className='register-form'>
-        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
+      <div className={styles.registerForm}>
+        <img className={styles.loadingImg} src='/source.gif' alt='loadingImg' />
       </div>
     );
   }
 
-  return (
-    <div>
-      <h1 className='h1-welcome'>Hi {session.name}!</h1>
-      <h1 className='h1-welcome'>Welcome to APP NAME!</h1>
+
+    <div className={styles.body}>
+      {/* <h1 className='h1-welcome'>Hi {session.name}!</h1> */}
+      <h1 className={styles.h1Welcome}>Welcome to APP NAME!</h1>
       <br />
 
-      <div className='register-form'>
-        <img id='profile-picture' src={session.picture} alt='profile picture' />
-        <form>
+      <div className={styles.registerForm}>
+        <img
+          id={styles.profilePicture}
+          src={session.picture}
+          alt='profile picture'
+        />
+        <form className={styles.form}>
+          {/* <label>
+            Name:
+            <input type='text' name='displayName' value={session.name}></input>
+          </label> */}
+
           <br />
           <label>
             Email:
@@ -97,11 +111,13 @@ export default function Register({ session }) {
           </select>
           <br />
 
-          <button id='form-submit-button' type='submit' onClick={registerUser}>
+          <button id={styles.button} type='submit' onClick={registerUser}>
             Submit Form
           </button>
         </form>
-        <button onClick={logOut}>Logout</button>
+        <button id={styles.button} onClick={logOut}>
+          Logout
+        </button>
       </div>
     </div>
   );

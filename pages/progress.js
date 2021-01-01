@@ -1,10 +1,8 @@
 import NavBar from '../components/NavBar';
-import Avatar from '../components/avatar';
+import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import SignOut from '../components/signOut';
-// import ProgressList from '../components/ProgressList';
 import ProgressButton from '../components/coach/progressButton';
-//import FeedbackTable from '../components/table';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import nookies from 'nookies';
 import { url } from '../libs/globalVariables/backendUrl';
@@ -68,8 +66,8 @@ export async function getServerSideProps(context) {
     const { uid, email, name, picture } = token;
 
     const res = await fetch(`${url}feedback`);
+    //this is fetching info from our DB through the hosted backend URL. The URL variable is stored in globalVariables where it is also using dotenv to keep the URL private.
     const data = await res.json();
-    //console.log(data);
 
     return {
       props: { session: { data, name, uid, email, picture } },
