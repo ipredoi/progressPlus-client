@@ -36,8 +36,8 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-      <div className="register-form">
-        <img className="loadingImg" src="/source.gif" alt="loadingImg" />
+      <div className='register-form'>
+        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
       </div>
     );
   }
@@ -45,11 +45,11 @@ export default function Register({ session }) {
   return (
     <div>
       {/* <h1 className='h1-welcome'>Hi {session.name}!</h1> */}
-      <h1 className="h1-welcome">Welcome to APP NAME!</h1>
+      <h1 className='h1-welcome'>Welcome to APP NAME!</h1>
       <br />
 
-      <div className="register-form">
-        <img id="profile-picture" src={session.picture} alt="profile picture" />
+      <div className='register-form'>
+        <img id='profile-picture' src={session.picture} alt='profile picture' />
         <form>
           {/* <label>
             Name:
@@ -59,43 +59,43 @@ export default function Register({ session }) {
           <label>
             Email:
             <input
-              type="email"
-              name="email"
+              type='email'
+              name='email'
               readOnly
               value={session.email}></input>
           </label>
           <br />
-          <label role="role">SoC Role:</label>
+          <label role='role'>SoC Role:</label>
           <select
-            id="role"
-            name="SocRole"
+            id='role'
+            name='SocRole'
             onChange={(e) => {
               setRole(e.target.value);
             }}>
-            <option value="bootcamper">Bootcamper</option>
-            <option value="coach">Coach</option>
+            <option value='bootcamper'>Bootcamper</option>
+            <option value='coach'>Coach</option>
           </select>
           <br />
-          <label cohort="cohort">SoC Cohort:</label>
+          <label cohort='cohort'>SoC Cohort:</label>
           <select
-            id="cohortNumber"
-            name="socCohort"
+            id='cohortNumber'
+            name='socCohort'
             onChange={(e) => {
               setCohort(e.target.value);
             }}>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+            <option value='11'>11</option>
+            <option value='12'>12</option>
           </select>
           <br />
 
-          <button id="form-submit-button" type="submit" onClick={registerUser}>
+          <button id='form-submit-button' type='submit' onClick={registerUser}>
             Submit Form
           </button>
         </form>
