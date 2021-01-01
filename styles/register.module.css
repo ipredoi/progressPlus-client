@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-body {
+.body {
   background-image: url('/authBackground.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #e0e0e0;
 }
 
-.h1-welcome {
+.h1Welcome {
   text-align: center;
   font-size: 25px;
   padding: 10px 0px 10px 0px;
@@ -16,7 +16,7 @@ body {
   text-decoration-thickness: 2px;
 }
 
-button {
+#button {
   background-color: #31986a;
   position: retlative;
   border-radius: 10px;
@@ -36,7 +36,7 @@ button {
   margin-top: 8px;
 }
 
-#profile-picture {
+#profilePicture {
   border-radius: 50%;
   width: 150px;
   height: auto;
@@ -44,11 +44,11 @@ button {
   align-self: center;
 }
 
-form {
+.form {
   align-self: center;
 }
 
-.register-form {
+.registerForm {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -70,11 +70,9 @@ form {
 }
 
 .loadingImg {
- 
- 
   border-radius: 50%;
   width: 150px;
   height: auto;
-  margin-top:150px;
-    align-self: center;
+  margin-top: 150px;
+  align-self: center;
 }

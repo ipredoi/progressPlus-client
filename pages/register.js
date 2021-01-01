@@ -2,10 +2,10 @@
 // submit button sends the user information to database
 
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
-import '../public/register.css';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
+import styles from '../styles/register.module.css';
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
@@ -35,21 +35,25 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-      <div className='register-form'>
-        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
+      <div className={styles.registerForm}>
+        <img className={styles.loadingImg} src='/source.gif' alt='loadingImg' />
       </div>
     );
   }
   //console.log(session);
   return (
-    <div>
+    <div className={styles.body}>
       {/* <h1 className='h1-welcome'>Hi {session.name}!</h1> */}
-      <h1 className='h1-welcome'>Welcome to APP NAME!</h1>
+      <h1 className={styles.h1Welcome}>Welcome to APP NAME!</h1>
       <br />
 
-      <div className='register-form'>
-        <img id='profile-picture' src={session.picture} alt='profile picture' />
-        <form>
+      <div className={styles.registerForm}>
+        <img
+          id={styles.profilePicture}
+          src={session.picture}
+          alt='profile picture'
+        />
+        <form className={styles.form}>
           {/* <label>
             Name:
             <input type='text' name='displayName' value={session.name}></input>
@@ -94,11 +98,13 @@ export default function Register({ session }) {
           </select>
           <br />
 
-          <button id='form-submit-button' type='submit' onClick={registerUser}>
+          <button id={styles.button} type='submit' onClick={registerUser}>
             Submit Form
           </button>
         </form>
-        <button onClick={logOut}>Logout</button>
+        <button id={styles.button} onClick={logOut}>
+          Logout
+        </button>
       </div>
     </div>
   );
