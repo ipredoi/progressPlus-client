@@ -50,7 +50,7 @@ export default function Register({ session }) {
   if (!session) {
     return (
       <div className={styles.registerForm}>
-        <img className={styles.loadingImg} src='/source.gif' alt='loadingImg' />
+        <img className={styles.loadingImg} src="/source.gif" alt="loadingImg" />
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function Register({ session }) {
         <img
           id={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt="profile picture"
         />
         <div className={styles.form}>
           <p className={styles.welcome}>
@@ -79,21 +79,21 @@ export default function Register({ session }) {
             <DropdownMenu
               className={styles.dropdownMenu}
               option={rolesArr}
-              placeHolder='Select SoC Role'
+              placeHolder="Select SoC Role"
               handleClick={(e, data) => {
                 setRole(data.value.toLowerCase());
               }}
             />
             <DropdownMenu
               option={cohortArr}
-              placeHolder='Select SoC Cohort'
+              placeHolder="Select SoC Cohort"
               handleClick={(e, data) => {
                 setCohort(data.value);
               }}
             />
           </div>
 
-          <button id={styles.button} type='submit' onClick={registerUser}>
+          <button id={styles.button} type="submit" onClick={registerUser}>
             Submit Form
           </button>
 
@@ -107,18 +107,20 @@ export default function Register({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(url);
+  const url = process.env.NEXT_APP_BACKEND_URL;
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const { uid, email, name, picture } = token;
-    /* const res = await fetch(`${url}${uid}`);
+    const res = await fetch(`${url}${uid}`);
     const data = await res.json();
-    console.log(data.data[0].role.toLowerCase());
-    context.res.writeHead(302, {
-      Location: `/${data.data[0].role.toLowerCase()}`,
-    });
-    context.res.end(); */
+    if (data.success === true) {
+      context.res.writeHead(302, {
+        Location: `/${data.data[0].role.toLowerCase()}`,
+      });
+      context.res.end();
+    }
+
     return {
       props: { session: { name, uid, email, picture } },
     };
