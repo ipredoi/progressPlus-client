@@ -1,6 +1,6 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-
+import styles from '../styles/register.module.css';
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -8,13 +8,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { url } from '../libs/globalVariables/backendUrl';
 
-
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
   const [role, setRole] = useState('Bootcamper');
   const [cohort, setCohort] = useState('4');
 
-  //we are using router to redirect the user after register to the coach/bootcamper page 
+  //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
   function registerUser(e) {
@@ -23,7 +22,7 @@ export default function Register({ session }) {
       method: 'POST',
       body: JSON.stringify({
         role: role,
-        uid: 'fsadas488xsdsd5cxssdds' /* session.uid */,
+        uid: 'fsadas488xsdsd5cxssddsfsa34' /* session.uid */,
         cohort: cohort,
         name: session.name,
       }),
@@ -139,8 +138,6 @@ export async function getServerSideProps(context) {
     context.res.end();
     return { props: {} };
   }
-
-  
 }
 
 //this async function is getting the cookies and allowing them to be used on this page
