@@ -7,10 +7,12 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import styles from '../styles/register.module.css';
 
+const url = process.env.NEXT_APP_BACKEND_URL;
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
   const [role, setRole] = useState('Bootcamper');
   const [cohort, setCohort] = useState('4');
+
   console.log(role);
 
   function registerUser(e) {
@@ -111,17 +113,26 @@ export default function Register({ session }) {
 }
 
 export async function getServerSideProps(context) {
+  const url = process.env.NEXT_APP_BACKEND_URL;
+
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    console.log(token);
     const { uid, email, name, picture } = token;
-
+    const res = await fetch(`http://localhost:5000/${uid}`);
+    const data = await res.json();
+    console.log(data.data[0].role.toLowerCase());
+    context.res.writeHead(302, {
+      Location: `/${data.data[0].role.toLowerCase()}`,
+    });
+    context.res.end();
     return {
       props: { session: { name, uid, email, picture } },
     };
   } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
+    context.res.writeHead(302, {
+      Location: `/login`,
+    });
     context.res.end();
     return { props: {} };
   }

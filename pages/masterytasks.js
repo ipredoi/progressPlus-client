@@ -5,12 +5,11 @@ import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
-import { url } from '../libs/globalvariables/backendUrl';
 
 export default function MasteryTasks({ session }) {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <SignOut />
         <Avatar />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
@@ -21,12 +20,15 @@ export default function MasteryTasks({ session }) {
           Testing data
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
   );
 }
+
+const url = process.env.NEXT_APP_BACKEND_URL;
+// uncomment when backend tables are sorted
 
 export async function getServerSideProps(context) {
   try {
