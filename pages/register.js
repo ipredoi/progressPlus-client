@@ -1,6 +1,6 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import styles from '../styles/register.module.css';
+import styles from '../styles/pagesStyle/register.module.css';
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -12,13 +12,14 @@ import {
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../Components/register/DropdownMenu';
-import ButtonComponent from '../Components/ButtonComponent';
+
+import RegisterButton from '../Components/RegisterButton';
 
 export default function Register({ session }) {
-  const { logOut } = useAuthContext();
   const [role, setRole] = useState('');
   const [cohort, setCohort] = useState('');
 
+  const { logOut } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
@@ -29,7 +30,7 @@ export default function Register({ session }) {
         method: 'POST',
         body: JSON.stringify({
           role: role,
-          uid: session.uid, // usinng a hardcoded string for testing ... to be repalced with session.uid
+          uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗❗❗❗❗❗❗❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
           name: session.name,
         }),
@@ -94,22 +95,22 @@ export default function Register({ session }) {
           <DropdownMenu
             className={styles.dropdownMenu}
             option={cohortArr}
-            placeHolder='Select SoC Cohort'
+            placeHolder='Select Current Cohort'
             handleClick={(e, data) => {
               setCohort(data.value);
             }}
           />
 
-          <ButtonComponent
-            className={styles.registerButton}
-            buttonText={'Submit Form'}
+          <RegisterButton
             handleClick={registerUser}
+            className={styles.registerButton}
+            buttonText={`Submit the Form`}
           />
 
-          <ButtonComponent
-            className={styles.signOutButton}
-            buttonText={'Sign Out'}
+          <RegisterButton
             handleClick={logOut}
+            className={styles.signOutButton}
+            buttonText={`Log Out`}
             color={'red'}
           />
         </div>
@@ -119,13 +120,14 @@ export default function Register({ session }) {
 }
 
 export async function getServerSideProps(context) {
- 
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const { uid, email, name, picture } = token;
+
+    //❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗ redirect works fine to be uncommented after testing register page
     //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
-    const res = await fetch(`${url}${uid}`);
+    /*   const res = await fetch(`${url}${uid}`);
     const data = await res.json();
     if (data.success === true) {
       context.res.writeHead(302, {
@@ -133,7 +135,7 @@ export async function getServerSideProps(context) {
       });
       context.res.end();
     }
-
+ */
     return {
       props: { session: { name, uid, email, picture } },
     };

@@ -1,6 +1,7 @@
+
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
-import SignOut from '../components/signOut';
+import LogOutButton from '../Components/LogOutButton';
 import NavBar from '../components/NavBar';
 import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';
@@ -9,9 +10,9 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 export default function RecapTasks({ session }) {
   return (
     <div>
-      <header className="header">
-        <SignOut />
-        <Avatar />
+      <header className='header'>
+        <LogOutButton />
+        <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
           onClick={() => {
@@ -20,7 +21,7 @@ export default function RecapTasks({ session }) {
           Testing data in console
         </button>
       </header>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 
-export default function ButtonComponent({
-  className,
+export default function RegisterButton({
   handleClick,
   buttonText,
+  className,
   color,
 }) {
   return (

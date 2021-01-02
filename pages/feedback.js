@@ -3,15 +3,15 @@ import NavBar from '../components/NavBar';
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
-import SignOut from '../components/signOut';
+import LogOutButton from '../Components/LogOutButton';
 
 //form for coaches to submit feedback
 export default function Feedback() {
   return (
     <div>
       <header className='header'>
-        <SignOut />
-        <Avatar />
+        <LogOutButton />
+        <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
       <FeedbackForm />
