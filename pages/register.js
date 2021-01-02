@@ -7,35 +7,44 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { url } from '../libs/globalVariables/backendUrl';
+import {
+  rolesArr,
+  cohortArr,
+} from '../libs/globalVariables/registerUserArrays';
+import DropdownMenu from '../Components/register/DropdownMenu';
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
-  const [role, setRole] = useState('Bootcamper');
-  const [cohort, setCohort] = useState('4');
+  const [role, setRole] = useState('');
+  const [cohort, setCohort] = useState('');
 
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
   function registerUser(e) {
     e.preventDefault();
-    fetch(`${url}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        role: role,
-        uid: 'fsadas488xsdsd5cxssddsfsa34' /* session.uid */,
-        cohort: cohort,
-        name: session.name,
-      }),
-      headers: {
-        'content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-    console.log('handlesubmit working');
-    router.push(`/${role.toLowerCase()}`);
+    if ((role !== '') & (cohort !== '')) {
+      fetch(`${url}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          role: role,
+          uid: 'fsadas488xsdsd5cxssddsfsa3sa4' /* session.uid */, // usinng a hardcoded string for testing ... to be repalced with session.uid
+          cohort: cohort,
+          name: session.name,
+        }),
+        headers: {
+          'content-type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        mode: 'cors',
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      console.log('handlesubmit working');
+      router.push(`/${role.toLowerCase()}`);
+    } else {
+      alert('Please fill all the required fields');
+    }
   }
 
   if (!session) {
@@ -58,58 +67,40 @@ export default function Register({ session }) {
           src={session.picture}
           alt='profile picture'
         />
-        <form className={styles.form}>
-          {/* <label>
-            Name:
-            <input type='text' name='displayName' value={session.name}></input>
-          </label> */}
-          <br />
-          <label>
-            Email:
-            <input
-              type='email'
-              name='email'
-              readOnly
-              value={session.email}></input>
-          </label>
-          <br />
-          <label role='role'>SoC Role:</label>
-          <select
-            id='role'
-            name='SocRole'
-            onChange={(e) => {
-              setRole(e.target.value);
-            }}>
-            <option value='bootcamper'>Bootcamper</option>
-            <option value='coach'>Coach</option>
-          </select>
-          <br />
-          <label cohort='cohort'>SoC Cohort:</label>
-          <select
-            id='cohortNumber'
-            name='socCohort'
-            onChange={(e) => {
-              setCohort(e.target.value);
-            }}>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
-            <option value='11'>11</option>
-            <option value='12'>12</option>
-          </select>
-          <br />
+        <div className={styles.form}>
+          <p className={styles.welcome}>
+            Hi{' '}
+            {`${session.name.replace(
+              / .*/,
+              ''
+            )}, please submit your details to register`}
+          </p>
+          <div className={styles.role}>
+            <DropdownMenu
+              className={styles.dropdownMenu}
+              option={rolesArr}
+              placeHolder='Select SoC Role'
+              handleClick={(e, data) => {
+                setRole(data.value.toLowerCase());
+              }}
+            />
+            <DropdownMenu
+              option={cohortArr}
+              placeHolder='Select SoC Cohort'
+              handleClick={(e, data) => {
+                setCohort(data.value);
+              }}
+            />
+          </div>
 
           <button id={styles.button} type='submit' onClick={registerUser}>
             Submit Form
           </button>
-        </form>
-        <button id={styles.button} onClick={logOut}>
-          Logout
-        </button>
+
+          <button id={styles.button} onClick={logOut}>
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -6,17 +6,10 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 
-<<<<<<< HEAD
 export default function StudentCard({ img, name }) {
   return (
     <Card>
       <Image src={img} alt='Profile Picture' />
-=======
-export default function StudentCard(session) {
-  return (
-    <Card>
-      <Image src={session.picture} alt="Profile Picture" />
->>>>>>> redirect
       <Card.Content>
         <Card.Header>{name}</Card.Header>
         <br />

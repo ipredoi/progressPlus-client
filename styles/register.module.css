@@ -69,10 +69,25 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.welcome p:first-child {
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
 .loadingImg {
   border-radius: 50%;
   width: 150px;
   height: auto;
   margin-top: 150px;
   align-self: center;
+}
+
+.role {
+  display: inline;
+}
+
+.dropdownMenu {
+  display: block;
+  width: 244px !important;
+  min-width: 0;
 }

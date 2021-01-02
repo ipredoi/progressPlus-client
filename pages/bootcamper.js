@@ -9,27 +9,28 @@ import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
   console.log(session);
+  
   if (!session) {
     return (
-      <div className="register-form">
-        <img className="loadingImg" src="/source.gif" alt="loadingImg" />
+      <div className='register-form'>
+        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
       </div>
     );
   } else {
     return (
       <div>
-        <header className="header">
+        <header className='header'>
           <SignOut />
           <Avatar />
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>
-        <h1 className="h1">
+        <h1 className='h1'>
           "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
         </h1>
-        <StudentCard />
-        <img src={session.picture} alt="profile photo" />
+        <StudentCard img={session.picture} />
+        {/* //<img img={session.picture} alt='profile photo' /> */}
         {/* <MenuListComposition /> */}
-        <footer className="footer">
+        <footer className='footer'>
           <UsefulLinks />
         </footer>
       </div>
