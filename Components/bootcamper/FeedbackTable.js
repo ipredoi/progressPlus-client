@@ -14,7 +14,7 @@ const FeedbackTable = () => (
   <Table celled>
     <Table.Header>
       <Table.Row>
-        {tableColumns.forEach((columnName) => {
+        {tableColumns.map((columnName) => {
           <Table.HeaderCell>{columnName}</Table.HeaderCell>;
         })}
       </Table.Row>
@@ -22,17 +22,17 @@ const FeedbackTable = () => (
 
     <Table.Body>
       <Table.Row>
-        {tableColumns.forEach(() => {
+        {tableColumns.map(() => {
           <Table.Cell></Table.Cell>;
         })}
       </Table.Row>
       <Table.Row>
-        {tableColumns.forEach(() => {
+        {tableColumns.map(() => {
           <Table.Cell></Table.Cell>;
         })}
       </Table.Row>
       <Table.Row>
-        {tableColumns.forEach(() => {
+        {tableColumns.map(() => {
           <Table.Cell></Table.Cell>;
         })}
       </Table.Row>

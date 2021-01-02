@@ -7,7 +7,7 @@ import { linksArr } from '../libs/globalVariables/usefulLinks';
 
 const UsefulLinks = () => (
   <Button.Group className='links' size='large'>
-    {linksArr.forEach((linksObject) => {
+    {linksArr.map((linksObject) => {
       return (
         <Button href={linksObject.link} target='_blank'>
           {linksObject.title}
