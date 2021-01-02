@@ -29,12 +29,6 @@ a {
   left: 20%;
 }
 
-.avatar {
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
 .MuiButtonBase-root,
 .MuiButton-root,
 .MuiButton-contained {

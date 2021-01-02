@@ -1,6 +1,7 @@
+
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
-import SignOut from '../components/signOut';
+import LogOutButton from '../Components/LogOutButton';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -9,9 +10,9 @@ import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 export default function MasteryTasks({ session }) {
   return (
     <div>
-      <header className="header">
-        <SignOut />
-        <Avatar />
+      <header className='header'>
+        <LogOutButton />
+        <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
           onClick={() => {
@@ -20,7 +21,7 @@ export default function MasteryTasks({ session }) {
           Testing data
         </button>
       </header>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
