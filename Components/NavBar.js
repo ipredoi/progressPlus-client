@@ -5,13 +5,11 @@ import { List } from 'semantic-ui-react';
 function NavBar({ linksAndTitles }) {
   return (
     <List>
-      {/* {linksAndTitles.forEach((object) => {
-        return (
-          <List.Item active href={object.link}>
-            {object.title}
-          </List.Item>
-        );
-      })} */}
+      {linksAndTitles.map((object) => (
+        <List.Item active href={object.link}>
+          {object.title}
+        </List.Item>
+      ))}
     </List>
   );
 }

@@ -112,6 +112,7 @@ export async function getServerSideProps(context) {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const { uid, email, name, picture } = token;
+    //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
     const res = await fetch(`${url}${uid}`);
     const data = await res.json();
     if (data.success === true) {
