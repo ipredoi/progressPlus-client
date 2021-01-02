@@ -1,7 +1,7 @@
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
-import SignOut from '../components/SignOut';
+import ButtonComponent from '../Components/ButtonComponent';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -9,7 +9,7 @@ import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
   console.log(session);
-  
+
   if (!session) {
     return (
       <div className='register-form'>
@@ -20,7 +20,7 @@ export default function Bootcamper({ session }) {
     return (
       <div>
         <header className='header'>
-          <SignOut />
+          <ButtonComponent />
           <Avatar />
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>

@@ -12,6 +12,7 @@ import {
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../Components/register/DropdownMenu';
+import ButtonComponent from '../Components/ButtonComponent';
 
 export default function Register({ session }) {
   const { logOut } = useAuthContext();
@@ -28,7 +29,7 @@ export default function Register({ session }) {
         method: 'POST',
         body: JSON.stringify({
           role: role,
-          uid: 'fsadas488xsdsd5cxssddsfsa3sa4' /* session.uid */, // usinng a hardcoded string for testing ... to be repalced with session.uid
+          uid: session.uid, // usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
           name: session.name,
         }),
@@ -49,8 +50,14 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-      <div className={styles.registerForm}>
-        <img className={styles.loadingImg} src="/source.gif" alt="loadingImg" />
+      <div className={styles.body}>
+        <div className={styles.registerForm}>
+          <img
+            className={styles.loadingImg}
+            src='/source.gif'
+            alt='loadingImg'
+          />
+        </div>
       </div>
     );
   }
@@ -63,43 +70,48 @@ export default function Register({ session }) {
 
       <div className={styles.registerForm}>
         <img
-          id={styles.profilePicture}
+          className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
-          <p className={styles.welcome}>
-            Hi{' '}
-            {`${session.name.replace(
+          <p className={styles.pWelcome}>
+            Hi
+            {` ${session.name.replace(
               / .*/,
               ''
             )}, please submit your details to register`}
           </p>
-          <div className={styles.role}>
-            <DropdownMenu
-              className={styles.dropdownMenu}
-              option={rolesArr}
-              placeHolder="Select SoC Role"
-              handleClick={(e, data) => {
-                setRole(data.value.toLowerCase());
-              }}
-            />
-            <DropdownMenu
-              option={cohortArr}
-              placeHolder="Select SoC Cohort"
-              handleClick={(e, data) => {
-                setCohort(data.value);
-              }}
-            />
-          </div>
 
-          <button id={styles.button} type="submit" onClick={registerUser}>
-            Submit Form
-          </button>
+          <DropdownMenu
+            className={styles.dropdownMenu}
+            option={rolesArr}
+            placeHolder='Select SoC Role'
+            handleClick={(e, data) => {
+              setRole(data.value.toLowerCase());
+            }}
+          />
+          <DropdownMenu
+            className={styles.dropdownMenu}
+            option={cohortArr}
+            placeHolder='Select SoC Cohort'
+            handleClick={(e, data) => {
+              setCohort(data.value);
+            }}
+          />
 
-          <button id={styles.button} onClick={logOut}>
-            Logout
-          </button>
+          <ButtonComponent
+            className={styles.registerButton}
+            buttonText={'Submit Form'}
+            handleClick={registerUser}
+          />
+
+          <ButtonComponent
+            className={styles.signOutButton}
+            buttonText={'Sign Out'}
+            handleClick={logOut}
+            color={'red'}
+          />
         </div>
       </div>
     </div>
@@ -107,7 +119,7 @@ export default function Register({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  const url = process.env.NEXT_APP_BACKEND_URL;
+ 
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
