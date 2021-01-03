@@ -68,13 +68,7 @@ export default function Register({ session }) {
           alt='profile picture'
         />
         <div className={styles.form}>
-          <p className={styles.welcome}>
-            Hi{' '}
-            {`${session.name.replace(
-              / .*/,
-              ''
-            )}, please submit your details to register`}
-          </p>
+          <p className={styles.welcome}>Hi </p>
           <div className={styles.role}>
             <DropdownMenu
               className={styles.dropdownMenu}
@@ -111,7 +105,8 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    const { uid, email, name, picture } = token;
+    console.log({ token });
+    const { uid, email, picture } = token;
     /* const res = await fetch(`${url}${uid}`);
     const data = await res.json();
     console.log(data.data[0].role.toLowerCase());
@@ -120,7 +115,7 @@ export async function getServerSideProps(context) {
     });
     context.res.end(); */
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, {
