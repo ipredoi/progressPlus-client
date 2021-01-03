@@ -3,6 +3,9 @@ import "semantic-ui-css/semantic.min.css";
 import { Bar, Line } from "react-chartjs-2";
 
 export default function RecapGraph({ session }) {
+  console.log("data fetch");
+  console.log(session.data.data[0].week); // data from feedback table for uid=d6587569589dk3r437890584gjfni
+  // fetch data from backend
   return (
     <div>
       <Bar
@@ -10,8 +13,8 @@ export default function RecapGraph({ session }) {
           labels: ["week10", "week11", "week12", "week13", "week14", "week15"],
           datasets: [
             {
-              label: `${session.name}'s Recap task score`,
-              data: [23, 50, 70, 54, 30, 25],
+              label: `${session.name}'s Recap task score`, // name from login session
+              data: [session.data.data[0].week, 50, 70, 54, 30, 25],
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",

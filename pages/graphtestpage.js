@@ -6,8 +6,8 @@ import BootcampterListLink from "../components/bootcamper/bootcamperListLink";
 import nookies from "nookies";
 import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
 
-export default function GraphTest({ session }) {
-  console.log(`test: ${session.name}`);
+export default function GraphTest({ session, data }) {
+  console.log(`test: name:${session.name}, uid:${session.uid}`);
   return (
     <div>
       <header className='header'>
@@ -23,6 +23,8 @@ export default function GraphTest({ session }) {
   );
 }
 
+const url = process.env.NEXT_APP_BACKEND_URL;
+
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
@@ -30,12 +32,22 @@ export async function getServerSideProps(context) {
     console.log(token);
     const { uid, email, name, picture } = token;
 
+    const res = await fetch(
+      `http://ismail-esta-final-project.herokuapp.com/feedback?type=mastery&uid=d6587569589dk3r437890584gjfni`
+    );
+    // const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
+    // need to post <real-data> to feedback table in db
+    const data = await res.json();
+
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { name, uid, data } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: "/login" });
     context.res.end();
+    console.log(err.message);
     return { props: {} };
   }
 }
+
+//function to get the feedback from the backend, may need some refactoring to have consistancy with variable names
