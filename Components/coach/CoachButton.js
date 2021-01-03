@@ -3,13 +3,15 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { url } from '../../libs/globalVariables/frontendUrl';
 
-const CoachButton = () => (
-  <Button.Group className='coachButton' size='large'>
-    <Button href='http://localhost:8080/feedback'>Submit Feedback</Button>
-    <Button.Or />
-    <Button href='http://localhost:8080/progress'>Track Progress</Button>
-  </Button.Group>
-);
-
+const CoachButton = ({ className }) => { 
+  console.log(url)
+  return( <Button.Group className={className} size='large'>
+  <Button href={`feedback`}>Submit Feedback</Button>
+  <Button.Or />
+  <Button href={`progress`}>Track Progress</Button>
+</Button.Group>)
+ 
+};
 export default CoachButton;

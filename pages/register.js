@@ -1,6 +1,6 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import styles from '../styles/register.module.css';
+import styles from '../styles/pagesStyle/register.module.css';
 import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -13,11 +13,13 @@ import {
 } from '../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../Components/register/DropdownMenu';
 
+import RegisterButton from '../Components/RegisterButton';
+
 export default function Register({ session }) {
-  const { logOut } = useAuthContext();
   const [role, setRole] = useState('');
   const [cohort, setCohort] = useState('');
 
+  const { logOut } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
@@ -28,7 +30,7 @@ export default function Register({ session }) {
         method: 'POST',
         body: JSON.stringify({
           role: role,
-          uid: 'fsadas488xsdsd5cxssddsfsa3sa4' /* session.uid */, // usinng a hardcoded string for testing ... to be repalced with session.uid
+          uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗❗❗❗❗❗❗❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
           name: session.name,
         }),
@@ -49,8 +51,19 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
+<<<<<<< HEAD
       <div className={styles.registerForm}>
         <img className={styles.loadingImg} src='/source.gif' alt='loadingImg' />
+=======
+      <div className={styles.body}>
+        <div className={styles.registerForm}>
+          <img
+            className={styles.loadingImg}
+            src='/source.gif'
+            alt='loadingImg'
+          />
+        </div>
+>>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
       </div>
     );
   }
@@ -63,11 +76,12 @@ export default function Register({ session }) {
 
       <div className={styles.registerForm}>
         <img
-          id={styles.profilePicture}
+          className={styles.profilePicture}
           src={session.picture}
           alt='profile picture'
         />
         <div className={styles.form}>
+<<<<<<< HEAD
           <p className={styles.welcome}>Hi </p>
           <div className={styles.role}>
             <DropdownMenu
@@ -90,10 +104,45 @@ export default function Register({ session }) {
           <button id={styles.button} type='submit' onClick={registerUser}>
             Submit Form
           </button>
+=======
+          <p className={styles.pWelcome}>
+            Hi
+            {` ${session.name.replace(
+              / .*/,
+              ''
+            )}, please submit your details to register`}
+          </p>
 
-          <button id={styles.button} onClick={logOut}>
-            Logout
-          </button>
+          <DropdownMenu
+            className={styles.dropdownMenu}
+            option={rolesArr}
+            placeHolder='Select SoC Role'
+            handleClick={(e, data) => {
+              setRole(data.value.toLowerCase());
+            }}
+          />
+          <DropdownMenu
+            className={styles.dropdownMenu}
+            option={cohortArr}
+            placeHolder='Select Current Cohort'
+            handleClick={(e, data) => {
+              setCohort(data.value);
+            }}
+          />
+
+          <RegisterButton
+            handleClick={registerUser}
+            className={styles.registerButton}
+            buttonText={`Submit the Form`}
+          />
+>>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
+
+          <RegisterButton
+            handleClick={logOut}
+            className={styles.signOutButton}
+            buttonText={`Log Out`}
+            color={'red'}
+          />
         </div>
       </div>
     </div>
@@ -101,12 +150,14 @@ export default function Register({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  const url = process.env.NEXT_APP_BACKEND_URL;
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const { uid, email, name, picture } = token;
-    const res = await fetch(`${url}${uid}`);
+
+    //❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗ redirect works fine to be uncommented after testing register page
+    //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
+    /*   const res = await fetch(`${url}${uid}`);
     const data = await res.json();
     if (data.success === true) {
       context.res.writeHead(302, {
@@ -114,7 +165,7 @@ export async function getServerSideProps(context) {
       });
       context.res.end();
     }
-
+ */
     return {
       props: { session: { name, uid, email, picture } },
     };

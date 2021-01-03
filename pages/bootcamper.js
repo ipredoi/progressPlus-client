@@ -1,18 +1,21 @@
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
-import SignOut from '../components/SignOut';
+import LogOutButton from '../Components/LogOutButton';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
+<<<<<<< HEAD
   console.log(session);
 
+=======
+>>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
   if (!session) {
     return (
-      <div className='register-form'>
+      <div>
         <img className='loadingImg' src='/source.gif' alt='loadingImg' />
       </div>
     );
@@ -20,8 +23,8 @@ export default function Bootcamper({ session }) {
     return (
       <div>
         <header className='header'>
-          <SignOut />
-          <Avatar />
+          <LogOutButton />
+          <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>
         <h1 className='h1'>

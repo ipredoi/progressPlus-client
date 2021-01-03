@@ -1,23 +1,22 @@
 import NavBar from '../components/NavBar';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
-import SignOut from '../components/signOut';
-import ProgressButton from '../components/coach/progressButton';
+import LogOutButton from '../Components/LogOutButton';
+import ProgressButton from '../Components/coach/ProgressButton';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import nookies from 'nookies';
+
 import { url } from '../libs/globalVariables/backendUrl';
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;
+
   return (
     <div>
       <header className='header'>
-        <SignOut />
-        <Avatar
-          src={session.picture}
-          imgStyle={{ 'border-radius': '50%', height: 80 }}
-        />
-        <NavBar />
+        <LogOutButton />
+        <Avatar src={session.picture} name={session.name} />
+        {/*  <NavBar /> */}
       </header>
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
