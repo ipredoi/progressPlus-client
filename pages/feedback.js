@@ -5,7 +5,7 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../Components/LogOutButton';
 
-//form for coaches to submit feedback
+//page for coaches to submit feedback
 export default function Feedback() {
   return (
     <div>

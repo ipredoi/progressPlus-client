@@ -12,7 +12,7 @@ import {
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../Components/register/DropdownMenu';
-import InputField from '../Components/register/InputField';
+import InputField from '../Components/InputField';
 
 import RegisterButton from '../Components/RegisterButton';
 
@@ -25,6 +25,7 @@ export default function Register({ session }) {
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
+  //function to post the new user to the DB
   function registerUser(e) {
     e.preventDefault();
     if ((role !== '') & (cohort !== '')) {
@@ -34,7 +35,7 @@ export default function Register({ session }) {
           role: role,
           uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗❗❗❗❗❗❗❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
-          name: name || session.name,
+          name: session.name ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
         }),
         headers: {
           'content-type': 'application/json',
@@ -79,11 +80,7 @@ export default function Register({ session }) {
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
-            Hi
-            {` ${session.name.replace(
-              / .*/,
-              ''
-            )}, please submit your details to register`}
+            Please submit your details to register
           </p>
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
