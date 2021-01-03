@@ -32,7 +32,7 @@ export default function Register({ session }) {
         method: 'POST',
         body: JSON.stringify({
           role: role,
-          uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗❗❗❗❗❗❗❗usinng a hardcoded string for testing ... to be repalced with session.uid
+          uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
           name: name || session.name,
         }),
@@ -45,6 +45,7 @@ export default function Register({ session }) {
         .then((response) => response.json())
         .then((data) => console.log(data));
       console.log('handlesubmit working');
+      // redirecting the user to coach/ bootcamper page after submit
       router.push(`/${role.toLowerCase()}`);
     } else {
       alert('Please fill all the required fields');
@@ -78,13 +79,22 @@ export default function Register({ session }) {
           alt='profile picture'
         />
         <div className={styles.form}>
-          <p className={styles.pWelcome}>
-            Hi
-            {` ${session.name.replace(
-              / .*/,
-              ''
-            )}, please submit your details to register`}
-          </p>
+          {/*  conditionally render the wellcome message if there is no username from github */}
+          {session.name === 'No name' ? (
+            <p className={styles.pWelcome}>
+              Hi, please submit your details to register
+            </p>
+          ) : (
+            <p className={styles.pWelcome}>
+              {/*  getting the first name from session  */}
+              Hi
+              {` ${session.name.replace(
+                / .*/,
+                ''
+              )}, please submit your details to register`}
+            </p>
+          )}
+
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
             <InputField
@@ -138,12 +148,12 @@ export async function getServerSideProps(context) {
     const token = await verifyIdToken(cookies.token);
     let { name, uid, email, picture } = token;
 
-    //if user has no name on GitHub, name will be set to 'No name'
+    //if user has no name on GitHub, name will be set to 'No name ❗ to test the functionality remove the exclamation mark'
     if (!name) {
       name = 'No name';
     }
 
-    //❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗ redirect works fine to be uncommented after testing register page
+    //❗ redirect works fine to be uncommented after testing register page
     //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
     /*   const res = await fetch(`${url}${uid}`);
     const data = await res.json();
