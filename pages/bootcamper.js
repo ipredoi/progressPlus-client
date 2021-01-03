@@ -8,11 +8,6 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
-<<<<<<< HEAD
-  console.log(session);
-
-=======
->>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
   if (!session) {
     return (
       <div>
@@ -50,7 +45,7 @@ export async function getServerSideProps(context) {
     console.log(name);
 
     return {
-      props: { session: { uid, email, picture } },
+      props: { session: { name, uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: '/login' });

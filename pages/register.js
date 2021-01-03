@@ -12,12 +12,14 @@ import {
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../Components/register/DropdownMenu';
+import InputField from '../Components/register/InputField';
 
 import RegisterButton from '../Components/RegisterButton';
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');
   const [cohort, setCohort] = useState('');
+  const [name, setName] = useState('');
 
   const { logOut } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
@@ -32,7 +34,7 @@ export default function Register({ session }) {
           role: role,
           uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗❗❗❗❗❗❗❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
-          name: session.name,
+          name: name || session.name,
         }),
         headers: {
           'content-type': 'application/json',
@@ -51,10 +53,6 @@ export default function Register({ session }) {
 
   if (!session) {
     return (
-<<<<<<< HEAD
-      <div className={styles.registerForm}>
-        <img className={styles.loadingImg} src='/source.gif' alt='loadingImg' />
-=======
       <div className={styles.body}>
         <div className={styles.registerForm}>
           <img
@@ -63,7 +61,6 @@ export default function Register({ session }) {
             alt='loadingImg'
           />
         </div>
->>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
       </div>
     );
   }
@@ -81,30 +78,6 @@ export default function Register({ session }) {
           alt='profile picture'
         />
         <div className={styles.form}>
-<<<<<<< HEAD
-          <p className={styles.welcome}>Hi </p>
-          <div className={styles.role}>
-            <DropdownMenu
-              className={styles.dropdownMenu}
-              option={rolesArr}
-              placeHolder='Select SoC Role'
-              handleClick={(e, data) => {
-                setRole(data.value.toLowerCase());
-              }}
-            />
-            <DropdownMenu
-              option={cohortArr}
-              placeHolder='Select SoC Cohort'
-              handleClick={(e, data) => {
-                setCohort(data.value);
-              }}
-            />
-          </div>
-
-          <button id={styles.button} type='submit' onClick={registerUser}>
-            Submit Form
-          </button>
-=======
           <p className={styles.pWelcome}>
             Hi
             {` ${session.name.replace(
@@ -112,7 +85,17 @@ export default function Register({ session }) {
               ''
             )}, please submit your details to register`}
           </p>
-
+          {session.name === 'No name' ? (
+            <InputField
+              placeholder='Name'
+              className={styles.inputField}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+          ) : (
+            ''
+          )}
           <DropdownMenu
             className={styles.dropdownMenu}
             option={rolesArr}
@@ -135,7 +118,6 @@ export default function Register({ session }) {
             className={styles.registerButton}
             buttonText={`Submit the Form`}
           />
->>>>>>> def9f699b6a156f38f4bdf6d1ba479c7575344ed
 
           <RegisterButton
             handleClick={logOut}
@@ -153,7 +135,12 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    const { uid, email, name, picture } = token;
+    let { name, uid, email, picture } = token;
+
+    //if user has no name on GitHub, name will be set to 'No name'
+    if (!name) {
+      name = 'No name';
+    }
 
     //❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗ redirect works fine to be uncommented after testing register page
     //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
