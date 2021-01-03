@@ -31,7 +31,7 @@ export default function RecapGraph({ session }) {
               borderWidth: 2,
             },
             {
-              label: `${session.cohort}'s Average`,
+              label: "Average",
               data: [47, 52, 67, 50, 40, 20],
               backgroundColor: "lightgrey",
               borderColor: "grey",
