@@ -1,9 +1,9 @@
-import Avatar from "../components/avatar";
-import UsefulLinks from "../components/usefulLinks";
-import SignOut from "../components/signOut";
-import BootcampterListLink from "../components/bootcamper/bootcamperListLink";
-import nookies from "nookies";
-import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
+import Avatar from '../components/avatar';
+import UsefulLinks from '../components/usefulLinks';
+import SignOut from '../components/signOut';
+import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
+import nookies from 'nookies';
+import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 
 export default function RecapTasks({ session }) {
   return (
@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
       props: { session: { name, uid, data } },
     };
   } catch (err) {
-    context.res.writeHead(302, { Location: "/login" });
+    context.res.writeHead(302, { Location: '/login' });
     context.res.end();
     console.log(err.message);
     return { props: {} };
