@@ -85,6 +85,7 @@ export default function Register({ session }) {
               ''
             )}, please submit your details to register`}
           </p>
+          {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
             <InputField
               placeholder='Name'
