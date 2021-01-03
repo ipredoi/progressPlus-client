@@ -9,7 +9,7 @@ import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
   console.log(session);
-  
+
   if (!session) {
     return (
       <div className='register-form'>
@@ -44,9 +44,10 @@ export async function getServerSideProps(context) {
     const token = await verifyIdToken(cookies.token);
     console.log(token);
     const { uid, email, name, picture } = token;
+    console.log(name);
 
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: '/login' });
