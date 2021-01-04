@@ -4,7 +4,7 @@ import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
 import CoachButton from '../components/coach/CoachButton';
 import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
+import LogOutButton from '../components/LogOutButton';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 

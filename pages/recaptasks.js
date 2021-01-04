@@ -1,7 +1,6 @@
-
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
+import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
 import { bootcamperNavBarArr } from '../libs/globalvariables/navBarArrays';
 import nookies from 'nookies';

@@ -1,8 +1,8 @@
 import NavBar from '../components/NavBar';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
-import ProgressButton from '../Components/coach/ProgressButton';
+import LogOutButton from '../components/LogOutButton';
+import ProgressButton from '../components/coach/ProgressButton';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import nookies from 'nookies';
 

@@ -1,6 +1,6 @@
 //all from semantic ui(avatar)
 //need to work on a drop down onclick to show sign out option
-import styles from '../styles/compnentStyle/avatar.module.css';
+import styles from '../styles/componentStyle/avatar.module.css';
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 

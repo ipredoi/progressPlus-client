@@ -1,10 +1,10 @@
-import RecapGraph from "../Components/bootcamper/RecapGraph";
-import Avatar from "../components/avatar";
-import UsefulLinks from "../components/usefulLinks";
-import SignOut from "../components/signOut";
-import BootcampterListLink from "../components/bootcamper/bootcamperListLink";
-import nookies from "nookies";
-import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
+import RecapGraph from '../components/bootcamper/RecapGraph';
+import Avatar from '../components/avatar';
+import UsefulLinks from '../components/usefulLinks';
+import SignOut from '../components/signOut';
+import BootcampterListLink from '../components/bootcamper/bootcamperListLink';
+import nookies from 'nookies';
+import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 
 export default function GraphTest({ session, data }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
       props: { session: { name, uid, data } },
     };
   } catch (err) {
-    context.res.writeHead(302, { Location: "/login" });
+    context.res.writeHead(302, { Location: '/login' });
     context.res.end();
     console.log(err.message);
     return { props: {} };

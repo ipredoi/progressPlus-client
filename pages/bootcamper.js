@@ -1,7 +1,7 @@
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
-import LogOutButton from '../Components/LogOutButton';
+import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
