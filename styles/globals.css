@@ -18,45 +18,13 @@ a {
   box-sizing: border-box;
 }
 
-.h1 {
-  text-align: center;
-  font-size: 70px;
-}
-
-.links {
-  position: absolute;
-  top: 90%;
-  left: 20%;
-}
-
-.MuiButtonBase-root,
-.MuiButton-root,
-.MuiButton-contained {
-  position: relative;
-  top: 100;
-  right: 100;
-}
-
-/* .MuiBadge-root {
-  position: relative;
-  top: 100;
-  right: 100;
-} */
-
-.menuListComp {
-  width: 110px;
-  position: relative;
-  top: 100;
-  right: 100;
-}
-
 header {
   padding: 60px;
   text-align: center;
   background: black;
 }
 
-.form.ui.form {
+*/ .form.ui.form {
   margin: 0;
   width: 500px;
   position: relative;
@@ -70,11 +38,6 @@ header {
   top: 50%;
 }
 
-.MuiPaper-root.makeStyles-paper-60.MuiPaper-elevation1.MuiPaper-rounded,
-.MuiList-root.MuiList-padding {
-  left: 100%;
-}
-
 .card {
   position: absolute;
   left: 40%;
@@ -82,14 +45,10 @@ header {
 }
 
 .header {
-  /* background-color: white; */
-  margin-bottom: -30px;
-}
-
-.header {
   background-color: white;
   padding: 1;
   border-bottom: black;
+  margin-bottom: -30px;
 }
 
 .signout {
@@ -103,9 +62,6 @@ header {
   height: 200px;
   line-height: 2;
 }
-
-
-
 
 /* login page override css for the Firebase login button */
 
@@ -125,7 +81,6 @@ header {
   position: retlative !important;
   border-radius: 10px !important;
 }
-
 
 /* register page dropdown menu override css properties for border color border radius at the bottom and background for the selected item*/
 .ui.selection.active.dropdown .menu {
