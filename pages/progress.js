@@ -5,14 +5,14 @@ import LogOutButton from '../components/LogOutButton';
 import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 
-import { url } from '../libs/globalVariables/backendUrl';
+// Page for coaches to check bootcampers feedback/ progress and compare
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;
 
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
         {/*  <NavBar /> */}
@@ -49,7 +49,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
@@ -57,32 +57,11 @@ export default function Feedback({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
-
+  async function progressFetchRequest(url) {
     const res = await fetch(`${url}feedback`);
     //this is fetching info from our DB through the hosted backend URL. The URL variable is stored in globalVariables where it is also using dotenv to keep the URL private.
     const data = await res.json();
-
-    return {
-      props: { session: { data, name, uid, email, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  }
-}
-
-export async function getServerSideProps(context) {
-  async function recapTaskFetchRequest(uid, url) {
-    const res = await fetch(`${url}feedback`);
-
-    const data = await res.json();
     return data;
   }
-  return serverSideProps(context, recapTaskFetchRequest);
+  return serverSideProps(context, progressFetchRequest);
 }
