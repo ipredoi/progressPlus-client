@@ -104,6 +104,11 @@ header {
   line-height: 2;
 }
 
+
+
+
+/* login page override css for the Firebase login button */
+
 .mdl-card .firebaseui-callback-indicator-container {
   height: 8px;
   background-color: #31986a;
@@ -119,4 +124,20 @@ header {
   background-color: #31986a !important;
   position: retlative !important;
   border-radius: 10px !important;
+}
+
+
+/* register page dropdown menu override css properties for border color border radius at the bottom and background for the selected item*/
+.ui.selection.active.dropdown .menu {
+  border-color: #31986a !important;
+}
+
+.ui.selection.dropdown .menu {
+  border-radius: 0 0 10px 10px !important;
+}
+
+.ui.dropdown .menu .selected.item,
+.ui.dropdown.selected {
+  background: #31986a !important;
+  color: white !important;
 }
