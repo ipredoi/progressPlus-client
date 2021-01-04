@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-/* .body {
-  background-image: url('/authBackground.png') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat;
- 
-} */
-
 .body ::-webkit-scrollbar-track {
   background: #69ca9e9a !important;
   border-radius: 0 0 10px 0 !important;

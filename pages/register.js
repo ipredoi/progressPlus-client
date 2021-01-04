@@ -11,10 +11,9 @@ import {
   rolesArr,
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
-import DropdownMenu from '../asdsad/register/DropdownMenu';
-import InputField from '../asdsad/InputField';
-
-import RegisterButton from '../asdsad/RegisterButton';
+import DropdownMenu from '../components/register/DropdownMenu';
+import InputField from '../components/InputField';
+import RegisterButton from '../components/RegisterButton';
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');

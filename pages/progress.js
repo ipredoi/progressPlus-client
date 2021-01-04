@@ -1,6 +1,6 @@
 import NavBar from '../components/NavBar';
 import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/usefulLinks';
+import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import ProgressButton from '../components/coach/ProgressButton';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -13,7 +13,7 @@ export default function Feedback({ session }) {
 
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
         {/*  <NavBar /> */}
@@ -50,7 +50,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
