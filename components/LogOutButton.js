@@ -6,7 +6,7 @@ export default function LogOutButton() {
   const { logOut } = useAuthContext();
   return (
     <div>
-      <Button className={styles.signOutButton} onClick={logOut} color='red'>
+      <Button className={styles.signOutButton} onClick={logOut} color="red">
         Log Out
       </Button>
     </div>

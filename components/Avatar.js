@@ -6,9 +6,9 @@ import { Image } from 'semantic-ui-react';
 
 export default function Avatar({ src, name }) {
   return (
-    <div className='avatar'>
+    <div className="avatar">
       <Image src={src} className={styles.avatar} />
-      <span className='profileName'>{name}</span>
+      <span className="profileName">{name}</span>
     </div>
   );
 }
