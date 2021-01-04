@@ -1,7 +1,7 @@
 import RecapGraph from '../components/bootcamper/RecapGraph';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
-import SignOut from '../components/SignOut';
+import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -12,7 +12,7 @@ export default function GraphTest({ session, data }) {
   return (
     <div>
       <header className="header">
-        <SignOut />
+        <LogOutButton />
         <Avatar />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
       </header>
