@@ -4,6 +4,7 @@ import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
+import serverSideProps from '../libs/functions/serverSideProps';
 
 //page for coaches to submit feedback
 export default function Feedback() {
@@ -20,4 +21,8 @@ export default function Feedback() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  return serverSideProps(context);
 }

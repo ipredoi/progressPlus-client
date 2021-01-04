@@ -3,10 +3,9 @@ import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import ProgressButton from '../components/coach/ProgressButton';
-import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import nookies from 'nookies';
+import serverSideProps from '../libs/functions/serverSideProps';
 
-import { url } from '../libs/globalVariables/backendUrl';
+// Page for coaches to check bootcampers feedback/ progress and compare
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;
@@ -58,22 +57,11 @@ export default function Feedback({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
-
+  async function progressFetchRequest(url) {
     const res = await fetch(`${url}feedback`);
     //this is fetching info from our DB through the hosted backend URL. The URL variable is stored in globalVariables where it is also using dotenv to keep the URL private.
     const data = await res.json();
-
-    return {
-      props: { session: { data, name, uid, email, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
+    return data;
   }
+  return serverSideProps(context, progressFetchRequest);
 }
