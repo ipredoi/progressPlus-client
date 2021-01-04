@@ -80,11 +80,6 @@ export default function Register({ session }) {
           alt='profile picture'
         />
         <div className={styles.form}>
-<<<<<<< HEAD
-          <p className={styles.pWelcome}>
-            Please submit your details to register
-          </p>
-=======
           {/*  conditionally render the wellcome message if there is no username from github */}
           {session.name === 'No name' ? (
             <p className={styles.pWelcome}>
@@ -101,7 +96,6 @@ export default function Register({ session }) {
             </p>
           )}
 
->>>>>>> 73c5c6e76a194e9a63e956407c2b77b46f9b181c
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
             <InputField
