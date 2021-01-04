@@ -11,10 +11,10 @@ import {
   rolesArr,
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
-import DropdownMenu from '../Components/register/DropdownMenu';
-import InputField from '../Components/InputField';
+import DropdownMenu from '../asdsad/register/DropdownMenu';
+import InputField from '../asdsad/InputField';
 
-import RegisterButton from '../Components/RegisterButton';
+import RegisterButton from '../asdsad/RegisterButton';
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');
@@ -35,7 +35,7 @@ export default function Register({ session }) {
           role: role,
           uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
-          name: session.name ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
+          name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
         }),
         headers: {
           'content-type': 'application/json',
