@@ -1,15 +1,33 @@
 {
-  "name": "my-app",
+  "name": "front-end-final-project-ismail-esta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@zeit/next-css": "^1.0.1",
+    "chart.js": "^2.9.4",
+    "dotenv": "^8.2.0",
+    "firebase": "^8.2.1",
+    "firebase-admin": "^9.4.2",
+    "firebaseui": "^4.7.1",
+    "js-cookie": "^2.2.1",
     "next": "10.0.3",
+    "nookies": "^2.5.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "17.0.1",
+    "react-firebaseui": "^4.1.0",
+    "react-icons": "^4.1.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1"
+  },
+  "devDependencies": {
+    "cypress": "^6.1.0"
   }
 }

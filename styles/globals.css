@@ -4,6 +4,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: url('/authBackground.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -13,4 +16,83 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+header {
+  padding: 60px;
+  text-align: center;
+  background: black;
+}
+
+*/ .form.ui.form {
+  margin: 0;
+  width: 500px;
+  position: relative;
+  top: 100;
+  right: 100;
+}
+
+.coachButton {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.card {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.header {
+  background-color: white;
+  padding: 1;
+  border-bottom: black;
+  margin-bottom: -30px;
+}
+
+.signout {
+  position: absolute;
+  left: 90%;
+  top: 10%;
+}
+
+.ui.cards {
+  width: 700px;
+  height: 200px;
+  line-height: 2;
+}
+
+/* login page override css for the Firebase login button */
+
+.mdl-card .firebaseui-callback-indicator-container {
+  height: 8px;
+  background-color: #31986a;
+}
+
+.mdl-card.firebaseui-container {
+  min-height: 0px;
+  margin-top: 65px;
+  width: 200px;
+}
+
+.firebaseui-idp-button {
+  background-color: #31986a !important;
+  position: retlative !important;
+  border-radius: 10px !important;
+}
+
+/* register page dropdown menu override css properties for border color border radius at the bottom and background for the selected item*/
+.ui.selection.active.dropdown .menu {
+  border-color: #31986a !important;
+}
+
+.ui.selection.dropdown .menu {
+  border-radius: 0 0 10px 10px !important;
+}
+
+.ui.dropdown .menu .selected.item,
+.ui.dropdown.selected {
+  background: #31986a !important;
+  color: white !important;
 }

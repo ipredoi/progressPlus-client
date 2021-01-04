@@ -1,0 +1,9 @@
+.signOutButton {
+  border-radius: 10px !important;
+  height: 30px;
+  width: 85px;
+  font-size: 12px !important;
+  font-family: Roboto, Helvetica, Arial, sans-serif !important;
+  margin-top: 4px !important;
+  color: white !important;
+}
