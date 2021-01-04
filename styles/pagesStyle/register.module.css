@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-/* .body {
+.body {
   background-image: url('/authBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
- 
-} */
+  background-color: #e0e0e0;
+  height: 100vh;
+  width: 100vw;
+}
 
 .body ::-webkit-scrollbar-track {
   background: #69ca9e9a !important;
@@ -29,15 +31,6 @@
   align-self: center;
   border-color: #2d8b61;
   border-style: solid;
-}
-
-.h1Welcome {
-  text-align: center;
-  font-size: 25px;
-  padding: 50px 0px 10px 0px;
-  text-decoration: underline;
-  color: white;
-  text-decoration-thickness: 2px;
 }
 
 .profilePicture {

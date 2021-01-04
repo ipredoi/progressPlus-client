@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .auth {
-  background-image: url('/authBackground.png');
-  background-size: cover;
+  background-image: url('/authBackground.png') !important;
+  background-size: cover !important;
   background-repeat: no-repeat;
   background-color: #e0e0e0;
   text-align: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .authMain {

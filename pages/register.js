@@ -68,10 +68,6 @@ export default function Register({ session }) {
 
   return (
     <div className={styles.body}>
-      {/* <h1 className='h1-welcome'>Hi {session.name}!</h1> */}
-      <h1 className={styles.h1Welcome}>Welcome to APP NAME!</h1>
-      <br />
-
       <div className={styles.registerForm}>
         <img
           className={styles.profilePicture}

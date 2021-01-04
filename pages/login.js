@@ -1,5 +1,5 @@
 import FirebaseAuth from '../components/authentication/firebase';
-import styles from '../styles/login.module.css';
+import styles from '../styles/pagesStyle/login.module.css';
 import Image from 'next/image';
 
 export default function Login() {
