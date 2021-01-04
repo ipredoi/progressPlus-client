@@ -76,3 +76,13 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
 }
+
+export async function getServerSideProps(context) {
+  async function recapTaskFetchRequest(uid, url) {
+    const res = await fetch(`${url}feedback`);
+
+    const data = await res.json();
+    return data;
+  }
+  return serverSideProps(context, recapTaskFetchRequest);
+}
