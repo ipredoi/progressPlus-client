@@ -1,9 +1,9 @@
 import styles from '../styles/coach.module.css';
 import NavBar from '../components/NavBar';
-import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
-import Avatar from '../components/Avatar';
+import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
+import Avatar from '../components/avatar';
 import CoachButton from '../components/coach/CoachButton';
-import UsefulLinks from '../components/UsefulLinks';
+import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
@@ -14,12 +14,12 @@ export default function Coach({ session }) {
   } else
     return (
       <div>
-        <header className="header">
+        <header className='header'>
           <LogOutButton />
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={coachNavBarArr} />
         </header>
-        <h1 className="h1">
+        <h1 className='h1'>
           "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
         </h1>
         <CoachButton />
