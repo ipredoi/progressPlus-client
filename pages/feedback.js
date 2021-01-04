@@ -1,21 +1,21 @@
-import FeedbackForm from '../components/feedbackForm';
+import FeedbackForm from '../components/FeedbackForm';
 import NavBar from '../components/NavBar';
-import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
-import Avatar from '../components/avatar';
-import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
+import Avatar from '../components/Avatar';
+import UsefulLinks from '../components/UsefulLinks';
+import LogOutButton from '../components/LogOutButton';
 
-//form for coaches to submit feedback
+//page for coaches to submit feedback
 export default function Feedback() {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
       <FeedbackForm />
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>

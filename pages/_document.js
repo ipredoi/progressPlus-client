@@ -1,3 +1,5 @@
+//This page is basically Next.js' version of the HTML page
+
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
@@ -18,5 +20,3 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
-
-//This page is basically Next.js' version of the HTML page

@@ -23,7 +23,7 @@ header {
   background: black;
 }
 
-*/ .form.ui.form {
+* .form.ui.form {
   margin: 0;
   width: 500px;
   position: relative;
@@ -62,8 +62,6 @@ header {
   line-height: 2;
 }
 
-/* login page override css for the Firebase login button */
-
 .mdl-card .firebaseui-callback-indicator-container {
   height: 8px;
   background-color: #31986a;
@@ -81,7 +79,6 @@ header {
   border-radius: 10px !important;
 }
 
-/* register page dropdown menu override css properties for border color border radius at the bottom and background for the selected item*/
 .ui.selection.active.dropdown .menu {
   border-color: #31986a !important;
 }

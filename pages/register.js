@@ -11,10 +11,9 @@ import {
   rolesArr,
   cohortArr,
 } from '../libs/globalVariables/registerUserArrays';
-import DropdownMenu from '../Components/register/DropdownMenu';
-import InputField from '../Components/register/InputField';
-
-import RegisterButton from '../Components/RegisterButton';
+import DropdownMenu from '../components/register/DropdownMenu';
+import InputField from '../components/InputField';
+import RegisterButton from '../components/RegisterButton';
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');
@@ -25,6 +24,7 @@ export default function Register({ session }) {
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
+  //function to post the new user to the DB
   function registerUser(e) {
     e.preventDefault();
     if ((role !== '') & (cohort !== '')) {
@@ -34,7 +34,7 @@ export default function Register({ session }) {
           role: role,
           uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
-          name: name || session.name,
+          name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
         }),
         headers: {
           'content-type': 'application/json',
