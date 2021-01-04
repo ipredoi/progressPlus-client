@@ -1,22 +1,23 @@
-import RecapGraph from "../Components/bootcamper/RecapGraph";
-import Avatar from "../components/avatar";
-import UsefulLinks from "../components/usefulLinks";
-import SignOut from "../components/signOut";
-import BootcampterListLink from "../components/bootcamper/bootcamperListLink";
-import nookies from "nookies";
-import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
+import RecapGraph from '../components/bootcamper/RecapGraph';
+import Avatar from '../components/Avatar';
+import UsefulLinks from '../components/UsefulLinks';
+import SignOut from '../components/SignOut';
+import NavBar from '../components/NavBar';
+import nookies from 'nookies';
+import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 
 export default function GraphTest({ session, data }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <SignOut />
         <Avatar />
-        <BootcampterListLink />
+        <NavBar linksAndTitles={bootcamperNavBarArr} />
       </header>
       <RecapGraph session={session} />
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
@@ -43,7 +44,7 @@ export async function getServerSideProps(context) {
       props: { session: { name, uid, data } },
     };
   } catch (err) {
-    context.res.writeHead(302, { Location: "/login" });
+    context.res.writeHead(302, { Location: '/login' });
     context.res.end();
     console.log(err.message);
     return { props: {} };
