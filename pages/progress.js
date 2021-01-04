@@ -9,7 +9,7 @@ import nookies from 'nookies';
 import { url } from '../libs/globalVariables/backendUrl';
 
 export default function Feedback({ session }) {
-  const feedbackArray = session.data.data;
+  const feedbackArray = session.feedbackRes.data;
 
   return (
     <div>
@@ -66,10 +66,10 @@ export async function getServerSideProps(context) {
 
     const res = await fetch(`${url}feedback`);
     //this is fetching info from our DB through the hosted backend URL. The URL variable is stored in globalVariables where it is also using dotenv to keep the URL private.
-    const data = await res.json();
+    const feedbackRes = await res.json();
 
     return {
-      props: { session: { data, name, uid, email, picture } },
+      props: { session: { feedbackRes, name, uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: '/login' });

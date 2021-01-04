@@ -3,6 +3,8 @@ import React from 'react';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+import { weeksArray } from '../libs/globalVariables/weeksArray';
+
 //arrays for dropdown lists
 
 const bootcamperArray = [
@@ -11,7 +13,7 @@ const bootcamperArray = [
   { key: 'i', text: 'Ionut', value: 'Ionut' },
 ];
 
-const weeksArray = [
+/* const weeksArray = [
   { key: '1', text: '1', value: '1' },
   { key: '2', text: '2', value: '2' },
   { key: '3', text: '3', value: '3' },
@@ -28,7 +30,7 @@ const weeksArray = [
   { key: '14', text: '14', value: '14' },
   { key: '15', text: '15', value: '15' },
   { key: '16', text: '16', value: '16' },
-];
+]; */
 
 // const coachArray = [
 //   { key: 'c', text: 'Chris', value: 'Chris' },
@@ -36,10 +38,13 @@ const weeksArray = [
 //   { key: 'l', text: 'Liz', value: 'Liz' },
 // ];
 
-const FeedbackForm = () => (
-  <Form className='form'>
-    <Form.Group widths='equal'>
-      {/* <Form.Field
+const FeedbackForm = ({ bootcamperName }) => {
+ 
+
+  return (
+    <Form className='form'>
+      <Form.Group widths='equal'>
+        {/* <Form.Field
         control={Select}
         options={coachArray}
         label={{
@@ -50,55 +55,56 @@ const FeedbackForm = () => (
         search
         searchInput={{ id: 'form-select-control-name' }}
       /> */}
+        <Form.Field
+          control={Select}
+          options={bootcamperName}
+          label={{
+            children: 'Bootcamper Name',
+            htmlFor: 'form-select-control-name',
+          }}
+          placeholder='Name'
+          search
+          searchInput={{ id: 'form-select-control-name' }}
+        />
+        <Form.Field
+          control={Select}
+          options={weeksArray}
+          label={{
+            children: 'Week',
+            htmlFor: 'form-select-control-week',
+          }}
+          placeholder='Week'
+          search
+          searchInput={{ id: 'form-select-control-week' }}
+        />
+      </Form.Group>
       <Form.Field
-        control={Select}
-        options={bootcamperArray}
-        label={{
-          children: 'Bootcamper Name',
-          htmlFor: 'form-select-control-name',
-        }}
-        placeholder='Name'
-        search
-        searchInput={{ id: 'form-select-control-name' }}
+        id='form-textarea-control-fFeedbackeedback'
+        control={TextArea}
+        label='Feedback'
+        placeholder='Feedback'
+      />
+      <Form>
+        <Form.Field>
+          <label>Grade</label>
+          <input placeholder='1 - 5' />
+        </Form.Field>
+      </Form>
+      <Form.Field
+        id='form-button-control-public'
+        control={Button}
+        content='Submit'
+        //   label=''
       />
       <Form.Field
-        control={Select}
-        options={weeksArray}
-        label={{
-          children: 'Week',
-          htmlFor: 'form-select-control-week',
-        }}
-        placeholder='Week'
-        search
-        searchInput={{ id: 'form-select-control-week' }}
+        href='http://localhost:3000/coach'
+        id='form-button-control-public'
+        control={Button}
+        content='⏎'
+        //   label=''
       />
-    </Form.Group>
-    <Form.Field
-      id='form-textarea-control-fFeedbackeedback'
-      control={TextArea}
-      label='Feedback'
-      placeholder='Feedback'
-    />
-    <Form>
-      <Form.Field>
-        <label>Grade</label>
-        <input placeholder='1 - 5' />
-      </Form.Field>
     </Form>
-    <Form.Field
-      id='form-button-control-public'
-      control={Button}
-      content='Submit'
-      //   label=''
-    />
-    <Form.Field
-      href='http://localhost:3000/coach'
-      id='form-button-control-public'
-      control={Button}
-      content='⏎'
-      //   label=''
-    />
-  </Form>
-);
+  );
+};
 
 export default FeedbackForm;
