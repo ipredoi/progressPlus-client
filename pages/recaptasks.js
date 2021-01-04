@@ -8,44 +8,31 @@ import serverSideProps from '../libs/functions/serverSideProps';
 export default function RecapTasks({ session }) {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
           onClick={() => {
-            console.log(session.data);
+            console.log(session);
           }}>
           Testing data in console
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
   );
 }
 
-const url = process.env.NEXT_APP_BACKEND_URL;
-// uncomment when backend tables are sorted
-
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
+  async function recapTaskFetchRequest(uid, url) {
+    console.log(url, uid);
+    const res = await fetch(`${url}feedback?type=recap&uid=${uid}`);
 
-    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`);
     const data = await res.json();
-
-    return {
-      props: { session: { name, uid, data } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    console.log(err.message);
-    return { props: {} };
+    return data;
   }
+  return serverSideProps(context, recapTaskFetchRequest);
 }

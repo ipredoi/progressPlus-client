@@ -10,13 +10,13 @@ import serverSideProps from '../libs/functions/serverSideProps';
 export default function Feedback() {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
       <FeedbackForm />
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
