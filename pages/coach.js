@@ -1,6 +1,6 @@
 import styles from '../styles/coach.module.css';
 import NavBar from '../components/NavBar';
-import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
 import Avatar from '../components/Avatar';
 import CoachButton from '../components/coach/CoachButton';
 import UsefulLinks from '../components/UsefulLinks';

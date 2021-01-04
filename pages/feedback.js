@@ -1,6 +1,6 @@
 import FeedbackForm from '../components/FeedbackForm';
 import NavBar from '../components/NavBar';
-import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
