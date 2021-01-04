@@ -7,6 +7,7 @@ import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import serverSideProps from '../libs/functions/serverSideProps';
 
 export default function Coach({ session }) {
   if (!session) {
@@ -31,18 +32,5 @@ export default function Coach({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
-
-    return {
-      props: { session: { name, uid, email, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  }
+  return serverSideProps(context);
 }
