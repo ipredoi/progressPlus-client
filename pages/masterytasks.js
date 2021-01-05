@@ -10,7 +10,6 @@ export default function MasteryTasks({ session }) {
   return (
     <div>
       <header className="header">
-        <LogOutButton />
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
@@ -27,7 +26,7 @@ export default function MasteryTasks({ session }) {
   );
 }
 
-const url = process.env.NEXT_APP_BACKEND_URL;
+const url = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 // uncomment when backend tables are sorted
 
 export async function getServerSideProps(context) {

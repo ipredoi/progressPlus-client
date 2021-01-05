@@ -6,12 +6,11 @@ import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
 
 //page for coaches to submit feedback
-export default function Feedback() {
+export default function Feedback({ session }) {
   return (
     <div>
       <header className="header">
-        <LogOutButton />
-        <Avatar src={'session.picture'} name={'session.name'} />
+        <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
       <FeedbackForm />

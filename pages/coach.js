@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/coach.module.css';
 import NavBar from '../components/NavBar';
 import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
@@ -13,29 +13,14 @@ export default function Coach({ session }) {
   if (!session) {
     return null;
   } else {
-    const [visible, setVisible] = useState(false);
-    const [animation, setAnimation] = useState('scale down');
-    const [direction, setDirection] = useState('top');
-
     return (
       <div>
-        <header className='header'>
-          <LogOutButton />
-          <Avatar
-            src={session.picture}
-            name={session.name}
-            visible={visible}
-            setVisible={setVisible}
-          />
+        <header className="header">
+          <Avatar src={session.picture} name={session.name} />
 
-          <NavBar
-            visible={visible}
-            animation={animation}
-            direction={direction}
-            linksAndTitles={coachNavBarArr}
-          />
+          <NavBar linksAndTitles={coachNavBarArr} />
         </header>
-        <h1 className='h1'>
+        <h1 className="h1">
           "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
         </h1>
         <CoachButton />

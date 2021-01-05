@@ -9,8 +9,7 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 export default function RecapTasks({ session }) {
   return (
     <div>
-      <header className='header'>
-        <LogOutButton />
+      <header className="header">
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
@@ -20,13 +19,13 @@ export default function RecapTasks({ session }) {
           Testing data in console
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
   );
 }
-
+const url = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
