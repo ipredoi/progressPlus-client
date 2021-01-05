@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import {
   bootcampWeeks,
   tasksArray,
-} from '../libs/globalVariables/coachFeedbackForm';
+} from '../libs/globalVariables/coachFeedbackFormArr';
 
 const FeedbackForm = ({
   bootcampersInfoArr,
@@ -80,9 +80,17 @@ const FeedbackForm = ({
         <Form.Field>
           <label>Subject</label>
           <input
-            placeholder='Mastery Task or Recap Task'
+            placeholder='React/ JS'
             onChange={setSubject}
           />
+        </Form.Field>
+      </Form>
+      <Form>
+        <Form.Field>
+          <label>Date</label>
+          {/* control={Calendar} */}
+         
+
         </Form.Field>
       </Form>
       <Form.Field
