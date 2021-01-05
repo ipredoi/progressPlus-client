@@ -13,7 +13,9 @@ const rolesArr = [
   },
 ];
 
-var cohortArr = [];
+// generatin an array with numbers from cohort 4-99
+
+let cohortArr = [];
 for (let i = 4; i < 100; i++) {
   cohortArr.push({
     key: i,
