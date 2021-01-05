@@ -24,26 +24,11 @@ export default function GraphTest({ session, data }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, picture } = token;
-
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
-    // need to post <real-data> to feedback table in db
-    const data = await res.json();
+  async function fetchFeedbackData(url, uid) {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
+    const { data } = await res.json();
     console.log(data);
-
-    return {
-      props: { session: { uid, data } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: "/login" });
-    context.res.end();
-    console.log(err.message);
-    return { props: {} };
+    return data;
   }
-
-  return serverSideProps(context, graphFetchRequest);
+  return serverSideProps(context, fetchFeedbackData);
 }
