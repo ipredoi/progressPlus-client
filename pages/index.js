@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import FirebaseAuth from '../components/authentication/firebase';
-import styles from '../styles/pagesStyle/login.module.css';
-=======
 import FirebaseAuth from '../components/authentication/Firebase';
-import styles from '../styles/login.module.css';
->>>>>>> 81ac419d1bec85dbc77346d6dfa18320cca22354
+import styles from '../styles/pagesStyle/login.module.css';
 import Image from 'next/image';
 
 export default function Login() {

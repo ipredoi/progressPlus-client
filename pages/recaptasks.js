@@ -8,9 +8,9 @@ import serverSideProps from '../libs/functions/serverSideProps';
 export default function RecapTasks({ session }) {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
-        <Avatar src={'session.picture'} name={'session.name'} />
+        <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
           onClick={() => {
@@ -19,7 +19,7 @@ export default function RecapTasks({ session }) {
           Testing data in console
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
@@ -28,7 +28,6 @@ export default function RecapTasks({ session }) {
 
 export async function getServerSideProps(context) {
   async function recapTaskFetchRequest(url, uid) {
-    console.log(url, uid);
     const res = await fetch(`${url}feedback?type=recap&uid=${uid}`);
 
     const data = await res.json();

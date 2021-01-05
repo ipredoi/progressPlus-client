@@ -8,9 +8,9 @@ import serverSideProps from '../libs/functions/serverSideProps';
 export default function MasteryTasks({ session }) {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
-        <Avatar src={'session.picture'} name={'session.name'} />
+        <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
           onClick={() => {
@@ -19,7 +19,7 @@ export default function MasteryTasks({ session }) {
           Testing data
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>

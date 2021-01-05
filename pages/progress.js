@@ -15,7 +15,7 @@ export default function Feedback({ session }) {
       <header className="header">
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
-        {/*  <NavBar /> */}
+        <NavBar />
       </header>
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
