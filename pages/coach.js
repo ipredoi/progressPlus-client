@@ -7,21 +7,22 @@ import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
+import { quotesArray } from '../libs/sample_data/codingQuotes';
 
 export default function Coach({ session }) {
+  const quoteIndex = Math.floor(Math.random() * quotesArray.length);
+
   if (!session) {
     return null;
   } else
     return (
       <div>
-        <header className="header">
+        <header className='header'>
           <LogOutButton />
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={coachNavBarArr} />
         </header>
-        <h1 className="h1">
-          "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
-        </h1>
+        <h1 className='h1'>{quotesArray[quoteIndex]}</h1>
         <CoachButton />
         <footer className={styles.coachButton}>
           <UsefulLinks />
@@ -38,7 +39,7 @@ export async function getServerSideProps(context) {
     const { uid, email, name, picture } = token;
 
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: '/login' });
