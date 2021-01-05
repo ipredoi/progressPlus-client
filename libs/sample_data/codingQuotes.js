@@ -1,6 +1,6 @@
 //array  of quotes to run through at random on page refresh
 export const quotesArray = [
-  '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand". – Martin Fowler',
+  '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand." – Martin Fowler',
   '"First, solve the problem. Then, write the code." – John Johnson',
   '"Experience is the name everyone gives to their mistakes." – Oscar Wilde',
   '"In order to be irreplaceable, one must always be different." – Coco Chanel',

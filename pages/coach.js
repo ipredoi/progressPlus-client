@@ -5,13 +5,11 @@ import Avatar from '../components/Avatar';
 import CoachButton from '../components/coach/CoachButton';
 import UsefulLinks from '../components/UsefulLinks';
 import LogOutButton from '../components/LogOutButton';
+import QuoteHeader from '../Components/QuoteHeader';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
-import { quotesArray } from '../libs/sample_data/codingQuotes';
 
 export default function Coach({ session }) {
-  const quoteIndex = Math.floor(Math.random() * quotesArray.length);
-
   if (!session) {
     return null;
   } else
@@ -22,7 +20,7 @@ export default function Coach({ session }) {
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={coachNavBarArr} />
         </header>
-        <h1 className='h1'>{quotesArray[quoteIndex]}</h1>
+        <QuoteHeader />
         <CoachButton />
         <footer className={styles.coachButton}>
           <UsefulLinks />
