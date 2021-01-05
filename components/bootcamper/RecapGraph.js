@@ -1,6 +1,6 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 export default function RecapGraph({ session }) {
   console.log("data fetch");
@@ -10,11 +10,37 @@ export default function RecapGraph({ session }) {
     <div>
       <Bar
         data={{
-          labels: ["week10", "week11", "week12", "week13", "week14", "week15"],
+          labels: [
+            `week${session.data.data[0].week}`,
+            `week${session.data.data[1].week}`,
+            `week${session.data.data[2].week}`,
+            `week${session.data.data[3].week}`,
+            `week${session.data.data[4].week}`,
+            `week${session.data.data[5].week}`,
+          ],
           datasets: [
             {
-              label: `${session.name}'s Recap task score`, // name from login session
-              data: [session.data.data[0].week, 50, 70, 54, 30, 25],
+              label: `session.name's Recap task score [%]`, // name from login session
+              data: [
+                (session.data.data[0].passedtests /
+                  session.data.data[0].totaltests) *
+                  100,
+                (session.data.data[1].passedtests /
+                  session.data.data[1].totaltests) *
+                  100,
+                (session.data.data[2].passedtests /
+                  session.data.data[2].totaltests) *
+                  100,
+                (session.data.data[3].passedtests /
+                  session.data.data[3].totaltests) *
+                  100,
+                (session.data.data[4].passedtests /
+                  session.data.data[4].totaltests) *
+                  100,
+                (session.data.data[5].passedtests /
+                  session.data.data[5].totaltests) *
+                  100,
+              ],
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",
@@ -33,13 +59,13 @@ export default function RecapGraph({ session }) {
               ],
               borderWidth: 2,
             },
-            {
-              label: "Average",
-              data: [47, 52, 67, 50, 40, 20],
-              backgroundColor: "lightgrey",
-              borderColor: "grey",
-              borderWidth: 1,
-            },
+            // {
+            //   label: "Average [%]",
+            //   data: [80, 60, 100, 50, 40, 70],
+            //   backgroundColor: "lightgrey",
+            //   borderColor: "grey",
+            //   borderWidth: 1,
+            // },
           ],
         }}
         width={600}

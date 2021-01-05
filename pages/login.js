@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-import FirebaseAuth from '../components/authentication/firebase';
-import styles from '../styles/pagesStyle/login.module.css';
-=======
-import FirebaseAuth from '../components/authentication/Firebase';
-import styles from '../styles/login.module.css';
->>>>>>> 81ac419d1bec85dbc77346d6dfa18320cca22354
-import Image from 'next/image';
+// <<<<<<< HEAD
+import FirebaseAuth from "../components/authentication/firebase";
+import styles from "../styles/pagesStyle/login.module.css";
+// =======
+// import FirebaseAuth from '../components/authentication/Firebase';
+// import styles from '../styles/login.module.css';
+// >>>>>>> 81ac419d1bec85dbc77346d6dfa18320cca22354
+import Image from "next/image";
 
 export default function Login() {
   return (
@@ -13,8 +13,8 @@ export default function Login() {
       <div className={styles.authMain}>
         <div className={styles.socImage}>
           <Image
-            src="/Logo.png"
-            alt="School of Code Logo"
+            src='/Logo.png'
+            alt='School of Code Logo'
             width={100}
             height={100}
           />
