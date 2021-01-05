@@ -24,15 +24,25 @@ export default function GraphTest({ session, data }) {
 }
 
 export async function getServerSideProps(context) {
-  //specific fetch request to pull graph data, to be called below in serverSideProps function
-  async function graphFetchRequest() {
-    const res = await fetch(
-      `http://ismail-esta-final-project.herokuapp.com/feedback?type=mastery&uid=d6587569589dk3r437890584gjfni`
-    );
-    // const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    console.log(token);
+    const { uid, picture } = token;
+
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
     // need to post <real-data> to feedback table in db
     const data = await res.json();
-    return data;
+    console.log(data);
+
+    return {
+      props: { session: { uid, data } },
+    };
+  } catch (err) {
+    context.res.writeHead(302, { Location: "/login" });
+    context.res.end();
+    console.log(err.message);
+    return { props: {} };
   }
 
   return serverSideProps(context, graphFetchRequest);
