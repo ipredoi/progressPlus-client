@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Grid, Header, Segment, Sidebar } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import NavBarDropdown from './NavBarDropdown';
+// import NavBarDropdown from './NavBarDropdown';
+import NavBarAvatar from '../components/NavBarAvatar';
 
 export default function NavBar({
   visible,
@@ -27,8 +28,8 @@ export default function NavBar({
               </Grid.Column>
             ))}
           </Grid.Row>
-
-          <NavBarDropdown />
+          {/* <NavBarAvatar /> */}
+          {/* <NavBarDropdown /> */}
         </Grid>
       </Sidebar>
     </div>

@@ -9,7 +9,7 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 export default function RecapTasks({ session }) {
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <LogOutButton />
         <Avatar src={'session.picture'} name={'session.name'} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
@@ -20,15 +20,12 @@ export default function RecapTasks({ session }) {
           Testing data in console
         </button>
       </header>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
   );
 }
-
-const url = process.env.NEXT_APP_BACKEND_URL;
-// uncomment when backend tables are sorted
 
 export async function getServerSideProps(context) {
   try {
