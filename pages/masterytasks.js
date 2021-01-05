@@ -7,7 +7,7 @@ import serverSideProps from '../libs/functions/serverSideProps';
 export default function MasteryTasks({ session }) {
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
@@ -17,7 +17,7 @@ export default function MasteryTasks({ session }) {
           Testing data
         </button>
       </header>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
@@ -30,6 +30,7 @@ export async function getServerSideProps(context) {
     const res = await fetch(`${url}feedback?type=mastery&uid=${uid}`);
 
     const data = await res.json();
+
     return data;
   }
   return serverSideProps(context, masteryTaskFetchRequest);

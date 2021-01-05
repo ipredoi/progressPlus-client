@@ -6,7 +6,7 @@ import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { url } from '../libs/globalVariables/backendUrl';
+import { backendUrl } from '../libs/globalVariables/urls';
 import {
   rolesArr,
   cohortArr,
@@ -14,9 +14,6 @@ import {
 import DropdownMenu from '../components/register/DropdownMenu';
 import InputField from '../components/InputField';
 import RegisterButton from '../components/RegisterButton';
-
-
-
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');
@@ -31,11 +28,11 @@ export default function Register({ session }) {
   function registerUser(e) {
     e.preventDefault();
     if ((role !== '') & (cohort !== '')) {
-      fetch(`${url}`, {
+      fetch(`${backendUrl}`, {
         method: 'POST',
         body: JSON.stringify({
           role: role,
-          uid: '32ssdssssd12ss34tessdst', //session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
+          uid: session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
           name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
         }),
