@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Grid, Header, Segment, Sidebar } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-// import NavBarDropdown from './NavBarDropdown';
-import NavBarAvatar from '../components/NavBarAvatar';
+
+import Avatar from '../components/Avatar';
 
 export default function NavBar({
   visible,
   direction,
   animation,
   linksAndTitles,
+  setVisible,
 }) {
   return (
     <div>
@@ -28,8 +29,7 @@ export default function NavBar({
               </Grid.Column>
             ))}
           </Grid.Row>
-          {/* <NavBarAvatar /> */}
-          {/* <NavBarDropdown /> */}
+          <Avatar />
         </Grid>
       </Sidebar>
     </div>

@@ -36,6 +36,7 @@ export default function Bootcamper({ session }) {
             animation={animation}
             direction={direction}
             linksAndTitles={bootcamperNavBarArr}
+            setVisible={setVisible}
           />
         </header>
         <h1 className='h1'>
