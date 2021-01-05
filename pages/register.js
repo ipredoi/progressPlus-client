@@ -61,8 +61,8 @@ export default function Register({ session }) {
         <div className={styles.registerForm}>
           <img
             className={styles.loadingImg}
-            src='/source.gif'
-            alt='loadingImg'
+            src="/source.gif"
+            alt="loadingImg"
           />
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt="profile picture"
         />
         <div className={styles.form}>
           {/*  conditionally render the wellcome message if there is no username from github */}
@@ -97,7 +97,7 @@ export default function Register({ session }) {
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
             <InputField
-              placeholder='Name'
+              placeholder="Name"
               className={styles.inputField}
               onChange={(e) => {
                 setName(e.target.value);
@@ -109,7 +109,7 @@ export default function Register({ session }) {
           <DropdownMenu
             className={styles.dropdownMenu}
             option={rolesArr}
-            placeHolder='Select SoC Role'
+            placeHolder="Select SoC Role"
             handleClick={(e, data) => {
               setRole(data.value.toLowerCase());
             }}
@@ -117,7 +117,7 @@ export default function Register({ session }) {
           <DropdownMenu
             className={styles.dropdownMenu}
             option={cohortArr}
-            placeHolder='Select Current Cohort'
+            placeHolder="Select Current Cohort"
             handleClick={(e, data) => {
               setCohort(data.value);
             }}
@@ -168,7 +168,7 @@ export async function getServerSideProps(context) {
     };
   } catch (err) {
     context.res.writeHead(302, {
-      Location: `/login`,
+      Location: `/`,
     });
     context.res.end();
     return { props: {} };

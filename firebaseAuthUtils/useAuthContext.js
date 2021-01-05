@@ -32,7 +32,7 @@ export function AuthContextProvider({ children }) {
       .auth()
       .signOut()
       .then(() => {
-        router.push('/login');
+        router.push('/');
       })
       .catch((e) => {
         console.log(error(e));

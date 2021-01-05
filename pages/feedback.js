@@ -20,7 +20,7 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
 
-/*   console.log(bootcamperName);
+  /*   console.log(bootcamperName);
   console.log(taskType);
   console.log(subject);
   console.log(week);
@@ -31,7 +31,7 @@ export default function Feedback({ session }) {
   console.log(dateSubmitted); */
 
   var dateTime = new Date().toLocaleString();
-  console.log(session);
+
   // saving all bootcampers info in an array
   let bootcampersInfoArr = session.data.data;
   console.log(bootcampersInfoArr);
@@ -43,10 +43,10 @@ export default function Feedback({ session }) {
       return item.name === `${bootcamperName}`;
     })[0].uid;
   }
-  console.log(bootcamperUid);
+ // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
-    fetch(`https://ismail-esta-final-project.herokuapp.com/feedback`, {
+    fetch(`${url}feedback`, {
       method: 'POST',
       body: JSON.stringify({
         bootcamperuid: `${bootcamperUid}`,
@@ -107,7 +107,6 @@ export default function Feedback({ session }) {
     </div>
   );
 }
-
 export async function getServerSideProps(context) {
   async function fetchBootcampersData(url) {
     /* console.log(url); */
