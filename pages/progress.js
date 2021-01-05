@@ -12,7 +12,7 @@ export default function Feedback({ session }) {
 
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
         {/*  <NavBar /> */}
@@ -49,7 +49,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
@@ -64,4 +64,13 @@ export async function getServerSideProps(context) {
     return data;
   }
   return serverSideProps(context, progressFetchRequest);
+}
+
+export async function getServerSideProps(context) {
+  async function recapTaskFetchRequest(url) {
+    const res = await fetch(`${url}feedback`);
+    const data = await res.json();
+    return data;
+  }
+  return serverSideProps(context, recapTaskFetchRequest);
 }

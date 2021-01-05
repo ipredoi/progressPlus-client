@@ -3,10 +3,21 @@ import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
+import QuoteHeader from '../Components/QuoteHeader';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 
 export default function Bootcamper({ session }) {
+  async function getQuestion() {
+    const result = await fetch(
+      'https://opentdb.com/api.php?amount=50&category=18&difficulty=easy&type=boolean'
+    );
+    const data = await result.json();
+    console.log(data);
+  }
+
+  getQuestion();
+
   if (!session) {
     return (
       <div>
@@ -21,9 +32,8 @@ export default function Bootcamper({ session }) {
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>
-        <h1 className='h1'>
-          "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
-        </h1>
+        <QuoteHeader />
+
         <StudentCard img={session.picture} />
         {/* //<img img={session.picture} alt='profile photo' /> */}
         {/* <MenuListComposition /> */}
