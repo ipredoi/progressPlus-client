@@ -1,17 +1,36 @@
-import React from 'react';
-import { List } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Grid, Header, Segment, Sidebar } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import NavBarDropdown from './NavBarDropdown';
 
-//generic component takes in array of objects - each object contains a link and a title
-function NavBar({ linksAndTitles }) {
+export default function NavBar({
+  visible,
+  direction,
+  animation,
+  linksAndTitles,
+}) {
   return (
-    <List>
-      {linksAndTitles.map((object) => (
-        <List.Item active href={object.link}>
-          {object.title}
-        </List.Item>
-      ))}
-    </List>
+    <div>
+      <Sidebar
+        as={Segment}
+        animation={animation}
+        direction={direction}
+        visible={visible}>
+        <Grid textAlign='center'>
+          <Grid.Row columns={1}>
+            <Grid.Column></Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={linksAndTitles.length}>
+            {linksAndTitles.map((object) => (
+              <Grid.Column active href={object.link}>
+                <Header>{object.title}</Header>
+              </Grid.Column>
+            ))}
+          </Grid.Row>
+
+          <NavBarDropdown />
+        </Grid>
+      </Sidebar>
+    </div>
   );
 }
-
-export default NavBar;
