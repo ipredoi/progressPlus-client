@@ -3,11 +3,15 @@ import UsefulLinks from '../components/UsefulLinks';
 import NavBar from '../components/NavBar';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
 
 export default function RecapTasks({ session }) {
+  if (!session) {
+    return <LoadingImg />;
+  }
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
         <button
@@ -17,7 +21,7 @@ export default function RecapTasks({ session }) {
           Testing data in console
         </button>
       </header>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>

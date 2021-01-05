@@ -7,6 +7,7 @@ import LogOutButton from '../Components/LogOutButton';
 import { useState } from 'react';
 import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -73,7 +74,7 @@ export default function Feedback({ session }) {
   }
 
   if (!session) {
-    return <p>loading</p>;
+    return <LoadingImg />;
   }
   return (
     <div>

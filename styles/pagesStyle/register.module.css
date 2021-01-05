@@ -23,7 +23,9 @@
   transition: color 0.2s ease;
 }
 
-.loadingImg {
+
+/* moved in componentStyle --> loadign Img */
+/* .loadingImg {
   border-radius: 50%;
   width: 150px;
   height: auto;
@@ -31,7 +33,7 @@
   align-self: center;
   border-color: #2d8b61;
   border-style: solid;
-}
+} */
 
 .profilePicture {
   border-radius: 50%;
