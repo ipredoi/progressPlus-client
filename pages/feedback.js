@@ -10,7 +10,6 @@ import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import { url } from '../libs/globalVariables/backendUrl';
 
-
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
   const [bootcamperName, setbootcamperName] = useState('');
@@ -67,7 +66,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={session.picture} name={'session.name'} />
         <NavBar linksAndTitles={coachNavBarArr} />
@@ -86,31 +85,19 @@ export default function Feedback({ session }) {
           setWeek(data.value);
         }}
       />
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>
   );
 }
-
 export async function getServerSideProps(context) {
-
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    const { uid, picture } = token;
-
-    // getting all bootcampers from the backend
+  async function masteryTaskFetchRequest(url, uid) {
+    console.log(url, uid);
     const res = await fetch(`${url}`);
-    const bootcampersList = await res.json();
-    return {
-      props: { session: { bootcampersList, uid, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
+    const data = await res.json();
+    return data;
   }
 
+  return serverSideProps(context, masteryTaskFetchRequest);
 }
