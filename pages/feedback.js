@@ -43,7 +43,7 @@ export default function Feedback({ session }) {
       return item.name === `${bootcamperName}`;
     })[0].uid;
   }
- // console.log(bootcamperUid);
+  // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
     fetch(`${url}feedback`, {
@@ -77,7 +77,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <header className='header'>
+      <header className="header">
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={coachNavBarArr} />
@@ -101,7 +101,7 @@ export default function Feedback({ session }) {
         setDueDate={(e) => setDueDate(e.target.value)}
         setDateSubmitted={(e) => setDateSubmitted(e.target.value)}
       />
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>

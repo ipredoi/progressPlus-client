@@ -1,7 +1,6 @@
 import NavBar from '../components/NavBar';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
-import LogOutButton from '../components/LogOutButton';
 import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 
@@ -12,8 +11,7 @@ export default function Feedback({ session }) {
 
   return (
     <div>
-      <header className='header'>
-        <LogOutButton />
+      <header className="header">
         <Avatar src={session.picture} name={session.name} />
         <NavBar />
       </header>
@@ -49,7 +47,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className='footer'>
+      <footer className="footer">
         <UsefulLinks />
       </footer>
     </div>

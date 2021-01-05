@@ -1,17 +1,41 @@
 import React from 'react';
-import { List } from 'semantic-ui-react';
+import { Grid, Header, Segment, Sidebar, Button } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import LogOutButton from '../components/LogOutButton';
+import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
 
-//generic component takes in array of objects - each object contains a link and a title
-function NavBar({ linksAndTitles }) {
+export default function NavBar({ linksAndTitles }) {
+  const { open, setOpen } = useAuthContext();
   return (
-    <List>
-      {linksAndTitles.map((object) => (
-        <List.Item active href={object.link}>
-          {object.title}
-        </List.Item>
-      ))}
-    </List>
+    <div>
+      <Sidebar
+        as={Segment}
+        animation="scale down"
+        direction="top"
+        visible={open}>
+        <Grid textAlign="center">
+          <Grid.Row columns={1}>
+            <Grid.Column></Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={linksAndTitles.length + 1}>
+            {linksAndTitles.map((object) => (
+              <Grid.Column key={object.title} href={object.link}>
+                <Header>{object.title}</Header>
+              </Grid.Column>
+            ))}
+            <Grid.Column>
+              {/* put in edit profile component or redirect to edit profile page */}
+              <LogOutButton />
+            </Grid.Column>
+          </Grid.Row>
+          <Button
+            onClick={() => {
+              setOpen(!open);
+            }}>
+            ^
+          </Button>
+        </Grid>
+      </Sidebar>
+    </div>
   );
 }
-
-export default NavBar;
