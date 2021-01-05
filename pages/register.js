@@ -15,6 +15,9 @@ import DropdownMenu from '../components/register/DropdownMenu';
 import InputField from '../components/InputField';
 import RegisterButton from '../components/RegisterButton';
 
+
+
+
 export default function Register({ session }) {
   const [role, setRole] = useState('');
   const [cohort, setCohort] = useState('');

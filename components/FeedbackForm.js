@@ -15,6 +15,11 @@ const FeedbackForm = ({
   setTaskType,
   setSubject,
   setWeek,
+  setPassedTests,
+  setTotalTests,
+  setComments,
+  setDueDate,
+  setDateSubmitted,
 }) => {
   //return all bootcamper names in an array
   let bootcampersNames = bootcampersInfoArr.map((bootcamper) => {
@@ -79,32 +84,43 @@ const FeedbackForm = ({
       <Form>
         <Form.Field>
           <label>Subject</label>
-          <input
-            placeholder='React/ JS'
-            onChange={setSubject}
-          />
+          <input placeholder='React/ JS' onChange={setSubject} />
         </Form.Field>
       </Form>
       <Form>
         <Form.Field>
-          <label>Date</label>
-          {/* control={Calendar} */}
-         
-
+          <label>Due Date</label>
+          <input onChange={setDueDate} type='date' />
+          <label>Date Submitted</label>
+          <input onChange={setDateSubmitted} type='date' />
         </Form.Field>
       </Form>
+
+      <Form>
+        <Form.Field>
+          <label>Passed Tests</label>
+          <input
+            onChange={setPassedTests}
+            type='number'
+            placeholder='Input the score'
+          />
+          <label>Total Tests</label>
+          <input
+            onChange={setTotalTests}
+            type='number'
+            placeholder='Input total score'
+          />
+        </Form.Field>
+      </Form>
+
       <Form.Field
+        onChange={setComments}
         id='form-textarea-control-fFeedbackeedback'
         control={TextArea}
         label='Feedback'
         placeholder='Feedback'
       />
-      <Form>
-        <Form.Field>
-          <label>Grade</label>
-          <input placeholder='1 - 5' />
-        </Form.Field>
-      </Form>
+
       <Form.Field
         id='form-button-control-public'
         control={Button}
@@ -116,7 +132,6 @@ const FeedbackForm = ({
         id='form-button-control-public'
         control={Button}
         content='⏎'
-        //   label=''
       />
     </Form>
   );
