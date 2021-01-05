@@ -5,8 +5,6 @@ import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../Components/LogOutButton';
-import nookies from 'nookies';
-import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import { url } from '../libs/globalVariables/backendUrl';
 
@@ -23,7 +21,7 @@ export default function Feedback({ session }) {
   var dateTime = new Date().toLocaleString();
 
   // saving all bootcampers info in an array
-  let bootcampersInfoArr = session.bootcampersList.data;
+  let bootcampersInfoArr = session.data.data;
 
   // need to find uid coresponding to bootcampers name
   // filter bootcampersInfoArr by current bootcamper name--> returning an array with an object --> acces the property uid
