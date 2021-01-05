@@ -6,8 +6,11 @@ import NavBar from '../components/NavBar';
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
+import { quotesArray } from '../libs/sample_data/codingQuotes';
 
 export default function Bootcamper({ session }) {
+  const quoteIndex = Math.floor(Math.random() * quotesArray.length);
+
   async function getQuestion() {
     const result = await fetch(
       'https://opentdb.com/api.php?amount=50&category=18&difficulty=easy&type=boolean'
@@ -32,9 +35,7 @@ export default function Bootcamper({ session }) {
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>
-        <h1 className='h1'>
-          "Ruby is rubbish! PHP is phpantastic!" – Nikita Popov
-        </h1>
+        <h1 className='h1'>{quotesArray[quoteIndex]}</h1>
         <StudentCard img={session.picture} />
         {/* //<img img={session.picture} alt='profile photo' /> */}
         {/* <MenuListComposition /> */}
@@ -55,7 +56,7 @@ export async function getServerSideProps(context) {
     console.log(name);
 
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { uid, email, picture } },
     };
   } catch (err) {
     context.res.writeHead(302, { Location: '/login' });
