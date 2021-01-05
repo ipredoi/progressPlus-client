@@ -3,10 +3,8 @@ import Avatar from "../components/Avatar";
 import UsefulLinks from "../components/UsefulLinks";
 import LogOutButton from "../components/LogOutButton";
 import NavBar from "../components/NavBar";
-import nookies from "nookies";
-import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
-import { url } from "../libs/globalVariables/backendUrl";
+import serverSideProps from "../libs/functions/serverSideProps";
 
 export default function GraphTest({ session, data }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
