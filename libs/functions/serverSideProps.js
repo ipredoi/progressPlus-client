@@ -21,7 +21,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     };
   } catch (err) {
     console.log(err);
-    context.res.writeHead(302, { Location: '/login' });
+    context.res.writeHead(302, { Location: '/' });
     context.res.end();
     return { props: {} };
   }
