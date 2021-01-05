@@ -1,6 +1,7 @@
 import NavBar from '../components/NavBar';
 import Avatar from '../components/Avatar';
 import UsefulLinks from '../components/UsefulLinks';
+import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 
@@ -13,7 +14,7 @@ export default function Feedback({ session }) {
     <div>
       <header className="header">
         <Avatar src={session.picture} name={session.name} />
-        <NavBar />
+        <NavBar linksAndTitles={coachNavBarArr} />
       </header>
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
@@ -62,13 +63,4 @@ export async function getServerSideProps(context) {
     return data;
   }
   return serverSideProps(context, progressFetchRequest);
-}
-
-export async function getServerSideProps(context) {
-  async function recapTaskFetchRequest(url) {
-    const res = await fetch(`${url}feedback`);
-    const data = await res.json();
-    return data;
-  }
-  return serverSideProps(context, recapTaskFetchRequest);
 }
