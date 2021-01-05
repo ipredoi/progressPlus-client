@@ -2,14 +2,18 @@ import nookies from 'nookies';
 import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
 import { url } from '../globalVariables/backendUrl';
 
-export default async function serverSideProps(context, customFetchRequest) {
+export default async function serverSideProps(
+  context,
+  redirectFunction,
+  customFetchRequest
+) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const { uid, picture } = token;
     const res = await fetch(`${url}${uid}`);
     const userData = await res.json();
-    const { name } = userData.data[0];
+    const { name, role } = userData.data[0];
     let data = '';
     if (customFetchRequest) {
       data = await customFetchRequest(url, uid);
@@ -17,7 +21,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     }
 
     return {
-      props: { session: { name, uid, picture, data } },
+      props: { session: { name, role, uid, picture, data } },
     };
   } catch (err) {
     console.log(err);

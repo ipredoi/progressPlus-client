@@ -7,14 +7,19 @@ import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../components/LogOutButton';
 import QuoteHeader from '../Components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
+import { useRouter } from 'next/router';
 
 export default function Coach({ session }) {
+  const router = useRouter();
+
   if (!session) {
-    return null;
-  } else
+    router.push('/');
+  } else if (session.role !== 'Coach') {
+    router.push(`/${session.role.toLowerCase()}`);
+  } else {
     return (
       <div>
-        <header className="header">
+        <header className='header'>
           <LogOutButton />
           <Avatar src={session.picture} name={session.name} />
           <NavBar linksAndTitles={coachNavBarArr} />
@@ -26,6 +31,7 @@ export default function Coach({ session }) {
         </footer>
       </div>
     );
+  }
 }
 
 export async function getServerSideProps(context) {
