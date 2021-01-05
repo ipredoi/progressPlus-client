@@ -1,5 +1,6 @@
 import FeedbackForm from '../components/feedbackForm';
 import NavBar from '../components/NavBar';
+
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
@@ -8,6 +9,7 @@ import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { useState } from 'react';
 import { url } from '../libs/globalVariables/backendUrl';
+
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -92,6 +94,7 @@ export default function Feedback({ session }) {
 }
 
 export async function getServerSideProps(context) {
+
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
@@ -109,4 +112,5 @@ export async function getServerSideProps(context) {
     context.res.end();
     return { props: {} };
   }
+
 }

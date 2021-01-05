@@ -1,12 +1,11 @@
 import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/UsefulLinks';
-import StudentCard from '../components/bootcamper/StudentCard';
+import UsefulLinks from '../components/usefulLinks';
+import StudentCard from '../components/bootcamper/studentCard';
 import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
-import nookies from 'nookies';
 import QuoteHeader from '../Components/QuoteHeader';
-import { verifyIdToken } from '../firebaseAuthUtils/firebaseAdmin';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
 
 export default function Bootcamper({ session }) {
   async function getQuestion() {
@@ -34,6 +33,7 @@ export default function Bootcamper({ session }) {
           <NavBar linksAndTitles={bootcamperNavBarArr} />
         </header>
         <QuoteHeader />
+
         <StudentCard img={session.picture} />
         {/* //<img img={session.picture} alt='profile photo' /> */}
         {/* <MenuListComposition /> */}
@@ -46,19 +46,5 @@ export default function Bootcamper({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, email, name, picture } = token;
-    console.log(name);
-
-    return {
-      props: { session: { uid, email, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  }
+  return serverSideProps(context);
 }
