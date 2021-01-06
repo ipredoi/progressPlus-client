@@ -4,15 +4,18 @@ import UsefulLinks from '../components/UsefulLinks';
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
-
+import LoadingImg from '../components/LoadingImg';
 // Page for coaches to check bootcampers feedback/ progress and compare
 
 export default function Feedback({ session }) {
   const feedbackArray = session.data.data;
 
+  if (!session) {
+    return <LoadingImg />;
+  }
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
@@ -48,7 +51,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>

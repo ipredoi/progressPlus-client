@@ -7,14 +7,11 @@ import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
 import { Icon } from 'semantic-ui-react';
+import LoadingImg from '../components/LoadingImg';
 
 export default function Bootcamper({ session }) {
   if (!session) {
-    return (
-      <div>
-        <img className='loadingImg' src='/source.gif' alt='loadingImg' />
-      </div>
-    );
+    return <LoadingImg />;
   } else {
     return (
       <div className={styles.bootcamper}>
