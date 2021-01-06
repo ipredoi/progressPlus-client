@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2vh;
+  align-items: center;
+}
+.icons {
+  height: 20vh;
+  width: auto;
+}
+.link_text {
+  text-decoration: none;
+  text-align: center;
+  font-size: 3vh;
+  color: black;
+}
