@@ -8,6 +8,7 @@ import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
 import { Icon } from 'semantic-ui-react';
 import LoadingImg from '../components/LoadingImg';
+import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
 
 export default function Bootcamper({ session }) {
   if (!session) {
@@ -15,17 +16,18 @@ export default function Bootcamper({ session }) {
   } else {
     return (
       <div className={styles.bootcamper}>
-        <header className={styles.header}>
-          <Avatar src={session.picture} name={session.name} />
+        <section className={styles.header}>
+          <div className={styles.avatar}>
+            <Avatar src={session.picture} name={session.name} />
+          </div>
           <NavBar linksAndTitles={bootcamperNavBarArr} />
           <div className={styles.quoteHeader}>
             <QuoteHeader />
           </div>
           <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
-        </header>
+        </section>
         <section className={styles.body}>
-          <Icon name='chart line' size='massive' />
-          <Icon name='chart bar' size='massive' />
+          <DashboardDisplay />
         </section>
         <footer className={styles.footer}>
           <UsefulLinks />
