@@ -1,12 +1,16 @@
-import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/UsefulLinks';
-import NavBar from '../components/NavBar';
-import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
-import AppHeader from '../Components/AppHeader';
-import AppFooter from '../Components/AppFooter';
+import React, { useState } from "react";
+import Avatar from "../components/Avatar";
+import UsefulLinks from "../components/UsefulLinks";
+import NavBar from "../components/NavBar";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
+import serverSideProps from "../libs/functions/serverSideProps";
+import LoadingImg from "../components/LoadingImg";
+
 export default function MasteryTasks({ session }) {
+  const [week, setWeek] = useState(1);
+
   console.log(`test: name:${session.name}, uid:${session.uid}`);
 
   if (!session) {
@@ -16,6 +20,8 @@ export default function MasteryTasks({ session }) {
   return (
     <div>
       <AppHeader session={session} />
+      <ScoreGraph session={session} setWeek={setWeek} />
+      <FeedbackTable session={session} week={week} />
       <AppFooter />
     </div>
   );

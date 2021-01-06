@@ -2,7 +2,7 @@ import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Bar } from "react-chartjs-2";
 
-export default function ScoreGraph({ session }) {
+export default function ScoreGraph({ session, setWeek }) {
   console.log("data fetch");
   // fetch data from backend
 
@@ -10,9 +10,9 @@ export default function ScoreGraph({ session }) {
   let taskType =
     feedbackArr[0].type.charAt(0).toUpperCase() + feedbackArr[0].type.slice(1);
   // uppercase first letter
-  let weekArr = feedbackArr.map((e) => {
-    return e.week;
-  });
+  // let weekArr = feedbackArr.map((e) => {
+  //   return e.week;
+  // });
   let passedTestArr = feedbackArr.map((e) => {
     return e.passedtests;
   });
@@ -23,7 +23,7 @@ export default function ScoreGraph({ session }) {
   //   return (num / totalTestArr[i]) * 100;
   // });
 
-  let percentageArr = [20, 30, 50, 100, 70, 80, 60, 0, 70, 90];
+  let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
   let barBorColorArr = [];
   let barBgColorArr = [];
 
@@ -41,8 +41,14 @@ export default function ScoreGraph({ session }) {
   });
 
   // onclick event of bar chart
-  function handleClick() {
-    alert(`hello, week${weekArr}`);
+  function handleClick(event, elements) {
+    const chart = elements[0]._chart;
+    const element = chart.getElementAtEvent(event)[0];
+    const dataset = chart.data.datasets[element._datasetIndex];
+    const weekNum = chart.data.labels[element._index];
+    const scorePercentage = dataset.data[element._index];
+    setWeek(weekNum);
+    // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   }
 
   return (
@@ -63,12 +69,8 @@ export default function ScoreGraph({ session }) {
         }}
         width={600}
         height={400}
-        // onElementsClick={(elem) => {
-        //   console.log(elem);
-        //   var arr = data.datasets[elem[0]._datasetIndex].data;
-        //   console.log(arr[elem[0]._index]);
-        // }}
         options={{
+          onClick: handleClick,
           maintainAspectRatio: false,
           scales: {
             xAxes: [

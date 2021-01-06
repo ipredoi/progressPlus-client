@@ -2,46 +2,40 @@ import React from "react";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 
 const tableColumns = [
-  "Coach Name",
-  "Date",
-  "Subject",
-  "Task Type",
-  "Grade",
-  "Feedback",
+  "Week",
+  "Score",
+  "Comments by *insert coach name here*",
+  "Due Date",
+  "Date Submitted",
 ];
 
-export default function FeedbackTable({ session }) {
+export default function FeedbackTable({ session, week }) {
   console.log("data fetch for table");
   // fetch data from backend
   let feedbackArr = session.data;
   console.log(feedbackArr);
+  let activeArr = feedbackArr[week - 1];
+  // const activeWeek = feedbackArr.filter((obj) => {
+  //   obj.week === week;
+  // });
+
   return (
     <Table celled>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Header</Table.HeaderCell>
-          <Table.HeaderCell>Header</Table.HeaderCell>
-          <Table.HeaderCell>Header</Table.HeaderCell>
+          {tableColumns.map((header) => {
+            return <Table.HeaderCell>{header}</Table.HeaderCell>;
+          })}
         </Table.Row>
       </Table.Header>
 
       <Table.Body>
         <Table.Row>
-          <Table.Cell>
-            <Label ribbon>First</Label>
-          </Table.Cell>
-          <Table.Cell>ggg</Table.Cell>
-          <Table.Cell>Celfffl</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Cell</Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Cell</Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>{week}</Table.Cell>
+          <Table.Cell>{`${activeArr.passedtests}/${activeArr.totaltests}`}</Table.Cell>
+          <Table.Cell>{activeArr.qualitative}</Table.Cell>
+          <Table.Cell>{activeArr.duedate}</Table.Cell>
+          <Table.Cell>{activeArr.datesubmitted}</Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
