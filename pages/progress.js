@@ -5,6 +5,7 @@ import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
 import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
+import AppHeader from '../Components/AppHeader';
 // Page for coaches to check bootcampers feedback/ progress and compare
 
 export default function Feedback({ session }) {
@@ -15,10 +16,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <header className='header'>
-        <Avatar src={session.picture} name={session.name} />
-        <NavBar linksAndTitles={coachNavBarArr} />
-      </header>
+      <AppHeader session={session} navBarArr={coachNavBarArr} />
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
         <table>

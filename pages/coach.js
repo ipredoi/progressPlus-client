@@ -8,6 +8,7 @@ import UsefulLinks from '../components/usefulLinks';
 import QuoteHeader from '../Components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
+import AppHeader from '../Components/AppHeader';
 
 export default function Coach({ session }) {
   if (!session) {
@@ -15,11 +16,7 @@ export default function Coach({ session }) {
   }
   return (
     <div>
-      <header className='header'>
-        <Avatar src={session.picture} name={session.name} />
-
-        <NavBar linksAndTitles={coachNavBarArr} />
-      </header>
+      <AppHeader session={session} navBarArr={coachNavBarArr} />
       <QuoteHeader />
       <CoachButton />
       <footer className={styles.coachButton}>

@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+.avatar {
+  width: 100%;
+  border-bottom: black solid 0.2vh;
+  background-color: #4a90e2;
+  display: flex;
+  justify-content: flex-end;
+}

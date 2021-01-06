@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
+import AppHeader from '../Components/AppHeader';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -78,11 +79,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <header className='header'>
-        <LogOutButton />
-        <Avatar src={session.picture} name={session.name} />
-        <NavBar linksAndTitles={coachNavBarArr} />
-      </header>
+      <AppHeader session={session} navBarArr={coachNavBarArr} />
       <FeedbackForm
         bootcampersInfoArr={bootcampersInfoArr}
         submitFeedback={submitFeedback}
