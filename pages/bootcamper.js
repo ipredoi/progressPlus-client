@@ -9,6 +9,8 @@ import styles from '../styles/pagesStyle/bootcamper.module.css';
 
 import LoadingImg from '../components/LoadingImg';
 import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
+import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 
 export default function Bootcamper({ session }) {
   if (!session) {
@@ -16,22 +18,15 @@ export default function Bootcamper({ session }) {
   } else {
     return (
       <div className={styles.bootcamper}>
-        <section className={styles.header}>
-          <div className={styles.avatar}>
-            <Avatar src={session.picture} name={session.name} />
-          </div>
-          <NavBar linksAndTitles={bootcamperNavBarArr} />
+        <AppHeader session={session} />
+        <section className={styles.body}>
           <div className={styles.quoteHeader}>
             <QuoteHeader />
           </div>
           <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
-        </section>
-        <section className={styles.body}>
           <DashboardDisplay />
         </section>
-        <footer className={styles.footer}>
-          <UsefulLinks />
-        </footer>
+        <AppFooter />
       </div>
     );
   }
