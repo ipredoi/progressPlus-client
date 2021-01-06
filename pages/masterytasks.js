@@ -1,6 +1,8 @@
 import Avatar from "../components/Avatar";
 import UsefulLinks from "../components/UsefulLinks";
 import NavBar from "../components/NavBar";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
 import serverSideProps from "../libs/functions/serverSideProps";
 
@@ -11,13 +13,8 @@ export default function MasteryTasks({ session }) {
       <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
-        <RecapGraph session={session} />
-        <button
-          onClick={() => {
-            console.log(session.data);
-          }}>
-          Testing data
-        </button>
+        <ScoreGraph session={session} />
+        <FeedbackTable session={session} />
       </header>
       <footer className='footer'>
         <UsefulLinks />

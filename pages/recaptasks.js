@@ -1,34 +1,36 @@
-import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/UsefulLinks';
-import NavBar from '../components/NavBar';
-import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
-import serverSideProps from '../libs/functions/serverSideProps';
+import Avatar from "../components/Avatar";
+import UsefulLinks from "../components/UsefulLinks";
+import NavBar from "../components/NavBar";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
+import serverSideProps from "../libs/functions/serverSideProps";
 
 export default function RecapTasks({ session }) {
+  console.log(`test: name:${session.name}, uid:${session.uid}`);
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
-        <button
-          onClick={() => {
-            console.log(session);
-          }}>
-          Testing data in console
-        </button>
+        <ScoreGraph session={session} />
+        <FeedbackTable session={session} />
       </header>
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
   );
 }
-export async function getServerSideProps(context) {
-  async function recapTaskFetchRequest(url, uid) {
-    const res = await fetch(`${url}feedback?type=recap&uid=${uid}`);
 
-    const data = await res.json();
+export async function getServerSideProps(context) {
+  async function fetchFeedbackData(url, uid) {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`); // recap task score
+    const { data } = await res.json();
+    console.log(data);
     return data;
   }
-  return serverSideProps(context, recapTaskFetchRequest);
+  return serverSideProps(context, fetchFeedbackData);
 }
+
+//function to get the feedback from the backend, may need some refactoring to have consistancy with variable names

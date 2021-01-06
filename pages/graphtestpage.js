@@ -1,4 +1,4 @@
-import RecapGraph from "../components/bootcamper/RecapGraph";
+import LineGraph from "../components/bootcamper/LineGraph";
 import Avatar from "../components/Avatar";
 import UsefulLinks from "../components/UsefulLinks";
 import LogOutButton from "../components/LogOutButton";
@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
 import serverSideProps from "../libs/functions/serverSideProps";
 
-export default function GraphTest({ session, data }) {
+export default function GraphTest({ session }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
   return (
     <div>
@@ -15,7 +15,7 @@ export default function GraphTest({ session, data }) {
         <Avatar />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
       </header>
-      <RecapGraph session={session} />
+      <LineGraph session={session} />
       <footer className='footer'>
         <UsefulLinks />
       </footer>
