@@ -22,11 +22,23 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
 
+  function resteInputs() {
+    setbootcamperName('');
+    setTaskType('');
+    setSubject('');
+    setWeek('');
+    setPassedTests(0);
+    setTotalTests(0);
+    setDueDate('');
+    setDateSubmitted('');
+    setComments('');
+    console.log('i work');
+  }
+
   var dateTime = new Date().toLocaleString();
 
   // saving all bootcampers info in an array
   let bootcampersInfoArr = session.data;
-  console.log(bootcampersInfoArr);
 
   // need to find uid coresponding to bootcampers name
   // filter bootcampersInfoArr by current bootcamper name--> returning an array with an object --> acces the property uid
@@ -35,6 +47,8 @@ export default function Feedback({ session }) {
       return item.name === `${bootcamperName}`;
     })[0].uid;
   }
+
+  console.log(subject);
   // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
@@ -62,6 +76,7 @@ export default function Feedback({ session }) {
       .then((response) => response.json())
       .then((data) => console.log(data));
     console.log('handlesubmit working');
+    resteInputs();
   }
 
   if (!session) {
@@ -75,7 +90,15 @@ export default function Feedback({ session }) {
       </header>
       <div className={styles.feedbackForm}>
         <FeedbackForm
-          className={styles.ceva}
+          bootcameperName={bootcamperName}
+          taskType={taskType}
+          subject={subject}
+          week={week}
+          passedTests={passedTests}
+          totalTests={totalTests}
+          comments={comments}
+          dueDate={dueDate}
+          dateSubmitted={dateSubmitted}
           bootcampersInfoArr={bootcampersInfoArr}
           submitFeedback={submitFeedback}
           setbootcamperName={(e, data) => {

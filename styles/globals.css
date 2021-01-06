@@ -120,3 +120,28 @@ body ::-webkit-scrollbar-thumb {
   -webkit-transition: color 0.2s ease;
   transition: color 0.2s ease;
 }
+
+/* STYLE INPUT FIELDS */
+
+.ui.form input:not([type]),
+.ui.form input[type='date'],
+.ui.form input[type='datetime-local'],
+.ui.form input[type='email'],
+.ui.form input[type='file'],
+.ui.form input[type='number'],
+.ui.form input[type='password'],
+.ui.form input[type='search'],
+.ui.form input[type='tel'],
+.ui.form input[type='text'],
+.ui.form input[type='time'],
+.ui.form input[type='url'] {
+  border-color: #2d8b61 !important;
+  font-family: 'Roboto', sans-serif !important;
+  border-radius: 10px !important;
+}
+
+.ui.form textarea {
+  border-color: #2d8b61 !important;
+  font-family: 'Roboto', sans-serif !important;
+  border-radius: 10px !important;
+}

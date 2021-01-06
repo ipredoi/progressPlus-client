@@ -43,3 +43,11 @@
   display: flex;
   justify-content: flex-end;
 }
+.body {
+  background-image: url('/authBackground.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  background-color: #e0e0e0;
+  height: 100vh;
+  width: 100vw;
+}

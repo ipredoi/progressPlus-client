@@ -9,6 +9,15 @@ import {
 } from '../libs/globalVariables/coachFeedbackFormArr';
 
 const FeedbackForm = ({
+  bootcameperName,
+  taskType,
+  subject,
+  week,
+  passedTests,
+  totalTests,
+  comments,
+  dueDate,
+  dateSubmitted,
   bootcampersInfoArr,
   submitFeedback,
   setbootcamperName,
@@ -43,8 +52,8 @@ const FeedbackForm = ({
 
   return (
     <Form className='form'>
-      <Form.Group  widths='equal'>
-        <Form.Field 
+      <Form.Group widths='equal'>
+        <Form.Field
           control={Select}
           options={bootcampersArr}
           label={{
@@ -55,6 +64,7 @@ const FeedbackForm = ({
           search
           searchInput={{ id: 'form-select-control-name' }}
           onChange={setbootcamperName}
+          value={bootcameperName}
         />
         <Form.Field
           control={Select}
@@ -67,6 +77,7 @@ const FeedbackForm = ({
           search
           searchInput={{ id: 'form-select-control-week' }}
           onChange={setWeek}
+          value={week}
         />
         <Form.Field
           control={Select}
@@ -79,20 +90,29 @@ const FeedbackForm = ({
           search
           searchInput={{ id: 'form-select-control-task-type' }}
           onChange={setTaskType}
+          value={taskType}
         />
       </Form.Group>
       <Form>
         <Form.Field>
           <label>Subject</label>
-          <input placeholder='React/ JS' onChange={setSubject} />
+          <input
+            placeholder='React/ JS'
+            onChange={setSubject}
+            value={subject}
+          />
         </Form.Field>
       </Form>
       <Form>
         <Form.Field>
           <label>Due Date</label>
-          <input onChange={setDueDate} type='date' />
+          <input onChange={setDueDate} type='date' value={dueDate} />
           <label>Date Submitted</label>
-          <input onChange={setDateSubmitted} type='date' />
+          <input
+            onChange={setDateSubmitted}
+            type='date'
+            value={dateSubmitted}
+          />
         </Form.Field>
       </Form>
 
@@ -103,12 +123,14 @@ const FeedbackForm = ({
             onChange={setPassedTests}
             type='number'
             placeholder='Input the score'
+            value={passedTests}
           />
           <label>Total Tests</label>
           <input
             onChange={setTotalTests}
             type='number'
             placeholder='Input total score'
+            value={totalTests}
           />
         </Form.Field>
       </Form>
@@ -119,19 +141,22 @@ const FeedbackForm = ({
         control={TextArea}
         label='Feedback'
         placeholder='Feedback'
+        value={comments}
       />
 
       <Form.Field
+        className={styles.submitButton}
         id='form-button-control-public'
         control={Button}
         content='Submit'
         onClick={submitFeedback}
       />
       <Form.Field
+        className={styles.backButton}
         href='http://localhost:3000/coach'
         id='form-button-control-public'
         control={Button}
-        content='⏎'
+        content='Main Page'
       />
     </Form>
   );
