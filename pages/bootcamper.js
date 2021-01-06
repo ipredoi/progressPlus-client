@@ -18,7 +18,7 @@ export default function Bootcamper({ session }) {
   } else {
     return (
       <div className={styles.bootcamper}>
-        <AppHeader session={session} />
+        <AppHeader session={session} title={"WELCOME TO APP NAME"} />
         <section className={styles.body}>
           <div className={styles.quoteHeader}>
             <QuoteHeader />

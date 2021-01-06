@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import AppHeader from "../Components/AppHeader";
-import AppFooter from "../Components/AppFooter";
-import serverSideProps from "../libs/functions/serverSideProps";
-import LoadingImg from "../components/LoadingImg";
-import ScoreGraph from "../components/bootcamper/ScoreGraph";
-import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import React, { useState } from 'react';
+import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
+import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
+import ScoreGraph from '../components/bootcamper/ScoreGraph';
+import FeedbackTable from '../components/bootcamper/FeedbackTable';
 
 export default function RecapTasks({ session }) {
   const [week, setWeek] = useState(1);
@@ -16,7 +16,7 @@ export default function RecapTasks({ session }) {
   }
   return (
     <div>
-      <AppHeader session={session} />
+      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
       <ScoreGraph session={session} setWeek={setWeek} />
       <FeedbackTable session={session} week={week} />
       <AppFooter />
