@@ -10,4 +10,8 @@
   width: auto;
 }
 .link_text {
+  text-decoration: none;
+  text-align: center;
+  font-size: 3vh;
+  color: black;
 }
