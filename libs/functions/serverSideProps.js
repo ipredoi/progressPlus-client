@@ -13,7 +13,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     let data = '';
     if (customFetchRequest) {
       data = await customFetchRequest(backendUrl, uid);
-      console.log(data);
+      // console.log(data);
     }
 
     return {

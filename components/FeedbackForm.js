@@ -2,7 +2,7 @@
 import React from 'react';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-
+import styles from '../styles/componentStyle/feedbackForm.module.css';
 import {
   bootcampWeeks,
   tasksArray,
@@ -43,8 +43,8 @@ const FeedbackForm = ({
 
   return (
     <Form className='form'>
-      <Form.Group widths='equal'>
-        <Form.Field
+      <Form.Group  widths='equal'>
+        <Form.Field 
           control={Select}
           options={bootcampersArr}
           label={{
