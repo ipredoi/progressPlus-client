@@ -5,9 +5,15 @@ import LogOutButton from "../components/LogOutButton";
 import NavBar from "../components/NavBar";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
 import serverSideProps from "../libs/functions/serverSideProps";
+import LoadingImg from "../components/LoadingImg";
 
 export default function MasteryTasks({ session }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
+
+  if (!session) {
+    return <LoadingImg />;
+  }
+
   return (
     <div>
       <header className='header'>

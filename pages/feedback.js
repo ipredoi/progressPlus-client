@@ -5,8 +5,10 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../Components/LogOutButton';
 import { useState } from 'react';
-import { url } from '../libs/globalVariables/backendUrl';
+import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
+import styles from '../styles/pagesStyle/feedback.module.css';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -20,20 +22,10 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
 
-  /*   console.log(bootcamperName);
-  console.log(taskType);
-  console.log(subject);
-  console.log(week);
-  console.log(passedTests);
-  console.log(totalTests);
-  console.log(comments);
-  console.log(dueDate);
-  console.log(dateSubmitted); */
-
   var dateTime = new Date().toLocaleString();
 
   // saving all bootcampers info in an array
-  let bootcampersInfoArr = session.data.data;
+  let bootcampersInfoArr = session.data;
   console.log(bootcampersInfoArr);
 
   // need to find uid coresponding to bootcampers name
@@ -46,7 +38,7 @@ export default function Feedback({ session }) {
   // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
-    fetch(`${url}feedback`, {
+    fetch(`${backendUrl}feedback`, {
       method: 'POST',
       body: JSON.stringify({
         bootcamperuid: `${bootcamperUid}`,
@@ -73,35 +65,38 @@ export default function Feedback({ session }) {
   }
 
   if (!session) {
-    return <p>loading</p>;
+    return <LoadingImg />;
   }
   return (
     <div>
-      <header className="header">
-        <LogOutButton />
+      <header className={styles.header}>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={coachNavBarArr} />
       </header>
-      <FeedbackForm
-        bootcampersInfoArr={bootcampersInfoArr}
-        submitFeedback={submitFeedback}
-        setbootcamperName={(e, data) => {
-          setbootcamperName(data.value);
-        }}
-        setTaskType={(e, data) => {
-          setTaskType(data.value);
-        }}
-        setSubject={(e) => setSubject(e.target.value)}
-        setWeek={(e, data) => {
-          setWeek(data.value);
-        }}
-        setPassedTests={(e) => setPassedTests(e.target.value)}
-        setTotalTests={(e) => setTotalTests(e.target.value)}
-        setComments={(e) => setComments(e.target.value)}
-        setDueDate={(e) => setDueDate(e.target.value)}
-        setDateSubmitted={(e) => setDateSubmitted(e.target.value)}
-      />
-      <footer className="footer">
+      <div className={styles.feedbackForm}>
+        <FeedbackForm
+          className={styles.ceva}
+          bootcampersInfoArr={bootcampersInfoArr}
+          submitFeedback={submitFeedback}
+          setbootcamperName={(e, data) => {
+            setbootcamperName(data.value);
+          }}
+          setTaskType={(e, data) => {
+            setTaskType(data.value);
+          }}
+          setSubject={(e) => setSubject(e.target.value)}
+          setWeek={(e, data) => {
+            setWeek(data.value);
+          }}
+          setPassedTests={(e) => setPassedTests(e.target.value)}
+          setTotalTests={(e) => setTotalTests(e.target.value)}
+          setComments={(e) => setComments(e.target.value)}
+          setDueDate={(e) => setDueDate(e.target.value)}
+          setDateSubmitted={(e) => setDateSubmitted(e.target.value)}
+        />
+      </div>
+
+      <footer className={styles.footer}>
         <UsefulLinks />
       </footer>
     </div>
@@ -109,29 +104,9 @@ export default function Feedback({ session }) {
 }
 export async function getServerSideProps(context) {
   async function fetchBootcampersData(url) {
-    /* console.log(url); */
     const res = await fetch(`${url}`);
-    const bootcampersList = await res.json();
-    return bootcampersList;
+    const { data } = await res.json();
+    return data;
   }
   return serverSideProps(context, fetchBootcampersData);
 }
-
-//old code version
-/* try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    const { uid, picture } = token;
-
-    // getting all bootcampers from the backend
-    const res = await fetch(`${url}`);
-    const bootcampersList = await res.json();
-    return {
-      props: { session: { bootcampersList, uid, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  } */

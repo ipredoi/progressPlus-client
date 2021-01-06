@@ -6,10 +6,10 @@ import 'semantic-ui-css/semantic.min.css';
 import { linksArr } from '../libs/globalVariables/usefulLinks';
 
 const UsefulLinks = () => (
-  <Button.Group className='links' size='large'>
+  <Button.Group size='large'>
     {linksArr.map((linksObject) => {
       return (
-        <Button href={linksObject.link} target='_blank'>
+        <Button key={linksObject.title} href={linksObject.link} target='_blank'>
           {linksObject.title}
         </Button>
       );

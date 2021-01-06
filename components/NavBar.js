@@ -8,12 +8,8 @@ export default function NavBar({ linksAndTitles }) {
   const { open, setOpen } = useAuthContext();
   return (
     <div>
-      <Sidebar
-        as={Segment}
-        animation="scale down"
-        direction="top"
-        visible={open}>
-        <Grid textAlign="center">
+      <Sidebar as={Segment} animation='overlay' direction='top' visible={open}>
+        <Grid textAlign='center'>
           <Grid.Row columns={1}>
             <Grid.Column></Grid.Column>
           </Grid.Row>
