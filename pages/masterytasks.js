@@ -1,32 +1,15 @@
-import React, { useState } from 'react';
-import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/UsefulLinks';
-import NavBar from '../components/NavBar';
-import ScoreGraph from '../components/bootcamper/ScoreGraph';
-import FeedbackTable from '../components/bootcamper/FeedbackTable';
-import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
+import React, { useState } from "react";
+import Avatar from "../components/Avatar";
+import UsefulLinks from "../components/UsefulLinks";
+import NavBar from "../components/NavBar";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
+import serverSideProps from "../libs/functions/serverSideProps";
+import LoadingImg from "../components/LoadingImg";
 
 export default function MasteryTasks({ session }) {
-  // const [w1Feedback, setW1Feedback] = useState('');
-  // const [w2Feedback, setW1Feedback] = useState('');
-  // const [w3Feedback, setW1Feedback] = useState('');
-  // const [w4Feedback, setW1Feedback] = useState('');
-  // const [w5Feedback, setW1Feedback] = useState('');
-  // const [w6Feedback, setW1Feedback] = useState('');
-  // const [w7Feedback, setW1Feedback] = useState('');
-  // const [w8Feedback, setW1Feedback] = useState('');
-  // const [w9Feedback, setW1Feedback] = useState('');
-  // const [w10Feedback, setW1Feedback] = useState('');
-  // const [w11Feedback, setW1Feedback] = useState('');
-  // const [w12Feedback, setW1Feedback] = useState('');
-  // const [w13Feedback, setW1Feedback] = useState('');
-  // const [w14Feedback, setW1Feedback] = useState('');
-  // const [w15Feedback, setW1Feedback] = useState('');
-  // const [w16Feedback, setW1Feedback] = useState('');
-
-  const [week, setWeek] = useState('');
+  const [week, setWeek] = useState(1);
 
   console.log(`test: name:${session.name}, uid:${session.uid}`);
 

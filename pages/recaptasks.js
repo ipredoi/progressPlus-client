@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Avatar from "../components/Avatar";
 import UsefulLinks from "../components/UsefulLinks";
 import NavBar from "../components/NavBar";
@@ -8,6 +9,8 @@ import ScoreGraph from "../components/bootcamper/ScoreGraph";
 import FeedbackTable from "../components/bootcamper/FeedbackTable";
 
 export default function RecapTasks({ session }) {
+  const [week, setWeek] = useState(1);
+
   console.log(`test: name:${session.name}, uid:${session.uid}`);
 
   if (!session) {
@@ -18,8 +21,8 @@ export default function RecapTasks({ session }) {
       <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
-        <ScoreGraph session={session} />
-        <FeedbackTable session={session} />
+        <ScoreGraph session={session} setWeek={setWeek} />
+        <FeedbackTable session={session} week={week} />
       </header>
       <footer className='footer'>
         <UsefulLinks />
