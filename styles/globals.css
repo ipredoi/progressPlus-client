@@ -17,11 +17,18 @@ a {
   box-sizing: border-box;
 }
 
-header {
+/* header {
   padding: 60px;
   text-align: center;
   background: black;
 }
+
+.header {
+  background-color: white;
+  padding: 1;
+  border-bottom: black;
+  margin-bottom: -30px;
+} */
 
 * .form.ui.form {
   margin: 0;
@@ -41,13 +48,6 @@ header {
   position: absolute;
   left: 40%;
   top: 50%;
-}
-
-.header {
-  background-color: white;
-  padding: 1;
-  border-bottom: black;
-  margin-bottom: -30px;
 }
 
 .signout {

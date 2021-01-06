@@ -1,0 +1,43 @@
+.bootcamper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.quoteHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100vw;
+  padding: 2em;
+}
+
+.body {
+  height: 10vw;
+}
+
+.footer {
+  padding: 1em;
+  align-self: center;
+  margin-top: auto;
+}
+
+.welcome {
+  padding: 0em;
+  margin: 0em;
+}
+
+.icons {
+  height: 150px;
+  width: auto;
+}

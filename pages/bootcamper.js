@@ -5,24 +5,34 @@ import NavBar from '../components/NavBar';
 import QuoteHeader from '../Components/QuoteHeader';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
+import styles from '../styles/pagesStyle/bootcamper.module.css';
+import { Icon } from 'semantic-ui-react';
 import LoadingImg from '../components/LoadingImg';
 
 export default function Bootcamper({ session }) {
   if (!session) {
     return <LoadingImg />;
+  } else {
+    return (
+      <div className={styles.bootcamper}>
+        <header className={styles.header}>
+          <Avatar src={session.picture} name={session.name} />
+          <NavBar linksAndTitles={bootcamperNavBarArr} />
+          <div className={styles.quoteHeader}>
+            <QuoteHeader />
+          </div>
+          <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
+        </header>
+        <section className={styles.body}>
+          <Icon name='chart line' size='massive' />
+          <Icon name='chart bar' size='massive' />
+        </section>
+        <footer className={styles.footer}>
+          <UsefulLinks />
+        </footer>
+      </div>
+    );
   }
-  return (
-    <div>
-      <header className='header'>
-        <Avatar src={session.picture} name={session.name} />
-        <NavBar linksAndTitles={bootcamperNavBarArr} />
-      </header>
-      <QuoteHeader />
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
-    </div>
-  );
 }
 
 export async function getServerSideProps(context) {
