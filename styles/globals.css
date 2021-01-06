@@ -93,3 +93,7 @@ a {
   background: #31986a !important;
   color: white !important;
 }
+
+.ui.dividing.header {
+  font-size: 2vh;
+}

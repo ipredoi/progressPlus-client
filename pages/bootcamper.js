@@ -6,7 +6,7 @@ import QuoteHeader from '../Components/QuoteHeader';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
-import { Icon } from 'semantic-ui-react';
+
 import LoadingImg from '../components/LoadingImg';
 import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
 

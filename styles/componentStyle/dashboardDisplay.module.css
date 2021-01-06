@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2vh;
+  align-items: center;
+}
+.graph {
+  height: 20vh;
+  width: auto;
+}
+.link_text {
+}
