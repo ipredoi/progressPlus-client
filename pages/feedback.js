@@ -1,15 +1,12 @@
 import FeedbackForm from '../components/feedbackForm';
-import NavBar from '../components/NavBar';
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
-import Avatar from '../components/avatar';
-import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
 import { useState } from 'react';
 import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
 import AppFooter from '../Components/AppFooter';
+import styles from '../styles/pagesStyle/feedback.module.css';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -117,9 +114,7 @@ export default function Feedback({ session }) {
         />
       </div>
 
-      <footer className={styles.footer}>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }
