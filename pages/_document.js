@@ -7,6 +7,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script
+            src='https://kit.fontawesome.com/42a3c62954.js'
+            crossorigin='anonymous'></script>
+
           <link rel='icon' type='image/x-icon' href='/public/favicon.ico' />
         </Head>
         <body>

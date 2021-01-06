@@ -1,11 +1,12 @@
 import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/usefulLinks';
 import StudentCard from '../components/bootcamper/studentCard';
 import LogOutButton from '../components/LogOutButton';
 import NavBar from '../components/NavBar';
 import QuoteHeader from '../Components/QuoteHeader';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
+import Footer from '../components/Footer';
+import styles from '../styles/componentStyle/footer.module.css';
 
 export default function Bootcamper({ session }) {
   async function getQuestion() {
@@ -37,9 +38,7 @@ export default function Bootcamper({ session }) {
         <StudentCard img={session.picture} />
         {/* //<img img={session.picture} alt='profile photo' /> */}
         {/* <MenuListComposition /> */}
-        <footer className='footer'>
-          <UsefulLinks />
-        </footer>
+        <Footer />
       </div>
     );
   }

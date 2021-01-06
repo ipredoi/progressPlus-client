@@ -9,6 +9,7 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@coreui/icons": "^2.0.0-rc.0",
     "@material-ui/core": "^4.11.2",
     "@zeit/next-css": "^1.0.1",
     "chart.js": "^2.9.4",

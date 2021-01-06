@@ -5,7 +5,7 @@ import { AuthContextProvider } from '../firebaseAuthUtils/useAuthContext';
 export default function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </AuthContextProvider>
   );
 }
