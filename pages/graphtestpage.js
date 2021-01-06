@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 
 export default function GraphTest({ session, data }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
@@ -13,9 +14,7 @@ export default function GraphTest({ session, data }) {
     <div>
       <AppHeader session={session} />
       <RecapGraph session={session} />
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }

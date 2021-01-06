@@ -28,19 +28,6 @@
   flex-direction: column;
 }
 
-.footer {
-  display: flex;
-  padding: 1.5vh;
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  margin-top: auto;
-  background-color: #31986a;
-  border-top: black solid 0.2vh;
-  height: 20vh;
-  width: 100%;
-}
-
 .welcome {
   font-size: 3vh;
   padding: 1em;

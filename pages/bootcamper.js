@@ -10,6 +10,7 @@ import styles from '../styles/pagesStyle/bootcamper.module.css';
 import LoadingImg from '../components/LoadingImg';
 import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 
 export default function Bootcamper({ session }) {
   if (!session) {
@@ -25,9 +26,7 @@ export default function Bootcamper({ session }) {
           <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
           <DashboardDisplay />
         </section>
-        <footer className={styles.footer}>
-          <UsefulLinks />
-        </footer>
+        <AppFooter />
       </div>
     );
   }

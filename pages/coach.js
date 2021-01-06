@@ -9,6 +9,7 @@ import QuoteHeader from '../Components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 
 export default function Coach({ session }) {
   if (!session) {
@@ -19,9 +20,7 @@ export default function Coach({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <QuoteHeader />
       <CoachButton />
-      <footer className={styles.coachButton}>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }

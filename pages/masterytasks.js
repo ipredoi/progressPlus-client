@@ -5,6 +5,7 @@ import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 export default function MasteryTasks({ session }) {
   if (!session) {
     return <LoadingImg />;
@@ -12,9 +13,7 @@ export default function MasteryTasks({ session }) {
   return (
     <div>
       <AppHeader session={session} />
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }

@@ -8,6 +8,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel='icon' type='image/x-icon' href='/public/favicon.ico' />
+          <script
+            src='https://kit.fontawesome.com/42a3c62954.js'
+            crossOrigin='anonymous'
+          />
         </Head>
         <body>
           <title>School of Code</title>

@@ -1,0 +1,16 @@
+.container {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #31986a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+.icons {
+  width: 100px;
+  height: 100px;
+  color: white;
+}

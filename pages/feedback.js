@@ -9,6 +9,7 @@ import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -99,9 +100,7 @@ export default function Feedback({ session }) {
         setDueDate={(e) => setDueDate(e.target.value)}
         setDateSubmitted={(e) => setDateSubmitted(e.target.value)}
       />
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }

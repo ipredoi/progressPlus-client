@@ -6,6 +6,7 @@ import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
+import AppFooter from '../Components/AppFooter';
 // Page for coaches to check bootcampers feedback/ progress and compare
 
 export default function Feedback({ session }) {
@@ -49,9 +50,7 @@ export default function Feedback({ session }) {
           })}
         </table>
       </div>
-      <footer className='footer'>
-        <UsefulLinks />
-      </footer>
+      <AppFooter />
     </div>
   );
 }
