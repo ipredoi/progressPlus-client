@@ -1,16 +1,43 @@
-import NavBar from '../components/NavBar';
-import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/UsefulLinks';
 import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
-import ProgressButton from '../components/coach/ProgressButton';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
 import AppFooter from '../Components/AppFooter';
-// Page for coaches to check bootcampers feedback/ progress and compare
+import { Form, Select } from 'semantic-ui-react';
+import { useState, useEffect } from 'react';
+import ProgressGraph from '../components/coach/ProgressGraph';
+import styles from '../styles/pagesStyle/progress.module.css';
 
-export default function Feedback({ session }) {
-  const feedbackArray = session.data.data;
+// Page for coaches to check bootcampers feedback/ progress and compare
+export default function Progress({ session }) {
+  const [bootcamperName, setBootcamperName] = useState('Name here');
+  const [bootcampersArr, setBootcampersArr] = useState([]);
+  const [bootcamperInfo, setBootcamperInfo] = useState([]);
+  console.log(session);
+  //creates an array of bootcampers' names
+
+  const bootcamperNameReducer = (acc, cur) => {
+    return [
+      ...acc,
+      {
+        key: cur.charAt(0).toLowerCase(),
+        text: cur,
+        value: cur,
+      },
+    ];
+  };
+
+  useEffect(() => {
+    setBootcamperInfo(session.data.data);
+  }, [session]);
+
+  useEffect(() => {
+    let bootcampersNames = bootcamperInfo.map((bootcamper) => {
+      return bootcamper.name;
+    });
+    let provisionalArray = bootcampersNames.reduce(bootcamperNameReducer, []);
+    setBootcampersArr(provisionalArray);
+  }, [bootcamperInfo]);
 
   if (!session) {
     return <LoadingImg />;
@@ -18,38 +45,22 @@ export default function Feedback({ session }) {
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />
-      <ProgressButton bootcampersArray={feedbackArray} />
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Bootcamper</th>
-              <th>Subject</th>
-              <th>Week</th>
-              <th>Task type</th>
-              <th>Score</th>
-              <th>Comments</th>
-              <th>Date submitted</th>
-              <th>Due date</th>
-            </tr>
-          </thead>
-
-          {feedbackArray.map((feedbackData) => {
-            return (
-              <tr>
-                <td>{feedbackData.bootcamperuuid}</td>
-                <td>{feedbackData.subject}</td>
-                <td>{feedbackData.week}</td>
-                <td>{feedbackData.tasktype}</td>
-                <td>{feedbackData.quantitative}</td>
-                <td>{feedbackData.qualitative}</td>
-                <td>{feedbackData.datesubmitted}</td>
-                <td>{feedbackData.duedate}</td>
-              </tr>
-            );
-          })}
-        </table>
+      <h2 className={styles.title}>Progress tracker</h2>
+      <div className={styles.dropDown}>
+        <Form className='form'>
+          <Form.Group widths='equal'>
+            <Form.Field
+              control={Select}
+              options={bootcampersArr}
+              placeholder='Name'
+              search
+              searchInput={{ id: 'form-select-control-name' }}
+              onChange={setBootcamperName}
+            />
+          </Form.Group>
+        </Form>
       </div>
+      <ProgressGraph />
       <AppFooter />
     </div>
   );

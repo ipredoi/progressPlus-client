@@ -85,7 +85,7 @@ export default function Feedback({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <div className={styles.feedbackForm}>
         <FeedbackForm
-          bootcameperName={bootcamperName}
+          bootcamperName={bootcamperName}
           taskType={taskType}
           subject={subject}
           week={week}

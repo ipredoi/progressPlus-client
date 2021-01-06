@@ -1,27 +1,14 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
+import { useState, useEffect } from 'react';
+import styles from '../../styles/componentStyle/progressGraph.module.css';
 
-export default function ScoreGraph({ session, setWeek }) {
+export default function ProgressGraph({ session, setWeek }) {
+  const [feedbackArr, setFeedbackArr] = useState([]);
+
   console.log('data fetch');
   // fetch data from backend
-
-  let feedbackArr = session.data;
-  let taskType =
-    feedbackArr[0].type.charAt(0).toUpperCase() + feedbackArr[0].type.slice(1);
-  // uppercase first letter
-  // let weekArr = feedbackArr.map((e) => {
-  //   return e.week;
-  // });
-  let passedTestArr = feedbackArr.map((e) => {
-    return e.passedtests;
-  });
-  let totalTestArr = feedbackArr.map((e) => {
-    return e.totaltests;
-  });
-  // let percentageArr = passedTestArr.map((num, i) => {
-  //   return (num / totalTestArr[i]) * 100;
-  // });
 
   let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
   let barBorColorArr = [];
@@ -52,14 +39,14 @@ export default function ScoreGraph({ session, setWeek }) {
   }
 
   return (
-    <div>
+    <div className={styles.graphs}>
       <Bar
         data={{
           // labels: weekArr,
           labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
           datasets: [
             {
-              label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
+              label: 'Recap tasks', // name from login session
               data: percentageArr,
               backgroundColor: barBgColorArr,
               borderColor: barBorColorArr,
@@ -67,8 +54,48 @@ export default function ScoreGraph({ session, setWeek }) {
             },
           ],
         }}
-        width={600}
-        height={400}
+        width={300}
+        height={200}
+        options={{
+          responsive: true,
+          onClick: handleClick,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [
+              {
+                ticks: {
+                  maxTicksLimit: 16,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  max: 100,
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        }}
+      />
+      <Bar
+        data={{
+          responsive: true,
+          // labels: weekArr,
+          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+          datasets: [
+            {
+              label: 'Mastery tasks', // name from login session
+              data: percentageArr,
+              backgroundColor: barBgColorArr,
+              borderColor: barBorColorArr,
+              borderWidth: 2,
+            },
+          ],
+        }}
+        width={300}
+        height={200}
         options={{
           onClick: handleClick,
           maintainAspectRatio: false,

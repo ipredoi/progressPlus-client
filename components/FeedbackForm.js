@@ -9,7 +9,7 @@ import {
 } from '../libs/globalVariables/coachFeedbackFormArr';
 
 const FeedbackForm = ({
-  bootcameperName,
+  bootcamperName,
   taskType,
   subject,
   week,
@@ -64,7 +64,7 @@ const FeedbackForm = ({
           search
           searchInput={{ id: 'form-select-control-name' }}
           onChange={setbootcamperName}
-          value={bootcameperName}
+          value={bootcamperName}
         />
         <Form.Field
           control={Select}
