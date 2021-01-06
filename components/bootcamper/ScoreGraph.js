@@ -2,7 +2,7 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
 
-export default function ScoreGraph({ session, week, setWeek }) {
+export default function ScoreGraph({ session, setWeek }) {
   console.log('data fetch');
   // fetch data from backend
 
@@ -41,8 +41,14 @@ export default function ScoreGraph({ session, week, setWeek }) {
   });
 
   // onclick event of bar chart
-  function handleClick() {
-    alert(`hello`);
+  function handleClick(event, elements) {
+    const chart = elements[0]._chart;
+    const element = chart.getElementAtEvent(event)[0];
+    const dataset = chart.data.datasets[element._datasetIndex];
+    const weekNum = chart.data.labels[element._index];
+    const scorePercentage = dataset.data[element._index];
+    setWeek(weekNum);
+    // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   }
 
   return (
@@ -63,12 +69,8 @@ export default function ScoreGraph({ session, week, setWeek }) {
         }}
         width={600}
         height={400}
-        // onElementsClick={(elem) => {
-        //   console.log(elem);
-        //   var arr = data.datasets[elem[0]._datasetIndex].data;
-        //   console.log(arr[elem[0]._index]);
-        // }}
         options={{
+          onClick: handleClick,
           maintainAspectRatio: false,
           scales: {
             xAxes: [

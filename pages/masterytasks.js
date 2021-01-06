@@ -39,9 +39,10 @@ export default function MasteryTasks({ session }) {
       <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
-        <ScoreGraph session={session} week={week} setWeek={setWeek} />
-        <FeedbackTable session={session} week={week} setWeek={setWeek} />
       </header>
+      <ScoreGraph session={session} setWeek={setWeek} />
+      <FeedbackTable session={session} week={week} />
+
       <footer className='footer'>
         <UsefulLinks />
       </footer>
