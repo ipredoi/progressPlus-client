@@ -1,12 +1,15 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
-export default function RecapGraph({ session }) {
+export default function LineGraph({ session }) {
   console.log("data fetch");
   // fetch data from backend
 
   let feedbackArr = session.data;
+  let taskType =
+    feedbackArr[0].type.charAt(0).toUpperCase() + feedbackArr[0].type.slice(1);
+  // uppercase first letter
   let weekArr = feedbackArr.map((e) => {
     return e.week;
   });
@@ -21,6 +24,7 @@ export default function RecapGraph({ session }) {
   });
 
   // console.log(feedbackArr); // all feedback data from session uid
+  // console.log(taskType);
   // console.log(`weekArr: ${weekArr}`); // week array
   // console.log(`passedTestArr: ${passedTestArr}`); // passed score array
   // console.log(`totalTestArr: ${totalTestArr}`); // total score array
@@ -28,21 +32,15 @@ export default function RecapGraph({ session }) {
 
   return (
     <div>
-      <Bar
+      <Line
         data={{
           labels: weekArr,
           datasets: [
             {
-              label: `${session.name}'s Martery task score [%]`, // name from login session
-              data: percentageArr,
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-              ],
+              label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
+              data: [20, 30, 50, 100, 70, 80, 60, 0, 70, 90],
+              // data: percentageArr,
+              backgroundColor: ["rgba(255, 159, 64, 0.2)"],
               borderColor: [
                 "rgba(255, 99, 132, 1)",
                 "rgba(54, 162, 235, 1)",

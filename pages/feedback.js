@@ -1,26 +1,26 @@
-import FeedbackForm from '../components/feedbackForm';
-import NavBar from '../components/NavBar';
-import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
-import Avatar from '../components/avatar';
-import UsefulLinks from '../components/usefulLinks';
-import LogOutButton from '../Components/LogOutButton';
-import { useState } from 'react';
-import { backendUrl } from '../libs/globalVariables/urls';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
-import styles from '../styles/pagesStyle/feedback.module.css';
+import FeedbackForm from "../components/feedbackForm";
+import NavBar from "../components/NavBar";
+import { coachNavBarArr } from "../libs/globalvariables/navBarArrays";
+import Avatar from "../components/avatar";
+import UsefulLinks from "../components/usefulLinks";
+import LogOutButton from "../Components/LogOutButton";
+import { useState } from "react";
+import { backendUrl } from "../libs/globalVariables/urls";
+import serverSideProps from "../libs/functions/serverSideProps";
+import LoadingImg from "../components/LoadingImg";
+import styles from "../styles/pagesStyle/feedback.module.css";
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
-  const [bootcamperName, setbootcamperName] = useState('');
-  const [taskType, setTaskType] = useState('');
-  const [subject, setSubject] = useState('');
+  const [bootcamperName, setbootcamperName] = useState("");
+  const [taskType, setTaskType] = useState("");
+  const [subject, setSubject] = useState("");
   const [week, setWeek] = useState();
   const [passedTests, setPassedTests] = useState();
   const [totalTests, setTotalTests] = useState();
-  const [comments, setComments] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [dateSubmitted, setDateSubmitted] = useState('');
+  const [comments, setComments] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [dateSubmitted, setDateSubmitted] = useState("");
 
   var dateTime = new Date().toLocaleString();
 
@@ -39,7 +39,7 @@ export default function Feedback({ session }) {
   function submitFeedback(e) {
     e.preventDefault();
     fetch(`${backendUrl}feedback`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         bootcamperuid: `${bootcamperUid}`,
         coachname: `${session.name}`,
@@ -54,14 +54,14 @@ export default function Feedback({ session }) {
         datesubmitted: `${dateSubmitted}`,
       }),
       headers: {
-        'content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
-      mode: 'cors',
+      mode: "cors",
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
-    console.log('handlesubmit working');
+    console.log("handlesubmit working");
   }
 
   if (!session) {
