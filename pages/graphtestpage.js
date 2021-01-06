@@ -1,4 +1,4 @@
-import RecapGraph from "../components/bootcamper/RecapGraph";
+import LineGraph from "../components/bootcamper/LineGraph";
 import Avatar from "../components/Avatar";
 import UsefulLinks from "../components/UsefulLinks";
 import LogOutButton from "../components/LogOutButton";
@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
 import serverSideProps from "../libs/functions/serverSideProps";
 
-export default function GraphTest({ session, data }) {
+export default function GraphTest({ session }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
   return (
     <div>
@@ -15,7 +15,7 @@ export default function GraphTest({ session, data }) {
         <Avatar />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
       </header>
-      <RecapGraph session={session} />
+      <LineGraph session={session} />
       <footer className='footer'>
         <UsefulLinks />
       </footer>
@@ -24,26 +24,11 @@ export default function GraphTest({ session, data }) {
 }
 
 export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    console.log(token);
-    const { uid, picture } = token;
-
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`);
-    // need to post <real-data> to feedback table in db
-    const data = await res.json();
+  async function fetchFeedbackData(url, uid) {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
+    const { data } = await res.json();
     console.log(data);
-
-    return {
-      props: { session: { uid, data } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: "/login" });
-    context.res.end();
-    console.log(err.message);
-    return { props: {} };
+    return data;
   }
-
-  return serverSideProps(context, graphFetchRequest);
+  return serverSideProps(context, fetchFeedbackData);
 }

@@ -15,7 +15,6 @@ a {
 
 * {
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* header {
@@ -80,6 +79,20 @@ a {
   border-radius: 10px !important;
 }
 
+/* DROPDOWN MENU STYLES --> override the SEMANTIC-UI-CSS */
+
+.ui.selection.dropdown {
+  border-color: #2d8b61 !important;
+  font-family: 'Roboto', sans-serif !important;
+  border-radius: 10px !important;
+  color: #000000 !important;
+}
+
+.dropdownMenu::selection {
+  background-color: #2d8b61 !important;
+  color: white !important;
+}
+
 .ui.selection.active.dropdown .menu {
   border-color: #31986a !important;
 }
@@ -97,4 +110,18 @@ a {
 .ui.dividing.header {
   font-size: 2vh;
   text-align: right;
+}
+
+body ::-webkit-scrollbar-track {
+  background: #69ca9e9a !important;
+  border-radius: 0 0 10px 0 !important;
+}
+
+body ::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  border-color: #2d8b61 !important;
+  background: #2d8b61 !important;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
