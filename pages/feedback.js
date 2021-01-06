@@ -5,7 +5,7 @@ import Avatar from '../components/avatar';
 import UsefulLinks from '../components/usefulLinks';
 import LogOutButton from '../Components/LogOutButton';
 import { useState } from 'react';
-import { url } from '../libs/globalVariables/backendUrl';
+import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';
 
 //page for coaches to submit feedback
@@ -46,7 +46,7 @@ export default function Feedback({ session }) {
   // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
-    fetch(`${url}feedback`, {
+    fetch(`${backendUrl}feedback`, {
       method: 'POST',
       body: JSON.stringify({
         bootcamperuid: `${bootcamperUid}`,
@@ -77,7 +77,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <header className="header">
+      <header className='header'>
         <LogOutButton />
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={coachNavBarArr} />
@@ -101,7 +101,7 @@ export default function Feedback({ session }) {
         setDueDate={(e) => setDueDate(e.target.value)}
         setDateSubmitted={(e) => setDateSubmitted(e.target.value)}
       />
-      <footer className="footer">
+      <footer className='footer'>
         <UsefulLinks />
       </footer>
     </div>
@@ -109,29 +109,9 @@ export default function Feedback({ session }) {
 }
 export async function getServerSideProps(context) {
   async function fetchBootcampersData(url) {
-    /* console.log(url); */
     const res = await fetch(`${url}`);
     const bootcampersList = await res.json();
     return bootcampersList;
   }
   return serverSideProps(context, fetchBootcampersData);
 }
-
-//old code version
-/* try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    const { uid, picture } = token;
-
-    // getting all bootcampers from the backend
-    const res = await fetch(`${url}`);
-    const bootcampersList = await res.json();
-    return {
-      props: { session: { bootcampersList, uid, picture } },
-    };
-  } catch (err) {
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
-    return { props: {} };
-  } */

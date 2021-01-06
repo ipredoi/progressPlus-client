@@ -4,10 +4,10 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import { url } from '../../libs/globalVariables/frontendUrl';
+import { frontendUrl } from '../../libs/globalVariables/urls';
 
 const CoachButton = ({ className }) => {
-  console.log(url);
+  console.log(frontendUrl);
   return (
     <Button.Group className={className} size='large'>
       <Button href={`feedback`}>Submit Feedback</Button>
