@@ -10,9 +10,9 @@ export default function ScoreGraph({ session }) {
   let taskType =
     feedbackArr[0].type.charAt(0).toUpperCase() + feedbackArr[0].type.slice(1);
   // uppercase first letter
-  let weekArr = feedbackArr.map((e) => {
-    return e.week;
-  });
+  // let weekArr = feedbackArr.map((e) => {
+  //   return e.week;
+  // });
   let passedTestArr = feedbackArr.map((e) => {
     return e.passedtests;
   });
@@ -42,7 +42,7 @@ export default function ScoreGraph({ session }) {
 
   // onclick event of bar chart
   function handleClick() {
-    alert(`hello, week${weekArr}`);
+    alert(`hello`);
   }
 
   return (

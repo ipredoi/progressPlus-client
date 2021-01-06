@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
 import serverSideProps from "../libs/functions/serverSideProps";
 import LoadingImg from "../components/LoadingImg";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
 
 export default function RecapTasks({ session }) {
   console.log(`test: name:${session.name}, uid:${session.uid}`);
