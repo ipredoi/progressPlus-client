@@ -1,5 +1,5 @@
 import React from 'react';
-import QuoteHeader from '../Components/QuoteHeader';
+import QuoteHeader from '../components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
 import LoadingImg from '../components/LoadingImg';
