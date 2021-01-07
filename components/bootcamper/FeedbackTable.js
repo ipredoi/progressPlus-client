@@ -1,23 +1,20 @@
-import React from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import React from 'react';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react';
 
 const tableColumns = [
-  "Week",
-  "Score",
-  "Comments by *insert coach name here*",
-  "Due Date",
-  "Date Submitted",
+  'Week',
+  'Score',
+  'Comments by *insert coach name here*',
+  'Due Date',
+  'Date Submitted',
 ];
 
 export default function FeedbackTable({ session, week }) {
-  console.log("data fetch for table");
+  console.log('data fetch for table');
   // fetch data from backend
   let feedbackArr = session.data;
   console.log(feedbackArr);
   let activeArr = feedbackArr[week - 1];
-  // const activeWeek = feedbackArr.filter((obj) => {
-  //   obj.week === week;
-  // });
 
   return (
     <Table celled>

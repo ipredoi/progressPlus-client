@@ -1,9 +1,9 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Bar } from 'react-chartjs-2';
 
 export default function ScoreGraph({ session, setWeek }) {
-  console.log("data fetch");
+  console.log('data fetch');
   // fetch data from backend
 
   let feedbackArr = session.data;
@@ -29,14 +29,14 @@ export default function ScoreGraph({ session, setWeek }) {
 
   percentageArr.map((e, i) => {
     if (e >= 80) {
-      barBgColorArr[i] = "rgba(255, 206, 86, 0.2)";
-      barBorColorArr[i] = "rgba(255, 159, 64, 1)";
+      barBgColorArr[i] = 'rgba(255, 206, 86, 0.2)';
+      barBorColorArr[i] = 'rgba(255, 159, 64, 1)';
     } else if (e < 40) {
-      barBgColorArr[i] = "rgba(255, 99, 132, 0.2)";
-      barBorColorArr[i] = "rgba(255, 99, 132, 1)";
+      barBgColorArr[i] = 'rgba(255, 99, 132, 0.2)';
+      barBorColorArr[i] = 'rgba(255, 99, 132, 1)';
     } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = "rgba(54, 162, 235, 0.2)";
-      barBorColorArr[i] = "rgba(54, 162, 235, 1)";
+      barBgColorArr[i] = 'rgba(54, 162, 235, 0.2)';
+      barBorColorArr[i] = 'rgba(54, 162, 235, 1)';
     }
   });
 
@@ -47,7 +47,11 @@ export default function ScoreGraph({ session, setWeek }) {
     const dataset = chart.data.datasets[element._datasetIndex];
     const weekNum = chart.data.labels[element._index];
     const scorePercentage = dataset.data[element._index];
-    setWeek(weekNum);
+    const activeWeek = feedbackArr.filter((obj) => {
+      return obj.week === weekNum;
+    });
+    setWeek(activeWeek);
+    console.log(activeWeek);
     // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   }
 
