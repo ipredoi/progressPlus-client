@@ -51,6 +51,21 @@ export default function Feedback({ session }) {
   // console.log(subject);
   // // console.log(bootcamperUid);
   function submitFeedback(e) {
+    console.log({
+      method: 'POST',
+      body: JSON.stringify({
+        bootcamperuid: `${bootcamperUid}`,
+        coachname: `${session.name}`,
+        feedbackdate: `${dateTime}`,
+        subject: `${subject}`,
+        week: week,
+        type: `${taskType}`,
+        passedtests: passedTests,
+        totaltests: totalTests,
+        qualitative: `${comments}`,
+        duedate: `${dueDate}`,
+        datesubmitted: `${dateSubmitted}`,
+      })
     e.preventDefault();
     fetch(`${backendUrl}feedback`, {
       method: 'POST',
