@@ -13,7 +13,7 @@ export default function Bootcamper({ session }) {
   } else {
     return (
       <div className={styles.bootcamper}>
-        <AppHeader session={session} title={'WELCOME TO APP NAME'} />
+        <AppHeader session={session} title={'SoC Progress Tracker'} />
         <section className={styles.body}>
           <div className={styles.quoteHeader}>
             <QuoteHeader />

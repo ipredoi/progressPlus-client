@@ -1,22 +1,37 @@
 .header {
-  top: 0;
+  background-image: url('/SocStarryBackground.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: #4a90e2;
 }
 .avatar {
   width: 100%;
   border-bottom: black solid 0.2vh;
-  background-color: #4a90e2;
   display: flex;
   justify-content: space-between;
 }
 
-.socLogo {
-  width: auto;
-  height: 13vh;
-  margin: 25px 20px 20px 20px;
+.astronaut {
+  width: 7vw;
+  height: auto;
+  margin-top: 20px;
+  animation-name: astronaut;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes astronaut {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
 }
 
 .title {
@@ -24,4 +39,7 @@
   display: flex;
   align-items: center;
   color: white;
+  text-decoration: underline;
+  text-decoration-color: #4a90e2;
+  text-decoration-thickness: 2px;
 }

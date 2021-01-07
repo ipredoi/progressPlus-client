@@ -9,5 +9,5 @@ export default function QuoteHeader() {
     setQuote(quotesArray[quoteIndex]);
   }, [quote]);
 
-  return <Header>{quote}</Header>;
+  return <Header className='quoteHeader'>{quote}</Header>;
 }

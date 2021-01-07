@@ -1,9 +1,8 @@
-import { Header } from 'semantic-ui-react';
 import styles from '../styles/componentStyle/appHeader.module.css';
 import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import Avatar from './Avatar';
 import NavBar from './NavBar';
-import Image from 'next/image';
+
 export default function AppHeader({
   session,
   navBarArr = bootcamperNavBarArr,
@@ -13,9 +12,9 @@ export default function AppHeader({
     <section className={styles.header}>
       <div className={styles.avatar}>
         <img
-          className={styles.socLogo}
-          src='/Logo.png'
-          alt='School of Code Logo'
+          className={styles.astronaut}
+          src='/astronaut1.png'
+          alt='School of Code Astronaut'
         />
 
         <div className={styles.title}>

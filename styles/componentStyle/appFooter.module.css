@@ -1,7 +1,6 @@
 .container {
   display: flex;
-  margin-top: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #31986a;
   position: fixed;
   bottom: 0;
@@ -13,8 +12,7 @@
   justify-content: space-evenly;
 }
 .icons {
-  width: 100px;
-  height: 100px;
-
+  width: 40px;
+  height: 40px;
   color: white;
 }

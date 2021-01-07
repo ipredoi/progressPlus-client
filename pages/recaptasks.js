@@ -14,8 +14,8 @@ export default function RecapTasks({ session }) {
   }
   return (
     <div>
-      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
-      <ScoreGraph session={session} setWeek={setWeek} taskType="Recap" />
+      <AppHeader session={session} title={'SoC Progress Tracker'} />
+      <ScoreGraph session={session} setWeek={setWeek} taskType='Recap' />
       <FeedbackTable session={session} week={week} />
       <AppFooter />
     </div>

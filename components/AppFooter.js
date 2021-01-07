@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../styles/componentStyle/appFooter.module.css";
+import React from 'react';
+import styles from '../styles/componentStyle/appFooter.module.css';
 
 function AppFooter() {
   return (
@@ -24,6 +24,13 @@ function AppFooter() {
             className={styles.icons}
             src='/icons/stackoverflow.png'
             alt='stackoverflow image'
+          />
+        </a>
+        <a href='https://www.codewars.com/' target='_blank'>
+          <img
+            className={styles.icons}
+            src='/icons/codewars.png'
+            alt='codewars image'
           />
         </a>
       </footer>
