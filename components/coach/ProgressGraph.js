@@ -1,28 +1,18 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
-import { useState, useEffect } from 'react';
 import styles from '../../styles/componentStyle/progressGraph.module.css';
 
-export default function ProgressGraph({
-  feedbackData,
-  setWeek,
-  bootcamperName,
-}) {
-  const [feedbackArr, setFeedbackArr] = useState([]);
-  const [masteryPercentages, setMasteryPercentages] = useState([]);
-  const [recapPercentages, setRecapPercentages] = useState([]);
-
+export default function ProgressGraph({ feedbackData, bootcamperName }) {
   console.log('data fetch');
   // fetch data from backend
   console.log(feedbackData);
-
+  console.log(bootcamperName);
   var masteryFeedback = feedbackData.filter((feedbackObject) => {
     return feedbackObject.type === 'mastery';
   });
   console.log(masteryFeedback);
 
-  console.log(masteryPercentages);
   var recapFeedback = feedbackData.filter((feedbackObject) => {
     return feedbackObject.type === 'recap';
   });
@@ -35,15 +25,12 @@ export default function ProgressGraph({
   console.log(masteryPercentagesArr);
   console.log(recapPercentagesArr);
 
-  function filterGraphData() {
-    setMasteryPercentages(masteryPercentagesArr);
-    setRecapPercentages(recapPercentagesArr);
-  }
+  // function filterGraphData() {
+  //   setMasteryPercentages(masteryPercentagesArr);
+  //   setRecapPercentages(recapPercentagesArr);
+  // }
 
-  useEffect(() => filterGraphData(), [bootcamperName]);
-
-  console.log(masteryPercentages);
-  console.log(recapPercentages);
+  // useEffect(() => filterGraphData(), [bootcamperName]);
 
   let barBorColorArr = [];
   let barBgColorArr = [];
@@ -61,7 +48,7 @@ export default function ProgressGraph({
     }
   });
 
-/*   masteryPercentagesArr.map((e, i) => {
+  /*   masteryPercentagesArr.map((e, i) => {
     if (e >= 80) {
       barBgColorArr[i] = 'rgba(0, 177, 106, 0.8)';
       barBorColorArr[i] = 'rgba(0, 177, 106, 1)';
@@ -75,15 +62,15 @@ export default function ProgressGraph({
   });
  */
   // onclick event of bar chart
-  function handleClick(event, elements) {
-    const chart = elements[0]._chart;
-    const element = chart.getElementAtEvent(event)[0];
-    const dataset = chart.data.datasets[element._datasetIndex];
-    const weekNum = chart.data.labels[element._index];
-    const scorePercentage = dataset.data[element._index];
-    setWeek(weekNum);
-    // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
-  }
+  // function handleClick(event, elements) {
+  //   const chart = elements[0]._chart;
+  //   const element = chart.getElementAtEvent(event)[0];
+  //   const dataset = chart.data.datasets[element._datasetIndex];
+  //   const weekNum = chart.data.labels[element._index];
+  //   const scorePercentage = dataset.data[element._index];
+  //   setWeek(weekNum);
+  //   // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
+  // }
 
   return (
     <div className={styles.graphs}>
@@ -105,7 +92,7 @@ export default function ProgressGraph({
         height={200}
         options={{
           responsive: true,
-          onClick: handleClick,
+          // onClick: handleClick,
           maintainAspectRatio: false,
           scales: {
             xAxes: [
@@ -144,7 +131,7 @@ export default function ProgressGraph({
         width={300}
         height={200}
         options={{
-          onClick: handleClick,
+          // onClick: handleClick,
           maintainAspectRatio: false,
           scales: {
             xAxes: [
