@@ -73,7 +73,7 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
       console.log(activeWeek);
     }
   }
-  const weekArr = feedbackArr.map((object) => object.week);
+  const weekArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   return (
     <div>
       {feedbackArr[0] === undefined ? (
@@ -81,7 +81,7 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
       ) : (
         <Bar
           data={{
-            labels: { weekArr },
+            labels: weekArr,
             datasets: [
               {
                 label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
