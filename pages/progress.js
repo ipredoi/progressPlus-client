@@ -79,7 +79,10 @@ export default function Progress({ session }) {
           </Form.Group>
         </Form>
       </div>
-      <ProgressGraph />
+      <ProgressGraph
+        feedbackData={feedbackData}
+        bootcamperName={bootcamperName}
+      />
       <AppFooter />
     </div>
   );

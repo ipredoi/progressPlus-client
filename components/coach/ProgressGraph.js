@@ -4,29 +4,76 @@ import { Bar } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import styles from '../../styles/componentStyle/progressGraph.module.css';
 
-export default function ProgressGraph({ feedbackData, setWeek }) {
+export default function ProgressGraph({
+  feedbackData,
+  setWeek,
+  bootcamperName,
+}) {
   const [feedbackArr, setFeedbackArr] = useState([]);
+  const [masteryPercentages, setMasteryPercentages] = useState([]);
+  const [recapPercentages, setRecapPercentages] = useState([]);
 
   console.log('data fetch');
   // fetch data from backend
+  console.log(feedbackData);
 
-  let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
+  var masteryFeedback = feedbackData.filter((feedbackObject) => {
+    return feedbackObject.type === 'mastery';
+  });
+  console.log(masteryFeedback);
+
+  console.log(masteryPercentages);
+  var recapFeedback = feedbackData.filter((feedbackObject) => {
+    return feedbackObject.type === 'recap';
+  });
+  let recapPercentagesArr = recapFeedback.map(
+    (object) => (object.passedtests / object.totaltests) * 100
+  );
+  let masteryPercentagesArr = masteryFeedback.map(
+    (object) => (object.passedtests / object.totaltests) * 100
+  );
+  console.log(masteryPercentagesArr);
+  console.log(recapPercentagesArr);
+
+  function filterGraphData() {
+    setMasteryPercentages(masteryPercentagesArr);
+    setRecapPercentages(recapPercentagesArr);
+  }
+
+  useEffect(() => filterGraphData(), [bootcamperName]);
+
+  console.log(masteryPercentages);
+  console.log(recapPercentages);
+
   let barBorColorArr = [];
   let barBgColorArr = [];
 
-  percentageArr.map((e, i) => {
+  masteryPercentagesArr.map((e, i) => {
     if (e >= 80) {
-      barBgColorArr[i] = 'rgba(255, 206, 86, 0.2)';
-      barBorColorArr[i] = 'rgba(255, 159, 64, 1)';
+      barBgColorArr[i] = 'rgba(0, 177, 106, 0.8)';
+      barBorColorArr[i] = 'rgba(0, 177, 106, 1)';
     } else if (e < 40) {
-      barBgColorArr[i] = 'rgba(255, 99, 132, 0.2)';
-      barBorColorArr[i] = 'rgba(255, 99, 132, 1)';
+      barBgColorArr[i] = 'rgba(214, 69, 65, 0.8)';
+      barBorColorArr[i] = 'rgba(214, 69, 65, 1)';
     } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = 'rgba(54, 162, 235, 0.2)';
-      barBorColorArr[i] = 'rgba(54, 162, 235, 1)';
+      barBgColorArr[i] = 'rgba(248, 148, 6, 0.8)';
+      barBorColorArr[i] = 'rgba(248, 148, 6, 1)';
     }
   });
 
+/*   masteryPercentagesArr.map((e, i) => {
+    if (e >= 80) {
+      barBgColorArr[i] = 'rgba(0, 177, 106, 0.8)';
+      barBorColorArr[i] = 'rgba(0, 177, 106, 1)';
+    } else if (e < 40) {
+      barBgColorArr[i] = 'rgba(214, 69, 65, 0.8)';
+      barBorColorArr[i] = 'rgba(214, 69, 65, 1)';
+    } else if (e >= 40 && e < 80) {
+      barBgColorArr[i] = 'rgba(248, 148, 6, 0.8)';
+      barBorColorArr[i] = 'rgba(248, 148, 6, 1)';
+    }
+  });
+ */
   // onclick event of bar chart
   function handleClick(event, elements) {
     const chart = elements[0]._chart;
@@ -47,7 +94,7 @@ export default function ProgressGraph({ feedbackData, setWeek }) {
           datasets: [
             {
               label: 'Recap tasks', // name from login session
-              data: percentageArr,
+              data: recapPercentagesArr,
               backgroundColor: barBgColorArr,
               borderColor: barBorColorArr,
               borderWidth: 2,
@@ -87,7 +134,7 @@ export default function ProgressGraph({ feedbackData, setWeek }) {
           datasets: [
             {
               label: 'Mastery tasks', // name from login session
-              data: percentageArr,
+              data: masteryPercentagesArr,
               backgroundColor: barBgColorArr,
               borderColor: barBorColorArr,
               borderWidth: 2,
