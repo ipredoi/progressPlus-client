@@ -52,8 +52,6 @@ export default function Feedback({ session }) {
   // // console.log(bootcamperUid);
   function submitFeedback(e) {
     console.log({
-      method: 'POST',
-      body: JSON.stringify({
         bootcamperuid: `${bootcamperUid}`,
         coachname: `${session.name}`,
         feedbackdate: `${dateTime}`,
