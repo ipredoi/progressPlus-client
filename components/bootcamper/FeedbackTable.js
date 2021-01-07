@@ -21,7 +21,7 @@ export default function FeedbackTable({ session, week }) {
       <Table.Header>
         <Table.Row>
           {tableColumns.map((header) => {
-            return <Table.HeaderCell>{header}</Table.HeaderCell>;
+            return <Table.HeaderCell key={header}>{header}</Table.HeaderCell>;
           })}
         </Table.Row>
       </Table.Header>

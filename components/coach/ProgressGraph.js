@@ -1,20 +1,20 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Bar } from 'react-chartjs-2';
-import styles from '../../styles/componentStyle/progressGraph.module.css';
+import React from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Bar } from "react-chartjs-2";
+import styles from "../../styles/componentStyle/progressGraph.module.css";
 
 export default function ProgressGraph({ feedbackData, bootcamperName }) {
-  console.log('data fetch');
+  console.log("data fetch");
   // fetch data from backend
   console.log(feedbackData);
   console.log(bootcamperName);
   var masteryFeedback = feedbackData.filter((feedbackObject) => {
-    return feedbackObject.type === 'mastery';
+    return feedbackObject.type === "mastery";
   });
   console.log(masteryFeedback);
 
   var recapFeedback = feedbackData.filter((feedbackObject) => {
-    return feedbackObject.type === 'recap';
+    return feedbackObject.type === "recap";
   });
   let recapPercentagesArr = recapFeedback.map(
     (object) => (object.passedtests / object.totaltests) * 100
@@ -37,14 +37,14 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
 
   masteryPercentagesArr.map((e, i) => {
     if (e >= 80) {
-      barBgColorArr[i] = 'rgba(0, 177, 106, 0.8)';
-      barBorColorArr[i] = 'rgba(0, 177, 106, 1)';
+      barBgColorArr[i] = "rgba(0, 177, 106, 0.8)";
+      barBorColorArr[i] = "rgba(0, 177, 106, 1)";
     } else if (e < 40) {
-      barBgColorArr[i] = 'rgba(214, 69, 65, 0.8)';
-      barBorColorArr[i] = 'rgba(214, 69, 65, 1)';
+      barBgColorArr[i] = "rgba(214, 69, 65, 0.8)";
+      barBorColorArr[i] = "rgba(214, 69, 65, 1)";
     } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = 'rgba(248, 148, 6, 0.8)';
-      barBorColorArr[i] = 'rgba(248, 148, 6, 1)';
+      barBgColorArr[i] = "rgba(248, 148, 6, 0.8)";
+      barBorColorArr[i] = "rgba(248, 148, 6, 1)";
     }
   });
 
@@ -80,7 +80,7 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
           labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
           datasets: [
             {
-              label: 'Recap tasks', // name from login session
+              label: "Recap tasks", // name from login session
               data: recapPercentagesArr,
               backgroundColor: barBgColorArr,
               borderColor: barBorColorArr,
@@ -120,7 +120,7 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
           labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
           datasets: [
             {
-              label: 'Mastery tasks', // name from login session
+              label: "Mastery tasks", // name from login session
               data: masteryPercentagesArr,
               backgroundColor: barBgColorArr,
               borderColor: barBorColorArr,

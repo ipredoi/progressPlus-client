@@ -5,7 +5,11 @@ function AppFooter() {
   return (
     <div className={styles.footer}>
       <footer className={styles.container}>
+<<<<<<< HEAD
         <a href='https://github.com/' target='_blank'>
+=======
+        <a href="https://github.com/" target="_blank">
+>>>>>>> 3ea5f5a7655dd3b9512fc9cab91768a93119516d
           <img
             className={styles.icons}
             src='/icons/gitHub.png'
