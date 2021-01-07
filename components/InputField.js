@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 
 export default function InputField({ placeholder, className, onChange }) {
-  console.log(className);
+  className;
   return (
     <Input
       focus
