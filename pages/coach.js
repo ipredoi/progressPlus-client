@@ -14,7 +14,11 @@ export default function Coach({ session }) {
   }
   return (
     <div className={styles.coach}>
-      <AppHeader session={session} navBarArr={coachNavBarArr} title={"WELCOME TO APP NAME"} />
+      <AppHeader
+        session={session}
+        navBarArr={coachNavBarArr}
+        title={'WELCOME TO APP NAME'}
+      />
       <section className={styles.body}>
         <div className={styles.quoteHeader}>
           <QuoteHeader />
