@@ -3,9 +3,9 @@ import QuoteHeader from '../components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
 import LoadingImg from '../components/LoadingImg';
-import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
-import AppHeader from '../Components/AppHeader';
-import AppFooter from '../Components/AppFooter';
+import DashboardDisplay from '../components/bootcamper/DashboardDisplay';
+import AppHeader from '../components/AppHeader';
+import AppFooter from '../components/AppFooter';
 
 export default function Bootcamper({ session }) {
   if (!session) {

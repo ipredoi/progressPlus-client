@@ -1,16 +1,16 @@
-import { coachNavBarArr } from "../libs/globalVariables/navBarArrays";
-import serverSideProps from "../libs/functions/serverSideProps";
-import LoadingImg from "../components/LoadingImg";
-import AppHeader from "../Components/AppHeader";
-import AppFooter from "../Components/AppFooter";
-import { Form, Select } from "semantic-ui-react";
-import { useState, useEffect } from "react";
-import ProgressGraph from "../components/coach/ProgressGraph";
-import styles from "../styles/pagesStyle/progress.module.css";
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
+import AppHeader from '../components/AppHeader';
+import AppFooter from '../components/AppFooter';
+import { Form, Select } from 'semantic-ui-react';
+import { useState, useEffect } from 'react';
+import ProgressGraph from '../components/coach/ProgressGraph';
+import styles from '../styles/pagesStyle/progress.module.css';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
-  const [bootcamperName, setBootcamperName] = useState("Name here");
+  const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [bootcamperInfo, setBootcamperInfo] = useState([]);
   const [feedbackData, setFeedbackData] = useState([]);
@@ -66,14 +66,14 @@ export default function Progress({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <h2 className={styles.title}>Progress tracker</h2>
       <div className={styles.dropDown}>
-        <Form className='form'>
-          <Form.Group widths='equal'>
+        <Form className="form">
+          <Form.Group widths="equal">
             <Form.Field
               control={Select}
               options={bootcampersArr}
-              placeholder='Choose bootcamper'
+              placeholder="Choose bootcamper"
               search
-              searchInput={{ id: "form-select-control-name" }}
+              searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {
                 setBootcamperName(data.value);
               }}
