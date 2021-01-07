@@ -39,9 +39,9 @@ const FeedbackForm = ({
     return [
       ...acc,
       {
-        key: `${cur.charAt(0).toLowerCase()}${index}`,
-        text: cur,
-        value: cur,
+        key: cur.uid,
+        text: cur.name,
+        value: cur.name,
       },
     ];
   };
