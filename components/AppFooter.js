@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../styles/componentStyle/appFooter.module.css';
+import React from "react";
+import styles from "../styles/componentStyle/appFooter.module.css";
 
 function AppFooter() {
   return (
