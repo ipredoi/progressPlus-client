@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
-import { quotesArray } from '../libs/sample_data/codingQuotes';
+import { quotesArray } from '../libs/sample_data/quotesArray';
 
 export default function QuoteHeader() {
-  const quoteIndex = Math.floor(Math.random() * quotesArray.length);
+  const [quote, setQuote] = useState('');
+  useEffect(() => {
+    const quoteIndex = Math.floor(Math.random() * quotesArray.length);
+    setQuote(quotesArray[quoteIndex]);
+  }, [quote]);
 
-  return (
-    <Header as="h3" dividing>
-      {quotesArray[quoteIndex]}
-    </Header>
-  );
+  return <Header>{quote}</Header>;
 }
