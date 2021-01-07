@@ -1,14 +1,17 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Bar } from 'react-chartjs-2';
 
 export default function ScoreGraph({ session, setWeek }) {
-  console.log("data fetch");
+  console.log('data fetch');
   // fetch data from backend
 
   let feedbackArr = session.data;
-  let taskType =
-    feedbackArr[0].type.charAt(0).toUpperCase() + feedbackArr[0].type.slice(1);
+  if (feedbackArr[0] !== undefined) {
+    let taskType =
+      feedbackArr[0].type.charAt(0).toUpperCase() +
+      feedbackArr[0].type.slice(1);
+  }
   // uppercase first letter
   // let weekArr = feedbackArr.map((e) => {
   //   return e.week;
@@ -29,14 +32,14 @@ export default function ScoreGraph({ session, setWeek }) {
 
   percentageArr.map((e, i) => {
     if (e >= 80) {
-      barBgColorArr[i] = "rgba(255, 206, 86, 0.2)";
-      barBorColorArr[i] = "rgba(255, 159, 64, 1)";
+      barBgColorArr[i] = 'rgba(255, 206, 86, 0.2)';
+      barBorColorArr[i] = 'rgba(255, 159, 64, 1)';
     } else if (e < 40) {
-      barBgColorArr[i] = "rgba(255, 99, 132, 0.2)";
-      barBorColorArr[i] = "rgba(255, 99, 132, 1)";
+      barBgColorArr[i] = 'rgba(255, 99, 132, 0.2)';
+      barBorColorArr[i] = 'rgba(255, 99, 132, 1)';
     } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = "rgba(54, 162, 235, 0.2)";
-      barBorColorArr[i] = "rgba(54, 162, 235, 1)";
+      barBgColorArr[i] = 'rgba(54, 162, 235, 0.2)';
+      barBorColorArr[i] = 'rgba(54, 162, 235, 1)';
     }
   });
 
@@ -50,47 +53,50 @@ export default function ScoreGraph({ session, setWeek }) {
     setWeek(weekNum);
     // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   }
-
+  const weekArr = feedbackArr.map((object) => object.week);
   return (
     <div>
-      <Bar
-        data={{
-          // labels: weekArr,
-          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-          datasets: [
-            {
-              label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
-              data: percentageArr,
-              backgroundColor: barBgColorArr,
-              borderColor: barBorColorArr,
-              borderWidth: 2,
+      {feedbackArr[0] === undefined ? (
+        <p>No data to display</p>
+      ) : (
+        <Bar
+          data={{
+            labels: { weekArr },
+            datasets: [
+              {
+                label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
+                data: percentageArr,
+                backgroundColor: barBgColorArr,
+                borderColor: barBorColorArr,
+                borderWidth: 2,
+              },
+            ],
+          }}
+          width={600}
+          height={400}
+          options={{
+            onClick: handleClick,
+            maintainAspectRatio: false,
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    maxTicksLimit: 16,
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  ticks: {
+                    max: 100,
+                    beginAtZero: true,
+                  },
+                },
+              ],
             },
-          ],
-        }}
-        width={600}
-        height={400}
-        options={{
-          onClick: handleClick,
-          maintainAspectRatio: false,
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  maxTicksLimit: 16,
-                },
-              },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  max: 100,
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
-        }}
-      />
+          }}
+        />
+      )}
     </div>
   );
 }
