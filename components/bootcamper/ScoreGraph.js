@@ -2,22 +2,6 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
 
-<<<<<<< HEAD
-export default function ScoreGraph({ session, setWeek }) {
-  console.log('data fetch');
-  // fetch data from backend
-
-  let feedbackArr = session.data;
-  if (feedbackArr[0] !== undefined) {
-    let taskType =
-      feedbackArr[0].type.charAt(0).toUpperCase() +
-      feedbackArr[0].type.slice(1);
-  }
-  // uppercase first letter
-  // let weekArr = feedbackArr.map((e) => {
-  //   return e.week;
-  // });
-=======
 export default function ScoreGraph({ session, setWeek, taskType }) {
   console.log('data fetch');
   // fetch data from backend
@@ -45,7 +29,6 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     });
   }
 
->>>>>>> 72-new
   let passedTestArr = feedbackArr.map((e) => {
     return e.passedtests;
   });
