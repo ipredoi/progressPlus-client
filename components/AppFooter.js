@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from '../styles/componentStyle/appFooter.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fabGithub } from '@fortawesome/free-solid-svg-icons';
 
 function AppFooter() {
   return (
