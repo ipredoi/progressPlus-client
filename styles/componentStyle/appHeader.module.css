@@ -1,4 +1,6 @@
 .header {
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -10,5 +12,18 @@
   border-bottom: black solid 0.2vh;
   background-color: #4a90e2;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.socLogo {
+  width: auto;
+  height: 13vh;
+  margin: 25px 20px 20px 20px;
+}
+
+.title {
+  margin: 25px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  color: white;
 }

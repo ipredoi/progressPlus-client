@@ -1,5 +1,6 @@
 //semantic ui used for form skeleton
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import styles from '../styles/componentStyle/feedbackForm.module.css';
@@ -10,6 +11,7 @@ import {
 
 const FeedbackForm = ({
   bootcamperName,
+  className,
   taskType,
   subject,
   week,
@@ -30,6 +32,7 @@ const FeedbackForm = ({
   setDueDate,
   setDateSubmitted,
 }) => {
+  const router = useRouter();
   //return all bootcamper names in an array
   let bootcampersNames = bootcampersInfoArr.map((bootcamper) => {
     return bootcamper.name;
@@ -51,9 +54,10 @@ const FeedbackForm = ({
   let bootcampersArr = bootcampersNames.reduce(bootcamperNameReducer, []);
 
   return (
-    <Form className='form'>
-      <Form.Group widths='equal'>
+    <Form className={styles.form}>
+      <Form.Group>
         <Form.Field
+          className={className}
           control={Select}
           options={bootcampersArr}
           label={{
@@ -67,6 +71,7 @@ const FeedbackForm = ({
           value={bootcamperName}
         />
         <Form.Field
+          className={styles.dropDownInput}
           control={Select}
           options={bootcampWeeks}
           label={{
@@ -80,6 +85,7 @@ const FeedbackForm = ({
           value={week}
         />
         <Form.Field
+          className={styles.dropDownInput}
           control={Select}
           options={tasksArray}
           label={{
@@ -106,9 +112,15 @@ const FeedbackForm = ({
       <Form>
         <Form.Field>
           <label>Due Date</label>
-          <input onChange={setDueDate} type='date' value={dueDate} />
+          <input
+            className={styles.dateInput}
+            onChange={setDueDate}
+            type='date'
+            value={dueDate}
+          />
           <label>Date Submitted</label>
           <input
+            className={styles.dateInput}
             onChange={setDateSubmitted}
             type='date'
             value={dateSubmitted}
@@ -122,6 +134,7 @@ const FeedbackForm = ({
           <input
             onChange={setPassedTests}
             type='number'
+            min='0'
             placeholder='Input the score'
             value={passedTests}
           />
@@ -129,6 +142,7 @@ const FeedbackForm = ({
           <input
             onChange={setTotalTests}
             type='number'
+            min={passedTests}
             placeholder='Input total score'
             value={totalTests}
           />
@@ -146,17 +160,17 @@ const FeedbackForm = ({
 
       <Form.Field
         className={styles.submitButton}
-        id='form-button-control-public'
         control={Button}
         content='Submit'
         onClick={submitFeedback}
       />
       <Form.Field
-        className={styles.backButton}
-        href='http://localhost:3000/coach'
-        id='form-button-control-public'
+        className={styles.submitButton}
         control={Button}
         content='Main Page'
+        onClick={() => {
+          router.push('./coach');
+        }}
       />
     </Form>
   );
