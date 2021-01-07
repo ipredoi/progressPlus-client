@@ -35,7 +35,7 @@ const FeedbackForm = ({
   const router = useRouter();
 
   // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
-  const bootcamperNameReducer = (acc, cur) => {
+  const bootcamperNameReducer = (acc, cur, index) => {
     return [
       ...acc,
       {
