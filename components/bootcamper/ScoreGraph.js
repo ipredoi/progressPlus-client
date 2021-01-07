@@ -19,11 +19,11 @@ export default function ScoreGraph({ session, setWeek }) {
   let totalTestArr = feedbackArr.map((e) => {
     return e.totaltests;
   });
-  // let percentageArr = passedTestArr.map((num, i) => {
-  //   return (num / totalTestArr[i]) * 100;
-  // });
+  let percentageArr = passedTestArr.map((num, i) => {
+    return (num / totalTestArr[i]) * 100;
+  });
 
-  let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
+  // let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
   let barBorColorArr = [];
   let barBgColorArr = [];
 
@@ -50,7 +50,7 @@ export default function ScoreGraph({ session, setWeek }) {
     const activeWeek = feedbackArr.filter((obj) => {
       return obj.week === weekNum;
     });
-    setWeek(activeWeek);
+    setWeek(activeWeek[0]);
     console.log(activeWeek);
     // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   }

@@ -14,7 +14,7 @@ export default function FeedbackTable({ session, week }) {
   // fetch data from backend
   let feedbackArr = session.data;
   console.log(feedbackArr);
-  let activeArr = feedbackArr[week - 1];
+  // let week = feedbackArr[week - 1];
 
   return (
     <Table celled>
@@ -28,11 +28,15 @@ export default function FeedbackTable({ session, week }) {
 
       <Table.Body>
         <Table.Row>
-          <Table.Cell>{week}</Table.Cell>
-          <Table.Cell>{`${activeArr.passedtests}/${activeArr.totaltests}`}</Table.Cell>
-          <Table.Cell>{activeArr.qualitative}</Table.Cell>
-          <Table.Cell>{activeArr.duedate}</Table.Cell>
-          <Table.Cell>{activeArr.datesubmitted}</Table.Cell>
+          <Table.Cell>{week.week}</Table.Cell>
+          <Table.Cell>
+            {week.passedtests === undefined
+              ? ''
+              : `${week.passedtests}/${week.totaltests}`}
+          </Table.Cell>
+          <Table.Cell>{week.qualitative}</Table.Cell>
+          <Table.Cell>{week.duedate}</Table.Cell>
+          <Table.Cell>{week.datesubmitted}</Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
