@@ -20,6 +20,8 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
 
+  console.log(taskType);
+
   function resteInputs() {
     setbootcamperName('');
     setTaskType('');
@@ -82,7 +84,11 @@ export default function Feedback({ session }) {
   }
   return (
     <div className={styles.body}>
-      <AppHeader session={session} navBarArr={coachNavBarArr} title={"WELCOME TO APP NAME"} />
+      <AppHeader
+        session={session}
+        navBarArr={coachNavBarArr}
+        title={'WELCOME TO APP NAME'}
+      />
       <div className={styles.feedbackForm}>
         <FeedbackForm
           className={styles.form}
