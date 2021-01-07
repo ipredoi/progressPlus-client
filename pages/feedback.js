@@ -1,4 +1,4 @@
-import FeedbackForm from '../components/feedbackForm';
+import FeedbackForm from '../components/FeedbackForm';
 import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
 import { useState } from 'react';
 import { backendUrl } from '../libs/globalVariables/urls';
