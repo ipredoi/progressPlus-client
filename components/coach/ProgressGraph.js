@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import styles from '../../styles/componentStyle/progressGraph.module.css';
 
-export default function ProgressGraph({ session, setWeek }) {
+export default function ProgressGraph({ feedbackData, setWeek }) {
   const [feedbackArr, setFeedbackArr] = useState([]);
 
   console.log('data fetch');
