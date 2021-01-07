@@ -1,5 +1,5 @@
 import FeedbackForm from '../components/feedbackForm';
-import { coachNavBarArr } from '../libs/globalvariables/navBarArrays';
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
 import { useState } from 'react';
 import { backendUrl } from '../libs/globalVariables/urls';
 import serverSideProps from '../libs/functions/serverSideProps';

@@ -33,24 +33,21 @@ const FeedbackForm = ({
   setDateSubmitted,
 }) => {
   const router = useRouter();
-  //return all bootcamper names in an array
-  let bootcampersNames = bootcampersInfoArr.map((bootcamper) => {
-    return bootcamper.name;
-  });
+
   // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
   const bootcamperNameReducer = (acc, cur) => {
     return [
       ...acc,
       {
-        key: cur,
-        text: cur,
-        value: cur,
+        key: cur.uid,
+        text: cur.name,
+        value: cur.name,
       },
     ];
   };
 
   //aplying reducer to the bootcampesNames array to obtain the input field array needed
-  let bootcampersArr = bootcampersNames.reduce(bootcamperNameReducer, []);
+  let bootcampersArr = bootcampersInfoArr.reduce(bootcamperNameReducer, []);
 
   return (
     <Form className={styles.form}>
@@ -63,7 +60,7 @@ const FeedbackForm = ({
             children: 'Bootcamper Name',
             htmlFor: 'form-select-control-name',
           }}
-          placeholder="Name"
+          placeholder='Name'
           search
           searchInput={{ id: 'form-select-control-name' }}
           onChange={setbootcamperName}
@@ -77,7 +74,7 @@ const FeedbackForm = ({
             children: 'Week',
             htmlFor: 'form-select-control-week',
           }}
-          placeholder="Week"
+          placeholder='Week'
           search
           searchInput={{ id: 'form-select-control-week' }}
           onChange={setWeek}
@@ -91,82 +88,78 @@ const FeedbackForm = ({
             children: 'Task type',
             htmlFor: 'form-select-control-task-type',
           }}
-          placeholder="Task type"
+          placeholder='Task type'
           search
           searchInput={{ id: 'form-select-control-task-type' }}
           onChange={setTaskType}
           value={taskType}
         />
       </Form.Group>
-      <Form>
-        <Form.Field>
-          <label>Subject</label>
-          <input
-            placeholder="React/ JS"
-            onChange={setSubject}
-            value={subject}
-          />
-        </Form.Field>
-      </Form>
-      <Form>
-        <Form.Field>
-          <label>Due Date</label>
-          <input
-            className={styles.dateInput}
-            onChange={setDueDate}
-            type="date"
-            value={dueDate}
-          />
-          <label>Date Submitted</label>
-          <input
-            className={styles.dateInput}
-            onChange={setDateSubmitted}
-            type="date"
-            value={dateSubmitted}
-          />
-        </Form.Field>
-      </Form>
+      {/* <Form> */}
+      <Form.Field>
+        <label>Subject</label>
+        <input placeholder='React/ JS' onChange={setSubject} value={subject} />
+      </Form.Field>
+      {/* </Form> */}
+      {/* <Form> */}
+      <Form.Field>
+        <label>Due Date</label>
+        <input
+          className={styles.dateInput}
+          onChange={setDueDate}
+          type='date'
+          value={dueDate}
+        />
+        <label>Date Submitted</label>
+        <input
+          className={styles.dateInput}
+          onChange={setDateSubmitted}
+          type='date'
+          value={dateSubmitted}
+        />
+      </Form.Field>
+      {/* </Form> */}
 
-      <Form>
-        <Form.Field>
-          <label>Passed Tests</label>
-          <input
-            onChange={setPassedTests}
-            type="number"
-            min="0"
-            placeholder="Input the score"
-            value={passedTests}
-          />
-          <label>Total Tests</label>
-          <input
-            onChange={setTotalTests}
-            type="number"
-            min={passedTests}
-            placeholder="Input total score"
-            value={totalTests}
-          />
-        </Form.Field>
-      </Form>
+      {/* <Form> */}
+      <Form.Field>
+        <label>Passed Tests</label>
+        <input
+          onChange={setPassedTests}
+          type='number'
+          min='0'
+          placeholder='Input the score'
+          value={passedTests}
+        />
+        <label>Total Tests</label>
+        <input
+          onChange={setTotalTests}
+          type='number'
+          min={passedTests}
+          placeholder='Input total score'
+          value={totalTests}
+        />
+      </Form.Field>
+      {/* </Form> */}
 
       <Form.Field
         onChange={setComments}
-        id="form-textarea-control-fFeedbackeedback"
+        id='form-textarea-control-fFeedbackeedback'
         control={TextArea}
-        label="Feedback"
-        placeholder="Feedback"
+        label='Feedback'
+        placeholder='Feedback'
         value={comments}
       />
 
       <Form.Field
         className={styles.submitButton}
         control={Button}
-        content="Submit"
+        content='Submit'
         onClick={submitFeedback}
       />
       <Form.Field
         className={styles.submitButton}
         control={Button}
-        content="Main Page"
+        content='Main Page'
         onClick={() => {
           router.push('./coach');
         }}
