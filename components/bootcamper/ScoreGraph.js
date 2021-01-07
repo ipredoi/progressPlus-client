@@ -3,7 +3,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Bar } from "react-chartjs-2";
 
 export default function ScoreGraph({ session, setWeek, taskType }) {
-  console.log("data fetch");
+  // console.loglog("data fetch");
   // fetch data from backend
 
   let tempArray = session.data;
@@ -70,7 +70,7 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
       });
 
       setWeek(activeWeek[0]);
-      console.log(activeWeek);
+      // console.loglog(activeWeek);
     }
   }
 

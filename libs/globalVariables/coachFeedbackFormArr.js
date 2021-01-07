@@ -7,7 +7,7 @@ let bootcampWeeks = new Array(16).fill().map((e, index) => {
 
 // need to create an array for subject
 
-let tasksTypes = ['mastery', 'recap']; //we can add more subjects if we need
+let tasksTypes = ["mastery", "recap"]; //we can add more subjects if we need
 
 // creating a reduce function
 
@@ -24,5 +24,5 @@ const tasksTypesReducer = (acc, cur) => {
 
 //aplying reducer to the tasksTypes array to obtain the input field array needed
 let tasksArray = tasksTypes.reduce(tasksTypesReducer, []);
-//console.log(tasksArray);
+//// console.log(tasksArray);
 export { bootcampWeeks, tasksArray };

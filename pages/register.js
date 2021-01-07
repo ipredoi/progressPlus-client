@@ -42,10 +42,9 @@ export default function Register({ session }) {
           "Access-Control-Allow-Origin": "*",
         },
         mode: "cors",
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      console.log("handlesubmit working");
+      }).then((response) => response.json());
+      // .then((data) => console.log(data));
+      // console.log("handlesubmit working");
       // redirecting the user to coach/ bootcamper page after submit
       router.push(`/${role.toLowerCase()}`);
     } else {

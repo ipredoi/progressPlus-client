@@ -1,7 +1,4 @@
-// import FeedbackForm from '../components/feedbackForm';
-import dynamic from "next/dynamic";
-const FeedbackForm = dynamic(() => import("../components/feedbackForm"));
-
+import FeedbackForm from "../components/feedbackForm";
 import { coachNavBarArr } from "../libs/globalVariables/navBarArrays";
 import { useState } from "react";
 import { backendUrl } from "../libs/globalVariables/urls";
@@ -23,7 +20,7 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState("");
   const [dateSubmitted, setDateSubmitted] = useState("");
 
-  console.log(taskType);
+  // console.log(taskType);
 
   function resteInputs() {
     setbootcamperName("");
@@ -35,7 +32,7 @@ export default function Feedback({ session }) {
     setDueDate("");
     setDateSubmitted("");
     setComments("");
-    console.log("i work");
+    // console.log("i work");
   }
 
   var dateTime = new Date().toLocaleString();
@@ -51,8 +48,8 @@ export default function Feedback({ session }) {
     })[0].uid;
   }
 
-  console.log(subject);
-  // console.log(bootcamperUid);
+  // console.log(subject);
+  // // console.log(bootcamperUid);
   function submitFeedback(e) {
     e.preventDefault();
     fetch(`${backendUrl}feedback`, {
@@ -75,10 +72,9 @@ export default function Feedback({ session }) {
         "Access-Control-Allow-Origin": "*",
       },
       mode: "cors",
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-    console.log("handlesubmit working");
+    }).then((response) => response.json());
+    // .then((data) => console.log(data));
+    // console.log("handlesubmit working");
     resteInputs();
   }
 

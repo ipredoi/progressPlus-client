@@ -1,19 +1,19 @@
-import React from 'react';
-import { Table } from 'semantic-ui-react';
+import React from "react";
+import { Table } from "semantic-ui-react";
 
 const tableColumns = [
-  'Week',
-  'Score',
-  'Comments by *insert coach name here*',
-  'Due Date',
-  'Date Submitted',
+  "Week",
+  "Score",
+  "Comments by *insert coach name here*",
+  "Due Date",
+  "Date Submitted",
 ];
 
 export default function FeedbackTable({ session, week }) {
-  console.log('data fetch for table');
+  // console.loglog('data fetch for table');
   // fetch data from backend
   let feedbackArr = session.data;
-  console.log(feedbackArr);
+  // console.loglog(feedbackArr);
   // let week = feedbackArr[week - 1];
 
   return (
@@ -31,7 +31,7 @@ export default function FeedbackTable({ session, week }) {
           <Table.Cell>{week.week}</Table.Cell>
           <Table.Cell>
             {week.passedtests === undefined
-              ? ''
+              ? ""
               : `${week.passedtests}/${week.totaltests}`}
           </Table.Cell>
           <Table.Cell>{week.qualitative}</Table.Cell>

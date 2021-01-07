@@ -4,14 +4,14 @@ import { Bar } from "react-chartjs-2";
 import styles from "../../styles/componentStyle/progressGraph.module.css";
 
 export default function ProgressGraph({ feedbackData, bootcamperName }) {
-  console.log("data fetch");
+  // // console.log("data fetch");
   // fetch data from backend
-  console.log(feedbackData);
-  console.log(bootcamperName);
+  // // console.log(feedbackData);
+  // // console.log(bootcamperName);
   var masteryFeedback = feedbackData.filter((feedbackObject) => {
     return feedbackObject.type === "mastery";
   });
-  console.log(masteryFeedback);
+  // // console.log(masteryFeedback);
 
   var recapFeedback = feedbackData.filter((feedbackObject) => {
     return feedbackObject.type === "recap";
@@ -22,8 +22,8 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
   let masteryPercentagesArr = masteryFeedback.map(
     (object) => (object.passedtests / object.totaltests) * 100
   );
-  console.log(masteryPercentagesArr);
-  console.log(recapPercentagesArr);
+  // // console.log(masteryPercentagesArr);
+  // // console.log(recapPercentagesArr);
 
   // function filterGraphData() {
   //   setMasteryPercentages(masteryPercentagesArr);
@@ -69,7 +69,7 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
   //   const weekNum = chart.data.labels[element._index];
   //   const scorePercentage = dataset.data[element._index];
   //   setWeek(weekNum);
-  //   // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
+  //   // // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
   // }
 
   return (
@@ -156,10 +156,10 @@ export default function ProgressGraph({ feedbackData, bootcamperName }) {
   );
 }
 
-// console.log(barBgColorArr);
-// console.log(feedbackArr); // all feedback data from session uid
-// console.log(taskType);
-// console.log(`weekArr: ${weekArr}`); // week array
-// console.log(`passedTestArr: ${passedTestArr}`); // passed score array
-// console.log(`totalTestArr: ${totalTestArr}`); // total score array
-// console.log(percentageArr);
+// // console.log(barBgColorArr);
+// // console.log(feedbackArr); // all feedback data from session uid
+// // console.log(taskType);
+// // console.log(`weekArr: ${weekArr}`); // week array
+// // console.log(`passedTestArr: ${passedTestArr}`); // passed score array
+// // console.log(`totalTestArr: ${totalTestArr}`); // total score array
+// // console.log(percentageArr);

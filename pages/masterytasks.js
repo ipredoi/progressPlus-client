@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import AppHeader from '../Components/AppHeader';
-import AppFooter from '../Components/AppFooter';
-import ScoreGraph from '../components/bootcamper/ScoreGraph';
-import FeedbackTable from '../components/bootcamper/FeedbackTable';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
+import React, { useState } from "react";
+import AppHeader from "../Components/AppHeader";
+import AppFooter from "../Components/AppFooter";
+import ScoreGraph from "../components/bootcamper/ScoreGraph";
+import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import serverSideProps from "../libs/functions/serverSideProps";
+import LoadingImg from "../components/LoadingImg";
 
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
 
-  console.log(`test: name:${session.name}, uid:${session.uid}`);
+  // console.loglog(`test: name:${session.name}, uid:${session.uid}`);
 
   if (!session) {
     return <LoadingImg />;
@@ -17,7 +17,7 @@ export default function MasteryTasks({ session }) {
 
   return (
     <div>
-      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
+      <AppHeader session={session} title={"WELCOME TO APP NAME"} />
       <ScoreGraph session={session} setWeek={setWeek} taskType='Mastery' />
       <FeedbackTable session={session} week={week} />
       <AppFooter />
@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid) {
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
     const { data } = await res.json();
-    console.log(data);
+    // console.loglog(data);
     return data;
   }
   return serverSideProps(context, fetchFeedbackData);

@@ -15,24 +15,24 @@ export default function Progress({ session }) {
   const [bootcamperInfo, setBootcamperInfo] = useState([]);
   const [feedbackData, setFeedbackData] = useState([]);
 
-  console.log(session.data.data);
+  // // console.log(session.data.data);
 
   function sortFeedbackData() {
-    console.log(bootcamperName);
+    // // console.log(bootcamperName);
     let allFeedback = session.data.data;
     const individualFeedback = allFeedback.filter((feedbackObject) => {
       return feedbackObject.name === bootcamperName;
     });
-    console.log(individualFeedback);
+    // // console.log(individualFeedback);
     setFeedbackData(individualFeedback);
-    console.log(feedbackData);
+    // // console.log(feedbackData);
   }
 
   useEffect(() => {
     sortFeedbackData();
   }, [bootcamperName]);
 
-  console.log(session);
+  // // console.log(session);
   //creates an array of bootcampers' names
 
   const bootcamperNameReducer = (acc, cur, index) => {

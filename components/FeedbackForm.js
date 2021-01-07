@@ -42,11 +42,7 @@ const FeedbackForm = ({
     return [
       ...acc,
       {
-<<<<<<< HEAD
-        key: cur,
-=======
         key: `${cur.charAt(0).toLowerCase()}${index}`,
->>>>>>> 90
         text: cur,
         value: cur,
       },
@@ -67,7 +63,7 @@ const FeedbackForm = ({
             children: "Bootcamper Name",
             htmlFor: "form-select-control-name",
           }}
-          placeholder="Name"
+          placeholder='Name'
           search
           searchInput={{ id: "form-select-control-name" }}
           onChange={setbootcamperName}
@@ -81,7 +77,7 @@ const FeedbackForm = ({
             children: "Week",
             htmlFor: "form-select-control-week",
           }}
-          placeholder="Week"
+          placeholder='Week'
           search
           searchInput={{ id: "form-select-control-week" }}
           onChange={setWeek}
@@ -95,7 +91,7 @@ const FeedbackForm = ({
             children: "Task type",
             htmlFor: "form-select-control-task-type",
           }}
-          placeholder="Task type"
+          placeholder='Task type'
           search
           searchInput={{ id: "form-select-control-task-type" }}
           onChange={setTaskType}
@@ -106,7 +102,7 @@ const FeedbackForm = ({
         <Form.Field>
           <label>Subject</label>
           <input
-            placeholder="React/ JS"
+            placeholder='React/ JS'
             onChange={setSubject}
             value={subject}
           />
@@ -118,14 +114,14 @@ const FeedbackForm = ({
           <input
             className={styles.dateInput}
             onChange={setDueDate}
-            type="date"
+            type='date'
             value={dueDate}
           />
           <label>Date Submitted</label>
           <input
             className={styles.dateInput}
             onChange={setDateSubmitted}
-            type="date"
+            type='date'
             value={dateSubmitted}
           />
         </Form.Field>
@@ -136,17 +132,17 @@ const FeedbackForm = ({
           <label>Passed Tests</label>
           <input
             onChange={setPassedTests}
-            type="number"
-            min="0"
-            placeholder="Input the score"
+            type='number'
+            min='0'
+            placeholder='Input the score'
             value={passedTests}
           />
           <label>Total Tests</label>
           <input
             onChange={setTotalTests}
-            type="number"
+            type='number'
             min={passedTests}
-            placeholder="Input total score"
+            placeholder='Input total score'
             value={totalTests}
           />
         </Form.Field>
@@ -154,23 +150,23 @@ const FeedbackForm = ({
 
       <Form.Field
         onChange={setComments}
-        id="form-textarea-control-fFeedbackeedback"
+        id='form-textarea-control-fFeedbackeedback'
         control={TextArea}
-        label="Feedback"
-        placeholder="Feedback"
+        label='Feedback'
+        placeholder='Feedback'
         value={comments}
       />
 
       <Form.Field
         className={styles.submitButton}
         control={Button}
-        content="Submit"
+        content='Submit'
         onClick={submitFeedback}
       />
       <Form.Field
         className={styles.submitButton}
         control={Button}
-        content="Main Page"
+        content='Main Page'
         onClick={() => {
           router.push("./coach");
         }}
