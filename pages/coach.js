@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/pagesStyle/coach.module.css';
-import QuoteHeader from '../Components/QuoteHeader';
+import QuoteHeader from '../components/QuoteHeader';
 import serverSideProps from '../libs/functions/serverSideProps';
 import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../Components/AppHeader';
