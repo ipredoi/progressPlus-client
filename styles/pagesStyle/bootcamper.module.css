@@ -8,7 +8,6 @@
 .quoteHeader {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-end;
   width: 100vw;
   padding: 2vh;

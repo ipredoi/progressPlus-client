@@ -91,8 +91,8 @@ export default function Feedback({ session }) {
       />
       <div className={styles.feedbackForm}>
         <FeedbackForm
+          bootcamperName={bootcamperName}
           className={styles.form}
-          bootcameperName={bootcamperName}
           taskType={taskType}
           subject={subject}
           week={week}

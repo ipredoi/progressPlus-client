@@ -2,8 +2,6 @@
 export const quotesArray = [
   '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand." – Martin Fowler',
   '"First, solve the problem. Then, write the code." – John Johnson',
-  '"Experience is the name everyone gives to their mistakes." – Oscar Wilde',
-  '"In order to be irreplaceable, one must always be different." – Coco Chanel',
   '"Java is to JavaScript what car is to Carpet." – Chris Heilmann',
   '"Knowledge is power." – Francis Bacon',
   '"Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday’s code." – Dan Salomon',
