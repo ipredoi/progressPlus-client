@@ -9,15 +9,13 @@ import FeedbackTable from '../components/bootcamper/FeedbackTable';
 export default function RecapTasks({ session }) {
   const [week, setWeek] = useState(1);
 
-  console.log(`test: name:${session.name}, uid:${session.uid}`);
-
   if (!session) {
     return <LoadingImg />;
   }
   return (
     <div>
       <AppHeader session={session} title={'WELCOME TO APP NAME'} />
-      <ScoreGraph session={session} setWeek={setWeek} />
+      <ScoreGraph session={session} setWeek={setWeek} taskType='Recap' />
       <FeedbackTable session={session} week={week} />
       <AppFooter />
     </div>

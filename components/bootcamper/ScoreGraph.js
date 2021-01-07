@@ -2,6 +2,7 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
 
+<<<<<<< HEAD
 export default function ScoreGraph({ session, setWeek }) {
   console.log('data fetch');
   // fetch data from backend
@@ -16,17 +17,45 @@ export default function ScoreGraph({ session, setWeek }) {
   // let weekArr = feedbackArr.map((e) => {
   //   return e.week;
   // });
+=======
+export default function ScoreGraph({ session, setWeek, taskType }) {
+  console.log('data fetch');
+  // fetch data from backend
+
+  let tempArray = session.data;
+
+  const feedbackArr = new Array(16).fill({
+    week: 0,
+    passedtests: 0,
+    totaltests: 0,
+    bootcamperuid: '',
+    coachName: '',
+    datesubmitted: '',
+    duedate: '',
+    feedbackdate: '',
+    feedbackid: 0,
+    qualitative: '',
+    subject: '',
+    type: '',
+  });
+
+  if (tempArray[0] !== undefined) {
+    tempArray.forEach((obj) => {
+      feedbackArr[obj.week - 1] = obj;
+    });
+  }
+
+>>>>>>> 72-new
   let passedTestArr = feedbackArr.map((e) => {
     return e.passedtests;
   });
   let totalTestArr = feedbackArr.map((e) => {
     return e.totaltests;
   });
-  // let percentageArr = passedTestArr.map((num, i) => {
-  //   return (num / totalTestArr[i]) * 100;
-  // });
+  let percentageArr = passedTestArr.map((num, i) => {
+    return (num / totalTestArr[i]) * 100;
+  });
 
-  let percentageArr = [20, 30, 50, 100, 70, 80, 60, 10, 70, 90];
   let barBorColorArr = [];
   let barBgColorArr = [];
 
@@ -45,13 +74,21 @@ export default function ScoreGraph({ session, setWeek }) {
 
   // onclick event of bar chart
   function handleClick(event, elements) {
-    const chart = elements[0]._chart;
-    const element = chart.getElementAtEvent(event)[0];
-    const dataset = chart.data.datasets[element._datasetIndex];
-    const weekNum = chart.data.labels[element._index];
-    const scorePercentage = dataset.data[element._index];
-    setWeek(weekNum);
-    // console.log(dataset.label + ' at ' + weekNum + ':' + scorePercentage);
+    if (elements[0] === undefined) {
+      return 0;
+    } else {
+      const chart = elements[0]._chart;
+      const element = chart.getElementAtEvent(event)[0];
+      const dataset = chart.data.datasets[element._datasetIndex];
+      const weekNum = chart.data.labels[element._index];
+      const scorePercentage = dataset.data[element._index];
+      const activeWeek = feedbackArr.filter((obj) => {
+        return obj.week === weekNum;
+      });
+
+      setWeek(activeWeek[0]);
+      console.log(activeWeek);
+    }
   }
   const weekArr = feedbackArr.map((object) => object.week);
   return (
@@ -100,11 +137,3 @@ export default function ScoreGraph({ session, setWeek }) {
     </div>
   );
 }
-
-// console.log(barBgColorArr);
-// console.log(feedbackArr); // all feedback data from session uid
-// console.log(taskType);
-// console.log(`weekArr: ${weekArr}`); // week array
-// console.log(`passedTestArr: ${passedTestArr}`); // passed score array
-// console.log(`totalTestArr: ${totalTestArr}`); // total score array
-// console.log(percentageArr);

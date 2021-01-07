@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import Avatar from '../components/Avatar';
-import UsefulLinks from '../components/usefulLinks';
-import NavBar from '../components/NavBar';
+import React from 'react';
 import QuoteHeader from '../Components/QuoteHeader';
-import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
 import serverSideProps from '../libs/functions/serverSideProps';
 import styles from '../styles/pagesStyle/bootcamper.module.css';
-
 import LoadingImg from '../components/LoadingImg';
 import DashboardDisplay from '../Components/bootcamper/DashboardDisplay';
 import AppHeader from '../Components/AppHeader';
@@ -18,7 +13,7 @@ export default function Bootcamper({ session }) {
   } else {
     return (
       <div className={styles.bootcamper}>
-        <AppHeader session={session} title={"WELCOME TO APP NAME"} />
+        <AppHeader session={session} title={'WELCOME TO APP NAME'} />
         <section className={styles.body}>
           <div className={styles.quoteHeader}>
             <QuoteHeader />
