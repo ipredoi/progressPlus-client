@@ -26,8 +26,8 @@ export default function ProgressGraph({ feedbackData }) {
       masteryFeedback[obj.week - 1] = obj;
     });
   }
-  let masteryPercentagesArr = masteryFeedback.map(
-    (object) => (object.passedtests / object.totaltests) * 100
+  let masteryPercentagesArr = masteryFeedback.map((object) =>
+    Math.round((object.passedtests / object.totaltests) * 100)
   );
   console.log(masteryFeedback);
 
@@ -47,8 +47,8 @@ export default function ProgressGraph({ feedbackData }) {
 
   console.log(tempRecapFeedbackArr);
 
-  let recapPercentagesArr = recapFeedback.map(
-    (object) => (object.passedtests / object.totaltests) * 100
+  let recapPercentagesArr = recapFeedback.map((object) =>
+    Math.round((object.passedtests / object.totaltests) * 100)
   );
 
   // // console.log(masteryPercentagesArr);
@@ -82,6 +82,10 @@ export default function ProgressGraph({ feedbackData }) {
                 ticks: {
                   maxTicksLimit: 16,
                 },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Week Number',
+                },
               },
             ],
             yAxes: [
@@ -89,6 +93,10 @@ export default function ProgressGraph({ feedbackData }) {
                 ticks: {
                   max: 100,
                   beginAtZero: true,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Passed Tests [%]',
                 },
               },
             ],
@@ -121,6 +129,10 @@ export default function ProgressGraph({ feedbackData }) {
                 ticks: {
                   maxTicksLimit: 16,
                 },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Week Number',
+                },
               },
             ],
             yAxes: [
@@ -128,6 +140,10 @@ export default function ProgressGraph({ feedbackData }) {
                 ticks: {
                   max: 100,
                   beginAtZero: true,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Passed Tests [%]',
                 },
               },
             ],

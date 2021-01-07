@@ -1,6 +1,10 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Bar } from 'react-chartjs-2';
+import {
+  setBarBgColorArr,
+  setBarBorColorArr,
+} from '../../libs/functions/setChartColors';
 
 export default function ScoreGraph({ session, setWeek, taskType }) {
   // console.loglog("data fetch");
@@ -12,15 +16,15 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     week: 0,
     passedtests: 0,
     totaltests: 0,
-    bootcamperuid: "",
-    coachName: "",
-    datesubmitted: "",
-    duedate: "",
-    feedbackdate: "",
+    bootcamperuid: '',
+    coachName: '',
+    datesubmitted: '',
+    duedate: '',
+    feedbackdate: '',
     feedbackid: 0,
-    qualitative: "",
-    subject: "",
-    type: "",
+    qualitative: '',
+    subject: '',
+    type: '',
   });
 
   if (tempArray[0] !== undefined) {
@@ -36,25 +40,11 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     return e.totaltests;
   });
   let percentageArr = passedTestArr.map((num, i) => {
-    return (num / totalTestArr[i]) * 100;
+    return Math.round((num / totalTestArr[i]) * 100);
   });
 
-  let barBorColorArr = [];
-  let barBgColorArr = [];
 
-  percentageArr.map((e, i) => {
-    if (e >= 80) {
-      barBgColorArr[i] = "rgba(0, 177, 106, 0.8)";
-      barBorColorArr[i] = "rgba(0, 177, 106, 1)";
-    } else if (e < 40) {
-      barBgColorArr[i] = "rgba(214, 69, 65, 0.8)";
-      barBorColorArr[i] = "rgba(214, 69, 65, 1)";
-    } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = "rgba(248, 148, 6, 0.8)";
-      barBorColorArr[i] = "rgba(248, 148, 6, 1)";
-    }
-  });
-
+ 
   // onclick event of bar chart
   function handleClick(event, elements) {
     if (elements[0] === undefined) {
@@ -85,10 +75,10 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
             labels: weekArr,
             datasets: [
               {
-                label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
+                label: `${session.name}'s ${taskType} Task Score `, // name from login session
                 data: percentageArr,
-                backgroundColor: barBgColorArr,
-                borderColor: barBorColorArr,
+                backgroundColor: setBarBgColorArr(percentageArr),
+                borderColor: setBarBorColorArr(percentageArr),
                 borderWidth: 2,
               },
             ],
@@ -104,6 +94,10 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
                   ticks: {
                     maxTicksLimit: 16,
                   },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Week Number',
+                  },
                 },
               ],
               yAxes: [
@@ -111,6 +105,10 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
                   ticks: {
                     max: 100,
                     beginAtZero: true,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Passed Tests [%]',
                   },
                 },
               ],
