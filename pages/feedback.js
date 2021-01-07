@@ -49,7 +49,8 @@ export default function Feedback({ session }) {
   }
 
   // console.log(subject);
-  // // console.log(bootcamperUid);
+  console.log(bootcamperUid);
+  console.log(session.uid);
   function submitFeedback(e) {
     e.preventDefault();
     fetch(`${backendUrl}feedback`, {
