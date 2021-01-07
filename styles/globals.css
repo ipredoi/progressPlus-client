@@ -30,8 +30,8 @@ a {
   margin-bottom: -30px;
 } */
 
-* .form.ui.form {
-  margin: 0;
+.form.ui.form {
+  margin-top: 13px;
   width: 500px;
   position: relative;
   top: 100;
@@ -149,4 +149,8 @@ body ::-webkit-scrollbar-thumb {
   border-color: #2d8b61 !important;
   font-family: 'Roboto', sans-serif !important;
   border-radius: 10px !important;
+}
+
+.ui.selection.dropdown {
+  min-width: 11.2em !important;
 }

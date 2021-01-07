@@ -14,8 +14,8 @@ export default function Feedback({ session }) {
   const [taskType, setTaskType] = useState('');
   const [subject, setSubject] = useState('');
   const [week, setWeek] = useState();
-  const [passedTests, setPassedTests] = useState();
-  const [totalTests, setTotalTests] = useState();
+  const [passedTests, setPassedTests] = useState(0);
+  const [totalTests, setTotalTests] = useState(0);
   const [comments, setComments] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
@@ -81,10 +81,11 @@ export default function Feedback({ session }) {
     return <LoadingImg />;
   }
   return (
-    <div>
-      <AppHeader session={session} navBarArr={coachNavBarArr} />
+    <div className={styles.body}>
+      <AppHeader session={session} navBarArr={coachNavBarArr} title={"WELCOME TO APP NAME"} />
       <div className={styles.feedbackForm}>
         <FeedbackForm
+          className={styles.form}
           bootcameperName={bootcamperName}
           taskType={taskType}
           subject={subject}

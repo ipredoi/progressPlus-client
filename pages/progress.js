@@ -17,7 +17,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div>
-      <AppHeader session={session} navBarArr={coachNavBarArr} />
+      <AppHeader session={session} navBarArr={coachNavBarArr} title={"WELCOME TO APP NAME"} />
       <ProgressButton bootcampersArray={feedbackArray} />
       <div>
         <table>
