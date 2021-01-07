@@ -65,7 +65,7 @@ export default function Feedback({ session }) {
         qualitative: `${comments}`,
         duedate: `${dueDate}`,
         datesubmitted: `${dateSubmitted}`,
-      })
+      });
     e.preventDefault();
     fetch(`${backendUrl}feedback`, {
       method: 'POST',
