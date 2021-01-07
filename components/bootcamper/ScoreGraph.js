@@ -81,7 +81,7 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
       ) : (
         <Bar
           data={{
-            labels: { weekArr },
+            labels: weekArr,
             datasets: [
               {
                 label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
