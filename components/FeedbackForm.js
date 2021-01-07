@@ -1,13 +1,13 @@
 //semantic ui used for form skeleton
-import React from 'react';
-import { useRouter } from 'next/router';
-import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
-import styles from '../styles/componentStyle/feedbackForm.module.css';
+import React from "react";
+import { useRouter } from "next/router";
+import { Form, Input, TextArea, Button, Select } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import styles from "../styles/componentStyle/feedbackForm.module.css";
 import {
   bootcampWeeks,
   tasksArray,
-} from '../libs/globalVariables/coachFeedbackFormArr';
+} from "../libs/globalVariables/coachFeedbackFormArr";
 
 const FeedbackForm = ({
   bootcamperName,
@@ -39,11 +39,11 @@ const FeedbackForm = ({
   });
 
   // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
-  const bootcamperNameReducer = (acc, cur) => {
+  const bootcamperNameReducer = (acc, cur, index) => {
     return [
       ...acc,
       {
-        key: cur.charAt(0).toLowerCase(),
+        key: `${cur.charAt(0).toLowerCase()}${index}`,
         text: cur,
         value: cur,
       },
@@ -61,12 +61,12 @@ const FeedbackForm = ({
           control={Select}
           options={bootcampersArr}
           label={{
-            children: 'Bootcamper Name',
-            htmlFor: 'form-select-control-name',
+            children: "Bootcamper Name",
+            htmlFor: "form-select-control-name",
           }}
           placeholder='Name'
           search
-          searchInput={{ id: 'form-select-control-name' }}
+          searchInput={{ id: "form-select-control-name" }}
           onChange={setbootcamperName}
           value={bootcamperName}
         />
@@ -75,12 +75,12 @@ const FeedbackForm = ({
           control={Select}
           options={bootcampWeeks}
           label={{
-            children: 'Week',
-            htmlFor: 'form-select-control-week',
+            children: "Week",
+            htmlFor: "form-select-control-week",
           }}
           placeholder='Week'
           search
-          searchInput={{ id: 'form-select-control-week' }}
+          searchInput={{ id: "form-select-control-week" }}
           onChange={setWeek}
           value={week}
         />
@@ -89,12 +89,12 @@ const FeedbackForm = ({
           control={Select}
           options={tasksArray}
           label={{
-            children: 'Task type',
-            htmlFor: 'form-select-control-task-type',
+            children: "Task type",
+            htmlFor: "form-select-control-task-type",
           }}
           placeholder='Task type'
           search
-          searchInput={{ id: 'form-select-control-task-type' }}
+          searchInput={{ id: "form-select-control-task-type" }}
           onChange={setTaskType}
           value={taskType}
         />
@@ -169,7 +169,7 @@ const FeedbackForm = ({
         control={Button}
         content='Main Page'
         onClick={() => {
-          router.push('./coach');
+          router.push("./coach");
         }}
       />
     </Form>
