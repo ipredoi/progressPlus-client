@@ -71,7 +71,7 @@ export default function Progress({ session }) {
             <Form.Field
               control={Select}
               options={bootcampersArr}
-              placeholder='Name'
+              placeholder='Choose bootcamper'
               search
               searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {
