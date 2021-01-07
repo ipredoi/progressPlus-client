@@ -28,7 +28,9 @@ export default function Progress({ session }) {
     console.log(feedbackData);
   }
 
-  useEffect(() => sortFeedbackData, [bootcamperName]);
+  useEffect(() => {
+    sortFeedbackData();
+  }, [bootcamperName]);
 
   console.log(session);
   //creates an array of bootcampers' names
