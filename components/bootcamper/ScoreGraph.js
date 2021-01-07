@@ -1,9 +1,9 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Bar } from 'react-chartjs-2';
+import React from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Bar } from "react-chartjs-2";
 
 export default function ScoreGraph({ session, setWeek, taskType }) {
-  console.log('data fetch');
+  console.log("data fetch");
   // fetch data from backend
 
   let tempArray = session.data;
@@ -12,15 +12,15 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     week: 0,
     passedtests: 0,
     totaltests: 0,
-    bootcamperuid: '',
-    coachName: '',
-    datesubmitted: '',
-    duedate: '',
-    feedbackdate: '',
+    bootcamperuid: "",
+    coachName: "",
+    datesubmitted: "",
+    duedate: "",
+    feedbackdate: "",
     feedbackid: 0,
-    qualitative: '',
-    subject: '',
-    type: '',
+    qualitative: "",
+    subject: "",
+    type: "",
   });
 
   if (tempArray[0] !== undefined) {
@@ -44,14 +44,14 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
 
   percentageArr.map((e, i) => {
     if (e >= 80) {
-      barBgColorArr[i] = 'rgba(255, 206, 86, 0.2)';
-      barBorColorArr[i] = 'rgba(255, 159, 64, 1)';
+      barBgColorArr[i] = "rgba(0, 177, 106, 0.8)";
+      barBorColorArr[i] = "rgba(0, 177, 106, 1)";
     } else if (e < 40) {
-      barBgColorArr[i] = 'rgba(255, 99, 132, 0.2)';
-      barBorColorArr[i] = 'rgba(255, 99, 132, 1)';
+      barBgColorArr[i] = "rgba(214, 69, 65, 0.8)";
+      barBorColorArr[i] = "rgba(214, 69, 65, 1)";
     } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = 'rgba(54, 162, 235, 0.2)';
-      barBorColorArr[i] = 'rgba(54, 162, 235, 1)';
+      barBgColorArr[i] = "rgba(248, 148, 6, 0.8)";
+      barBorColorArr[i] = "rgba(248, 148, 6, 1)";
     }
   });
 
