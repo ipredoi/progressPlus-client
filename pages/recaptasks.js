@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import Avatar from "../components/Avatar";
-import UsefulLinks from "../components/UsefulLinks";
-import NavBar from "../components/NavBar";
-import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
-import serverSideProps from "../libs/functions/serverSideProps";
-import LoadingImg from "../components/LoadingImg";
-import ScoreGraph from "../components/bootcamper/ScoreGraph";
-import FeedbackTable from "../components/bootcamper/FeedbackTable";
+import React, { useState } from 'react';
+import Avatar from '../components/Avatar';
+import UsefulLinks from '../components/UsefulLinks';
+import NavBar from '../components/NavBar';
+import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
+import ScoreGraph from '../components/bootcamper/ScoreGraph';
+import FeedbackTable from '../components/bootcamper/FeedbackTable';
 
 export default function RecapTasks({ session }) {
   const [week, setWeek] = useState(1);
-
-  console.log(`test: name:${session.name}, uid:${session.uid}`);
 
   if (!session) {
     return <LoadingImg />;
@@ -21,7 +19,7 @@ export default function RecapTasks({ session }) {
       <header className='header'>
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
-        <ScoreGraph session={session} setWeek={setWeek} />
+        <ScoreGraph session={session} setWeek={setWeek} taskType='Recap' />
         <FeedbackTable session={session} week={week} />
       </header>
       <footer className='footer'>

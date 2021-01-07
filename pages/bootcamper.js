@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Avatar from "../components/Avatar";
-import UsefulLinks from "../components/usefulLinks";
-import NavBar from "../components/NavBar";
-import QuoteHeader from "../Components/QuoteHeader";
-import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
-import serverSideProps from "../libs/functions/serverSideProps";
-import styles from "../styles/pagesStyle/bootcamper.module.css";
-import { Icon } from "semantic-ui-react";
-import LoadingImg from "../components/LoadingImg";
+import React, { useState } from 'react';
+import Avatar from '../components/Avatar';
+import UsefulLinks from '../components/usefulLinks';
+import NavBar from '../components/NavBar';
+import QuoteHeader from '../Components/QuoteHeader';
+import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
+import styles from '../styles/pagesStyle/bootcamper.module.css';
+import { Icon } from 'semantic-ui-react';
+import LoadingImg from '../components/LoadingImg';
 
 export default function Bootcamper({ session }) {
   if (!session) {

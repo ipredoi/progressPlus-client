@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Avatar from "../components/Avatar";
-import UsefulLinks from "../components/UsefulLinks";
-import NavBar from "../components/NavBar";
-import ScoreGraph from "../components/bootcamper/ScoreGraph";
-import FeedbackTable from "../components/bootcamper/FeedbackTable";
-import { bootcamperNavBarArr } from "../libs/globalVariables/navBarArrays";
-import serverSideProps from "../libs/functions/serverSideProps";
-import LoadingImg from "../components/LoadingImg";
+import React, { useState } from 'react';
+import Avatar from '../components/Avatar';
+import UsefulLinks from '../components/UsefulLinks';
+import NavBar from '../components/NavBar';
+import ScoreGraph from '../components/bootcamper/ScoreGraph';
+import FeedbackTable from '../components/bootcamper/FeedbackTable';
+import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
+import LoadingImg from '../components/LoadingImg';
 
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
@@ -23,7 +23,7 @@ export default function MasteryTasks({ session }) {
         <Avatar src={session.picture} name={session.name} />
         <NavBar linksAndTitles={bootcamperNavBarArr} />
       </header>
-      <ScoreGraph session={session} setWeek={setWeek} />
+      <ScoreGraph session={session} setWeek={setWeek} taskType='Mastery' />
       <FeedbackTable session={session} week={week} />
 
       <footer className='footer'>
