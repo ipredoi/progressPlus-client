@@ -15,7 +15,7 @@ export default function Progress({ session }) {
   const [bootcamperInfo, setBootcamperInfo] = useState([]);
   const [feedbackData, setFeedbackData] = useState([]);
 
-  // // console.log(session.data.data);
+  console.log(session.data.data);
 
   function sortFeedbackData() {
     // // console.log(bootcamperName);
@@ -51,8 +51,12 @@ export default function Progress({ session }) {
   }, [session]);
 
   useEffect(() => {
-    let bootcampersNames = bootcamperInfo.map((bootcamper) => {
+    let bootcampers = bootcamperInfo.map((bootcamper) => {
       return bootcamper.name;
+    });
+    //remove duplicates
+    let bootcampersNames = bootcampers.filter(function (elem, index, self) {
+      return index === self.indexOf(elem);
     });
     let provisionalArray = bootcampersNames.reduce(bootcamperNameReducer, []);
     setBootcampersArr(provisionalArray);
@@ -66,12 +70,12 @@ export default function Progress({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <h2 className={styles.title}>Progress tracker</h2>
       <div className={styles.dropDown}>
-        <Form className="form">
-          <Form.Group widths="equal">
+        <Form className='form'>
+          <Form.Group widths='equal'>
             <Form.Field
               control={Select}
               options={bootcampersArr}
-              placeholder="Choose bootcamper"
+              placeholder='Choose bootcamper'
               search
               searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {
