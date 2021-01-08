@@ -17,7 +17,7 @@ export default function Coach({ session }) {
       <AppHeader
         session={session}
         navBarArr={coachNavBarArr}
-        title={'WELCOME TO APP NAME'}
+        title={'SoC Progress Tracker'}
       />
       <section className={styles.body}>
         <div className={styles.quoteHeader}>

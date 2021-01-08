@@ -87,7 +87,7 @@ export default function Feedback({ session }) {
       <AppHeader
         session={session}
         navBarArr={coachNavBarArr}
-        title={'WELCOME TO APP NAME'}
+        title={'SoC Progress Tracker'}
       />
       <div className={styles.feedbackForm}>
         <FeedbackForm

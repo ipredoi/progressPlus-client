@@ -13,16 +13,15 @@ export default function RecapTasks({ session }) {
     return <LoadingImg />;
   }
 
-  console.log(feedbackData);
   return (
     <div>
-      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
+      <AppHeader session={session} title={'SoC Progress Tracker'} />
       <ScoreGraph
         feedbackData={session.data}
         setWeek={setWeek}
         taskType='Recap'
       />
-      <FeedbackTable week={week} />
+      <FeedbackTable week={week} session={session} />
       <AppFooter />
     </div>
   );

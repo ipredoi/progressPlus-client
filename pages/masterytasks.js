@@ -15,7 +15,7 @@ export default function MasteryTasks({ session }) {
 
   return (
     <div>
-      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
+      <AppHeader session={session} title={'SoC Progress Tracker'} />
       <ScoreGraph
         setWeek={setWeek}
         taskType='Mastery'
