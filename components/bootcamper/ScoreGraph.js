@@ -73,8 +73,10 @@ export default function ScoreGraph({
             labels: weekArr,
             datasets: [
               {
-                // label: if (bootcamperName === bootcamperName)
-                //  `bootcamperName ? ${bootcamperName} : ${feedbackData[0].name}'s ${taskType} Task Score `, // name from login session
+                label:
+                  bootcamperName === bootcamperName
+                    ? `${bootcamperName}`
+                    : `${feedbackData[0].name}'s ${taskType} Task Score`,
                 data: percentageArr,
                 backgroundColor: setBarBgColorArr(percentageArr),
                 borderColor: setBarBorColorArr(percentageArr),
