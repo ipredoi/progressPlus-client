@@ -7,13 +7,15 @@ import { Form, Select } from 'semantic-ui-react';
 import { useState, useEffect } from 'react';
 import ProgressGraph from '../components/coach/ProgressGraph';
 import styles from '../styles/pagesStyle/progress.module.css';
+import ScoreGraph from '../components/bootcamper/ScoreGraph';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
   const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [bootcamperInfo, setBootcamperInfo] = useState([]);
-  const [feedbackData, setFeedbackData] = useState([]);
+  const [recapFeedbackData, setRecapFeedbackData] = useState([]);
+  const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
 
   console.log(session.data.data);
 
@@ -23,9 +25,14 @@ export default function Progress({ session }) {
     const individualFeedback = allFeedback.filter((feedbackObject) => {
       return feedbackObject.name === bootcamperName;
     });
-    // // console.log(individualFeedback);
-    setFeedbackData(individualFeedback);
-    // // console.log(feedbackData);
+    const recapFeedback = individualFeedback.filter((feedbackObject) => {
+      return feedbackObject.type === 'recap';
+    });
+    const masteryFeedback = individualFeedback.filter((feedbackObject) => {
+      return feedbackObject.type === 'mastery';
+    });
+    setRecapFeedbackData(recapFeedback);
+    setMasteryFeedbackData(masteryFeedback);
   }
 
   useEffect(() => {
@@ -85,8 +92,16 @@ export default function Progress({ session }) {
           </Form.Group>
         </Form>
       </div>
-      <ProgressGraph
+      {/* <ProgressGraph
         feedbackData={feedbackData}
+        bootcamperName={bootcamperName}
+      /> */}
+      <ScoreGraph
+        feedbackData={recapFeedbackData}
+        bootcamperName={bootcamperName}
+      />
+      <ScoreGraph
+        feedbackData={masteryFeedbackData}
         bootcamperName={bootcamperName}
       />
       <AppFooter />

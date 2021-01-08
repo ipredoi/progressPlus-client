@@ -6,12 +6,12 @@ import {
   setBarBorColorArr,
 } from '../../libs/functions/setChartColors';
 
-export default function ScoreGraph({ session, setWeek, taskType }) {
-  // console.loglog("data fetch");
-  // fetch data from backend
-
-  let tempArray = session.data;
-
+export default function ScoreGraph({
+  setWeek,
+  taskType,
+  feedbackData,
+  bootcamperName,
+}) {
   const feedbackArr = new Array(16).fill({
     week: 0,
     passedtests: 0,
@@ -27,8 +27,8 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     type: '',
   });
 
-  if (tempArray[0] !== undefined) {
-    tempArray.forEach((obj) => {
+  if (feedbackData[0] !== undefined) {
+    feedbackData.forEach((obj) => {
       feedbackArr[obj.week - 1] = obj;
     });
   }
@@ -43,8 +43,6 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     return Math.round((num / totalTestArr[i]) * 100);
   });
 
-
- 
   // onclick event of bar chart
   function handleClick(event, elements) {
     if (elements[0] === undefined) {
@@ -75,7 +73,8 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
             labels: weekArr,
             datasets: [
               {
-                label: `${session.name}'s ${taskType} Task Score `, // name from login session
+                // label: if (bootcamperName === bootcamperName)
+                //  `bootcamperName ? ${bootcamperName} : ${feedbackData[0].name}'s ${taskType} Task Score `, // name from login session
                 data: percentageArr,
                 backgroundColor: setBarBgColorArr(percentageArr),
                 borderColor: setBarBorColorArr(percentageArr),

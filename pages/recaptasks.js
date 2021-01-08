@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
 import serverSideProps from '../libs/functions/serverSideProps';
@@ -12,11 +12,17 @@ export default function RecapTasks({ session }) {
   if (!session) {
     return <LoadingImg />;
   }
+
+  console.log(feedbackData);
   return (
     <div>
       <AppHeader session={session} title={'WELCOME TO APP NAME'} />
-      <ScoreGraph session={session} setWeek={setWeek} taskType="Recap" />
-      <FeedbackTable session={session} week={week} />
+      <ScoreGraph
+        feedbackData={session.data}
+        setWeek={setWeek}
+        taskType='Recap'
+      />
+      <FeedbackTable week={week} />
       <AppFooter />
     </div>
   );
