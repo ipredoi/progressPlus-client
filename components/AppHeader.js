@@ -14,12 +14,12 @@ export default function AppHeader({
       <div className={styles.avatar}>
         <img
           className={styles.socLogo}
-          src='/Logo.png'
-          alt='School of Code Logo'
+          src="/Logo.png"
+          alt="School of Code Logo"
         />
 
         <div className={styles.title}>
-          <h1>{title}</h1>
+          <h1 className={styles.text}>{title}</h1>
         </div>
 
         <Avatar src={session.picture} name={session.name} />
