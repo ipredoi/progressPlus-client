@@ -1,53 +1,97 @@
 //semantic ui used for form skeleton
-import React from "react";
-import { useRouter } from "next/router";
-import { Form, Input, TextArea, Button, Select } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
-import styles from "../styles/componentStyle/feedbackForm.module.css";
+import { React, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import styles from '../styles/componentStyle/feedbackForm.module.css';
 import {
   bootcampWeeks,
   tasksArray,
-} from "../libs/globalVariables/coachFeedbackFormArr";
-
+} from '../libs/globalVariables/coachFeedbackFormArr';
+import bootCampersArrayReducer from '../libs/functions/bootCampersArrayReducer.js';
+import validateFeedbackForm from '../libs/functions/feedbackForm/validateFeedbackForm';
+import useFormSubmit from '../libs/customHooks/useFormSubmit';
+//----------------------to be moved----------
+const valuesInitialState = {
+  bootcamperName: '',
+  week: '',
+  taskType: '',
+  subject: '',
+  dueDate: '',
+  dateSubmitted: '',
+  passedTests: '',
+  totalTests: '',
+  comments: '',
+};
+//-----------------------------------------------------
 const FeedbackForm = ({
-  bootcamperName,
   className,
-  taskType,
-  subject,
-  week,
-  passedTests,
-  totalTests,
-  comments,
-  dueDate,
-  dateSubmitted,
   bootcampersInfoArr,
   submitFeedback,
-  setbootcamperName,
-  setTaskType,
-  setSubject,
-  setWeek,
-  setPassedTests,
-  setTotalTests,
-  setComments,
-  setDueDate,
-  setDateSubmitted,
+  coachName,
 }) => {
   const router = useRouter();
+  console.log(coachName);
 
-  // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
-  const bootcamperNameReducer = (acc, cur, index) => {
-    return [
-      ...acc,
-      {
-        key: cur.uid,
-        text: cur.name,
-        value: cur.name,
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    dropDownHandleChange,
+    isSubmitted,
+  } = useFormSubmit(valuesInitialState, validateFeedbackForm);
+
+  let bootcampersArr = bootCampersArrayReducer(bootcampersInfoArr);
+  console.log(bootcampersArr);
+
+  useEffect(() => {
+    if (values.bootcamperName !== '') {
+      var bootcamperUid = bootcampersInfoArr.filter(function (item) {
+        return item.name === `${values.bootcamperName}`;
+      });
+      const bootuid = bootcamperUid[0].uid;
+      console.log(bootuid);
+    }
+  }, [values.bootcamperName]);
+
+  function feedbackPost() {
+    const {
+      bootcamperName,
+      week,
+      taskType,
+      subject,
+      dueDate,
+      dateSubmitted,
+      passedTests,
+      totalTests,
+      comments,
+    } = values;
+    fetch(`${backendUrl}feedback`, {
+      method: 'POST',
+      body: JSON.stringify({
+        bootcamperuid: `${bootcamperUid}`,
+        coachname: `${coachName}`,
+        feedbackdate: `${dateTime}`,
+        subject: `${subject}`,
+        week: week,
+        type: `${taskType}`,
+        passedtests: passedTests,
+        totaltests: totalTests,
+        qualitative: `${comments}`,
+        duedate: `${dueDate}`,
+        datesubmitted: `${dateSubmitted}`,
+      }),
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
-    ];
-  };
-
-  //aplying reducer to the bootcampesNames array to obtain the input field array needed
-  let bootcampersArr = bootcampersInfoArr.reduce(bootcamperNameReducer, []);
+      mode: 'cors',
+    }).then((response) => response.json());
+    // .then((data) => console.log(data));
+    // console.log("handlesubmit working");
+  }
 
   return (
     <Form className={styles.form}>
@@ -57,97 +101,114 @@ const FeedbackForm = ({
           control={Select}
           options={bootcampersArr}
           label={{
-            children: "Bootcamper Name",
-            htmlFor: "form-select-control-name",
+            children: 'Bootcamper Name',
           }}
-          placeholder='Name'
+          placeholder='Bootcamper Name'
           search
-          searchInput={{ id: "form-select-control-name" }}
-          onChange={setbootcamperName}
-          value={bootcamperName}
+          searchInput={{ id: 'form-select-control-name' }}
+          name='bootcamperName'
+          value={values.bootcamperName}
+          onChange={dropDownHandleChange}
+          onBlur={handleBlur}
         />
+
         <Form.Field
           className={styles.dropDownInput}
           control={Select}
           options={bootcampWeeks}
           label={{
-            children: "Week",
-            htmlFor: "form-select-control-week",
+            children: 'Week',
           }}
           placeholder='Week'
           search
-          searchInput={{ id: "form-select-control-week" }}
-          onChange={setWeek}
-          value={week}
+          searchInput={{ id: 'form-select-control-week' }}
+          name='week'
+          value={values.week}
+          onChange={dropDownHandleChange}
+          onBlur={handleBlur}
         />
+
         <Form.Field
           className={styles.dropDownInput}
           control={Select}
           options={tasksArray}
           label={{
-            children: "Task type",
-            htmlFor: "form-select-control-task-type",
+            children: 'Task type',
           }}
           placeholder='Task type'
           search
-          searchInput={{ id: "form-select-control-task-type" }}
-          onChange={setTaskType}
-          value={taskType}
+          searchInput={{ id: 'form-select-control-task-type' }}
+          name='taskType'
+          value={values.taskType}
+          onChange={dropDownHandleChange}
+          onBlur={handleBlur}
         />
       </Form.Group>
-      {/* <Form> */}
+
       <Form.Field>
         <label>Subject</label>
-        <input placeholder='React/ JS' onChange={setSubject} value={subject} />
+        <input
+          placeholder='e.g. React/ JS'
+          name='subject'
+          value={values.subject}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
       </Form.Field>
-      {/* </Form> */}
-      {/* <Form> */}
+
       <Form.Field>
         <label>Due Date</label>
         <input
-          className={styles.dateInput}
-          onChange={setDueDate}
           type='date'
-          value={dueDate}
+          name='dueDate'
+          value={values.dueDate}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+
         <label>Date Submitted</label>
         <input
-          className={styles.dateInput}
-          onChange={setDateSubmitted}
           type='date'
-          value={dateSubmitted}
+          name='dateSubmitted'
+          value={values.dateSubmitted}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </Form.Field>
-      {/* </Form> */}
 
-      {/* <Form> */}
       <Form.Field>
         <label>Passed Tests</label>
         <input
-          onChange={setPassedTests}
           type='number'
           min='0'
-          placeholder='Input the score'
-          value={passedTests}
+          placeholder='Input the tests passed'
+          name='passedTests'
+          value={values.passedTests}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+
         <label>Total Tests</label>
         <input
-          onChange={setTotalTests}
           type='number'
-          min={passedTests}
-          placeholder='Input total score'
-          value={totalTests}
+          min={values.passedTests}
+          placeholder='Input total tests'
+          name='totalTests'
+          value={values.totalTests}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </Form.Field>
-      {/* </Form> */}
 
       <Form.Field
-        onChange={setComments}
         id='form-textarea-control-fFeedbackeedback'
         control={TextArea}
         label='Feedback'
         placeholder='Feedback'
-        value={comments}
+        name='comments'
+        value={values.comments}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
 
       <Form.Field
@@ -161,7 +222,7 @@ const FeedbackForm = ({
         control={Button}
         content='Main Page'
         onClick={() => {
-          router.push("./coach");
+          router.push('./coach');
         }}
       />
     </Form>
