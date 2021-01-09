@@ -13,5 +13,6 @@
   display: flex;
   height: 40vh;
   position: relative;
-  width: 50vw;
+  justify-content: center;
+  width: 100vw;
 }

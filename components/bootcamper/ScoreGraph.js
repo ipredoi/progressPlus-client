@@ -6,7 +6,7 @@ import {
   setBarBorColorArr,
 } from '../../libs/functions/setChartColors';
 
-const placeholderData = new Array(16).fill({
+let placeholderData = new Array(16).fill({
   week: 0,
   passedtests: 0,
   totaltests: 0,
@@ -27,24 +27,26 @@ export default function ScoreGraph({
   feedbackData,
   bootcamperName,
 }) {
-  const graphData = placeholderData.map((object, index) => {
-    return feedbackData[index] || object;
-  });
+  // const graphData = placeholderData.map((object, index) => {
+  //   return feedbackData[index] || object;
+  // });
 
-  // if (feedbackData[0] !== undefined) {
-  //   feedbackData.forEach((obj) => {
-  //     feedbackArr[obj.week - 1] = obj;
-  //   });
-  // }
+  if (feedbackData[0] !== undefined) {
+    feedbackData.forEach((obj) => {
+      placeholderData[obj.week - 1] = obj;
+    });
+  }
 
-  let passedTestArr = graphData.map((e) => {
-    return e.passedtests;
-  });
-  let totalTestArr = graphData.map((e) => {
-    return e.totaltests;
-  });
-  let percentageArr = passedTestArr.map((num, i) => {
-    return Math.round((num / totalTestArr[i]) * 100);
+  console.log(feedbackData);
+
+  let percentagesArr = [];
+  let weeksArr = [];
+
+  placeholderData.forEach((object, index) => {
+    percentagesArr.push(
+      Math.round((object.passedtests / object.totaltests) * 100)
+    );
+    weeksArr.push(index + 1);
   });
 
   // onclick event of bar chart
@@ -66,23 +68,22 @@ export default function ScoreGraph({
     }
   }
 
-  const weekArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   return (
     <div>
-      {graphData[0] === undefined ? (
+      {feedbackData[0] === undefined ? (
         <p>No data to display</p>
       ) : (
         <Bar
           data={{
-            labels: weekArr,
+            labels: weeksArr,
             datasets: [
               {
                 label: bootcamperName
                   ? `${bootcamperName}`
                   : `${feedbackData[0].name}'s ${taskType} Task Score`,
-                data: percentageArr,
-                backgroundColor: setBarBgColorArr(percentageArr),
-                borderColor: setBarBorColorArr(percentageArr),
+                data: percentagesArr,
+                backgroundColor: setBarBgColorArr(percentagesArr),
+                borderColor: setBarBorColorArr(percentagesArr),
                 borderWidth: 2,
               },
             ],
@@ -92,7 +93,7 @@ export default function ScoreGraph({
           options={{
             responsive: true,
             onClick: handleClick,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             scales: {
               xAxes: [
                 {
