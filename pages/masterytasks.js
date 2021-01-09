@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
 import ScoreGraph from '../components/bootcamper/ScoreGraph';
@@ -9,16 +9,18 @@ import LoadingImg from '../components/LoadingImg';
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
 
-  // console.loglog(`test: name:${session.name}, uid:${session.uid}`);
-
   if (!session) {
     return <LoadingImg />;
   }
-
+  console.log(session.data);
   return (
     <div>
-      <AppHeader session={session} title={'WELCOME TO APP NAME'} />
-      <ScoreGraph session={session} setWeek={setWeek} taskType="Mastery" />
+      <AppHeader session={session} title={'SoC Progress Tracker'} />
+      <ScoreGraph
+        setWeek={setWeek}
+        taskType='Mastery'
+        feedbackData={session.data}
+      />
       <FeedbackTable session={session} week={week} />
       <AppFooter />
     </div>
@@ -29,7 +31,6 @@ export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid) {
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
     const { data } = await res.json();
-    // console.loglog(data);
     return data;
   }
   return serverSideProps(context, fetchFeedbackData);

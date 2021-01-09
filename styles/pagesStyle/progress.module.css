@@ -8,3 +8,11 @@
   margin: 0em;
   text-align: center;
 }
+
+.graphs {
+  display: flex;
+  height: 40vh;
+  position: relative;
+  justify-content: center;
+  width: 100vw;
+}

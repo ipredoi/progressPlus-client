@@ -1,58 +1,52 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Bar } from 'react-chartjs-2';
+import {
+  setBarBgColorArr,
+  setBarBorColorArr,
+} from '../../libs/functions/setChartColors';
 
-export default function ScoreGraph({ session, setWeek, taskType }) {
-  // console.loglog("data fetch");
-  // fetch data from backend
+let placeholderData = new Array(16).fill({
+  week: 0,
+  passedtests: 0,
+  totaltests: 0,
+  bootcamperuid: '',
+  coachName: '',
+  datesubmitted: '',
+  duedate: '',
+  feedbackdate: '',
+  feedbackid: 0,
+  qualitative: '',
+  subject: '',
+  type: '',
+});
 
-  let tempArray = session.data;
+export default function ScoreGraph({
+  setWeek,
+  taskType,
+  feedbackData,
+  bootcamperName,
+}) {
+  // const graphData = placeholderData.map((object, index) => {
+  //   return feedbackData[index] || object;
+  // });
 
-  const feedbackArr = new Array(16).fill({
-    week: 0,
-    passedtests: 0,
-    totaltests: 0,
-    bootcamperuid: "",
-    coachName: "",
-    datesubmitted: "",
-    duedate: "",
-    feedbackdate: "",
-    feedbackid: 0,
-    qualitative: "",
-    subject: "",
-    type: "",
-  });
-
-  if (tempArray[0] !== undefined) {
-    tempArray.forEach((obj) => {
-      feedbackArr[obj.week - 1] = obj;
+  if (feedbackData[0] !== undefined) {
+    feedbackData.forEach((obj) => {
+      placeholderData[obj.week - 1] = obj;
     });
   }
 
-  let passedTestArr = feedbackArr.map((e) => {
-    return e.passedtests;
-  });
-  let totalTestArr = feedbackArr.map((e) => {
-    return e.totaltests;
-  });
-  let percentageArr = passedTestArr.map((num, i) => {
-    return (num / totalTestArr[i]) * 100;
-  });
+  console.log(feedbackData);
 
-  let barBorColorArr = [];
-  let barBgColorArr = [];
+  let percentagesArr = [];
+  let weeksArr = [];
 
-  percentageArr.map((e, i) => {
-    if (e >= 80) {
-      barBgColorArr[i] = "rgba(0, 177, 106, 0.8)";
-      barBorColorArr[i] = "rgba(0, 177, 106, 1)";
-    } else if (e < 40) {
-      barBgColorArr[i] = "rgba(214, 69, 65, 0.8)";
-      barBorColorArr[i] = "rgba(214, 69, 65, 1)";
-    } else if (e >= 40 && e < 80) {
-      barBgColorArr[i] = "rgba(248, 148, 6, 0.8)";
-      barBorColorArr[i] = "rgba(248, 148, 6, 1)";
-    }
+  placeholderData.forEach((object, index) => {
+    percentagesArr.push(
+      Math.round((object.passedtests / object.totaltests) * 100)
+    );
+    weeksArr.push(index + 1);
   });
 
   // onclick event of bar chart
@@ -65,7 +59,7 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
       const dataset = chart.data.datasets[element._datasetIndex];
       const weekNum = chart.data.labels[element._index];
       const scorePercentage = dataset.data[element._index];
-      const activeWeek = feedbackArr.filter((obj) => {
+      const activeWeek = graphData.filter((obj) => {
         return obj.week === weekNum;
       });
 
@@ -74,21 +68,22 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
     }
   }
 
-  const weekArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   return (
     <div>
-      {feedbackArr[0] === undefined ? (
+      {feedbackData[0] === undefined ? (
         <p>No data to display</p>
       ) : (
         <Bar
           data={{
-            labels: weekArr,
+            labels: weeksArr,
             datasets: [
               {
-                label: `${session.name}'s ${taskType} Task Score [%]`, // name from login session
-                data: percentageArr,
-                backgroundColor: barBgColorArr,
-                borderColor: barBorColorArr,
+                label: bootcamperName
+                  ? `${bootcamperName}`
+                  : `${feedbackData[0].name}'s ${taskType} Task Score`,
+                data: percentagesArr,
+                backgroundColor: setBarBgColorArr(percentagesArr),
+                borderColor: setBarBorColorArr(percentagesArr),
                 borderWidth: 2,
               },
             ],
@@ -96,13 +91,18 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
           width={600}
           height={400}
           options={{
+            responsive: true,
             onClick: handleClick,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             scales: {
               xAxes: [
                 {
                   ticks: {
                     maxTicksLimit: 16,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Week Number',
                   },
                 },
               ],
@@ -111,6 +111,10 @@ export default function ScoreGraph({ session, setWeek, taskType }) {
                   ticks: {
                     max: 100,
                     beginAtZero: true,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Passed Tests [%]',
                   },
                 },
               ],

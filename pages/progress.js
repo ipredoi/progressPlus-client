@@ -5,34 +5,26 @@ import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
 import { Form, Select } from 'semantic-ui-react';
 import { useState, useEffect } from 'react';
-import ProgressGraph from '../components/coach/ProgressGraph';
 import styles from '../styles/pagesStyle/progress.module.css';
+import ScoreGraph from '../components/bootcamper/ScoreGraph';
+import {
+  sortRecapData,
+  sortMasteryData,
+} from '../libs/functions/sortFeedbackData';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
   const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [bootcamperInfo, setBootcamperInfo] = useState([]);
-  const [feedbackData, setFeedbackData] = useState([]);
-
-  // // console.log(session.data.data);
-
-  function sortFeedbackData() {
-    // // console.log(bootcamperName);
-    let allFeedback = session.data.data;
-    const individualFeedback = allFeedback.filter((feedbackObject) => {
-      return feedbackObject.name === bootcamperName;
-    });
-    // // console.log(individualFeedback);
-    setFeedbackData(individualFeedback);
-    // // console.log(feedbackData);
-  }
+  const [recapFeedbackData, setRecapFeedbackData] = useState([]);
+  const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
 
   useEffect(() => {
-    sortFeedbackData();
+    setRecapFeedbackData(sortRecapData(bootcamperName, session));
+    setMasteryFeedbackData(sortMasteryData(bootcamperName, session));
   }, [bootcamperName]);
 
-  // // console.log(session);
   //creates an array of bootcampers' names
 
   const bootcamperNameReducer = (acc, cur, index) => {
@@ -51,8 +43,12 @@ export default function Progress({ session }) {
   }, [session]);
 
   useEffect(() => {
-    let bootcampersNames = bootcamperInfo.map((bootcamper) => {
+    let bootcampers = bootcamperInfo.map((bootcamper) => {
       return bootcamper.name;
+    });
+    //remove duplicates
+    let bootcampersNames = bootcampers.filter(function (elem, index, self) {
+      return index === self.indexOf(elem);
     });
     let provisionalArray = bootcampersNames.reduce(bootcamperNameReducer, []);
     setBootcampersArr(provisionalArray);
@@ -66,12 +62,12 @@ export default function Progress({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <h2 className={styles.title}>Progress tracker</h2>
       <div className={styles.dropDown}>
-        <Form className="form">
-          <Form.Group widths="equal">
+        <Form className='form'>
+          <Form.Group widths='equal'>
             <Form.Field
               control={Select}
               options={bootcampersArr}
-              placeholder="Choose bootcamper"
+              placeholder='Choose bootcamper'
               search
               searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {
@@ -81,10 +77,20 @@ export default function Progress({ session }) {
           </Form.Group>
         </Form>
       </div>
-      <ProgressGraph
+      {/* <ProgressGraph
         feedbackData={feedbackData}
         bootcamperName={bootcamperName}
-      />
+      /> */}
+      <div className={styles.graphs}>
+        <ScoreGraph
+          feedbackData={recapFeedbackData}
+          bootcamperName={bootcamperName}
+        />
+        <ScoreGraph
+          feedbackData={masteryFeedbackData}
+          bootcamperName={bootcamperName}
+        />
+      </div>
       <AppFooter />
     </div>
   );
