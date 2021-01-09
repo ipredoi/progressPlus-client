@@ -20,7 +20,7 @@ export default function Feedback({ session }) {
   const [dueDate, setDueDate] = useState('');
   const [dateSubmitted, setDateSubmitted] = useState('');
 
-  // console.log(taskType);
+  console.log(taskType);
 
   function resteInputs() {
     setbootcamperName('');
