@@ -1,11 +1,11 @@
 import React from 'react';
-import QuoteHeader from '../components/QuoteHeader';
-import serverSideProps from '../libs/functions/serverSideProps';
-import styles from '../styles/pagesStyle/bootcamper.module.css';
-import LoadingImg from '../components/LoadingImg';
-import DashboardDisplay from '../components/bootcamper/DashboardDisplay';
-import AppHeader from '../components/AppHeader';
-import AppFooter from '../components/AppFooter';
+import QuoteHeader from '../../components/QuoteHeader';
+import serverSideProps from '../../libs/functions/serverSideProps';
+import styles from './bootcamper.module.css';
+import LoadingImg from '../../components/LoadingImg';
+import DashboardDisplay from '../../components/bootcamper/DashboardDisplay';
+import AppHeader from '../../components/AppHeader';
+import AppFooter from '../../components/AppFooter';
 
 export default function Bootcamper({ session }) {
   if (!session) {

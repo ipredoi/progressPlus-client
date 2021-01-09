@@ -1,25 +1,25 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import styles from "../styles/pagesStyle/register.module.css";
-import { useAuthContext } from "../firebaseAuthUtils/useAuthContext";
-import nookies from "nookies";
-import { verifyIdToken } from "../firebaseAuthUtils/firebaseAdmin";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { backendUrl } from "../libs/globalVariables/urls";
+import styles from './register.module.css';
+import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
+import nookies from 'nookies';
+import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { backendUrl } from '../../libs/globalVariables/urls';
 import {
   rolesArr,
   cohortArr,
-} from "../libs/globalVariables/registerUserArrays";
-import DropdownMenu from "../components/register/DropdownMenu";
-import InputField from "../components/InputField";
-import RegisterButton from "../components/RegisterButton";
-import LoadingImg from "../components/LoadingImg";
+} from '../../libs/globalVariables/registerUserArrays';
+import DropdownMenu from '../../components/register/DropdownMenu';
+import InputField from '../../components/InputField';
+import RegisterButton from '../../components/RegisterButton';
+import LoadingImg from '../../components/LoadingImg';
 
 export default function Register({ session }) {
-  const [role, setRole] = useState("");
-  const [cohort, setCohort] = useState("");
-  const [name, setName] = useState("");
+  const [role, setRole] = useState('');
+  const [cohort, setCohort] = useState('');
+  const [name, setName] = useState('');
 
   const { logOut } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
@@ -28,27 +28,27 @@ export default function Register({ session }) {
   //function to post the new user to the DB
   function registerUser(e) {
     e.preventDefault();
-    if ((role !== "") & (cohort !== "")) {
+    if ((role !== '') & (cohort !== '')) {
       fetch(`${backendUrl}`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           role: role,
           uid: session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
           cohort: cohort,
-          name: session.name !== "No name" ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
+          name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
         }),
         headers: {
-          "content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          'content-type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
-        mode: "cors",
+        mode: 'cors',
       }).then((response) => response.json());
       // .then((data) => console.log(data));
       // console.log("handlesubmit working");
       // redirecting the user to coach/ bootcamper page after submit
       router.push(`/${role.toLowerCase()}`);
     } else {
-      alert("Please fill all the required fields");
+      alert('Please fill all the required fields');
     }
   }
 
@@ -65,7 +65,7 @@ export default function Register({ session }) {
         />
         <div className={styles.form}>
           {/*  conditionally render the wellcome message if there is no username from github */}
-          {session.name === "No name" ? (
+          {session.name === 'No name' ? (
             <p className={styles.pWelcome}>
               Hi, please submit your details to register
             </p>
@@ -75,13 +75,13 @@ export default function Register({ session }) {
               Hi
               {` ${session.name.replace(
                 / .*/,
-                ""
+                ''
               )}, please submit your details to register`}
             </p>
           )}
 
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
-          {session.name === "No name" ? (
+          {session.name === 'No name' ? (
             <InputField
               placeholder='Name'
               className={styles.inputField}
@@ -90,7 +90,7 @@ export default function Register({ session }) {
               }}
             />
           ) : (
-            ""
+            ''
           )}
           <DropdownMenu
             className={styles.dropdownMenu}
@@ -119,7 +119,7 @@ export default function Register({ session }) {
             handleClick={logOut}
             className={styles.signOutButton}
             buttonText={`Log Out`}
-            color={"red"}
+            color={'red'}
           />
         </div>
       </div>
@@ -135,7 +135,7 @@ export async function getServerSideProps(context) {
 
     //if user has no name on GitHub, name will be set to 'No name ❗ to test the functionality remove the exclamation mark'
     if (!name) {
-      name = "No name";
+      name = 'No name';
     }
 
     //❗ redirect works fine to be uncommented after testing register page
