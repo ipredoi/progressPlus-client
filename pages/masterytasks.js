@@ -12,7 +12,7 @@ export default function MasteryTasks({ session }) {
   if (!session) {
     return <LoadingImg />;
   }
-
+  console.log(session.data);
   return (
     <div>
       <AppHeader session={session} title={'SoC Progress Tracker'} />

@@ -6,37 +6,41 @@ import {
   setBarBorColorArr,
 } from '../../libs/functions/setChartColors';
 
+const placeholderData = new Array(16).fill({
+  week: 0,
+  passedtests: 0,
+  totaltests: 0,
+  bootcamperuid: '',
+  coachName: '',
+  datesubmitted: '',
+  duedate: '',
+  feedbackdate: '',
+  feedbackid: 0,
+  qualitative: '',
+  subject: '',
+  type: '',
+});
+
 export default function ScoreGraph({
   setWeek,
   taskType,
   feedbackData,
   bootcamperName,
 }) {
-  const feedbackArr = new Array(16).fill({
-    week: 0,
-    passedtests: 0,
-    totaltests: 0,
-    bootcamperuid: '',
-    coachName: '',
-    datesubmitted: '',
-    duedate: '',
-    feedbackdate: '',
-    feedbackid: 0,
-    qualitative: '',
-    subject: '',
-    type: '',
+  const graphData = placeholderData.map((object, index) => {
+    return feedbackData[index] || object;
   });
 
-  if (feedbackData[0] !== undefined) {
-    feedbackData.forEach((obj) => {
-      feedbackArr[obj.week - 1] = obj;
-    });
-  }
+  // if (feedbackData[0] !== undefined) {
+  //   feedbackData.forEach((obj) => {
+  //     feedbackArr[obj.week - 1] = obj;
+  //   });
+  // }
 
-  let passedTestArr = feedbackArr.map((e) => {
+  let passedTestArr = graphData.map((e) => {
     return e.passedtests;
   });
-  let totalTestArr = feedbackArr.map((e) => {
+  let totalTestArr = graphData.map((e) => {
     return e.totaltests;
   });
   let percentageArr = passedTestArr.map((num, i) => {
@@ -53,7 +57,7 @@ export default function ScoreGraph({
       const dataset = chart.data.datasets[element._datasetIndex];
       const weekNum = chart.data.labels[element._index];
       const scorePercentage = dataset.data[element._index];
-      const activeWeek = feedbackArr.filter((obj) => {
+      const activeWeek = graphData.filter((obj) => {
         return obj.week === weekNum;
       });
 
@@ -65,7 +69,7 @@ export default function ScoreGraph({
   const weekArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   return (
     <div>
-      {feedbackArr[0] === undefined ? (
+      {graphData[0] === undefined ? (
         <p>No data to display</p>
       ) : (
         <Bar
@@ -73,10 +77,9 @@ export default function ScoreGraph({
             labels: weekArr,
             datasets: [
               {
-                label:
-                  bootcamperName === bootcamperName
-                    ? `${bootcamperName}`
-                    : `${feedbackData[0].name}'s ${taskType} Task Score`,
+                label: bootcamperName
+                  ? `${bootcamperName}`
+                  : `${feedbackData[0].name}'s ${taskType} Task Score`,
                 data: percentageArr,
                 backgroundColor: setBarBgColorArr(percentageArr),
                 borderColor: setBarBorColorArr(percentageArr),
@@ -87,6 +90,7 @@ export default function ScoreGraph({
           width={600}
           height={400}
           options={{
+            responsive: true,
             onClick: handleClick,
             maintainAspectRatio: false,
             scales: {
