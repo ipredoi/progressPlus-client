@@ -1,3 +1,5 @@
+// this functions checks the input fields in the form and returns the errors
+
 export default function validateFeedbackForm(values) {
   let errors = {};
 

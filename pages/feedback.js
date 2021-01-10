@@ -5,7 +5,6 @@ import LoadingImg from '../components/LoadingImg';
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
 import styles from '../styles/pagesStyle/feedback.module.css';
-import { Button } from 'semantic-ui-react';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -25,13 +24,6 @@ export default function Feedback({ session }) {
           // bootcampersInfoArr={bootcampersInfoArr}
           session={session}
         />
-     {/*    <Button
-          className={styles.submitButton}
-          content='Main Page'
-          onClick={() => {
-            router.push('./coach');
-          }}
-        /> */}
       </div>
 
       <AppFooter />
