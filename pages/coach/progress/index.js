@@ -48,7 +48,7 @@ export default function Progress({ session }) {
       <AppHeader session={session} navBarArr={coachNavBarArr} />
       <h2 className={styles.title}>Progress tracker</h2>
       <div className={styles.dropDown}>
-        <Form className='form'>
+        <Form>
           <Form.Group widths='equal'>
             <Form.Field
               control={Select}
