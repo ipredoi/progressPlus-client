@@ -6,7 +6,7 @@ import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { Form, Select } from 'semantic-ui-react';
 import { useState, useEffect } from 'react';
-// import styles from '../../../styles/''
+import styles from './progress.module.css';
 import ScoreGraph from '../../../Components/ScoreGraph';
 import {
   sortRecapData,
@@ -17,30 +17,28 @@ import {
 export default function Progress({ session }) {
   const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
-  const [bootcamperInfo, setBootcamperInfo] = useState([]);
   const [recapFeedbackData, setRecapFeedbackData] = useState([]);
   const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
 
+  //sets bootcamper names for the dropdown menu and removes duplicates
+  useEffect(() => {
+    setBootcampersArr(
+      session.data.data
+        .map((bootcamper) => {
+          return bootcamper.name;
+        })
+        .filter(function (elem, index, self) {
+          return index === self.indexOf(elem);
+        })
+        .reduce(bootcamperNameReducer, [])
+    );
+  }, [session]);
+
+  //filters feedback when a name is selected
   useEffect(() => {
     setRecapFeedbackData(sortRecapData(bootcamperName, session));
     setMasteryFeedbackData(sortMasteryData(bootcamperName, session));
   }, [bootcamperName]);
-
-  useEffect(() => {
-    setBootcamperInfo(session.data.data);
-  }, [session]);
-
-  useEffect(() => {
-    let bootcampers = bootcamperInfo.map((bootcamper) => {
-      return bootcamper.name;
-    });
-    //remove duplicates
-    let bootcampersNames = bootcampers.filter(function (elem, index, self) {
-      return index === self.indexOf(elem);
-    });
-    let provisionalArray = bootcampersNames.reduce(bootcamperNameReducer, []);
-    setBootcampersArr(provisionalArray);
-  }, [bootcamperInfo]);
 
   if (!session) {
     return <LoadingImg />;
@@ -65,10 +63,6 @@ export default function Progress({ session }) {
           </Form.Group>
         </Form>
       </div>
-      {/* <ProgressGraph
-        feedbackData={feedbackData}
-        bootcamperName={bootcamperName}
-      /> */}
       <div className={styles.graphs}>
         <ScoreGraph
           feedbackData={recapFeedbackData}
