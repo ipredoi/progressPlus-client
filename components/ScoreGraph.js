@@ -1,25 +1,25 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Bar } from 'react-chartjs-2';
+import React from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Bar } from "react-chartjs-2";
 import {
   setBarBgColorArr,
   setBarBorColorArr,
-} from '../libs/functions/setChartColors';
+} from "../libs/functions/setChartColors";
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({
   week: 0,
   passedtests: 0,
   totaltests: 0,
-  bootcamperuid: '',
-  coachName: '',
-  datesubmitted: '',
-  duedate: '',
-  feedbackdate: '',
+  bootcamperuid: "",
+  coachName: "",
+  datesubmitted: "",
+  duedate: "",
+  feedbackdate: "",
   feedbackid: 0,
-  qualitative: '',
-  subject: '',
-  type: '',
+  qualitative: "",
+  subject: "",
+  type: "",
 });
 
 export default function ScoreGraph({
@@ -49,6 +49,10 @@ export default function ScoreGraph({
       Math.round((object.passedtests / object.totaltests) * 100)
     );
     weeksArr.push(index + 1);
+  });
+
+  let subjectArr = feedbackArr.map((e) => {
+    return e.subject;
   });
 
   // onclick event of bar chart, displays data for week selected
@@ -103,7 +107,7 @@ export default function ScoreGraph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Week Number',
+                    labelString: "Week Number",
                   },
                 },
               ],
@@ -115,7 +119,7 @@ export default function ScoreGraph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Passed Tests [%]',
+                    labelString: "Passed Tests [%]",
                   },
                 },
               ],
