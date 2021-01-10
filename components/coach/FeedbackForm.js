@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import styles from '../styles/componentStyle/feedbackForm.module.css';
-import useFormSubmit from '../libs/customHooks/useFormSubmit';
-import validateFeedbackForm from '../libs/functions/feedbackForm/validateFeedbackForm';
-import { backendUrl } from '../libs/globalVariables/urls';
+import styles from '../../styles/componentStyle/feedbackForm.module.css';
+import useFormSubmit from '../../libs/customHooks/useFormSubmit';
+import validateFeedbackForm from '../../libs/functions/feedbackForm/validateFeedbackForm';
+import { backendUrl } from '../../libs/globalVariables/urls';
 import {
   bootcampWeeks,
   tasksArray,
-} from '../libs/globalVariables/coachFeedbackFormArr';
-import bootCampersArrayReducer from '../libs/functions/bootCampersArrayReducer.js';
+} from '../../libs/globalVariables/coachFeedbackFormArr';
+import bootCampersArrayReducer from '../../libs/functions/bootCampersArrayReducer.js';
 
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
@@ -70,7 +70,7 @@ export default function FeedbackForm({ session }) {
     }
   }, [values.bootcamperName]);
 
-  console.log(bootcamperUid);
+  //console.log(bootcamperUid);
   // function to post the data to database
   async function feedbackPost() {
     const {
@@ -263,7 +263,7 @@ export default function FeedbackForm({ session }) {
         className={styles.mainPageButton}
         content='Main Page'
         onClick={() => {
-          router.push('./coach');
+          router.push('./');
         }}
       />
     </Form>

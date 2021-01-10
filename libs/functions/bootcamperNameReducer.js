@@ -1,6 +1,6 @@
 // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
 
-export default function bootcamperNameReducer(acc, cur, index) {
+/* export default function bootcamperNameReducer(acc, cur, index) {
   return [
     ...acc,
     {
@@ -10,3 +10,4 @@ export default function bootcamperNameReducer(acc, cur, index) {
     },
   ];
 }
+ */
