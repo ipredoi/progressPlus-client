@@ -8,6 +8,7 @@ import {
   bootcampWeeks,
   tasksArray,
 } from '../../libs/globalVariables/coachFeedbackFormArr';
+import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
 
 const FeedbackForm = ({
   bootcamperName,
@@ -34,19 +35,7 @@ const FeedbackForm = ({
 }) => {
   const router = useRouter();
 
-  // creating a reduce function to match the array required by the input field eg [{key:"i", name:"Ionut", value:"Ionut"}]
-  const bootcamperNameReducer = (acc, cur, index) => {
-    return [
-      ...acc,
-      {
-        key: cur.uid,
-        text: cur.name,
-        value: cur.name,
-      },
-    ];
-  };
-
-  //aplying reducer to the bootcampesNames array to obtain the input field array needed
+  //applying reducer to the bootcampesNames array to obtain the input field array needed
   let bootcampersArr = bootcampersInfoArr.reduce(bootcamperNameReducer, []);
 
   return (

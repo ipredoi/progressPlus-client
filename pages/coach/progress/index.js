@@ -1,16 +1,17 @@
 import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
 import serverSideProps from '../../../libs/functions/serverSideProps';
+import bootcamperNameReducer from '../../../libs/functions/bootcamperNameReducer';
 import LoadingImg from '../../../components/LoadingImg';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { Form, Select } from 'semantic-ui-react';
 import { useState, useEffect } from 'react';
-import styles from '../styles/pagesStyle/progress.module.css';
-import ScoreGraph from '../components/bootcamper/ScoreGraph';
+// import styles from '../../../styles/''
+import ScoreGraph from '../../../Components/ScoreGraph';
 import {
   sortRecapData,
   sortMasteryData,
-} from '../libs/functions/sortFeedbackData';
+} from '../../../libs/functions/sortFeedbackData';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
@@ -24,19 +25,6 @@ export default function Progress({ session }) {
     setRecapFeedbackData(sortRecapData(bootcamperName, session));
     setMasteryFeedbackData(sortMasteryData(bootcamperName, session));
   }, [bootcamperName]);
-
-  //creates an array of bootcampers' names
-
-  const bootcamperNameReducer = (acc, cur, index) => {
-    return [
-      ...acc,
-      {
-        key: `${cur.charAt(0).toLowerCase()}${index}`,
-        text: cur,
-        value: cur,
-      },
-    ];
-  };
 
   useEffect(() => {
     setBootcamperInfo(session.data.data);
