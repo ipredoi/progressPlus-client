@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import AppHeader from '../components/AppHeader';
-import AppFooter from '../components/AppFooter';
-import ScoreGraph from '../components/bootcamper/ScoreGraph';
-import FeedbackTable from '../components/bootcamper/FeedbackTable';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
+import React, { useState } from 'react';
+import AppHeader from '../../../components/AppHeader';
+import AppFooter from '../../../components/AppFooter';
+import ScoreGraph from '../../../components/bootcamper/ScoreGraph';
+import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import LoadingImg from '../../../components/LoadingImg';
 
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);

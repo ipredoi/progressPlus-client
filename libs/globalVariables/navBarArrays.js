@@ -1,13 +1,13 @@
 const coachNavBarArr = [
   { link: '/coach', title: 'Home' },
-  { link: '/feedback', title: 'Submit Feedback' },
-  { link: '/progress', title: 'Track Progress' },
+  { link: '/coach/feedback', title: 'Submit Feedback' },
+  { link: '/coach/progress', title: 'Track Progress' },
 ];
 
 const bootcamperNavBarArr = [
   { link: '/bootcamper', title: 'Home' },
-  { link: '/masterytasks', title: 'Mastery Tasks' },
-  { link: '/recaptasks', title: 'Recap Tasks' },
+  { link: '/bootcamper/masterytasks', title: 'Mastery Tasks' },
+  { link: '/bootcamper/recaptasks', title: 'Recap Tasks' },
 ];
 
 export { coachNavBarArr, bootcamperNavBarArr };

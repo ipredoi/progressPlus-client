@@ -1,8 +1,8 @@
-import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
-import AppHeader from '../components/AppHeader';
-import AppFooter from '../components/AppFooter';
+import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import LoadingImg from '../../../components/LoadingImg';
+import AppHeader from '../../../components/AppHeader';
+import AppFooter from '../../../components/AppFooter';
 import { Form, Select } from 'semantic-ui-react';
 import { useState, useEffect } from 'react';
 import styles from '../styles/pagesStyle/progress.module.css';

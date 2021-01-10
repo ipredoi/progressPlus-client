@@ -1,12 +1,12 @@
-import FeedbackForm from '../components/FeedbackForm';
-import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
+import FeedbackForm from '../../../components/coach/FeedbackForm';
+import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
 import { useState } from 'react';
-import { backendUrl } from '../libs/globalVariables/urls';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
-import AppHeader from '../components/AppHeader';
-import AppFooter from '../components/AppFooter';
-import styles from '../styles/pagesStyle/feedback.module.css';
+import { backendUrl } from '../../../libs/globalVariables/urls';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import LoadingImg from '../../../components/LoadingImg';
+import AppHeader from '../../../components/AppHeader';
+import AppFooter from '../../../components/AppFooter';
+import styles from './feedback.module.css';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {

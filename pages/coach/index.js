@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from '../styles/pagesStyle/coach.module.css';
-import QuoteHeader from '../components/QuoteHeader';
-import serverSideProps from '../libs/functions/serverSideProps';
-import LoadingImg from '../components/LoadingImg';
-import AppHeader from '../components/AppHeader';
-import AppFooter from '../components/AppFooter';
-import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
-import CoachDashboard from '../components/coach/CoachDashboard';
+import styles from './coach.module.css';
+import QuoteHeader from '../../components/QuoteHeader';
+import serverSideProps from '../../libs/functions/serverSideProps';
+import LoadingImg from '../../components/LoadingImg';
+import AppHeader from '../../components/AppHeader';
+import AppFooter from '../../components/AppFooter';
+import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
+import CoachDashboard from '../../components/coach/CoachDashboard';
 
 export default function Coach({ session }) {
   if (!session) {
