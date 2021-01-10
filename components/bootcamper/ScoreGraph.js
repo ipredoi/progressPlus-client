@@ -6,6 +6,7 @@ import {
   setBarBorColorArr,
 } from '../../libs/functions/setChartColors';
 
+//initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({
   week: 0,
   passedtests: 0,
@@ -31,17 +32,18 @@ export default function ScoreGraph({
   //   return feedbackData[index] || object;
   // });
 
+  //placeholderData will be replaced with real data for the weeks where there is data in DB
+
   if (feedbackData[0] !== undefined) {
     feedbackData.forEach((obj) => {
       placeholderData[obj.week - 1] = obj;
     });
   }
 
-  console.log(feedbackData);
-
   let percentagesArr = [];
   let weeksArr = [];
 
+  //sets percentages and weeks for the graph to use as data
   placeholderData.forEach((object, index) => {
     percentagesArr.push(
       Math.round((object.passedtests / object.totaltests) * 100)
@@ -49,7 +51,7 @@ export default function ScoreGraph({
     weeksArr.push(index + 1);
   });
 
-  // onclick event of bar chart
+  // onclick event of bar chart, displays data for week selected
   function handleClick(event, elements) {
     if (elements[0] === undefined) {
       return 0;
@@ -64,7 +66,6 @@ export default function ScoreGraph({
       });
 
       setWeek(activeWeek[0]);
-      // console.loglog(activeWeek);
     }
   }
 
