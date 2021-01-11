@@ -3,7 +3,6 @@ import styles from './coach.module.css';
 import QuoteHeader from '../../components/QuoteHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
 import AppHeader from '../../components/AppHeader';
-import AppFooter from '../../components/AppFooter';
 import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
 import CoachDashboard from '../../components/coach/CoachDashboard';
 
@@ -22,7 +21,6 @@ export default function Coach({ session }) {
         <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
         <CoachDashboard />
       </section>
-      <AppFooter />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AppHeader from '../../../components/AppHeader';
-import AppFooter from '../../../components/AppFooter';
 import ScoreGraph from '../../../Components/ScoreGraph';
 import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 import serverSideProps from '../../../libs/functions/serverSideProps';
@@ -16,7 +15,6 @@ export default function MasteryTasks({ session }) {
         feedbackData={session.data}
       />
       <FeedbackTable session={session} week={week} />
-      <AppFooter />
     </div>
   );
 }

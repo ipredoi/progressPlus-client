@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AppHeader from '../../../components/AppHeader';
-import AppFooter from '../../../components/AppFooter';
 import serverSideProps from '../../../libs/functions/serverSideProps';
 import ScoreGraph from '../../../components/ScoreGraph';
 import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
@@ -16,7 +15,6 @@ export default function RecapTasks({ session }) {
         taskType='Recap'
       />
       <FeedbackTable week={week} session={session} />
-      <AppFooter />
     </div>
   );
 }
