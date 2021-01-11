@@ -50,7 +50,7 @@ export function AuthContextProvider({ children }) {
         return;
       }
 
-      const token = await user.getIdToken();
+      const token = await user.getIdToken(true);
       setUser(user);
       nookies.set(undefined, "token", token, {});
     });
