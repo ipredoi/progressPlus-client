@@ -10,6 +10,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     const res = await fetch(`${backendUrl}${uid}`);
     const userData = await res.json();
     const { name } = userData.data[0];
+    const role = userData.data[0].role;
     let data = '';
     if (customFetchRequest) {
       data = await customFetchRequest(backendUrl, uid);
@@ -17,7 +18,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     }
 
     return {
-      props: { session: { name, uid, picture, data } },
+      props: { session: { name, uid, picture, data, role } },
     };
   } catch (err) {
     console.log(err);

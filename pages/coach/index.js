@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './coach.module.css';
 import QuoteHeader from '../../components/QuoteHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
 import AppHeader from '../../components/AppHeader';
 import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
 import CoachDashboard from '../../components/coach/CoachDashboard';
+import { useRouter } from 'next/router';
 
 export default function Coach({ session }) {
+  let router = useRouter();
+
+  if (session.role !== 'Coach') {
+    router.push('/');
+  }
   return (
     <div className={styles.coach}>
       <AppHeader session={session} navBarArr={coachNavBarArr} />

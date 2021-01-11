@@ -261,7 +261,7 @@ export default function FeedbackForm({ session }) {
       />
       <Button
         className={styles.mainPageButton}
-        content='Main Page'
+        content='Home'
         onClick={() => {
           router.push('./');
         }}

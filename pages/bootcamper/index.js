@@ -6,6 +6,9 @@ import DashboardDisplay from '../../components/bootcamper/DashboardDisplay';
 import AppHeader from '../../components/AppHeader';
 
 export default function Bootcamper({ session }) {
+  if (session.role !== 'Bootcamper') {
+    router.push('/');
+  }
   return (
     <div className={styles.bootcamper}>
       <AppHeader session={session} title={'SoC Progress Tracker'} />

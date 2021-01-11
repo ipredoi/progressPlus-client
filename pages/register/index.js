@@ -107,7 +107,7 @@ export default function Register({ session }) {
           <RegisterButton
             handleClick={registerUser}
             className={styles.registerButton}
-            buttonText={`Submit the Form`}
+            buttonText={`Submit`}
           />
 
           <RegisterButton

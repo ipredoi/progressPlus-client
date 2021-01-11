@@ -6,6 +6,9 @@ import serverSideProps from '../../../libs/functions/serverSideProps';
 
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
+  if (session.role !== 'Bootcamper') {
+    router.push('/');
+  }
   return (
     <div>
       <AppHeader session={session} />
@@ -23,6 +26,8 @@ export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid) {
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
     const { data } = await res.json();
+    // const loginData = redirectFetchReq();
+    // return {feedbackData: data, loginData: loginData};
     return data;
   }
   return serverSideProps(context, fetchFeedbackData);

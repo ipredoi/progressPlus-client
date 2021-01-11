@@ -6,6 +6,9 @@ import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 
 export default function RecapTasks({ session }) {
   const [week, setWeek] = useState(1);
+  if (session.role !== 'Bootcamper') {
+    router.push('/');
+  }
   return (
     <div>
       <AppHeader session={session} title={'SoC Progress Tracker'} />
