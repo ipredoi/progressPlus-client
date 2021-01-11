@@ -1,7 +1,6 @@
 import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
 import serverSideProps from '../../../libs/functions/serverSideProps';
 import bootcamperNameReducer from '../../../libs/functions/bootcamperNameReducer';
-import LoadingImg from '../../../components/LoadingImg';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { Form, Select } from 'semantic-ui-react';
@@ -40,9 +39,6 @@ export default function Progress({ session }) {
     setMasteryFeedbackData(sortMasteryData(bootcamperName, session));
   }, [bootcamperName]);
 
-  if (!session) {
-    return <LoadingImg />;
-  }
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />

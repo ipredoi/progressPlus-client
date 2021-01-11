@@ -4,15 +4,9 @@ import AppFooter from '../../../components/AppFooter';
 import ScoreGraph from '../../../Components/ScoreGraph';
 import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 import serverSideProps from '../../../libs/functions/serverSideProps';
-import LoadingImg from '../../../components/LoadingImg';
 
 export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
-
-  if (!session) {
-    return <LoadingImg />;
-  }
-
   return (
     <div>
       <AppHeader session={session} title={'SoC Progress Tracker'} />
