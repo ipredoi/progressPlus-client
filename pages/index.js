@@ -14,7 +14,7 @@ export default function Login() {
             height={100}
           />
         </div>
-        <h1 className={styles.h1}>Platform Name Here</h1>
+        <h1 className={styles.h1}>SoC Progress Tracker</h1>
         <FirebaseAuth />
         <br />
         <br />
