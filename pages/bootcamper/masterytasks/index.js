@@ -8,7 +8,7 @@ export default function MasteryTasks({ session }) {
   const [week, setWeek] = useState(1);
   return (
     <div>
-      <AppHeader session={session} title={'SoC Progress Tracker'} />
+      <AppHeader session={session} />
       <ScoreGraph
         setWeek={setWeek}
         taskType='Mastery'

@@ -9,11 +9,7 @@ import CoachDashboard from '../../components/coach/CoachDashboard';
 export default function Coach({ session }) {
   return (
     <div className={styles.coach}>
-      <AppHeader
-        session={session}
-        navBarArr={coachNavBarArr}
-        title={'SoC Progress Tracker'}
-      />
+      <AppHeader session={session} navBarArr={coachNavBarArr} />
       <section className={styles.body}>
         <div className={styles.quoteHeader}>
           <QuoteHeader />
