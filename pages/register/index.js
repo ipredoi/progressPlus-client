@@ -1,55 +1,38 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import styles from './register.module.css';
 import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { backendUrl } from '../../libs/globalVariables/urls';
-import {
-  rolesArr,
-  cohortArr,
-} from '../../libs/globalVariables/registerUserArrays';
 import DropdownMenu from '../../components/register/DropdownMenu';
 import InputField from '../../components/InputField';
 import RegisterButton from '../../components/RegisterButton';
+import registerUser from '../../libs/functions/registerUser';
+import styles from './register.module.css';
+import {
+  rolesDropdownProps,
+  cohortDropdownProps,
+  nameFieldProps,
+  submitButtonProps,
+  logOutButtonProps,
+} from './props';
 
 export default function Register({ session }) {
-  const [role, setRole] = useState('');
-  const [cohort, setCohort] = useState('');
-  const [name, setName] = useState('');
+  const [newUserData, setNewUserData] = useState({});
+  const [submit, setSubmit] = useState(false);
 
   const { logOut } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
-  const router = useRouter();
 
-  //function to post the new user to the DB
-  function registerUser(e) {
-    e.preventDefault();
-    if ((role !== '') & (cohort !== '')) {
-      fetch(`${backendUrl}`, {
-        method: 'POST',
-        body: JSON.stringify({
-          role: role,
-          uid: session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
-          cohort: cohort,
-          name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
-        }),
-        headers: {
-          'content-type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        mode: 'cors',
-      }).then((response) => response.json());
-      // .then((data) => console.log(data));
-      // console.log("handlesubmit working");
-      // redirecting the user to coach/ bootcamper page after submit
-      router.push(`/${role.toLowerCase()}`);
-    } else {
-      alert('Please fill all the required fields');
+  //user redirected to appropriate page after submitting form
+  const router = useRouter();
+  useEffect(() => {
+    if (submit === true) {
+      router.push(`/${newUserData.role.toLowerCase()}`);
     }
-  }
+  }, [submit]);
+
   return (
     <div className={styles.body}>
       <div className={styles.registerForm}>
@@ -59,10 +42,10 @@ export default function Register({ session }) {
           alt='profile picture'
         />
         <div className={styles.form}>
-          {/*  conditionally render the wellcome message if there is no username from github */}
+          {/*  conditionally render the welcome message if there is no username from github */}
           {session.name === 'No name' ? (
             <p className={styles.pWelcome}>
-              Hi, please submit your details to register
+              Please submit your details to register
             </p>
           ) : (
             <p className={styles.pWelcome}>
@@ -78,44 +61,37 @@ export default function Register({ session }) {
           {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
           {session.name === 'No name' ? (
             <InputField
-              placeholder='Name'
-              className={styles.inputField}
+              {...nameFieldProps}
               onChange={(e) => {
-                setName(e.target.value);
+                setNewUserData({ ...newUserData, name: e.target.value });
               }}
             />
           ) : (
             ''
           )}
           <DropdownMenu
-            className={styles.dropdownMenu}
-            option={rolesArr}
-            placeHolder='Select SoC Role'
+            {...rolesDropdownProps}
             handleClick={(e, data) => {
-              setRole(data.value.toLowerCase());
+              setNewUserData({
+                ...newUserData,
+                role: data.value.toLowerCase(),
+              });
             }}
           />
           <DropdownMenu
-            className={styles.dropdownMenu}
-            option={cohortArr}
-            placeHolder='Select Current Cohort'
+            {...cohortDropdownProps}
             handleClick={(e, data) => {
-              setCohort(data.value);
+              setNewUserData({ ...newUserData, cohort: data.value });
             }}
           />
 
           <RegisterButton
-            handleClick={registerUser}
-            className={styles.registerButton}
-            buttonText={`Submit the Form`}
+            {...submitButtonProps}
+            handleClick={(event) => {
+              registerUser(event, newUserData, session, setSubmit);
+            }}
           />
-
-          <RegisterButton
-            handleClick={logOut}
-            className={styles.signOutButton}
-            buttonText={`Log Out`}
-            color={'red'}
-          />
+          <RegisterButton {...logOutButtonProps} handleClick={logOut} />
         </div>
       </div>
     </div>
