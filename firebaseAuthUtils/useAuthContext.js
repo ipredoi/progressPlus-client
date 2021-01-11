@@ -1,15 +1,15 @@
 // Create the authContext to pass the user properties between pages as long as an user is authenticated
 
-import { useEffect, useState, createContext, useContext } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
-import nookies from "nookies";
+import { useEffect, useState, createContext, useContext } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import nookies from 'nookies';
 
 // import firebase initialisation function
-import firebaseInit from "./firebaseInit";
+import firebaseInit from './firebaseInit';
 
 // import useRouter hook from nextjs
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 // call the function to initialise firebase
 firebaseInit();
@@ -33,7 +33,7 @@ export function AuthContextProvider({ children }) {
       .auth()
       .signOut()
       .then(() => {
-        router.push("/");
+        router.push('/');
       })
       .catch((e) => {
         // console.log(error(e));
@@ -45,14 +45,17 @@ export function AuthContextProvider({ children }) {
       // // console.log('auth changed');
       // // console.log(user ? user : 'Nothing');
       if (!user) {
+        console.log('no user found');
         setUser(null);
-        nookies.set(undefined, "token", "", {});
+        nookies.destroy(null, 'token');
+        nookies.set(null, 'token', '', {});
         return;
       }
 
       const token = await user.getIdToken();
       setUser(user);
-      nookies.set(undefined, "token", token, {});
+      nookies.destroy(null, 'token');
+      nookies.set(null, 'token', token, {});
     });
   }, []);
 
