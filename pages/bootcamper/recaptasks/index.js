@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import AppHeader from '../../../components/AppHeader';
-<<<<<<< HEAD
-import AppFooter from '../../../components/AppFooter';
 import serverSideProps from '../../../libs/functions/serverSideProps';
-import LoadingImg from '../../../components/LoadingImg';
-=======
-import serverSideProps from '../../../libs/functions/serverSideProps';
->>>>>>> 55959991d684ebdcebd3844bf08a545a11830bb6
 import ScoreGraph from '../../../components/ScoreGraph';
 import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 
@@ -14,11 +8,7 @@ export default function RecapTasks({ session }) {
   const [week, setWeek] = useState(1);
   return (
     <div>
-<<<<<<< HEAD
-      <AppHeader session={session} />
-=======
       <AppHeader session={session} title={'SoC Progress Tracker'} />
->>>>>>> 55959991d684ebdcebd3844bf08a545a11830bb6
       <ScoreGraph
         feedbackData={session.data}
         setWeek={setWeek}
