@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import {
   setBarBgColorArr,
   setBarBorColorArr,
-} from '../libs/functions/setChartColors';
+} from '../../libs/functions/setChartColors';
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({

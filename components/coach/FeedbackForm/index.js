@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import styles from '../../styles/componentStyle/feedbackForm.module.css';
-import useFormSubmit from '../../libs/customHooks/useFormSubmit';
-import validateFeedbackForm from '../../libs/functions/feedbackForm/validateFeedbackForm';
-import { backendUrl } from '../../libs/globalVariables/urls';
+import styles from './feedbackForm.module.css';
+import useFormSubmit from '../../../libs/customHooks/useFormSubmit';
+import validateFeedbackForm from '../../../libs/functions/feedbackForm/validateFeedbackForm';
+import { backendUrl } from '../../../libs/globalVariables/urls';
 import {
   bootcampWeeks,
   tasksArray,
-} from '../../libs/globalVariables/coachFeedbackFormArr';
-import bootCampersArrayReducer from '../../libs/functions/bootCampersArrayReducer.js';
+} from '../../../libs/globalVariables/coachFeedbackFormArr';
+import bootCampersArrayReducer from '../../../libs/functions/bootCampersArrayReducer.js';
 
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
@@ -159,7 +159,7 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.subject && `${styles.errorInput}`}>
         <label>Subject</label>
         <Input
-          placeholder='e.g. React/ JS'
+          placeholder='e.g. React'
           name='subject'
           value={values.subject}
           onChange={handleChange}
@@ -191,7 +191,7 @@ export default function FeedbackForm({ session }) {
         <Input
           type='number'
           min='0'
-          placeholder='Input the tests passed'
+          placeholder='Number of tests passed'
           name='passedTests'
           value={values.passedTests}
           onChange={handleChange}
@@ -203,7 +203,7 @@ export default function FeedbackForm({ session }) {
         <Input
           type='number'
           min={values.passedTests}
-          placeholder='Input total tests'
+          placeholder='Number of total tests'
           name='totalTests'
           value={values.totalTests}
           onChange={handleChange}
@@ -214,7 +214,7 @@ export default function FeedbackForm({ session }) {
         className={errors.comments && `${styles.errorInput}`}
         control={TextArea}
         label='Feedback'
-        placeholder='Feedback'
+        placeholder='Enter Feedback...'
         name='comments'
         value={values.comments}
         onChange={handleChange}
@@ -261,7 +261,7 @@ export default function FeedbackForm({ session }) {
       />
       <Button
         className={styles.mainPageButton}
-        content='Main Page'
+        content='Home'
         onClick={() => {
           router.push('./');
         }}

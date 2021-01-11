@@ -1,13 +1,13 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 import nookies from 'nookies';
-import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
+import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import DropdownMenu from '../../components/register/DropdownMenu';
-import InputField from '../../components/InputField';
-import RegisterButton from '../../components/RegisterButton';
+import DropdownMenu from '../../components/authentication/DropdownMenu';
+import InputField from '../../components/authentication/InputField';
+import RegisterButton from '../../components/authentication/RegisterButton';
 import registerUser from '../../libs/functions/registerUser';
 import styles from './register.module.css';
 import {
@@ -39,7 +39,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt='Profile Picture'
         />
         <div className={styles.form}>
           {/*  conditionally render the welcome message if there is no username from github */}

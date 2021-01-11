@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Header, Segment, Sidebar, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import LogOutButton from '../components/LogOutButton';
-import { useAuthContext } from '../firebaseAuthUtils/useAuthContext';
+import LogOutButton from '../LogOutButton';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 
 export default function NavBar({ linksAndTitles }) {
   const { open, setOpen } = useAuthContext();

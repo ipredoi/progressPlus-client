@@ -1,8 +1,8 @@
-import styles from '../styles/componentStyle/appHeader.module.css';
-import { bootcamperNavBarArr } from '../libs/globalVariables/navBarArrays';
-import Avatar from './Avatar';
-import NavBar from './NavBar';
-import { appName } from '../libs/globalVariables/appName';
+import styles from './appHeader.module.css';
+import { bootcamperNavBarArr } from '../../libs/globalVariables/navBarArrays';
+import Avatar from '../Avatar';
+import NavBar from '../NavBar';
+import { appName } from '../../libs/globalVariables/appName';
 
 export default function AppHeader({
   session,
