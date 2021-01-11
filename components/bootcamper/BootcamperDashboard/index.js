@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/componentStyle/dashboardDisplay.module.css';
+import styles from './bootcamperDashboard.module.css';
 
-export default function DashboardDisplay() {
+export default function BootcamperDashboard() {
   return (
     <div className={styles.container}>
       <a href='/bootcamper/recaptasks'>

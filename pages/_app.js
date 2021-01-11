@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/globals.css';
-import { AuthContextProvider } from '../firebaseAuthUtils/useAuthContext';
+import { AuthContextProvider } from '../firebaseUtils/useAuthContext';
 import 'semantic-ui-css/semantic.min.css';
 import { useRouter } from 'next/router';
 import LoadingImg from '../Components/LoadingImg';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
-import { quotesArray } from '../libs/globalVariables/quotesArray';
+import { quotesArray } from '../../libs/globalVariables/quotesArray';
 
 export default function QuoteHeader() {
   const [quote, setQuote] = useState('');

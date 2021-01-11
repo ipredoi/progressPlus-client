@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/componentStyle/coachDashboard.module.css';
+import styles from './coachDashboard.module.css';
 
-export default function DashboardDisplay() {
+export default function CoachDashboard() {
   return (
     <div className={styles.container}>
       <a href='/coach/feedback'>

@@ -1,9 +1,7 @@
-// Registration page for user to submit a form with details
-// submit button sends the user information to database
 import styles from './register.module.css';
-import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 import nookies from 'nookies';
-import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
+import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { backendUrl } from '../../libs/globalVariables/urls';
@@ -11,9 +9,9 @@ import {
   rolesArr,
   cohortArr,
 } from '../../libs/globalVariables/registerUserArrays';
-import DropdownMenu from '../../components/register/DropdownMenu';
-import InputField from '../../components/InputField';
-import RegisterButton from '../../components/RegisterButton';
+import DropdownMenu from '../../components/authentication/DropdownMenu';
+import InputField from '../../components/authentication/InputField';
+import RegisterButton from '../../components/authentication/RegisterButton';
 
 export default function Register({ session }) {
   const [role, setRole] = useState('');
@@ -56,7 +54,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt='Profile Picture'
         />
         <div className={styles.form}>
           {/*  conditionally render the wellcome message if there is no username from github */}
@@ -107,7 +105,7 @@ export default function Register({ session }) {
           <RegisterButton
             handleClick={registerUser}
             className={styles.registerButton}
-            buttonText={`Submit the Form`}
+            buttonText={`Submit`}
           />
 
           <RegisterButton
