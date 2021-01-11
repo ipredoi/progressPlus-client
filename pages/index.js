@@ -1,6 +1,7 @@
 import FirebaseAuth from '../components/authentication/Firebase';
 import styles from './index.module.css';
 import Image from 'next/image';
+import { appName } from '../libs/globalVariables/appName';
 
 export default function Login() {
   return (
@@ -14,10 +15,8 @@ export default function Login() {
             height={100}
           />
         </div>
-        <h1 className={styles.h1}>Platform Name Here</h1>
+        <h1 className={styles.h1}>{appName}</h1>
         <FirebaseAuth />
-        <br />
-        <br />
       </div>
     </div>
   );
