@@ -4,7 +4,6 @@ import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';
@@ -22,11 +21,10 @@ export default function Register({ session }) {
   const [newUserData, setNewUserData] = useState({});
   const [submit, setSubmit] = useState(false);
 
-  const { logOut } = useAuthContext();
+  const { logOut, router } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
 
   //user redirected to appropriate page after submitting form
-  const router = useRouter();
   useEffect(() => {
     if (submit === true) {
       router.push(`/${newUserData.role.toLowerCase()}`);
@@ -44,9 +42,7 @@ export default function Register({ session }) {
         <div className={styles.form}>
           {/*  conditionally render the welcome message if there is no username from github */}
           {session.name === 'No name' ? (
-            <p className={styles.pWelcome}>
-              Please submit your details to register
-            </p>
+            <p className={styles.pWelcome}>Submit your details to register</p>
           ) : (
             <p className={styles.pWelcome}>
               {/*  getting the first name from session  */}
@@ -54,7 +50,7 @@ export default function Register({ session }) {
               {` ${session.name.replace(
                 / .*/,
                 ''
-              )}, please submit your details to register`}
+              )}, submit your details to register`}
             </p>
           )}
 

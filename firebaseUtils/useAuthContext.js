@@ -67,6 +67,7 @@ export function AuthContextProvider({ children }) {
         logOut,
         setOpen,
         open,
+        router,
       }}>
       {children}
     </AuthContext.Provider>

@@ -20,7 +20,7 @@ const nameFieldProps = { placeholder: 'Name', className: styles.inputField };
 
 const submitButtonProps = {
   className: styles.registerButton,
-  buttonText: `Submit the Form`,
+  buttonText: `Submit`,
 };
 
 const logOutButtonProps = {
