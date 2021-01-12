@@ -13,18 +13,7 @@ export default function NavBar({ linksAndTitles }) {
         animation='scale down'
         direction='left'
         visible={open}>
-        {/* <Menu.item>
-          {linksAndTitles.map((object) => (
-            <Menu.item key={object.title} href={object.link}>
-              <Header>{object.title}</Header>
-            </Menu.item>
-          ))}
-        </Menu.item> */}
-
         <Grid textAlign='center'>
-          {/* <Grid.Column Columns={1}>
-            <Grid.Row></Grid.Row>
-          </Grid.Column> */}
           <Grid.Column Rows={linksAndTitles.length + 1}>
             {linksAndTitles.map((object) => (
               <Grid.Row key={object.title} href={object.link}>
@@ -42,31 +31,4 @@ export default function NavBar({ linksAndTitles }) {
       </Sidebar>
     </div>
   );
-}
-
-{
-  /* <Button
-            onClick={() => {
-              setOpen(!open);
-            }}></Button> */
-}
-// {
-//   <Grid textAlign='center'>
-//           <Grid.Column Columns={1}>
-//             <Grid.Row></Grid.Row>
-//           </Grid.Column>
-//           <Grid.Column Rows={linksAndTitles.length + 1}>
-//             {linksAndTitles.map((object) => (
-//               <Grid.Row key={object.title} href={object.link}>
-//                 <Header>{object.title}</Header>
-//               </Grid.Row>
-//             ))}
-//             <Grid.Row>
-//               put in edit profile component or redirect to edit profile page
-// }
-{
-  /* <LogOutButton />
-            </Grid.Row>
-          </Grid.Column>
-        </Grid>  */
 }
