@@ -4,8 +4,12 @@
   right: 20px; */
   border-radius: 50%;
   width: auto;
-  height: max(12vh, 60px);
+  height: max(8vh, 40px);
   margin: 1vh 2vh 1vh 2vh;
   align-self: center;
-  border: 1px solid #2d8b61;
+  border: 1px solid transparent;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
 }

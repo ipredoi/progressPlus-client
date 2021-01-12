@@ -8,8 +8,8 @@
 }
 .avatar {
   width: 100%;
-  border-bottom: black solid 0.2vh;
-  background-color: #4a90e2;
+  /* border-bottom: black solid 0.2vh; */
+  background-color: white;
   display: flex;
   justify-content: space-between;
   height: max(14vh, 70px);
@@ -25,8 +25,12 @@
   margin: 25px 20px 20px 20px;
   display: flex;
   align-items: center;
-  color: white;
+  color: black;
 }
 .text {
   font-size: max(5vh, 30px);
+}
+
+.quote {
+  align-items: center;
 }

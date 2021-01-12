@@ -13,11 +13,7 @@ export default function Feedback({ session }) {
   }
   return (
     <div className={styles.body}>
-      <AppHeader
-        session={session}
-        navBarArr={coachNavBarArr}
-        title={'SoC Progress Tracker'}
-      />
+      <AppHeader session={session} navBarArr={coachNavBarArr} title={''} />
       <div className={styles.feedbackForm}>
         <FeedbackForm className={styles.form} session={session} />
       </div>

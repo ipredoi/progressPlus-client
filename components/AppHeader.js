@@ -12,11 +12,7 @@ export default function AppHeader({
   return (
     <section className={styles.header}>
       <div className={styles.avatar}>
-        <img
-          className={styles.socLogo}
-          src="/Logo.png"
-          alt="School of Code Logo"
-        />
+        <img className={styles.socLogo} src='/progressplus.png' alt='Logo' />
 
         <div className={styles.title}>
           <h1 className={styles.text}>{title}</h1>

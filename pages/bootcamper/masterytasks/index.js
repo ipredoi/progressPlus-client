@@ -15,7 +15,7 @@ export default function MasteryTasks({ session }) {
 
   return (
     <div>
-      <AppHeader session={session} title={'SoC Progress Tracker'} />
+      <AppHeader session={session} title={''} />
       <ScoreGraph
         setWeek={setWeek}
         taskType='Mastery'
@@ -29,7 +29,7 @@ export default function MasteryTasks({ session }) {
 
 export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid) {
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); //  score
     const { data } = await res.json();
     return data;
   }
