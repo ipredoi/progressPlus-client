@@ -6,6 +6,8 @@ export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
+    console.log(cookies.token);
+    console.log({ token });
     const { uid, picture } = token;
     const res = await fetch(`${backendUrl}${uid}`);
     const userData = await res.json();
@@ -20,7 +22,7 @@ export default async function serverSideProps(context, customFetchRequest) {
       props: { session: { name, uid, picture, data } },
     };
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     context.res.writeHead(302, { Location: "/" });
     context.res.end();
     return { props: {} };

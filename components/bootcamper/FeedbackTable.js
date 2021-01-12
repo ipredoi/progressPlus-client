@@ -1,20 +1,18 @@
-import React from 'react';
-import { Table } from 'semantic-ui-react';
+import React from "react";
+import { Table, Button, Form } from "semantic-ui-react";
+import styles from "../../styles/componentStyle/feedbackForm.module.css";
 
-const tableColumns = [
-  'Week',
-  'Score',
-  'Comments by *insert coach name here*',
-  'Due Date',
-  'Date Submitted',
-];
-
-export default function FeedbackTable({ session, week }) {
-  // console.loglog('data fetch for table');
-  // fetch data from backend
-  let feedbackArr = session.data;
-  // console.loglog(feedbackArr);
-  // let week = feedbackArr[week - 1];
+export default function FeedbackTable({ selectedData, bootcamperName }) {
+  console.log(selectedData);
+  const tableColumns = [
+    "Week",
+    "Subject",
+    "Score",
+    `Comments by ${selectedData.coachname}`,
+    "Due Date",
+    "Date Submitted",
+    bootcamperName ? "Edit" : null,
+  ];
 
   return (
     <Table celled>
@@ -28,15 +26,34 @@ export default function FeedbackTable({ session, week }) {
 
       <Table.Body>
         <Table.Row>
-          <Table.Cell>{week.week}</Table.Cell>
+          {/* <Table.Cell>1</Table.Cell> */}
           <Table.Cell>
-            {week.passedtests === undefined
-              ? ''
-              : `${week.passedtests}/${week.totaltests}`}
+            {selectedData.type === "mastery"
+              ? selectedData.subject
+              : selectedData.week}
           </Table.Cell>
-          <Table.Cell>{week.qualitative}</Table.Cell>
-          <Table.Cell>{week.duedate}</Table.Cell>
-          <Table.Cell>{week.datesubmitted}</Table.Cell>
+          <Table.Cell>
+            {selectedData.passedtests === undefined
+              ? ""
+              : `${selectedData.passedtests}/${selectedData.totaltests}`}
+          </Table.Cell>
+          <Table.Cell>{selectedData.qualitative}</Table.Cell>
+          <Table.Cell>{selectedData.duedate}</Table.Cell>
+          <Table.Cell>{selectedData.datesubmitted}</Table.Cell>
+          <Table.Cell>
+            <Form.Field
+              className={styles.editButton}
+              control={Button}
+              content='Edit'
+              // onClick={submitFeedback}
+            />
+            <Form.Field
+              className={styles.editButton}
+              control={Button}
+              content='Delete'
+              // onClick={submitFeedback}
+            />{" "}
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>

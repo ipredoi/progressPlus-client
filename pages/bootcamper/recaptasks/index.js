@@ -7,8 +7,8 @@ import ScoreGraph from "../../../components/ScoreGraph";
 import FeedbackTable from "../../../components/bootcamper/FeedbackTable";
 
 export default function RecapTasks({ session }) {
-  const [week, setWeek] = useState(1);
-
+  const [selectedData, setSelectedData] = useState(1);
+  // console.log(session);
   if (!session) {
     return <LoadingImg />;
   }
@@ -18,10 +18,11 @@ export default function RecapTasks({ session }) {
       <AppHeader session={session} title={"SoC Progress Tracker"} />
       <ScoreGraph
         feedbackData={session.data}
-        setWeek={setWeek}
+        setSelectedData={setSelectedData}
         taskType='Recap'
+        myName={session.name}
       />
-      <FeedbackTable week={week} session={session} />
+      <FeedbackTable selectedData={selectedData} taskType='Recap' />
       <AppFooter />
     </div>
   );
@@ -31,7 +32,6 @@ export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid) {
     const res = await fetch(`${url}feedback?uid=${uid}&type=recap`); // recap task score
     const { data } = await res.json();
-    // console.log(data);
     return data;
   }
   return serverSideProps(context, fetchFeedbackData);
