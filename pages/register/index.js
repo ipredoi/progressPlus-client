@@ -96,6 +96,7 @@ export default function Register({ session }) {
 
 export async function getServerSideProps(context) {
   try {
+    console.log(context);
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     let { name, uid, email, picture } = token;

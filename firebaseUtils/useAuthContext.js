@@ -42,20 +42,20 @@ export function AuthContextProvider({ children }) {
 
   useEffect(() => {
     return firebase.auth().onIdTokenChanged(async (user) => {
-      // // console.log('auth changed');
-      // // console.log(user ? user : 'Nothing');
+       console.log('auth changed');
+       console.log(user ? user : 'No user');
       if (!user) {
         console.log('no user found');
         setUser(null);
         nookies.destroy(null, 'token');
-        nookies.set(null, 'token', '', {});
+        nookies.set(null, 'token', '', {}); 
         return;
       }
 
       const token = await user.getIdToken();
       setUser(user);
       nookies.destroy(null, 'token');
-      nookies.set(null, 'token', token, {});
+      nookies.set(null, 'token', token, {}); 
     });
   }, []);
 
