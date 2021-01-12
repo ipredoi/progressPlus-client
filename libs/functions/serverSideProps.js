@@ -1,5 +1,5 @@
 import nookies from 'nookies';
-import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
+import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
 import { backendUrl } from '../globalVariables/urls';
 
 export default async function serverSideProps(context, customFetchRequest) {

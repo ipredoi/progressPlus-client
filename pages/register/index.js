@@ -1,21 +1,24 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
-import styles from './register.module.css';
-import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
+import { backendUrl } from '../../libs/globalVariables/urls';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 import nookies from 'nookies';
-import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
-import { useRouter } from 'next/router';
-import {
-  rolesArr,
-  cohortArr,
-} from '../../libs/globalVariables/registerUserArrays';
-import DropdownMenu from '../../components/register/DropdownMenu';
-import InputField from '../../components/InputField';
-import RegisterButton from '../../components/RegisterButton';
-import LoadingImg from '../../components/LoadingImg';
 import useFormSubmit from '../../libs/customHooks/useFormSubmit';
-import registerUser from '../../libs/functions/Register/postRequest';
 import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
+import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
+import DropdownMenu from '../../components/authentication/DropdownMenu';
+import InputField from '../../components/authentication/InputField';
+import RegisterButton from '../../components/authentication/RegisterButton';
+import registerUser from '../../libs/functions/registerUser';
+import styles from './register.module.css';
+import {
+  rolesDropdownProps,
+  cohortDropdownProps,
+  surnameFieldProps,
+  forenameFieldProps,
+  submitButtonProps,
+  logOutButtonProps,
+} from '../../libs/variables/registerPageProps';
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
 const valuesInitialState = {
@@ -27,8 +30,9 @@ const valuesInitialState = {
 };
 export default function Register({ session }) {
   valuesInitialState.uid = session.uid;
+
+  const { logOut, router } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
-  const router = useRouter();
 
   // destructuring data coming from the useFormSubmit custom hook
   // the hook takes in the valuesInitialState object, validateFeedback form function which checks if there are any errors in the form and the feedbackPost function to submit data to database
@@ -40,22 +44,22 @@ export default function Register({ session }) {
     values,
     errors,
   } = useFormSubmit(valuesInitialState, validateRegisterForm, registerUser);
-  const { logOut } = useAuthContext();
 
-  if (!session) {
-    return <LoadingImg />;
-  }
   return (
     <div className={styles.body}>
       <div>
-        {/* if errors, they will be displayed here */}
+        {/* if errors, they will be displayed here
         {errors
           ? () => {
               for (const [key, value] of Object.entries(errors)) {
-                return <p className={styles.errortext}>{value}</p>;
+                return (
+                  <p key={key} className={styles.errortext}>
+                    {value}
+                  </p>
+                );
               }
             }
-          : null}
+          : null} */}
       </div>
       <div className={styles.registerForm}>
         <img
@@ -68,30 +72,24 @@ export default function Register({ session }) {
             {`Hi ${values.forename}, please submit your details to register`}
           </p>
           <InputField
-            placeholder="Forename"
-            name="forename"
-            className={errors.forename && styles.inputField}
+            {...forenameFieldProps}
+            className={errors.forename}
             onChange={handleChange}
           />
           <InputField
-            placeholder="Surname"
-            name="surname"
-            className={errors.surname && styles.inputField}
+            {...surnameFieldProps}
+            className={errors.surname}
             onChange={handleChange}
           />
 
           <DropdownMenu
-            className={errors.role && styles.dropdownMenu}
-            option={rolesArr}
-            name="role"
-            placeHolder="Select SoC Role"
+            className={errors.role}
+            {...rolesDropdownProps}
             handleClick={dropDownHandleChange}
           />
           <DropdownMenu
-            className={errors.cohort && styles.dropdownMenu}
-            option={cohortArr}
-            name="cohort"
-            placeHolder="Select Current Cohort"
+            className={errors.cohort}
+            {...cohortDropdownProps}
             handleClick={dropDownHandleChange}
           />
 
@@ -101,16 +99,10 @@ export default function Register({ session }) {
               handleSubmit(e);
               router.push(`/${values.role.toLowerCase()}`);
             }}
-            className={styles.registerButton}
-            buttonText={`Submit the Form`}
+            {...submitButtonProps}
           />
 
-          <RegisterButton
-            handleClick={logOut}
-            className={styles.signOutButton}
-            buttonText={`Log Out`}
-            color={'red'}
-          />
+          <RegisterButton handleClick={logOut} {...logOutButtonProps} />
         </div>
       </div>
     </div>
@@ -130,7 +122,7 @@ export async function getServerSideProps(context) {
 
     //❗ redirect works fine to be uncommented after testing register page
     //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
-    // const res = await fetch(`${url}${uid}`);
+    // const res = await fetch(`${backendUrl}${uid}`);
     // const data = await res.json();
     // if (data.success === true) {
     //   context.res.writeHead(302, {
