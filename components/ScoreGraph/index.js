@@ -1,39 +1,41 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Bar } from 'react-chartjs-2';
+import React from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Bar } from "react-chartjs-2";
+// import "chartjs-plugin-labels";
 import {
   setBarBgColorArr,
   setBarBorColorArr,
-} from '../../libs/functions/setChartColors';
+  // setIconArr,
+} from "../libs/functions/setChartColors";
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({
   week: 0,
   passedtests: 0,
   totaltests: 0,
-  bootcamperuid: '',
-  coachName: '',
-  datesubmitted: '',
-  duedate: '',
-  feedbackdate: '',
+  bootcamperuid: "",
+  coachName: "",
+  datesubmitted: "",
+  duedate: "",
+  feedbackdate: "",
   feedbackid: 0,
-  qualitative: '',
-  subject: '',
-  type: '',
+  qualitative: "",
+  subject: "",
+  type: "",
 });
 
 export default function ScoreGraph({
-  setWeek,
+  setSelectedData,
   taskType,
   feedbackData,
   bootcamperName,
+  myName,
 }) {
-  // const graphData = placeholderData.map((object, index) => {
-  //   return feedbackData[index] || object;
-  // });
-
+  const graphData = placeholderData.map((object, index) => {
+    return feedbackData[index] || object;
+  });
   //placeholderData will be replaced with real data for the weeks where there is data in DB
-
+  console.log(graphData);
   if (feedbackData[0] !== undefined) {
     feedbackData.forEach((obj) => {
       placeholderData[obj.week - 1] = obj;
@@ -41,35 +43,42 @@ export default function ScoreGraph({
   }
 
   let percentagesArr = [];
-  let weeksArr = [];
+  let xAxesArr = [];
+  let averageArr = bootcamperName
+    ? [40, 50, 60, 30, 70, 80, 70, 40, 90, 100]
+    : []; // bootcamper average mockdata, only shown in coach side
 
-  //sets percentages and weeks for the graph to use as data
+  // sets percentages and weeks for the graph to use as data
+  // for mastery tasks, x-axis array will be filled with subject name for both botcamper and coach sides
   placeholderData.forEach((object, index) => {
     percentagesArr.push(
       Math.round((object.passedtests / object.totaltests) * 100)
     );
-    weeksArr.push(index + 1);
+    if (taskType === "Mastery") {
+      xAxesArr = graphData.map((e) => {
+        return e.subject;
+      });
+    } else {
+      xAxesArr.push(index + 1);
+    }
   });
+  console.log(xAxesArr);
 
-  let subjectArr = placeholderData.map((e) => {
-    return e.subject;
-  });
-
-  // onclick event of bar chart, displays data for week selected
+  // onclick event of bar chart, displays data for week/subject selected
   function handleClick(event, elements) {
     if (elements[0] === undefined) {
       return 0;
     } else {
       const chart = elements[0]._chart;
       const element = chart.getElementAtEvent(event)[0];
-      const dataset = chart.data.datasets[element._datasetIndex];
       const weekNum = chart.data.labels[element._index];
-      const scorePercentage = dataset.data[element._index];
       const activeWeek = graphData.filter((obj) => {
-        return obj.week === weekNum;
+        if (taskType === "Mastery") {
+          return obj.subject === weekNum;
+        } else return obj.week === weekNum;
       });
-
-      setWeek(activeWeek[0]);
+      setSelectedData(activeWeek[0]);
+      console.log(activeWeek);
     }
   }
 
@@ -80,22 +89,45 @@ export default function ScoreGraph({
       ) : (
         <Bar
           data={{
-            labels: weeksArr,
+            labels: xAxesArr,
             datasets: [
               {
-                label: bootcamperName
-                  ? `${bootcamperName}`
-                  : `${feedbackData[0].name}'s ${taskType} Task Score`,
+                label: bootcamperName ? `${bootcamperName}` : ``,
                 data: percentagesArr,
                 backgroundColor: setBarBgColorArr(percentagesArr),
                 borderColor: setBarBorColorArr(percentagesArr),
                 borderWidth: 2,
+                order: 1,
+              },
+              {
+                label: "Average",
+                data: averageArr,
+                type: "line",
+                order: 2,
               },
             ],
           }}
           width={600}
           height={400}
           options={{
+            /* ↓↓↓ icon on bar ↓↓↓ */
+            // plugins: {
+            //   labels: {
+            //     render: "image",
+            //     textMargin: 10,
+            //     images: setIconArr(xAxesArr),
+            //   },
+            // },
+            /* ↑↑↑ average score calculate ↑↑↑ */
+            title: {
+              display: true,
+              text: bootcamperName
+                ? `${taskType} Task`
+                : `${myName}'s ${taskType} Task Score`,
+            },
+            legend: {
+              display: bootcamperName ? true : false,
+            },
             responsive: true,
             onClick: handleClick,
             maintainAspectRatio: true,
@@ -103,11 +135,11 @@ export default function ScoreGraph({
               xAxes: [
                 {
                   ticks: {
-                    maxTicksLimit: 16,
+                    // maxTicksLimit: 16,
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Week Number',
+                    labelString: "Week Number",
                   },
                 },
               ],
@@ -119,7 +151,7 @@ export default function ScoreGraph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Passed Tests [%]',
+                    labelString: "Passed Tests [%]",
                   },
                 },
               ],

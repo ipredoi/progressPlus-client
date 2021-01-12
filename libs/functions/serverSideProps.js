@@ -1,16 +1,18 @@
-import nookies from 'nookies';
-import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
-import { backendUrl } from '../globalVariables/urls';
+import nookies from "nookies";
+import { verifyIdToken } from "../../firebaseUtils/firebaseAdmin";
+import { backendUrl } from "../globalVariables/urls";
 
 export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
+    console.log(cookies.token);
+    console.log({ token });
     const { uid, picture } = token;
     const res = await fetch(`${backendUrl}${uid}`);
     const userData = await res.json();
     const { name } = userData.data[0];
-    let data = '';
+    let data = "";
     if (customFetchRequest) {
       data = await customFetchRequest(backendUrl, uid);
       // console.log(data);
@@ -21,7 +23,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     };
   } catch (err) {
     console.log(err);
-    context.res.writeHead(302, { Location: '/' });
+    context.res.writeHead(302, { Location: "/" });
     context.res.end();
     return { props: {} };
   }
