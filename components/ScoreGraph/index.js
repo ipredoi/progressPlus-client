@@ -6,7 +6,7 @@ import {
   setBarBgColorArr,
   setBarBorColorArr,
   // setIconArr,
-} from "../libs/functions/setChartColors";
+} from "../../libs/functions/setChartColors.js";
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({

@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Button, Form } from "semantic-ui-react";
-import styles from "../../styles/componentStyle/feedbackForm.module.css";
+import styles from "../../../styles/componentStyle/feedbackForm.module.css";
 
 export default function FeedbackTable({ selectedData, bootcamperName }) {
   console.log(selectedData);
