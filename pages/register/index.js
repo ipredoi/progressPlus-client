@@ -65,30 +65,20 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
             {`Hi ${values.forename}, please submit your details to register`}
           </p>
-          <InputField
-            {...forenameFieldProps}
-            className={errors.forename}
-            onChange={handleChange}
-          />
-          <InputField
-            {...surnameFieldProps}
-            className={errors.surname}
-            onChange={handleChange}
-          />
+          <InputField {...forenameFieldProps} onChange={handleChange} />
+          <InputField {...surnameFieldProps} onChange={handleChange} />
 
           <DropdownMenu
-            className={errors.role}
             {...rolesDropdownProps}
             handleClick={dropDownHandleChange}
           />
           <DropdownMenu
-            className={errors.cohort}
             {...cohortDropdownProps}
             handleClick={dropDownHandleChange}
           />
