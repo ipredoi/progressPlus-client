@@ -9,7 +9,6 @@
   width: 100vw;
 }
 
-
 .profilePicture {
   border-radius: 50%;
   width: 150px;
@@ -24,6 +23,7 @@
   font-weight: bold;
   color: #2d8b61;
   text-align: center;
+  align-self: center;
 }
 
 .registerForm {
@@ -31,9 +31,9 @@
   flex-wrap: wrap;
   align-content: center;
   width: 300px;
-  height: 500px;
+  height: 550px;
   background-color: whitesmoke;
-  border-radius: 5%;
+  border-radius: 20px;
   border-color: #31986a;
   border-width: 4px;
   border-style: solid;
@@ -48,7 +48,7 @@
 }
 .inputField > input {
   position: relative !important;
-  margin-top: 8px !important;
+  margin-top: 2px !important;
   width: 244px !important;
   min-width: 0;
   margin-right: 0px !important;
@@ -70,8 +70,7 @@
   width: 244px !important;
   min-width: 0;
   margin-right: 0px !important;
- }
-
+}
 
 .signOutButton {
   position: absolute !important;
@@ -103,4 +102,8 @@
 }
 .registerButton:active {
   background-color: #2d8b61 !important;
+}
+.form {
+  margin-left: 22.5px;
+  align-self: center !important;
 }

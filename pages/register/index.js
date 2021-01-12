@@ -78,10 +78,12 @@ export default function Register({ session }) {
             {...rolesDropdownProps}
             handleClick={dropDownHandleChange}
           />
-          <DropdownMenu
-            {...cohortDropdownProps}
-            handleClick={dropDownHandleChange}
-          />
+          {values.role === 'Bootcamper' && (
+            <DropdownMenu
+              {...cohortDropdownProps}
+              handleClick={dropDownHandleChange}
+            />
+          )}
 
           <RegisterButton
             disabled={isSubmitting}
