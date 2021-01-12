@@ -1,5 +1,5 @@
 //semantic ui used for form skeleton
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -28,9 +28,7 @@ const valuesInitialState = {
 };
 
 export default function FeedbackForm({ session }) {
-  // initial states for bootcamper uid
   // initial state for the errors occurs from server when will attempt to submit data to database
-  const [bootcamperUid, setBootcamperUid] = useState('');
   const [serverErr, setServerErr] = useState(null);
 
   // router used on the redirect button
@@ -59,18 +57,6 @@ export default function FeedbackForm({ session }) {
   // using the imported bootCampersArrayReducer to set the bootcampers in a format to be used in the dropdown menu
   let bootcampersArr = bootCampersArrayReducer(bootcampersInfoArr);
 
-  // getting the bootcamer uid after the coach selects a bootcamper
-  useEffect(() => {
-    if (values.bootcamperName !== '') {
-      setBootcamperUid(
-        bootcampersInfoArr.filter(function (item) {
-          return item.name === `${values.bootcamperName}`;
-        })[0].uid
-      );
-    }
-  }, [values.bootcamperName]);
-
-  //console.log(bootcamperUid);
   // function to post the data to database
   async function feedbackPost() {
     const {
@@ -88,7 +74,12 @@ export default function FeedbackForm({ session }) {
       await fetch(`${backendUrl}feedback`, {
         method: 'POST',
         body: JSON.stringify({
-          bootcamperuid: `${bootcamperUid}`,
+          // getting the bootcamper uid from filtering through the info arra
+          bootcamperuid: `${
+            bootcampersInfoArr.filter(function (item) {
+              return item.name === `${values.bootcamperName}`;
+            })[0].uid
+          }`,
           coachname: `${coachName}`,
           feedbackdate: `${dateTime}`,
           subject: `${subject}`,
@@ -123,9 +114,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Bootcamper Name',
         }}
-        placeholder='Bootcamper Name'
+        placeholder="Bootcamper Name"
         search
-        name='bootcamperName'
+        name="bootcamperName"
         value={values.bootcamperName}
         onChange={dropDownHandleChange}
       />
@@ -136,9 +127,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Week',
         }}
-        placeholder='Week'
+        placeholder="Week"
         search
-        name='week'
+        name="week"
         value={values.week}
         onChange={dropDownHandleChange}
       />
@@ -149,9 +140,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Task type',
         }}
-        placeholder='Task type'
+        placeholder="Task type"
         search
-        name='taskType'
+        name="taskType"
         value={values.taskType}
         onChange={dropDownHandleChange}
       />
@@ -159,8 +150,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.subject && `${styles.errorInput}`}>
         <label>Subject</label>
         <Input
-          placeholder='e.g. React/ JS'
-          name='subject'
+          placeholder="e.g. React/ JS"
+          name="subject"
           value={values.subject}
           onChange={handleChange}
         />
@@ -169,8 +160,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Due Date</label>
         <Input
-          type='date'
-          name='dueDate'
+          type="date"
+          name="dueDate"
           value={values.dueDate}
           onChange={handleChange}
         />
@@ -179,8 +170,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Date Submitted</label>
         <Input
-          type='date'
-          name='dateSubmitted'
+          type="date"
+          name="dateSubmitted"
           value={values.dateSubmitted}
           onChange={handleChange}
         />
@@ -189,10 +180,10 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.passedTests && `${styles.errorInput}`}>
         <label>Passed Tests</label>
         <Input
-          type='number'
-          min='0'
-          placeholder='Input the tests passed'
-          name='passedTests'
+          type="number"
+          min="0"
+          placeholder="Input the tests passed"
+          name="passedTests"
           value={values.passedTests}
           onChange={handleChange}
         />
@@ -201,10 +192,10 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.totalTests && `${styles.errorInput}`}>
         <label>Total Tests</label>
         <Input
-          type='number'
+          type="number"
           min={values.passedTests}
-          placeholder='Input total tests'
-          name='totalTests'
+          placeholder="Input total tests"
+          name="totalTests"
           value={values.totalTests}
           onChange={handleChange}
         />
@@ -213,9 +204,9 @@ export default function FeedbackForm({ session }) {
       <Form.Field
         className={errors.comments && `${styles.errorInput}`}
         control={TextArea}
-        label='Feedback'
-        placeholder='Feedback'
-        name='comments'
+        label="Feedback"
+        placeholder="Feedback"
+        name="comments"
         value={values.comments}
         onChange={handleChange}
       />
@@ -256,12 +247,12 @@ export default function FeedbackForm({ session }) {
         className={styles.submitButton}
         disabled={isSubmitting}
         onClick={handleSubmit}
-        type='submit'
-        content='Submit Feedback'
+        type="submit"
+        content="Submit Feedback"
       />
       <Button
         className={styles.mainPageButton}
-        content='Main Page'
+        content="Main Page"
         onClick={() => {
           router.push('./');
         }}

@@ -7,9 +7,11 @@ export default function DropdownMenu({
   option,
   placeHolder,
   handleClick,
+  name,
 }) {
   return (
     <Dropdown
+      name={name}
       clearable
       placeholder={placeHolder}
       fluid

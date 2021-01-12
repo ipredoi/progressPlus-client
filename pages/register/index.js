@@ -4,9 +4,7 @@ import styles from './register.module.css';
 import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
 import nookies from 'nookies';
 import { verifyIdToken } from '../../firebaseAuthUtils/firebaseAdmin';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { backendUrl } from '../../libs/globalVariables/urls';
 import {
   rolesArr,
   cohortArr,
@@ -15,102 +13,94 @@ import DropdownMenu from '../../components/register/DropdownMenu';
 import InputField from '../../components/InputField';
 import RegisterButton from '../../components/RegisterButton';
 import LoadingImg from '../../components/LoadingImg';
-
+import useFormSubmit from '../../libs/customHooks/useFormSubmit';
+import registerUser from '../../libs/functions/Register/postRequest';
+import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
+// initial values object -> all the values have the initial state of ""
+// the state will be changed when the form will be updated
+const valuesInitialState = {
+  role: '',
+  cohort: '',
+  forename: '',
+  surname: '',
+  uid: '',
+};
 export default function Register({ session }) {
-  const [role, setRole] = useState('');
-  const [cohort, setCohort] = useState('');
-  const [name, setName] = useState('');
-
-  const { logOut } = useAuthContext();
+  valuesInitialState.uid = session.uid;
   //we are using router to redirect the user after register to the coach/bootcamper page
   const router = useRouter();
 
-  //function to post the new user to the DB
-  function registerUser(e) {
-    e.preventDefault();
-    if ((role !== '') & (cohort !== '')) {
-      fetch(`${backendUrl}`, {
-        method: 'POST',
-        body: JSON.stringify({
-          role: role,
-          uid: session.uid, // ❗usinng a hardcoded string for testing ... to be repalced with session.uid
-          cohort: cohort,
-          name: session.name !== 'No name' ? session.name : name, //if session.name does not contain a name, user inputted name will be posted
-        }),
-        headers: {
-          'content-type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        mode: 'cors',
-      }).then((response) => response.json());
-      // .then((data) => console.log(data));
-      // console.log("handlesubmit working");
-      // redirecting the user to coach/ bootcamper page after submit
-      router.push(`/${role.toLowerCase()}`);
-    } else {
-      alert('Please fill all the required fields');
-    }
-  }
+  // destructuring data coming from the useFormSubmit custom hook
+  // the hook takes in the valuesInitialState object, validateFeedback form function which checks if there are any errors in the form and the feedbackPost function to submit data to database
+  const {
+    handleChange,
+    handleSubmit,
+    dropDownHandleChange,
+    isSubmitting,
+    values,
+    errors,
+  } = useFormSubmit(valuesInitialState, validateRegisterForm, registerUser);
+  const { logOut } = useAuthContext();
 
   if (!session) {
     return <LoadingImg />;
   }
   return (
     <div className={styles.body}>
+      <div>
+        {/* if errors, they will be displayed here */}
+        {errors
+          ? () => {
+              for (const [key, value] of Object.entries(errors)) {
+                return <p className={styles.errortext}>{value}</p>;
+              }
+            }
+          : null}
+      </div>
       <div className={styles.registerForm}>
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt="profile picture"
         />
         <div className={styles.form}>
-          {/*  conditionally render the wellcome message if there is no username from github */}
-          {session.name === 'No name' ? (
-            <p className={styles.pWelcome}>
-              Hi, please submit your details to register
-            </p>
-          ) : (
-            <p className={styles.pWelcome}>
-              {/*  getting the first name from session  */}
-              Hi
-              {` ${session.name.replace(
-                / .*/,
-                ''
-              )}, please submit your details to register`}
-            </p>
-          )}
+          <p className={styles.pWelcome}>
+            {`Hi ${values.forename}, please submit your details to register`}
+          </p>
+          <InputField
+            placeholder="Forename"
+            name="forename"
+            className={errors.forename && styles.inputField}
+            onChange={handleChange}
+          />
+          <InputField
+            placeholder="Surname"
+            name="surname"
+            className={errors.surname && styles.inputField}
+            onChange={handleChange}
+          />
 
-          {/* if user has no name imported from GitHub, an input field will render inviting them to input their name */}
-          {session.name === 'No name' ? (
-            <InputField
-              placeholder='Name'
-              className={styles.inputField}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          ) : (
-            ''
-          )}
           <DropdownMenu
-            className={styles.dropdownMenu}
+            className={errors.role && styles.dropdownMenu}
             option={rolesArr}
-            placeHolder='Select SoC Role'
-            handleClick={(e, data) => {
-              setRole(data.value.toLowerCase());
-            }}
+            name="role"
+            placeHolder="Select SoC Role"
+            handleClick={dropDownHandleChange}
           />
           <DropdownMenu
-            className={styles.dropdownMenu}
+            className={errors.cohort && styles.dropdownMenu}
             option={cohortArr}
-            placeHolder='Select Current Cohort'
-            handleClick={(e, data) => {
-              setCohort(data.value);
-            }}
+            name="cohort"
+            placeHolder="Select Current Cohort"
+            handleClick={dropDownHandleChange}
           />
 
           <RegisterButton
-            handleClick={registerUser}
+            disabled={isSubmitting}
+            handleClick={(e) => {
+              handleSubmit(e);
+              router.push(`/${values.role.toLowerCase()}`);
+            }}
             className={styles.registerButton}
             buttonText={`Submit the Form`}
           />
@@ -140,15 +130,15 @@ export async function getServerSideProps(context) {
 
     //❗ redirect works fine to be uncommented after testing register page
     //checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
-    /*   const res = await fetch(`${url}${uid}`);
-    const data = await res.json();
-    if (data.success === true) {
-      context.res.writeHead(302, {
-        Location: `/${data.data[0].role.toLowerCase()}`,
-      });
-      context.res.end();
-    }
- */
+    // const res = await fetch(`${url}${uid}`);
+    // const data = await res.json();
+    // if (data.success === true) {
+    //   context.res.writeHead(302, {
+    //     Location: `/${data.data[0].role.toLowerCase()}`,
+    //   });
+    //   context.res.end();
+    // }
+
     return {
       props: { session: { name, uid, email, picture } },
     };
