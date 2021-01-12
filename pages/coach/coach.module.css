@@ -12,15 +12,6 @@
   flex-direction: column;
 }
 
-.quoteHeader {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  width: 100vw;
-  padding: 2vh;
-}
-
 .welcome {
   font-size: 4vh;
   padding: 1em;

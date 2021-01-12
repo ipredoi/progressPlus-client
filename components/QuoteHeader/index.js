@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
 import { quotesArray } from '../../libs/globalVariables/quotesArray';
+// import 'pages/bootcamper/bootcamper.module.css';
+import styles from './quote.module.css';
 
 export default function QuoteHeader() {
   const [quote, setQuote] = useState('');
@@ -9,5 +11,5 @@ export default function QuoteHeader() {
     setQuote(quotesArray[quoteIndex]);
   }, [quote]);
 
-  return <Header>{quote}</Header>;
+  return <Header className={styles.quoteHeader}>{quote}</Header>;
 }

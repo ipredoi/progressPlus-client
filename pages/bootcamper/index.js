@@ -1,7 +1,8 @@
 import React from 'react';
 import QuoteHeader from '../../components/QuoteHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
-import styles from './bootcamper.module.css';
+import bootcamperStyles from './bootcamper.module.css';
+import quoteStyles from '../../components/QuoteHeader/quote.module.css';
 import BootcamperDashboard from '../../components/bootcamper/BootcamperDashboard';
 import AppHeader from '../../components/AppHeader';
 import AppFooter from '../../components/AppFooter';
@@ -11,14 +12,16 @@ export default function Bootcamper({ session }) {
     return <LoadingImg />;
   } else {
     return (
-      <div className={styles.bootcamper}>
+      <div className={bootcamperStyles.bootcamper}>
         <AppHeader session={session} />
-        <section className={styles.body}>
-          <div className={styles.quoteHeader}>
-            <QuoteHeader />
-          </div>
-          <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
+        <section className={bootcamperStyles.body}>
+          <h2 className={bootcamperStyles.welcome}>
+            Welcome back, {session.name}
+          </h2>
           <BootcamperDashboard />
+          <div className={quoteStyles.quoteHeaderContainer}>
+            <QuoteHeader className={quoteStyles.quoteHeader} />
+          </div>
         </section>
         <AppFooter />
       </div>

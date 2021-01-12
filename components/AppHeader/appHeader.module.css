@@ -5,11 +5,12 @@
   align-items: center;
   width: 100%;
   height: max(18vh, 70px);
+  position: fixed;
 }
 .avatar {
   width: 100%;
-  border-bottom: black solid 0.2vh;
-  background-color: #4a90e2;
+  /* border-bottom: black solid 0.2vh; */
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
   height: max(14vh, 70px);

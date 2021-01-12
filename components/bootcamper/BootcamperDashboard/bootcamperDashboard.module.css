@@ -9,9 +9,16 @@
   height: 20vh;
   width: auto;
 }
+.graph:hover {
+  transform: scale(1.2);
+}
+
 .link_text {
   text-decoration: none;
   text-align: center;
   font-size: 3vh;
-  color: black;
+  color: white;
+}
+.link_text:hover {
+  transform: scale(1.2);
 }
