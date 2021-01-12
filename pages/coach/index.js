@@ -5,11 +5,10 @@ import serverSideProps from '../../libs/functions/serverSideProps';
 import AppHeader from '../../components/AppHeader';
 import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
 import CoachDashboard from '../../components/coach/CoachDashboard';
-import { useRouter } from 'next/router';
+import { useAuthContext } from '../../firebaseAuthUtils/useAuthContext';
 
 export default function Coach({ session }) {
-  let router = useRouter();
-
+  const { router } = useAuthContext();
   if (session.role !== 'Coach') {
     router.push('/');
   }
