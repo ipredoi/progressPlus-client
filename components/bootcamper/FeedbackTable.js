@@ -11,7 +11,7 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
     `Comments by ${selectedData.coachname}`,
     "Due Date",
     "Date Submitted",
-    bootcamperName ? "Edit" : null,
+    bootcamperName ? "Edit" : "Link",
   ];
 
   return (
@@ -26,12 +26,8 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
 
       <Table.Body>
         <Table.Row>
-          {/* <Table.Cell>1</Table.Cell> */}
-          <Table.Cell>
-            {selectedData.type === "mastery"
-              ? selectedData.subject
-              : selectedData.week}
-          </Table.Cell>
+          <Table.Cell>{selectedData.week}</Table.Cell>
+          <Table.Cell>{selectedData.subject}</Table.Cell>
           <Table.Cell>
             {selectedData.passedtests === undefined
               ? ""
@@ -52,7 +48,7 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
               control={Button}
               content='Delete'
               // onClick={submitFeedback}
-            />{" "}
+            />
           </Table.Cell>
         </Table.Row>
       </Table.Body>
