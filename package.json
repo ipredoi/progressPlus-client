@@ -30,6 +30,7 @@
     "semantic-ui-react": "^2.0.1"
   },
   "devDependencies": {
-    "cypress": "^6.1.0"
+    "cypress": "^6.1.0",
+    "style-loader": "^2.0.0"
   }
 }

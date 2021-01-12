@@ -21,7 +21,9 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   //set the initial state of the user to null
   const [user, setUser] = useState();
+
   const [open, setOpen] = useState(false);
+
   //save the useRouter hook in a const named router
   const router = useRouter();
 
@@ -42,8 +44,8 @@ export function AuthContextProvider({ children }) {
 
   useEffect(() => {
     return firebase.auth().onIdTokenChanged(async (user) => {
-      // // console.log('auth changed');
-      // // console.log(user ? user : 'Nothing');
+      console.log('auth changed');
+      console.log(user ? user : 'Nothing');
       if (!user) {
         console.log('no user found');
         setUser(null);
