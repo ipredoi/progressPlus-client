@@ -50,13 +50,13 @@ export default function FeedbackForm({ session }) {
 
   // the coach name is comming from the page session
   let coachName = session.name;
-
+  console.log(coachName);
   // the array with all the bootcamers is comming from session
   let bootcampersInfoArr = session.data;
-
+  console.log(bootcampersInfoArr);
   // using the imported bootCampersArrayReducer to set the bootcampers in a format to be used in the dropdown menu
   let bootcampersArr = bootCampersArrayReducer(bootcampersInfoArr);
-
+  console.log(bootcampersArr);
   // function to post the data to database
   async function feedbackPost() {
     const {
@@ -69,7 +69,7 @@ export default function FeedbackForm({ session }) {
       totalTests,
       comments,
     } = values;
-
+console.log(values)
     try {
       await fetch(`${backendUrl}feedback`, {
         method: 'POST',
@@ -114,9 +114,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Bootcamper Name',
         }}
-        placeholder="Bootcamper Name"
+        placeholder='Bootcamper Name'
         search
-        name="bootcamperName"
+        name='bootcamperName'
         value={values.bootcamperName}
         onChange={dropDownHandleChange}
       />
@@ -127,9 +127,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Week',
         }}
-        placeholder="Week"
+        placeholder='Week'
         search
-        name="week"
+        name='week'
         value={values.week}
         onChange={dropDownHandleChange}
       />
@@ -140,9 +140,9 @@ export default function FeedbackForm({ session }) {
         label={{
           children: 'Task type',
         }}
-        placeholder="Task type"
+        placeholder='Task type'
         search
-        name="taskType"
+        name='taskType'
         value={values.taskType}
         onChange={dropDownHandleChange}
       />
@@ -150,8 +150,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.subject && `${styles.errorInput}`}>
         <label>Subject</label>
         <Input
-          placeholder="e.g. React"
-          name="subject"
+          placeholder='e.g. React'
+          name='subject'
           value={values.subject}
           onChange={handleChange}
         />
@@ -160,8 +160,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Due Date</label>
         <Input
-          type="date"
-          name="dueDate"
+          type='date'
+          name='dueDate'
           value={values.dueDate}
           onChange={handleChange}
         />
@@ -170,8 +170,8 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Date Submitted</label>
         <Input
-          type="date"
-          name="dateSubmitted"
+          type='date'
+          name='dateSubmitted'
           value={values.dateSubmitted}
           onChange={handleChange}
         />
@@ -180,10 +180,10 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.passedTests && `${styles.errorInput}`}>
         <label>Passed Tests</label>
         <Input
-          type="number"
-          min="0"
-          placeholder="Number of tests passed"
-          name="passedTests"
+          type='number'
+          min='0'
+          placeholder='Number of tests passed'
+          name='passedTests'
           value={values.passedTests}
           onChange={handleChange}
         />
@@ -192,10 +192,10 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.totalTests && `${styles.errorInput}`}>
         <label>Total Tests</label>
         <Input
-          type="number"
+          type='number'
           min={values.passedTests}
-          placeholder="Number of total tests"
-          name="totalTests"
+          placeholder='Number of total tests'
+          name='totalTests'
           value={values.totalTests}
           onChange={handleChange}
         />
@@ -204,9 +204,9 @@ export default function FeedbackForm({ session }) {
       <Form.Field
         className={errors.comments && `${styles.errorInput}`}
         control={TextArea}
-        label="Feedback"
-        placeholder="Enter Feedback..."
-        name="comments"
+        label='Feedback'
+        placeholder='Enter Feedback...'
+        name='comments'
         value={values.comments}
         onChange={handleChange}
       />
@@ -247,16 +247,16 @@ export default function FeedbackForm({ session }) {
         className={styles.submitButton}
         disabled={isSubmitting}
         onClick={handleSubmit}
-        type="submit"
-        content="Submit Feedback"
+        type='submit'
+        content='Submit Feedback'
       />
-      <Button
+      {/*    <Button
         className={styles.mainPageButton}
         content="Home"
         onClick={() => {
           router.push('./');
         }}
-      />
+      /> */}
     </Form>
   );
 }

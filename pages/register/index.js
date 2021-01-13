@@ -9,7 +9,7 @@ import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';
-import registerUser from '../../libs/functions/registerUser';
+import registerUser from '../../libs/functions/Register/postRequest';
 import styles from './register.module.css';
 import {
   rolesDropdownProps,
@@ -23,14 +23,12 @@ import {
 // the state will be changed when the form will be updated
 const valuesInitialState = {
   role: '',
-  cohort: '',
+  cohort: 0,
   forename: '',
   surname: '',
   uid: '',
 };
 export default function Register({ session }) {
-  valuesInitialState.uid = session.uid;
-
   const { logOut, router } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
 
@@ -44,7 +42,7 @@ export default function Register({ session }) {
     values,
     errors,
   } = useFormSubmit(valuesInitialState, validateRegisterForm, registerUser);
-
+  console.log(values);
   return (
     <div className={styles.body}>
       <div>

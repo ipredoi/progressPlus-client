@@ -1,8 +1,8 @@
-import FeedbackForm from "../../../components/coach/FeedbackForm/index";
-import { coachNavBarArr } from "../../../libs/globalVariables/navBarArrays";
-import serverSideProps from "../../../libs/functions/serverSideProps";
-import AppHeader from "../../../components/AppHeader";
-import styles from "./feedback.module.css";
+import FeedbackForm from '../components/coach/FeedbackForm';
+import { coachNavBarArr } from '../libs/globalVariables/navBarArrays';
+import serverSideProps from '../libs/functions/serverSideProps';
+import AppHeader from '../components/AppHeader';
+import styles from '../styles/feedback.module.css';
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
@@ -16,10 +16,8 @@ export default function Feedback({ session }) {
   );
 }
 export async function getServerSideProps(context) {
-  async function fetchBootcampersData(url, uid, token) {
-    const res = await fetch(`${url}`, {
-      headers: { authorization: `Bearer ${token}` },
-    });
+  async function fetchBootcampersData(url) {
+    const res = await fetch(`${url}`);
     const { data } = await res.json();
     return data;
   }
