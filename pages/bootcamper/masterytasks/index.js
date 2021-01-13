@@ -22,9 +22,11 @@ export default function MasteryTasks({ session }) {
 
 export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid, token) {
+    
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`, {
       headers: { authorization: `Bearer ${token}` },
-    }); // mastery task score
+    }); 
+    // mastery task score
     const { data } = await res.json();
     return data;
   }
