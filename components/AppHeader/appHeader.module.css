@@ -16,10 +16,14 @@
   height: max(14vh, 70px);
 }
 
-.socLogo {
+.hamburgerIcon {
   width: auto;
-  height: max(10vh, 60px);
+  height: max(5vh, 30px);
   margin: 2vh 2vh 2vh 2vh;
+}
+
+.hamburgerIcon:hover {
+  transform: scale(1.2);
 }
 
 .title {
@@ -30,4 +34,5 @@
 }
 .text {
   font-size: max(5vh, 30px);
+  color: whitesmoke;
 }

@@ -8,9 +8,17 @@
 
 .quoteHeader {
   width: fit-content;
-  background-color: black;
-  color: white !important;
+  background-color: whitesmoke;
+  color: black !important;
   padding: 20px !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important; */
+  /* border-radius: 60px; */
   text-align: center !important;
+  font-style: italic;
+}
+
+.quoteHeader:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
 }

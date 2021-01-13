@@ -3,12 +3,14 @@ import { Grid, Header, Segment, Sidebar, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import LogOutButton from '../LogOutButton';
 import { useAuthContext } from '../../firebaseUtils/useAuthContext';
+import styles from './navBar.module.css';
 
 export default function NavBar({ linksAndTitles }) {
   const { open, setOpen } = useAuthContext();
   return (
     <div>
       <Sidebar
+        className={styles.navBar}
         as={Segment}
         animation='scale down'
         direction='left'

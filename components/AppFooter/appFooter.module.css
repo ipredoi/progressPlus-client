@@ -2,12 +2,12 @@
   display: flex;
   margin-top: 1vh;
   padding: 1vh;
-  background-color: #e0e1e2;
+  background-color: #e0e0e0 !important;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  color: white;
+  /* color: white; */
   text-align: center;
   align-items: center;
   justify-content: space-evenly;
