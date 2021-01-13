@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import AppHeader from "../../../components/AppHeader";
-import serverSideProps from "../../../libs/functions/serverSideProps";
-import ScoreGraph from "../../../components/ScoreGraph";
-import FeedbackTable from "../../../components/bootcamper/FeedbackTable";
+import React, { useState } from 'react';
+import AppHeader from '../../../components/AppHeader';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import ScoreGraph from '../../../components/ScoreGraph';
+import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 
 export default function RecapTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
@@ -22,8 +22,10 @@ export default function RecapTasks({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  async function fetchFeedbackData(url, uid) {
-    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`); // recap task score
+  async function fetchFeedbackData(url, uid, token) {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`, {
+      headers: { authorization: `Bearer ${token}` },
+    }); // recap task score
     const { data } = await res.json();
     return data;
   }

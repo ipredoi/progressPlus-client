@@ -16,8 +16,10 @@ export default function Feedback({ session }) {
   );
 }
 export async function getServerSideProps(context) {
-  async function fetchBootcampersData(url) {
-    const res = await fetch(`${url}`);
+  async function fetchBootcampersData(url, uid, token) {
+    const res = await fetch(`${url}`, {
+      headers: { authorization: `Bearer ${token}` },
+    });
     const { data } = await res.json();
     return data;
   }

@@ -1,22 +1,22 @@
-import { coachNavBarArr } from "../../../libs/globalVariables/navBarArrays";
-import { Form, Select } from "semantic-ui-react";
-import { useState, useEffect } from "react";
-import serverSideProps from "../../../libs/functions/serverSideProps";
-import bootcamperNameReducer from "../../../libs/functions/bootcamperNameReducer";
-import AppHeader from "../../../components/AppHeader";
-import AppFooter from "../../../components/AppFooter";
-import styles from "./progress.module.css";
-import ScoreGraph from "../../../Components/ScoreGraph";
-import FeedbackTable from "../../../components/bootcamper/FeedbackTable";
+import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
+import { Form, Select } from 'semantic-ui-react';
+import { useState, useEffect } from 'react';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import bootcamperNameReducer from '../../../libs/functions/bootcamperNameReducer';
+import AppHeader from '../../../components/AppHeader';
+import AppFooter from '../../../components/AppFooter';
+import styles from './progress.module.css';
+import ScoreGraph from '../../../Components/ScoreGraph';
+import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
 
 import {
   sortRecapData,
   sortMasteryData,
-} from "../../../libs/functions/sortFeedbackData";
+} from '../../../libs/functions/sortFeedbackData';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
-  const [bootcamperName, setBootcamperName] = useState("Name here");
+  const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [recapFeedbackData, setRecapFeedbackData] = useState([]);
   const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
@@ -83,7 +83,7 @@ export default function Progress({ session }) {
               options={bootcampersArr}
               placeholder='Choose bootcamper'
               search
-              searchInput={{ id: "form-select-control-name" }}
+              searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {
                 setBootcamperName(data.value);
               }}
@@ -95,13 +95,13 @@ export default function Progress({ session }) {
         <ScoreGraph
           feedbackData={masteryFeedbackData}
           bootcamperName={bootcamperName}
-          taskType={"Mastery"}
+          taskType={'Mastery'}
           setSelectedData={setSelectedData}
         />
         <ScoreGraph
           feedbackData={recapFeedbackData}
           bootcamperName={bootcamperName}
-          taskType={"Recap"}
+          taskType={'Recap'}
           setSelectedData={setSelectedData}
         />
       </div>
@@ -116,8 +116,10 @@ export default function Progress({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  async function progressFetchRequest(url) {
-    const res = await fetch(`${url}feedback`);
+  async function progressFetchRequest(url, uid, token) {
+    const res = await fetch(`${url}feedback`, {
+      headers: { authorization: `Bearer ${token}` },
+    });
     //this is fetching info from our DB through the hosted backend URL. The URL variable is stored in globalVariables where it is also using dotenv to keep the URL private.
     const data = await res.json();
     return data;

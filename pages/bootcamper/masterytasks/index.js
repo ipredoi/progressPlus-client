@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import AppHeader from "../../../components/AppHeader";
-import ScoreGraph from "../../../Components/ScoreGraph";
-import FeedbackTable from "../../../components/bootcamper/FeedbackTable";
-import serverSideProps from "../../../libs/functions/serverSideProps";
+import React, { useState } from 'react';
+import AppHeader from '../../../components/AppHeader';
+import ScoreGraph from '../../../Components/ScoreGraph';
+import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
+import serverSideProps from '../../../libs/functions/serverSideProps';
 
 export default function MasteryTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
@@ -21,8 +21,10 @@ export default function MasteryTasks({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  async function fetchFeedbackData(url, uid) {
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`); // mastery task score
+  async function fetchFeedbackData(url, uid, token) {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`, {
+      headers: { authorization: `Bearer ${token}` },
+    }); // mastery task score
     const { data } = await res.json();
     return data;
   }
