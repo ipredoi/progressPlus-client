@@ -3,7 +3,7 @@ import { backendUrl } from '../../globalVariables/urls';
 export default function registerUser(values) {
   if (
     (values.role !== '') &
-    (values.cohort !== '') &
+   /*  (values.cohort !== '') & */
     (values.forename !== '') &
     (values.surname !== '')
   ) {
@@ -11,7 +11,7 @@ export default function registerUser(values) {
       method: 'POST',
       body: JSON.stringify({
         role: values.role,
-        uid: values.uid,
+        uid: "CoachtestUID"/* values.uid */,
         cohort: values.cohort,
         name: `${values.forename} ${values.surname}`,
       }),
