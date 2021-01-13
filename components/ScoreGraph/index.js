@@ -97,13 +97,20 @@ export default function ScoreGraph({
                 backgroundColor: setBarBgColorArr(percentagesArr),
                 borderColor: setBarBorColorArr(percentagesArr),
                 borderWidth: 2,
-                order: 1,
+                order: 2,
               },
               {
                 label: "Average",
                 data: averageArr,
                 type: "line",
-                order: 2,
+                fill: false,
+                borderColor: "#c54964",
+                backgroundColor: "#c54964",
+                pointBorderColor: "#c54964",
+                pointBackgroundColor: "#c54964",
+                pointHoverBackgroundColor: "#c54964",
+                pointHoverBorderColor: "#c54964",
+                order: 1,
               },
             ],
           }}
@@ -130,7 +137,7 @@ export default function ScoreGraph({
             },
             responsive: true,
             onClick: handleClick,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             scales: {
               xAxes: [
                 {

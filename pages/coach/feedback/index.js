@@ -1,8 +1,8 @@
-import FeedbackForm from '../../../components/coach/FeedbackForm';
-import { coachNavBarArr } from '../../../libs/globalVariables/navBarArrays';
-import serverSideProps from '../../../libs/functions/serverSideProps';
-import AppHeader from '../../../components/AppHeader';
-import styles from './feedback.module.css';
+import FeedbackForm from "../../../components/coach/FeedbackForm/index";
+import { coachNavBarArr } from "../../../libs/globalVariables/navBarArrays";
+import serverSideProps from "../../../libs/functions/serverSideProps";
+import AppHeader from "../../../components/AppHeader";
+import styles from "./feedback.module.css";
 
 //page for coaches to submit feedback
 export default function Feedback({ session }) {
