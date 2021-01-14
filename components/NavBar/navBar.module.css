@@ -4,6 +4,7 @@
   justify-content: space-evenly;
   height: 60vh;
   align-items: center;
+  background-color: #e0e1e2 !important;
 }
 .container {
   display: flex;

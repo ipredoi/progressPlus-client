@@ -155,3 +155,9 @@ body ::-webkit-scrollbar-thumb {
   padding-bottom: 2vh !important;
   font-size: 2rem !important;
 }
+
+.quote-header {
+  max-width: 40vw !important;
+  font-size: 1.5rem;
+  text-align: center;
+}
