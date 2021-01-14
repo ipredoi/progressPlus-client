@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import AppHeader from '../../components/AppHeader';
-import ScoreGraph from '../../Components/ScoreGraph';
-import FeedbackTable from '../../components/bootcamper/FeedbackTable';
-import serverSideProps from '../../libs/functions/serverSideProps';
+import React, { useState } from "react";
+import AppHeader from "../../components/AppHeader";
+import ScoreGraph from "../../Components/ScoreGraph";
+import FeedbackTable from "../../components/bootcamper/FeedbackTable";
+import serverSideProps from "../../libs/functions/serverSideProps";
+import styles from "./masterytasks.module.css";
 
 export default function MasteryTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
   return (
     <div>
       <AppHeader session={session} />
-      <ScoreGraph
-        feedbackData={session.data}
-        setSelectedData={setSelectedData}
-        taskType="Mastery"
-        myName={session.name}
-      />
-      <FeedbackTable selectedData={selectedData} />
+
+      <div className={styles.graph}>
+        <ScoreGraph
+          feedbackData={session.data}
+          setSelectedData={setSelectedData}
+          taskType='Mastery'
+          myName={session.name}
+        />
+      </div>
+      <div className={styles.table}>
+        <FeedbackTable selectedData={selectedData} />
+      </div>
     </div>
   );
 }

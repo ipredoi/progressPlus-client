@@ -8,11 +8,15 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
     "Week",
     "Subject",
     "Score",
-    `Comments by ${selectedData.coachname}`,
+    selectedData.coachname
+      ? `Comments by ${selectedData.coachname}`
+      : "Comments",
     "Due Date",
     "Date Submitted",
-    bootcamperName ? "Edit" : "Link",
   ];
+  if (bootcamperName) {
+    tableColumns.push("Edit");
+  }
 
   return (
     <Table celled>
@@ -36,20 +40,22 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
           <Table.Cell>{selectedData.qualitative}</Table.Cell>
           <Table.Cell>{selectedData.duedate}</Table.Cell>
           <Table.Cell>{selectedData.datesubmitted}</Table.Cell>
-          <Table.Cell>
-            <Form.Field
-              className={styles.editButton}
-              control={Button}
-              content='Edit'
-              // onClick={submitFeedback}
-            />
-            <Form.Field
-              className={styles.editButton}
-              control={Button}
-              content='Delete'
-              // onClick={submitFeedback}
-            />
-          </Table.Cell>
+          {bootcamperName ? (
+            <Table.Cell>
+              <Form.Field
+                className={styles.editButton}
+                control={Button}
+                content='Edit'
+                // onClick={submitFeedback}
+              />
+              <Form.Field
+                className={styles.editButton}
+                control={Button}
+                content='Delete'
+                // onClick={submitFeedback}
+              />
+            </Table.Cell>
+          ) : null}
         </Table.Row>
       </Table.Body>
     </Table>
