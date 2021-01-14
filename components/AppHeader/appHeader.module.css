@@ -9,7 +9,7 @@
 .avatar {
   width: 100%;
   border-bottom: black solid 0.2vh;
-  background-color: #4a90e2;
+  /* background-color: #4a90e2; */
   display: flex;
   justify-content: space-between;
   height: max(14vh, 70px);

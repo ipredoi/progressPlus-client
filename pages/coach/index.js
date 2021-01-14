@@ -14,7 +14,7 @@ export default function Coach({ session }) {
         <div className={styles.quoteHeader}>
           <QuoteHeader />
         </div>
-        <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
+        <h2 className={styles.welcome}>Welcome {session.name}</h2>
         <CoachDashboard />
       </section>
     </div>

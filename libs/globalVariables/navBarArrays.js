@@ -1,7 +1,7 @@
 const coachNavBarArr = [
   { link: '/coach', title: 'Home' },
-  { link: '/coach/feedback', title: 'Submit Feedback' },
-  { link: '/coach/progress', title: 'Track Progress' },
+  { link: '/feedback', title: 'Submit Feedback' },
+  { link: '/progress', title: 'Track Progress' },
 ];
 
 const bootcamperNavBarArr = [
