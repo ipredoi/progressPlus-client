@@ -4,7 +4,6 @@
   background-image: url('/authBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
-  /* background-color: #e0e0e0; */
   height: 100vh;
   width: 100vw;
 }
@@ -15,13 +14,13 @@
   height: auto;
   margin: 25px 20px 20px 20px;
   align-self: center;
-  border: 1px solid #2d8b61;
+  border: 0.5px solid grey;
 }
 
 .pWelcome {
   width: 250px;
   font-weight: bold;
-  color: #2d8b61;
+  color: black;
   text-align: center;
   align-self: center;
 }
@@ -34,7 +33,7 @@
   height: 550px;
   background-color: whitesmoke;
   border-radius: 20px;
-  border-color: #31986a;
+  border-color: #e0e1e2;
   border-width: 4px;
   border-style: solid;
   position: absolute;
@@ -46,8 +45,8 @@
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
   opacity: 0.95;
-  -webkit-filter: drop-shadow(0px 3px 10px #31986a);
-  filter: drop-shadow(0px 0px 10px #31986a);
+  -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
+  filter: drop-shadow(0px 0px 10px #e0e1e2);
 }
 .inputField > input {
   position: relative !important;
@@ -58,7 +57,7 @@
   border-radius: 10px !important;
   border-color: #2d8b61 !important;
   font-size: 14px !important;
-  color: #2d8b61 !important;
+  color: black !important;
 }
 
 .inputField > input::selection {
@@ -81,7 +80,7 @@
   height: 40px;
   width: 244px !important;
   font-size: 14px !important;
-  
+
   margin-top: 4px !important;
   color: white !important;
 }
@@ -94,7 +93,7 @@
   height: 40px;
   width: 244px;
   font-size: 14px !important;
-  
+
   margin-top: 10px !important;
   color: white !important;
 }

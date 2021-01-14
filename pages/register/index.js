@@ -77,7 +77,7 @@ export default function Register({ session }) {
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
-            {`Hi ${values.forename}, please submit your details to register`}
+            {`Please submit your details to register`}
           </p>
           <InputField {...forenameFieldProps} onChange={handleChange} />
           <InputField {...surnameFieldProps} onChange={handleChange} />
