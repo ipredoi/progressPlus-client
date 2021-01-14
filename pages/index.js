@@ -9,16 +9,16 @@ export default function Login() {
       <div className={styles.authMain}>
         <div className={styles.socImage}>
           <Image
-            src="/Logo.png"
-            alt="School of Code Logo"
+            src='/Logo.png'
+            alt='School of Code Logo'
             width={100}
             height={100}
           />
         </div>
         <div>
           <Image
-            src="/progressPlus.png"
-            alt="Progress Plus"
+            src='/progressPlus.png'
+            alt='Progress Plus'
             width={200}
             height={80}
           />

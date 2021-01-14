@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .body {
-  background-image: url('/authBackground.png') !important;
+  background-image: url('/starryBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   height: 100vh;
