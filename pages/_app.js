@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import { AuthContextProvider } from '../firebaseUtils/useAuthContext';
 import 'semantic-ui-css/semantic.min.css';
 import { useRouter } from 'next/router';
-import LoadingImg from '../Components/LoadingImg';
+import LoadingImg from '../components/LoadingImg';
 import AppFooter from '../components/AppFooter/index';
 
 export default function MyApp({ Component, pageProps }) {
