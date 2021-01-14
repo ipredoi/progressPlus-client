@@ -5,13 +5,17 @@ import { backendUrl } from '../globalVariables/urls';
 export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
+    const { token } = cookies;
+    console.log({ token });
     const sessionData = await verifyIdToken(cookies.token);
+    console.log({ sessionData });
     const { uid, picture } = sessionData;
 
     const res = await fetch(`${backendUrl}${uid}`, {
-      headers: { authorization: `Bearer ${cookies.token}` },
+      headers: { authorization: `Bearer ${token}` },
     });
     const userData = await res.json();
+    // console.log({ userData });
     const { name } = userData.data[0];
     let data = '';
     if (customFetchRequest) {
@@ -20,7 +24,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     }
 
     return {
-      props: { session: { name, uid, picture, data } },
+      props: { session: { name, uid, picture, data, token } },
     };
   } catch (err) {
     console.log(err);

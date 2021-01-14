@@ -33,6 +33,8 @@ export default function FeedbackForm({ session }) {
   const [bootcamperUid, setBootcamperUid] = useState('');
   const [serverErr, setServerErr] = useState(null);
 
+  const { token } = session;
+
   // router used on the redirect button
   const router = useRouter();
 
@@ -104,6 +106,7 @@ export default function FeedbackForm({ session }) {
         headers: {
           'content-type': 'application/json',
           'Access-Control-Allow-Origin': '*',
+          authorization: `Bearer ${token}`,
         },
         mode: 'cors',
       })

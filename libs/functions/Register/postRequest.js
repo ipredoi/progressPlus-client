@@ -1,9 +1,9 @@
 import { backendUrl } from '../../globalVariables/urls';
 
-export default function registerUser(values) {
+export default function registerUser(values, token) {
   if (
     (values.role !== '') &
-   /*  (values.cohort !== '') & */
+    /*  (values.cohort !== '') & */
     (values.forename !== '') &
     (values.surname !== '')
   ) {
@@ -11,13 +11,14 @@ export default function registerUser(values) {
       method: 'POST',
       body: JSON.stringify({
         role: values.role,
-        uid: "CoachtestUID"/* values.uid */,
+        uid: 'PatrickcoachtestUID' /* values.uid */,
         cohort: values.cohort,
         name: `${values.forename} ${values.surname}`,
       }),
       headers: {
         'content-type': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        authorization: `Bearer ${token}`,
       },
       mode: 'cors',
     })
