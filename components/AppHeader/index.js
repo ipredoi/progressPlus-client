@@ -1,8 +1,6 @@
 import styles from './appHeader.module.css';
 import { bootcamperNavBarArr } from '../../libs/globalVariables/navBarArrays';
-import Avatar from '../Avatar';
 import NavBar from '../NavBar';
-import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 
@@ -14,7 +12,7 @@ export default function AppHeader({
 
   return (
     <section className={styles.header}>
-      <div className={styles.avatar}>
+      <div className={styles.container}>
         <GiHamburgerMenu
           className={styles.hamburgerIcon}
           onClick={() => {
@@ -28,16 +26,15 @@ export default function AppHeader({
         /> */}
 
         <div className={styles.title}>
-          <div>
-            <Image
-              src='/progressPlusWhite.png'
-              alt='Progress Plus'
-              width={200}
-              height={80}
-            />
-          </div>
+          <img
+            src='/progressPlusWhite.png'
+            alt='Progress Plus'
+            className={styles.progressPlus}
+          />
         </div>
-        <Avatar src={session.picture} name={session.name} />
+        <div className={styles.avatarPic}>
+          <img src={session.picture} className={styles.avatar} />
+        </div>
       </div>
       <NavBar linksAndTitles={navBarArr} />
     </section>

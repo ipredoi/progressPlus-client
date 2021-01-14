@@ -1,23 +1,16 @@
 import React from 'react';
-import styles from './coach.module.css';
-import QuoteHeader from '../../components/QuoteHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
-import AppHeader from '../../components/AppHeader';
-import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
+import LandingPage from '../../components/LandingPage/LandingPage';
 import CoachDashboard from '../../components/coach/CoachDashboard';
+import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
 
 export default function Coach({ session }) {
   return (
-    <div className={styles.coach}>
-      <AppHeader session={session} navBarArr={coachNavBarArr} />
-      <section className={styles.body}>
-        <div className={styles.quoteHeader}>
-          <QuoteHeader />
-        </div>
-        <h2 className={styles.welcome}>Welcome {session.name}</h2>
-        <CoachDashboard />
-      </section>
-    </div>
+    <LandingPage
+      session={session}
+      navBarArray={coachNavBarArr}
+      Dashboard={CoachDashboard}
+    />
   );
 }
 

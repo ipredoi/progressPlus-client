@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin: 2vh;
+  margin: 6vh;
   align-items: center;
 }
 .icons {
@@ -14,4 +14,16 @@
   text-align: center;
   font-size: 3vh;
   color: black;
+}
+
+.imageLink {
+  margin-left: 10%;
+  margin-right: 10%;
+  box-shadow: 1.5vh 1.5vh 7vh grey;
+  border-radius: 2vh;
+  padding: 1vh;
+}
+
+.imageLink:hover {
+  box-shadow: 3px 3px 20px rgb(58, 58, 58);
 }
