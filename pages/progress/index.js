@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import serverSideProps from '../../libs/functions/serverSideProps';
 import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
 import AppHeader from '../../components/AppHeader';
-import AppFooter from '../../components/AppFooter';
 import styles from './progress.module.css';
 import ScoreGraph from '../../Components/ScoreGraph';
 import FeedbackTable from '../../components/bootcamper/FeedbackTable';
@@ -77,11 +76,11 @@ export default function Progress({ session }) {
       <h2 className={styles.title}>Progress tracker</h2>
       <div className={styles.dropDown}>
         <Form>
-          <Form.Group widths="equal">
+          <Form.Group widths='equal'>
             <Form.Field
               control={Select}
               options={bootcampersArr}
-              placeholder="Choose bootcamper"
+              placeholder='Choose bootcamper'
               search
               searchInput={{ id: 'form-select-control-name' }}
               onChange={(e, data) => {

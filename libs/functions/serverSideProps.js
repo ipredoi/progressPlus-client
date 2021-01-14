@@ -8,12 +8,14 @@ export default async function serverSideProps(context, customFetchRequest) {
     const { token } = cookies;
     console.log({ token });
     const sessionData = await verifyIdToken(cookies.token);
+    console.log({ sessionData });
     const { uid, picture } = sessionData;
 
     const res = await fetch(`${backendUrl}${uid}`, {
-      headers: { authorization: `Bearer ${cookies.token}` },
+      headers: { authorization: `Bearer ${token}` },
     });
     const userData = await res.json();
+    // console.log({ userData });
     const { name } = userData.data[0];
     let data = '';
     if (customFetchRequest) {
