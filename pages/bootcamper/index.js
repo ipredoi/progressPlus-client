@@ -1,28 +1,17 @@
 import React from 'react';
-import QuoteHeader from '../../components/QuoteHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
-import styles from './bootcamper.module.css';
+import LandingPage from '../../components/LandingPage/LandingPage';
 import BootcamperDashboard from '../../components/bootcamper/BootcamperDashboard';
-import AppHeader from '../../components/AppHeader';
-import AppFooter from '../../components/AppFooter';
+import { bootcamperNavBarArr } from '../../libs/globalVariables/navBarArrays';
 
 export default function Bootcamper({ session }) {
-  if (!session) {
-    return <LoadingImg />;
-  } else {
-    return (
-      <div className={styles.bootcamper}>
-        <AppHeader session={session} />
-
-        <section className={styles.body}>
-          <h2 className={styles.welcome}>Welcome {session.name}</h2>
-          <BootcamperDashboard />
-          <QuoteHeader />
-        </section>
-        <AppFooter />
-      </div>
-    );
-  }
+  return (
+    <LandingPage
+      session={session}
+      navBarArray={bootcamperNavBarArr}
+      Dashboard={BootcamperDashboard}
+    />
+  );
 }
 
 export async function getServerSideProps(context) {

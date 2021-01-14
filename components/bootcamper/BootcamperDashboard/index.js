@@ -6,7 +6,7 @@ export default function BootcamperDashboard() {
     <div className={styles.container}>
       <a href="/masterytasks" className={styles.imageLink}>
         <img
-          className={styles.graph}
+          className={styles.icons}
           src="/diagram.png"
           alt="mastery graph image"
         />
@@ -14,7 +14,7 @@ export default function BootcamperDashboard() {
       </a>
       <a href="/recaptasks" className={styles.imageLink}>
         <img
-          className={styles.graph}
+          className={styles.icons}
           src="/bar-chart.png"
           alt="recap graph image"
         />

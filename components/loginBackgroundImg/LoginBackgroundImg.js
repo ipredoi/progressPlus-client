@@ -7,13 +7,8 @@ const LoginBackgroundImg = () => {
     <div>
       <div className={styles.planetSocImg}>
         <Image
-<<<<<<< HEAD
           src="/planet_soc.png"
           alt="School of Code Logo"
-=======
-          src='/planet_soc.png'
-          alt='School of Code Logo'
->>>>>>> IE-160
           width={400}
           height={450}
         />
