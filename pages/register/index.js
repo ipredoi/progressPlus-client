@@ -6,6 +6,7 @@ import nookies from 'nookies';
 import useFormSubmit from '../../libs/customHooks/useFormSubmit';
 import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
 import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
+import LoginBackgroundImg from '../../components/loginBackgroundImg/LoginBackgroundImg';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';
@@ -53,6 +54,7 @@ export default function Register({ session }) {
   console.log(values);
   return (
     <div className={styles.body}>
+      <LoginBackgroundImg />
       <div>
         {/* if errors, they will be displayed here
         {errors

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .auth {
-  background-image: url('/authBackground.png') !important;
+  background-image: url('/starryBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   background-color: #e0e0e0;
@@ -16,7 +16,7 @@
   width: 300px;
   height: 450px;
   background-color: whitesmoke;
-  border-radius: 5%;
+  border-radius: 20px;
   border-color: #31986a;
   border-width: 4px;
   border-style: solid;
@@ -27,6 +27,9 @@
   right: 0;
   margin: auto;
   font-family: 'Roboto', sans-serif;
+  opacity: 0.95;
+  -webkit-filter: drop-shadow(0px 3px 10px #31986a);
+  filter: drop-shadow(0px 0px 10px #31986a);
 }
 
 .socImage {
@@ -43,3 +46,4 @@
   text-decoration-color: #4a90e2;
   text-decoration-thickness: 2px;
 }
+
