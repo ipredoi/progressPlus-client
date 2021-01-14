@@ -73,42 +73,45 @@ export default function Progress({ session }) {
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />
-      <h2 className={styles.title}>Progress tracker</h2>
-      <div className={styles.dropDown}>
-        <Form>
-          <Form.Group widths='equal'>
-            <Form.Field
-              control={Select}
-              options={bootcampersArr}
-              placeholder='Choose bootcamper'
-              search
-              searchInput={{ id: 'form-select-control-name' }}
-              onChange={(e, data) => {
-                setBootcamperName(data.value);
-              }}
-            />
-          </Form.Group>
-        </Form>
-      </div>
-      <div className={styles.graphs}>
-        <ScoreGraph
-          feedbackData={masteryFeedbackData}
-          bootcamperName={bootcamperName}
-          taskType={'Mastery'}
-          setSelectedData={setSelectedData}
-        />
-        <ScoreGraph
-          feedbackData={recapFeedbackData}
-          bootcamperName={bootcamperName}
-          taskType={'Recap'}
-          setSelectedData={setSelectedData}
-        />
-      </div>
-      <div>
-        <FeedbackTable
-          selectedData={selectedData}
-          bootcamperName={bootcamperName}
-        />
+      <div className={styles.progress}>
+        <h2 className={styles.title}>Progress tracker</h2>
+        <div className={styles.dropDown}>
+          <Form>
+            <Form.Group widths='equal'>
+              <Form.Field
+                control={Select}
+                options={bootcampersArr}
+                placeholder='Choose bootcamper'
+                search
+                searchInput={{ id: 'form-select-control-name' }}
+                onChange={(e, data) => {
+                  setBootcamperName(data.value);
+                }}
+              />
+            </Form.Group>
+          </Form>
+        </div>
+        <div className={styles.graphs}>
+          <ScoreGraph
+            feedbackData={masteryFeedbackData}
+            bootcamperName={bootcamperName}
+            taskType={'Mastery'}
+            setSelectedData={setSelectedData}
+          />
+          <ScoreGraph
+            feedbackData={recapFeedbackData}
+            bootcamperName={bootcamperName}
+            taskType={'Recap'}
+            setSelectedData={setSelectedData}
+          />
+        </div>
+        <div>
+          <FeedbackTable
+            className={styles.table}
+            selectedData={selectedData}
+            bootcamperName={bootcamperName}
+          />
+        </div>
       </div>
     </div>
   );

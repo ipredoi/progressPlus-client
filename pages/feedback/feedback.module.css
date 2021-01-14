@@ -11,13 +11,11 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  width: 600px;
+  width: 35vw;
   height: auto;
   background-color: whitesmoke;
-  border-radius: 5%;
-  border-color: #31986a;
-  border-width: 4px;
-  border-style: solid;
+  border-radius: 2vh;
+  border: 5px solid #e0e1e2;
   position: absolute;
   top: 16vh;
   bottom: 12vh;
@@ -25,7 +23,7 @@
   right: 0;
   margin: auto;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   overflow-y: overlay;
 }
 .feedbackForm::-webkit-scrollbar-track {
