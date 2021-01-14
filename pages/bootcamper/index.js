@@ -13,7 +13,7 @@ export default function Bootcamper({ session }) {
     return (
       <div className={styles.bootcamper}>
         <AppHeader session={session} />
-        <
+
         <section className={styles.body}>
           <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
           <BootcamperDashboard />
