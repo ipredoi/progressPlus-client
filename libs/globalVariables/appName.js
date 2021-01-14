@@ -1,1 +1,1 @@
-export const appName = 'SoC Progress Tracker';
+export const appName = '/progressPlus.png';

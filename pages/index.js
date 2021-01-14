@@ -1,7 +1,6 @@
 import FirebaseAuth from '../components/authentication/Firebase';
 import styles from './index.module.css';
 import Image from 'next/image';
-import { appName } from '../libs/globalVariables/appName';
 
 export default function Login() {
   return (
@@ -9,14 +8,23 @@ export default function Login() {
       <div className={styles.authMain}>
         <div className={styles.socImage}>
           <Image
-            src='/Logo.png'
-            alt='School of Code Logo'
+            src="/Logo.png"
+            alt="School of Code Logo"
             width={100}
             height={100}
           />
         </div>
-        <h1 className={styles.h1}>{appName}</h1>
-        <FirebaseAuth />
+        <div>
+          <Image
+            src="/progressPlus.png"
+            alt="Progress Plus"
+            width={200}
+            height={80}
+          />
+        </div>
+        <div className={styles.button}>
+          <FirebaseAuth />
+        </div>
       </div>
     </div>
   );

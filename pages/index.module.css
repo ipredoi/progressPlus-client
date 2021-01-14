@@ -26,13 +26,14 @@
   left: 0;
   right: 0;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   font-family: 'Roboto', sans-serif;
 }
 
 .socImage {
   text-align: center;
-  padding: 20px 0px 20px 0px;
-  margin-top: 2vw;
 }
 
 .h1 {
