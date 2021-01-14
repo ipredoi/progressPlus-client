@@ -6,17 +6,18 @@ import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 import styles from './navBar.module.css';
 
 export default function NavBar({ linksAndTitles }) {
-  const outerDiv = useRef();
+  const navBar = useRef();
   const { open, setOpen } = useAuthContext();
 
   const handleClick = (e) => {
-    if (outerDiv.current.contains(e.target)) {
-      // inside click
+    if (navBar.current.contains(e.target)) {
+      // inside navbar click
       return;
     }
-    // outside click
-    // ... do whatever on click outside here ...
-    setOpen(!open);
+    // outside of navbar click
+    if (open === true) {
+      setOpen(!open);
+    }
   };
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function NavBar({ linksAndTitles }) {
   }, [open]);
 
   return (
-    <div className={styles.container} ref={outerDiv}>
+    <div className={styles.container} ref={navBar}>
       <Sidebar
         as={Segment}
         animation='scale down'
