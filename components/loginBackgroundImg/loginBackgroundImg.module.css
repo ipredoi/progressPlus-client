@@ -23,7 +23,7 @@
   position: fixed;
   left: 0px;
   bottom: 6vw;
-  animation: astronautFloat 10s ease-in-out infinite;
+  animation: astronautFloat 7s ease-in-out infinite;
 }
 
 @keyframes astronautFloat {
