@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './loginBackgroundImg.module.css';
+import styles from './LoginBackgroundImg.module.css';
 import Image from 'next/image';
 
 const LoginBackgroundImg = () => {
@@ -7,8 +7,8 @@ const LoginBackgroundImg = () => {
     <div>
       <div className={styles.planetSocImg}>
         <Image
-          src='/planet_soc.png'
-          alt='School of Code Logo'
+          src="/planet_soc.png"
+          alt="School of Code Logo"
           width={400}
           height={450}
         />
