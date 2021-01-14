@@ -19,13 +19,12 @@
   height: auto;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 2vh;
   align-self: center;
   justify-self: center;
   padding: 5vh;
   max-width: 60vw;
-  background-color: #f4faff;
   border: 5px solid #e0e1e2;
   box-shadow: 2px 2px 2px black;
 }
