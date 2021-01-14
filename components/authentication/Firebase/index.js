@@ -4,7 +4,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseInit from '../../../firebaseUtils/firebaseInit';
-
+import styles from './firebase.module.css';
 //call the function for Firebase Initialisation
 firebaseInit();
 
@@ -20,7 +20,11 @@ const uiConfig = {
 export default function FirebaseAuth() {
   return (
     <div>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <StyledFirebaseAuth
+        className={styles.button}
+        uiConfig={uiConfig}
+        firebaseAuth={firebase.auth()}
+      />
     </div>
   );
 }
