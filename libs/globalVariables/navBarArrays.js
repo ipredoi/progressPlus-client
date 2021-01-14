@@ -6,8 +6,8 @@ const coachNavBarArr = [
 
 const bootcamperNavBarArr = [
   { link: '/bootcamper', title: 'Home' },
-  { link: '/bootcamper/masterytasks', title: 'Mastery Tasks' },
-  { link: '/bootcamper/recaptasks', title: 'Recap Tasks' },
+  { link: '/masterytasks', title: 'Mastery Tasks' },
+  { link: '/recaptasks', title: 'Recap Tasks' },
 ];
 
 export { coachNavBarArr, bootcamperNavBarArr };

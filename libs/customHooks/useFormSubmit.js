@@ -18,7 +18,7 @@ let useFormSubmit = (initialState, validate, postRequest) => {
       const noErrors = Object.keys(errors).length === 0;
       //  console.log(errors);
       if (noErrors) {
-        postRequest();
+        postRequest(values);
         setValues(initialState);
         setIsSubmitting(false);
       }
