@@ -4,7 +4,7 @@ import styles from './bootcamperDashboard.module.css';
 export default function BootcamperDashboard() {
   return (
     <div className={styles.container}>
-      <a href="/masterytasks">
+      <a href="/masterytasks" className={styles.imageLink}>
         <img
           className={styles.graph}
           src="/diagram.png"
@@ -12,7 +12,7 @@ export default function BootcamperDashboard() {
         />
         <p className={styles.link_text}>Mastery tasks</p>
       </a>
-      <a href="/recaptasks">
+      <a href="/recaptasks" className={styles.imageLink}>
         <img
           className={styles.graph}
           src="/bar-chart.png"

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .auth {
-  background-image: url('/authBackground.png') !important;
+  background-image: url('/starryBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   background-color: #e0e0e0;
@@ -16,7 +16,7 @@
   width: 300px;
   height: 450px;
   background-color: whitesmoke;
-  border-radius: 5%;
+  border-radius: 20px;
   border-color: #31986a;
   border-width: 4px;
   border-style: solid;
@@ -42,4 +42,24 @@
   text-decoration: underline;
   text-decoration-color: #4a90e2;
   text-decoration-thickness: 2px;
+}
+
+.planetSoC {
+  position: fixed;
+}
+
+.planetSocImg {
+  /* width: 30vw; */
+  position: fixed;
+  right: 0px;
+  margin: 1em;
+}
+
+.moonSocImg {
+  height: 20vh;
+  width: 100vw;
+  position: fixed;
+  left: 0px;
+
+  bottom: 0;
 }
