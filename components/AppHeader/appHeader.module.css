@@ -30,3 +30,9 @@
 .text {
   font-size: max(5vh, 30px);
 }
+
+.hamburgerIcon {
+  color: white;
+  width: 40px;
+  height: auto;
+}

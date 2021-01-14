@@ -263,13 +263,6 @@ export default function FeedbackForm({ session }) {
         type='submit'
         content='Submit Feedback'
       />
-      <Button
-        className={styles.mainPageButton}
-        content='Main Page'
-        onClick={() => {
-          router.push('./coach');
-        }}
-      />
     </Form>
   );
 }

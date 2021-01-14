@@ -8,13 +8,7 @@ export default function Avatar({ src }) {
 
   return (
     <div className='avatar'>
-      <Image
-        src={src}
-        className={styles.avatar}
-        onClick={() => {
-          setOpen(!open);
-        }}
-      />
+      <Image src={src} className={styles.avatar} />
     </div>
   );
 }

@@ -11,16 +11,16 @@ export default function NavBar({ linksAndTitles }) {
     <div className={styles.container}>
       <Sidebar
         as={Segment}
-        animation="scale down"
-        direction="left"
+        animation='scale down'
+        direction='left'
         visible={open}
         className={styles.nav}>
-        <Grid textAlign="center">
-          <Grid.Column Rows={linksAndTitles.length}>
+        <Grid textAlign='center'>
+          <Grid.Column rows={linksAndTitles.length}>
             {linksAndTitles.map((object) => (
               <Grid.Row key={object.title} href={object.link}>
-                <Header className="nav-link">{object.title}</Header>
-                <Grid.Column Columns={1}>
+                <Header className='nav-link'>{object.title}</Header>
+                <Grid.Column>
                   <Grid.Row></Grid.Row>
                 </Grid.Column>
               </Grid.Row>
