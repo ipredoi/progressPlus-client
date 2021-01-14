@@ -9,7 +9,7 @@ const LoginBackgroundImg = () => {
         <Image
           src='/planet_soc.png'
           alt='School of Code Logo'
-          width={450}
+          width={400}
           height={450}
         />
       </div>

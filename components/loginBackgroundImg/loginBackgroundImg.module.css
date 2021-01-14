@@ -6,7 +6,8 @@
   width: 35vw;
   position: fixed;
   right: 0px;
-  margin: 1em;
+  top: 8vh;
+  animation: planetFloat 20s ease-in-out infinite;
 }
 
 .moonSocImg {
@@ -18,9 +19,42 @@
 }
 
 .astronautImg {
-  width: 15vw;
+  width: 10vw;
   position: fixed;
   left: 0px;
-  bottom: 10vw;
-  
+  bottom: 6vw;
+  animation: astronautFloat 10s ease-in-out infinite;
+}
+
+@keyframes astronautFloat {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-30px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* @keyframes planetFloat {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(5px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+} */
+
+@keyframes planetFloat {
+  from {
+    transform: rotate(0deg) translateX(4px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(4px) rotate(-360deg);
+  }
 }
