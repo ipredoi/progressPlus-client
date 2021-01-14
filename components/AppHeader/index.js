@@ -21,11 +21,11 @@ export default function AppHeader({
             setOpen(!open);
           }}
         />
-        <img
+        {/* <img
           className={styles.socLogo}
           src='/Logo.png'
           alt='School of Code Logo'
-        />
+        /> */}
 
         <div className={styles.title}>
           <div>
