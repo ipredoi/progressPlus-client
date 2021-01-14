@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './loginBackgroundImg.module.css';
+import styles from './LoginBackgroundImg.module.css';
 import Image from 'next/image';
 
 const LoginBackgroundImg = () => {
@@ -7,24 +7,19 @@ const LoginBackgroundImg = () => {
     <div>
       <div className={styles.planetSocImg}>
         <Image
-<<<<<<< HEAD
-          src="/planet_soc.png"
-          alt="School of Code Logo"
-=======
           src='/planet_soc.png'
           alt='School of Code Logo'
->>>>>>> IE-160
           width={400}
           height={450}
         />
       </div>
       <div className={styles.moonSocImg}>
-        <Image src="/moon.png" alt="Moon Image" layout="fill" />
+        <Image src='/moon.png' alt='Moon Image' layout='fill' />
       </div>
       <div className={styles.astronautImg}>
         <Image
-          src="/astronaut.png"
-          alt="School of Code Logo"
+          src='/astronaut.png'
+          alt='School of Code Logo'
           width={450}
           height={450}
         />

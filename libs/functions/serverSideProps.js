@@ -6,9 +6,7 @@ export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
     const { token } = cookies;
-    console.log({ token });
     const sessionData = await verifyIdToken(cookies.token);
-    console.log({ sessionData });
     const { uid, picture } = sessionData;
 
     const res = await fetch(`${backendUrl}${uid}`, {
