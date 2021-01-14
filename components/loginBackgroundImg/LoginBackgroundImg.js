@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LoginBackgroundImg.module.css';
+import styles from './loginBackgroundImg.module.css';
 import Image from 'next/image';
 
 export default function LoginBackgroundImg() {
