@@ -7,6 +7,6 @@
   height: max(12vh, 60px);
   margin: 1vh 2vh 1vh 2vh;
   align-self: center;
-  border: 1px solid #2d8b61;
-  left: 280px;
+  border: 1px solid black;
+  display: flex;
 }

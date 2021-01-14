@@ -7,8 +7,14 @@ export default function Avatar({ src }) {
   const { open, setOpen } = useAuthContext();
 
   return (
-    <div className='avatar'>
-      <Image src={src} className={styles.avatar} />
+    <div>
+      <Image
+        src={src}
+        className={styles.avatar}
+        onClick={() => {
+          setOpen(!open);
+        }}
+      />
     </div>
   );
 }

@@ -23,21 +23,20 @@ export default function AppHeader({
         />
         <img
           className={styles.socLogo}
-          src="/Logo.png"
-          alt="School of Code Logo"
+          src='/Logo.png'
+          alt='School of Code Logo'
         />
 
         <div className={styles.title}>
           <div>
             <Image
-              src="/progressPlusWhite.png"
-              alt="Progress Plus"
+              src='/progressPlusWhite.png'
+              alt='Progress Plus'
               width={200}
               height={80}
             />
           </div>
         </div>
-
         <Avatar src={session.picture} name={session.name} />
       </div>
       <NavBar linksAndTitles={navBarArr} />
