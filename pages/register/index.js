@@ -6,7 +6,7 @@ import nookies from 'nookies';
 import useFormSubmit from '../../libs/customHooks/useFormSubmit';
 import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
 import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
-import LoginBackgroundImg from '../../components/LoginBackgroundImg/LoginBackgroundImg';
+import LoginBackgroundImg from '../../components/loginBackgroundImg/LoginBackgroundImg';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';

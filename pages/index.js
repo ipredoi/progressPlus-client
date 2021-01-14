@@ -1,7 +1,7 @@
 import FirebaseAuth from '../components/authentication/Firebase';
 import styles from './index.module.css';
 import Image from 'next/image';
-import LoginBackgroundImg from '../components/LoginBackgroundImg/LoginBackgroundImg';
+import LoginBackgroundImg from '../components/loginBackgroundImg/LoginBackgroundImg';
 export default function Login() {
   return (
     <div className={styles.auth}>
