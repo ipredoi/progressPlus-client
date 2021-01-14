@@ -30,6 +30,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   font-family: 'Roboto', sans-serif;
+  opacity: 0.95;
+  -webkit-filter: drop-shadow(0px 3px 10px #31986a);
+  filter: drop-shadow(0px 0px 10px #31986a);
 }
 
 .socImage {
@@ -45,22 +48,3 @@
   text-decoration-thickness: 2px;
 }
 
-.planetSoC {
-  position: fixed;
-}
-
-.planetSocImg {
-  /* width: 30vw; */
-  position: fixed;
-  right: 0px;
-  margin: 1em;
-}
-
-.moonSocImg {
-  height: 20vh;
-  width: 100vw;
-  position: fixed;
-  left: 0px;
-
-  bottom: 0;
-}
