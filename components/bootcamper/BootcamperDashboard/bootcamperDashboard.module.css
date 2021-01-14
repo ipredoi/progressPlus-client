@@ -19,4 +19,11 @@
 .imageLink {
   margin-left: 10%;
   margin-right: 10%;
+  box-shadow: 2px 2px 7px grey;
+  border-radius: 5px;
+  padding: 1vh;
+}
+
+.imageLink:hover {
+  box-shadow: 3px 3px 7px rgb(58, 58, 58);
 }

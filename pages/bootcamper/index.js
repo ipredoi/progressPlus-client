@@ -15,7 +15,7 @@ export default function Bootcamper({ session }) {
         <AppHeader session={session} />
 
         <section className={styles.body}>
-          <h2 className={styles.welcome}>Welcome back, {session.name}</h2>
+          <h2 className={styles.welcome}>Welcome {session.name}</h2>
           <BootcamperDashboard />
           <QuoteHeader />
         </section>
