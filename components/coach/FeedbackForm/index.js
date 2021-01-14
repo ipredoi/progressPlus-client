@@ -1,5 +1,5 @@
 //semantic ui used for form skeleton
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -28,7 +28,9 @@ const valuesInitialState = {
 };
 
 export default function FeedbackForm({ session }) {
+  // initial states for bootcamper uid
   // initial state for the errors occurs from server when will attempt to submit data to database
+  const [bootcamperUid, setBootcamperUid] = useState('');
   const [serverErr, setServerErr] = useState(null);
 
   const { token } = session;
@@ -48,17 +50,29 @@ export default function FeedbackForm({ session }) {
   } = useFormSubmit(valuesInitialState, validateFeedbackForm, feedbackPost);
 
   //current date and time -> send it to database when the form is submitted
-  let dateTime = new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
+  let dateTime = new Date().toLocaleString();
 
   // the coach name is comming from the page session
   let coachName = session.name;
-  console.log(coachName);
+
   // the array with all the bootcamers is comming from session
   let bootcampersInfoArr = session.data;
-  console.log(bootcampersInfoArr);
+
   // using the imported bootCampersArrayReducer to set the bootcampers in a format to be used in the dropdown menu
   let bootcampersArr = bootCampersArrayReducer(bootcampersInfoArr);
-  console.log(bootcampersArr);
+
+  // getting the bootcamer uid after the coach selects a bootcamper
+  useEffect(() => {
+    if (values.bootcamperName !== '') {
+      setBootcamperUid(
+        bootcampersInfoArr.filter(function (item) {
+          return item.name === `${values.bootcamperName}`;
+        })[0].uid
+      );
+    }
+  }, [values.bootcamperName]);
+
+  console.log(bootcamperUid);
   // function to post the data to database
   async function feedbackPost() {
     const {
@@ -72,16 +86,12 @@ export default function FeedbackForm({ session }) {
       comments,
     } = values;
     console.log(values);
+    console.log(bootcamperUid);
     try {
       await fetch(`${backendUrl}feedback`, {
         method: 'POST',
         body: JSON.stringify({
-          // getting the bootcamper uid from filtering through the info arra
-          bootcamperuid: `${
-            bootcampersInfoArr.filter(function (item) {
-              return item.name === `${values.bootcamperName}`;
-            })[0].uid
-          }`,
+          bootcamperuid: `${bootcamperUid}`,
           coachname: `${coachName}`,
           feedbackdate: `${dateTime}`,
           subject: `${subject}`,
@@ -153,7 +163,7 @@ export default function FeedbackForm({ session }) {
       <Form.Field className={errors.subject && `${styles.errorInput}`}>
         <label>Subject</label>
         <Input
-          placeholder='e.g. React'
+          placeholder='e.g. React/ JS'
           name='subject'
           value={values.subject}
           onChange={handleChange}
@@ -185,7 +195,7 @@ export default function FeedbackForm({ session }) {
         <Input
           type='number'
           min='0'
-          placeholder='Number of tests passed'
+          placeholder='Input the tests passed'
           name='passedTests'
           value={values.passedTests}
           onChange={handleChange}
@@ -197,7 +207,7 @@ export default function FeedbackForm({ session }) {
         <Input
           type='number'
           min={values.passedTests}
-          placeholder='Number of total tests'
+          placeholder='Input total tests'
           name='totalTests'
           value={values.totalTests}
           onChange={handleChange}
@@ -208,7 +218,7 @@ export default function FeedbackForm({ session }) {
         className={errors.comments && `${styles.errorInput}`}
         control={TextArea}
         label='Feedback'
-        placeholder='Enter Feedback...'
+        placeholder='Feedback'
         name='comments'
         value={values.comments}
         onChange={handleChange}
@@ -253,13 +263,13 @@ export default function FeedbackForm({ session }) {
         type='submit'
         content='Submit Feedback'
       />
-      {/*    <Button
+      <Button
         className={styles.mainPageButton}
-        content="Home"
+        content='Main Page'
         onClick={() => {
-          router.push('./');
+          router.push('./coach');
         }}
-      /> */}
+      />
     </Form>
   );
 }
