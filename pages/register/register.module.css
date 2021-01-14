@@ -4,7 +4,7 @@
   background-image: url('/authBackground.png') !important;
   background-size: cover !important;
   background-repeat: no-repeat;
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
   height: 100vh;
   width: 100vw;
 }
@@ -45,6 +45,9 @@
   margin: auto;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  opacity: 0.95;
+  -webkit-filter: drop-shadow(0px 3px 10px #31986a);
+  filter: drop-shadow(0px 0px 10px #31986a);
 }
 .inputField > input {
   position: relative !important;
@@ -52,7 +55,6 @@
   width: 244px !important;
   min-width: 0;
   margin-right: 0px !important;
-  font-family: 'Roboto', sans-serif !important;
   border-radius: 10px !important;
   border-color: #2d8b61 !important;
   font-size: 14px !important;
@@ -79,7 +81,7 @@
   height: 40px;
   width: 244px !important;
   font-size: 14px !important;
-  font-family: Roboto, Helvetica, Arial, sans-serif !important;
+  
   margin-top: 4px !important;
   color: white !important;
 }
@@ -92,7 +94,7 @@
   height: 40px;
   width: 244px;
   font-size: 14px !important;
-  font-family: Roboto, Helvetica, Arial, sans-serif !important;
+  
   margin-top: 10px !important;
   color: white !important;
 }
