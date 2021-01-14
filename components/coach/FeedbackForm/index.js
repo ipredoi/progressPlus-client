@@ -31,6 +31,8 @@ export default function FeedbackForm({ session }) {
   // initial state for the errors occurs from server when will attempt to submit data to database
   const [serverErr, setServerErr] = useState(null);
 
+  const { token } = session;
+
   // router used on the redirect button
   const router = useRouter();
 
@@ -69,7 +71,7 @@ export default function FeedbackForm({ session }) {
       totalTests,
       comments,
     } = values;
-console.log(values)
+    console.log(values);
     try {
       await fetch(`${backendUrl}feedback`, {
         method: 'POST',
@@ -94,6 +96,7 @@ console.log(values)
         headers: {
           'content-type': 'application/json',
           'Access-Control-Allow-Origin': '*',
+          authorization: `Bearer ${token}`,
         },
         mode: 'cors',
       })

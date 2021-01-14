@@ -32,6 +32,8 @@ export default function Register({ session }) {
   const { logOut, router } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
 
+  let { token } = session;
+
   // destructuring data coming from the useFormSubmit custom hook
   // the hook takes in the valuesInitialState object, validateFeedback form function which checks if there are any errors in the form and the feedbackPost function to submit data to database
   const {
@@ -41,7 +43,13 @@ export default function Register({ session }) {
     isSubmitting,
     values,
     errors,
-  } = useFormSubmit(valuesInitialState, validateRegisterForm, registerUser);
+  } = useFormSubmit(
+    valuesInitialState,
+    validateRegisterForm,
+    registerUser,
+    token
+  );
+
   console.log(values);
   return (
     <div className={styles.body}>
@@ -102,8 +110,10 @@ export default function Register({ session }) {
 export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    let { name, uid, email, picture } = token;
+    const { token } = cookies;
+    const sessionData = await verifyIdToken(cookies.token);
+
+    let { name, uid, email, picture } = sessionData;
 
     //if user has no name on GitHub, name will be set to 'No name ❗ to test the functionality remove the exclamation mark'
     if (!name) {
@@ -122,7 +132,7 @@ export async function getServerSideProps(context) {
     // }
 
     return {
-      props: { session: { name, uid, email, picture } },
+      props: { session: { name, uid, email, picture, token } },
     };
   } catch (err) {
     context.res.writeHead(302, {

@@ -5,6 +5,8 @@ import { backendUrl } from '../globalVariables/urls';
 export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
+    const { token } = cookies;
+    console.log({ token });
     const sessionData = await verifyIdToken(cookies.token);
     const { uid, picture } = sessionData;
 
@@ -20,7 +22,7 @@ export default async function serverSideProps(context, customFetchRequest) {
     }
 
     return {
-      props: { session: { name, uid, picture, data } },
+      props: { session: { name, uid, picture, data, token } },
     };
   } catch (err) {
     console.log(err);
