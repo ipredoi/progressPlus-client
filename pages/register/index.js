@@ -51,7 +51,7 @@ export default function Register({ session }) {
     token
   );
 
-  console.log(values);
+  // console.log(values);
   return (
     <div className={styles.body}>
       <LoginBackgroundImg />
