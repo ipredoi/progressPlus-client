@@ -5,7 +5,7 @@ import serverSideProps from '../../libs/functions/serverSideProps';
 import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
 import AppHeader from '../../components/AppHeader';
 import styles from './progress.module.css';
-import ScoreGraph from '../../Components/ScoreGraph';
+import ScoreGraph from '../../components/ScoreGraph';
 import FeedbackTable from '../../components/bootcamper/FeedbackTable';
 
 import {

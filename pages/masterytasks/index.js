@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import AppHeader from "../../components/AppHeader";
-import ScoreGraph from "../../Components/ScoreGraph";
-import FeedbackTable from "../../components/bootcamper/FeedbackTable";
-import serverSideProps from "../../libs/functions/serverSideProps";
-import styles from "./masterytasks.module.css";
+import React, { useState } from 'react';
+import AppHeader from '../../components/AppHeader';
+import ScoreGraph from '../../components/ScoreGraph';
+import FeedbackTable from '../../components/bootcamper/FeedbackTable';
+import serverSideProps from '../../libs/functions/serverSideProps';
+import styles from './masterytasks.module.css';
 
 export default function MasteryTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
