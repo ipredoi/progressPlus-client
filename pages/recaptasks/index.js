@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import AppHeader from '../../components/AppHeader';
-import serverSideProps from '../../libs/functions/serverSideProps';
-import ScoreGraph from '../../components/ScoreGraph';
-import FeedbackTable from '../../components/bootcamper/FeedbackTable';
+import React, { useState } from "react";
+import AppHeader from "../../components/AppHeader";
+import serverSideProps from "../../libs/functions/serverSideProps";
+import ScoreGraph from "../../components/ScoreGraph";
+import FeedbackTable from "../../components/bootcamper/FeedbackTable";
+import styles from "./recaptasks.module.css";
 
 export default function RecapTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
   return (
     <div>
       <AppHeader session={session} />
-      <ScoreGraph
-        feedbackData={session.data}
-        setSelectedData={setSelectedData}
-        taskType="Recap"
-        myName={session.name}
-      />
-      <FeedbackTable selectedData={selectedData} taskType="Recap" />
-      {/* <AppFooter /> */}
+      <div className={styles.graph}>
+        <ScoreGraph
+          feedbackData={session.data}
+          setSelectedData={setSelectedData}
+          taskType='Recap'
+          myName={session.name}
+        />
+      </div>
+      <div className={styles.table}>
+        <FeedbackTable selectedData={selectedData} taskType='Recap' />
+      </div>
     </div>
   );
 }
