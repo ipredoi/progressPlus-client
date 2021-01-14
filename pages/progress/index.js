@@ -106,6 +106,7 @@ export default function Progress({ session }) {
       </div>
       <div>
         <FeedbackTable
+          className={styles.feedbackTable}
           selectedData={selectedData}
           bootcamperName={bootcamperName}
         />

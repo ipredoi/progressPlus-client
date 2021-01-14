@@ -29,18 +29,20 @@
 }
 
 .graph {
+  margin: auto !important;
   display: flex !important;
   height: 300px !important;
   flex-direction: row;
-  /* position: relative !important; */
+  position: relative !important;
   justify-content: center !important;
-  width: 600px !important;
+  width: fit-content !important;
 }
 
-/* .table {
+.table {
+  margin: auto !important;
   display: flex !important;
   height: 300px !important;
   position: relative !important;
   justify-content: center !important;
   width: 600px !important;
-} */
+}

@@ -1,0 +1,9 @@
+.feedbackTable {
+  margin: auto !important;
+  /* display: flex !important; */
+  height: fit-content !important;
+  position: relative !important;
+  justify-content: center !important;
+  width: 600px !important;
+  /* overflow: scroll !important; */
+}

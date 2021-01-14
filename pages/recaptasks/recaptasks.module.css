@@ -29,6 +29,7 @@
 }
 
 .graph {
+  margin: auto !important;
   display: flex !important;
   height: 70% !important;
   flex-direction: row;
@@ -37,10 +38,11 @@
   width: 50% !important;
 }
 
-/* .table {
+.table {
+  margin: auto !important;
   display: flex !important;
   height: 300px !important;
   position: relative !important;
   justify-content: center !important;
   width: 600px !important;
-} */
+}
