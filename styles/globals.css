@@ -9,9 +9,10 @@ body {
   padding: 0;
   margin: 0;
   background-image: url('/starryBackground.png') !important;
-  background-repeat: no-repeat !important;
+  background-repeat: no-repeat;
   background-color: whitesmoke !important;
   overflow: hidden;
+  background-size: cover !important;
 }
 * {
   font-family: 'Roboto Condensed', sans-serif !important;
