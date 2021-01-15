@@ -24,8 +24,13 @@ export default function registerUser(values, token) {
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
-    // console.log("handlesubmit working");
+    console.log('handlesubmit working');
     // redirecting the user to coach/ bootcamper page after submit
-    console.log('got to here');
+    console.log({
+      role: values.role,
+      uid: values.uid,
+      cohort: values.cohort,
+      name: `${values.forename} ${values.surname}`,
+    });
   }
 }

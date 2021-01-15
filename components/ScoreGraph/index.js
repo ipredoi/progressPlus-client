@@ -1,27 +1,27 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Bar } from 'react-chartjs-2';
 // import "chartjs-plugin-labels";
 import {
   setBarBgColorArr,
   setBarBorColorArr,
   // setIconArr,
-} from "../../libs/functions/setChartColors.js";
+} from '../../libs/functions/setChartColors.js';
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({
   week: 0,
   passedtests: 0,
   totaltests: 0,
-  bootcamperuid: "",
-  coachName: "",
-  datesubmitted: "",
-  duedate: "",
-  feedbackdate: "",
+  bootcamperuid: '',
+  coachName: '',
+  datesubmitted: '',
+  duedate: '',
+  feedbackdate: '',
   feedbackid: 0,
-  qualitative: "",
-  subject: "",
-  type: "",
+  qualitative: '',
+  subject: '',
+  type: '',
 });
 
 export default function ScoreGraph({
@@ -54,7 +54,7 @@ export default function ScoreGraph({
     percentagesArr.push(
       Math.round((object.passedtests / object.totaltests) * 100)
     );
-    if (taskType === "Mastery") {
+    if (taskType === 'Mastery') {
       xAxesArr = graphData.map((e) => {
         // return e.subject;
         return e.subject.toUpperCase();
@@ -74,7 +74,7 @@ export default function ScoreGraph({
       const element = chart.getElementAtEvent(event)[0];
       const weekNum = chart.data.labels[element._index];
       const activeWeek = graphData.filter((obj) => {
-        if (taskType === "Recap") {
+        if (taskType === 'Recap') {
           return obj.week === weekNum;
         } else return obj.subject.toUpperCase() === weekNum;
       });
@@ -104,16 +104,16 @@ export default function ScoreGraph({
                 order: 2,
               },
               {
-                label: "Average",
+                label: 'Average',
                 data: averageArr,
-                type: "line",
+                type: 'line',
                 fill: false,
-                borderColor: "#c54964",
-                backgroundColor: "#c54964",
-                pointBorderColor: "#c54964",
-                pointBackgroundColor: "#c54964",
-                pointHoverBackgroundColor: "#c54964",
-                pointHoverBorderColor: "#c54964",
+                borderColor: '#c54964',
+                backgroundColor: '#c54964',
+                pointBorderColor: '#c54964',
+                pointBackgroundColor: '#c54964',
+                pointHoverBackgroundColor: '#c54964',
+                pointHoverBorderColor: '#c54964',
                 order: 1,
               },
             ],
@@ -132,9 +132,7 @@ export default function ScoreGraph({
             /* ↑↑↑ average score calculate ↑↑↑ */
             title: {
               display: true,
-              text: bootcamperName
-                ? `${taskType} Task`
-                : `${myName}'s ${taskType} Task Score`,
+              text: bootcamperName ? `${taskType} Task` : ``,
             },
             legend: {
               display: bootcamperName ? true : false,
@@ -150,7 +148,7 @@ export default function ScoreGraph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: taskType === "Mastery" ? "Subject" : "Week",
+                    labelString: taskType === 'Mastery' ? 'Subject' : 'Week',
                   },
                 },
               ],
@@ -162,7 +160,7 @@ export default function ScoreGraph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: "Passed Tests [%]",
+                    labelString: 'Passed Tests [%]',
                   },
                 },
               ],
