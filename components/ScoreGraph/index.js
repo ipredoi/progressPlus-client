@@ -56,7 +56,8 @@ export default function ScoreGraph({
     );
     if (taskType === "Mastery") {
       xAxesArr = graphData.map((e) => {
-        return e.subject.charAt(0).toUpperCase() + e.subject.slice(1);
+        return e.subject;
+        // return e.subject.charAt(0).toUpperCase() + e.subject.slice(1);
       });
     } else {
       xAxesArr.push(index + 1);
@@ -79,6 +80,10 @@ export default function ScoreGraph({
       });
       setSelectedData(activeWeek[0]);
       console.log(activeWeek);
+      /* play sound when click the bar 
+      const audio = new Audio("../A-Tone-His_Self-1266414414.mp3");
+      audio.play();
+      */
     }
   }
 
