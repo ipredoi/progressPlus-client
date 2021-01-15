@@ -35,7 +35,7 @@ export default function ScoreGraph({
     return feedbackData[index] || object;
   });
   //placeholderData will be replaced with real data for the weeks where there is data in DB
-  console.log(graphData);
+  // console.log(graphData);
   if (feedbackData[0] !== undefined) {
     feedbackData.forEach((obj) => {
       placeholderData[obj.week - 1] = obj;
@@ -57,12 +57,13 @@ export default function ScoreGraph({
     if (taskType === "Mastery") {
       xAxesArr = graphData.map((e) => {
         return e.subject;
+        // return e.subject.charAt(0).toUpperCase() + e.subject.slice(1);
       });
     } else {
       xAxesArr.push(index + 1);
     }
   });
-  console.log(xAxesArr);
+  // console.log(xAxesArr);
 
   // onclick event of bar chart, displays data for week/subject selected
   function handleClick(event, elements) {
@@ -73,12 +74,16 @@ export default function ScoreGraph({
       const element = chart.getElementAtEvent(event)[0];
       const weekNum = chart.data.labels[element._index];
       const activeWeek = graphData.filter((obj) => {
-        if (taskType === "Mastery") {
-          return obj.subject === weekNum;
-        } else return obj.week === weekNum;
+        if (taskType === "Recap") {
+          return obj.week === weekNum;
+        } else return obj.subject === weekNum;
       });
       setSelectedData(activeWeek[0]);
       console.log(activeWeek);
+      /* play sound when click the bar 
+      const audio = new Audio("../A-Tone-His_Self-1266414414.mp3");
+      audio.play();
+      */
     }
   }
 

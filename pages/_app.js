@@ -9,7 +9,6 @@ import AppFooter from '../components/AppFooter/index';
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
   if (router.pathname !== '/' && pageProps.session === undefined) {
-    console.log(pageProps);
     return <LoadingImg />;
   } else if (router.pathname === '/' || router.pathname === '/register') {
     return (

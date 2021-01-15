@@ -1,5 +1,8 @@
 .dropDown {
   margin: 1em;
+  justify-content: center !important;
+  align-content: center !important;
+  text-align: center !important;
 }
 
 .container {
@@ -31,12 +34,33 @@
   font-size: 3vh;
   margin: 0em;
   text-align: center;
+  color: whitesmoke;
 }
 
 .graphs {
   display: flex;
-  height: 40vh;
+  height: 45vh;
   position: relative;
   justify-content: center;
-  width: 100vw;
+  width: 75vw;
+  background-color: whitesmoke;
+  border-radius: 2vh;
+  border: 5px solid #e0e1e2;
+  box-shadow: 2px 2px 2px black;
 }
+
+.table {
+  display: flex !important;
+  height: 70vh !important;
+  justify-content: center !important;
+  width: 50vw !important;
+  text-align: center !important;
+}
+
+/* .progress {
+  background-color: whitesmoke;
+  border-radius: 2vh;
+  border: 5px solid #e0e1e2;
+  box-shadow: 2px 2px 2px black;
+  overflow-y: scroll;
+} */

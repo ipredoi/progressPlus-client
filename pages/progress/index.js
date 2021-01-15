@@ -105,11 +105,13 @@ export default function Progress({ session }) {
             setSelectedData={setSelectedData}
           />
         </div>
-
-        <FeedbackTable
-          selectedData={selectedData}
-          bootcamperName={bootcamperName}
-        />
+        <div>
+          <FeedbackTable
+            className={styles.table}
+            selectedData={selectedData}
+            bootcamperName={bootcamperName}
+          />
+        </div>
       </div>
     </div>
   );

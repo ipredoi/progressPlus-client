@@ -19,16 +19,16 @@ export default function AppHeader({
             setOpen(!open);
           }}
         />
-        <img
+        {/* <img
           className={styles.socLogo}
-          src="/Logo.png"
-          alt="School of Code Logo"
-        />
+          src='/Logo.png'
+          alt='School of Code Logo'
+        /> */}
 
         <div className={styles.title}>
           <img
-            src="/progressPlusWhite.png"
-            alt="Progress Plus"
+            src='/progressPlusWhite.png'
+            alt='Progress Plus'
             className={styles.progressPlus}
           />
         </div>

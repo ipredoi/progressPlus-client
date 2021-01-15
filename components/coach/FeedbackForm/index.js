@@ -72,7 +72,7 @@ export default function FeedbackForm({ session }) {
     }
   }, [values.bootcamperName]);
 
-  console.log(bootcamperUid);
+  // console.log(bootcamperUid);
   // function to post the data to database
   async function feedbackPost() {
     const {
@@ -85,8 +85,8 @@ export default function FeedbackForm({ session }) {
       totalTests,
       comments,
     } = values;
-    console.log(values);
-    console.log(bootcamperUid);
+    // console.log(values);
+    // console.log(bootcamperUid);
     try {
       await fetch(`${backendUrl}feedback`, {
         method: 'POST',
@@ -112,7 +112,7 @@ export default function FeedbackForm({ session }) {
       })
         .then((response) => response.json())
         .then((data) => console.log(data));
-      console.log('handlesubmit working');
+      // console.log('handlesubmit working');
     } catch (err) {
       console.error('Server error', err);
       setServerErr(`Server error: ${err.message}. Please try again!`);
