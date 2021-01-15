@@ -1,5 +1,5 @@
 .dropDown {
-  margin: 1em;
+  /* margin: 1em; */
   justify-content: center !important;
   align-content: center !important;
   text-align: center !important;
@@ -24,10 +24,10 @@
   right: 0;
   margin: auto;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
-  filter: drop-shadow(0px 0px 8px #e0e1e2);
+  filter: drop-shadow(0px 0px 10px #e0e1e2);
 }
 
 .title {
@@ -45,7 +45,8 @@
 }
 .graphs {
   display: flex;
-  height: auto;
+  height: 40vh;
+  /* bottom: 6vh; */
   position: relative;
   align-items: center;
   justify-items: center;
