@@ -20,7 +20,7 @@ export default function Login() {
             src='/progressPlus.png'
             alt='Progress Plus'
             width={200}
-            height={80}
+            height={60}
           />
         </div>
         <div className={styles.button}>

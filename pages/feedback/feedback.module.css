@@ -27,7 +27,7 @@
   overflow-y: overlay;
 
   -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
-  filter: drop-shadow(0px 0px 10px #e0e1e2);
+  filter: drop-shadow(0px 0px 8px #e0e1e2);
 }
 .feedbackForm::-webkit-scrollbar-track {
   box-shadow: inset 0 0 rgb(0, 0, 0);

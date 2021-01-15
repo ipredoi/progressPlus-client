@@ -23,12 +23,12 @@
   border-radius: 2vh;
   align-self: center;
   justify-self: center;
-  padding: 5vh;
+  padding: 2em;
   max-width: 60vw;
   border: 5px solid #e0e1e2;
 
   -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
-  filter: drop-shadow(0px 0px 10px #e0e1e2);
+  filter: drop-shadow(0px 0px 8px #e0e1e2);
 }
 
 .welcome {
