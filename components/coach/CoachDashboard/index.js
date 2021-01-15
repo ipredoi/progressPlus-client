@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function CoachDashboard() {
   return (
     <div className={styles.container}>
-      <Link className={styles.imageLink} href='/feedback'>
-        <a>
+      <Link href='/feedback'>
+        <a className={styles.imageLink}>
           <img
             className={styles.icons}
             src='/notes.png'
@@ -14,8 +14,8 @@ export default function CoachDashboard() {
           <p className={styles.link_text}>Submit feedback</p>
         </a>
       </Link>
-      <Link href='/progress' className={styles.imageLink}>
-        <a>
+      <Link href='/progress'>
+        <a className={styles.imageLink}>
           <img
             className={styles.icons}
             src='/diagram.png'

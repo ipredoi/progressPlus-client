@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function BootcamperDashboard() {
   return (
     <div className={styles.container}>
-      <Link href='/masterytasks' className={styles.imageLink}>
-        <a>
+      <Link href='/masterytasks'>
+        <a className={styles.imageLink}>
           <img
             className={styles.icons}
             src='/diagram.png'
@@ -14,8 +14,8 @@ export default function BootcamperDashboard() {
           <p className={styles.link_text}>Mastery tasks</p>
         </a>
       </Link>
-      <Link href='/recaptasks' className={styles.imageLink}>
-        <a>
+      <Link href='/recaptasks'>
+        <a className={styles.imageLink}>
           <img
             className={styles.icons}
             src='/bar-chart.png'
