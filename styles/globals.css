@@ -4,14 +4,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 html,
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 100vh !important;
+  width: 100vw !important;
   padding: 0;
   margin: 0;
   background-image: url('/starryBackground.png') !important;
   background-repeat: no-repeat;
   background-color: whitesmoke !important;
   overflow: hidden;
+  background-size: cover !important;
 }
 * {
   font-family: 'Roboto Condensed', sans-serif !important;
@@ -163,4 +164,9 @@ body ::-webkit-scrollbar-thumb {
   max-width: 40vw !important;
   font-size: 1.5rem;
   text-align: center;
+}
+
+/* solve the arrows to dropdownmenu */
+.ui.dropdown > .dropdown.icon {
+  font-family: Dropdown !important;
 }

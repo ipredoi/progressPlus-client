@@ -10,12 +10,13 @@ export default function MasteryTasks({ session }) {
   return (
     <>
       <AppHeader session={session} />
-      <div className={styles.masteryTasks}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>{session.name}'s Mastery Task Score</h1>
         <div className={styles.graph}>
           <ScoreGraph
             feedbackData={session.data}
             setSelectedData={setSelectedData}
-            taskType='Mastery'
+            taskType="Mastery"
             myName={session.name}
           />
         </div>
@@ -31,8 +32,7 @@ export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid, token) {
     const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`, {
       headers: { authorization: `Bearer ${token}` },
-    });
-    // mastery task score
+    }); // mastery task score
     const { data } = await res.json();
     return data;
   }

@@ -11,9 +11,8 @@
   position: absolute;
   border-radius: 50%;
   width: auto;
-  height: max(12vh, 60px);
+  height: max(8vh, 30px);
   margin: 1vh 2vh 1vh 2vh;
-  border: 1px solid #2d8b61;
   right: 0;
   top: 0;
 }
@@ -44,4 +43,6 @@
   color: white;
   width: 40px;
   height: auto;
+  left: 2em;
+  bottom: 1em;
 }

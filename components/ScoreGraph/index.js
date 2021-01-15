@@ -56,7 +56,8 @@ export default function ScoreGraph({
     );
     if (taskType === 'Mastery') {
       xAxesArr = graphData.map((e) => {
-        return e.subject;
+        // return e.subject;
+        return e.subject.toUpperCase();
       });
     } else {
       xAxesArr.push(index + 1);
@@ -73,12 +74,15 @@ export default function ScoreGraph({
       const element = chart.getElementAtEvent(event)[0];
       const weekNum = chart.data.labels[element._index];
       const activeWeek = graphData.filter((obj) => {
-        if (taskType === 'Mastery') {
-          return obj.subject === weekNum;
-        } else return obj.week === weekNum;
+        if (taskType === 'Recap') {
+          return obj.week === weekNum;
+        } else return obj.subject.toUpperCase() === weekNum;
       });
       setSelectedData(activeWeek[0]);
-      // console.log(activeWeek);
+      console.log(activeWeek);
+      // play sound when click the bar
+      // const audio = new Audio('../A-Tone-His_Self-1266414414.mp3');
+      // audio.play();
     }
   }
 
@@ -128,14 +132,12 @@ export default function ScoreGraph({
             /* ↑↑↑ average score calculate ↑↑↑ */
             title: {
               display: true,
-              text: bootcamperName
-                ? `${taskType} Task`
-                : `${myName}'s ${taskType} Task Score`,
+              text: bootcamperName ? `${taskType} Task` : ``,
             },
             legend: {
               display: bootcamperName ? true : false,
             },
-            // responsive: true,
+            responsive: true,
             onClick: handleClick,
             maintainAspectRatio: false,
             scales: {

@@ -7,7 +7,7 @@ export default function QuoteHeader() {
   useEffect(() => {
     const quoteIndex = Math.floor(Math.random() * quotesArray.length);
     setQuote(quotesArray[quoteIndex]);
-  }, [quote]);
+  }, []);
 
   return <Header>{quote}</Header>;
 }

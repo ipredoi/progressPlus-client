@@ -1,28 +1,56 @@
 .dropDown {
-  margin: 1em;
+  /* margin: 1em; */
   justify-content: center !important;
   align-content: center !important;
   text-align: center !important;
 }
 
-.title {
-  font-size: 3vh;
-  padding: 1em;
-  margin: 0em;
-  text-align: center;
-  color: whitesmoke;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: auto;
+  height: auto;
+  background-color: whitesmoke;
+  border-radius: 5%;
+  border-color: #e0e1e2;
+  border-width: 4px;
+  border-style: solid;
+  position: absolute;
+  top: 16vh;
+  bottom: 12vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+
+  -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
+  filter: drop-shadow(0px 0px 10px #e0e1e2);
 }
 
+.title {
+  font-size: 3vh;
+  margin: 0em;
+  text-align: center;
+  color: black;
+}
+
+.graph {
+  height: auto;
+  width: 40vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
 .graphs {
   display: flex;
-  height: 45vh;
+  height: 40vh;
+  /* bottom: 6vh; */
   position: relative;
-  justify-content: center;
-  width: 75vw;
-  background-color: whitesmoke;
-  border-radius: 2vh;
-  border: 5px solid #e0e1e2;
-  box-shadow: 2px 2px 2px black;
+  align-items: center;
+  justify-items: center;
+  width: 100vw;
 }
 
 .table {

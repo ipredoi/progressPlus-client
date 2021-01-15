@@ -22,17 +22,17 @@ import {
 } from '../../libs/variables/registerPageProps';
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
-const valuesInitialState = {
-  role: '',
-  cohort: 0,
-  forename: '',
-  surname: '',
-  uid: '',
-};
+
 export default function Register({ session }) {
   const { logOut, router } = useAuthContext();
   //we are using router to redirect the user after register to the coach/bootcamper page
-
+  const valuesInitialState = {
+    role: '',
+    cohort: 0,
+    forename: '',
+    surname: '',
+    uid: session.uid,
+  };
   let { token } = session;
 
   // destructuring data coming from the useFormSubmit custom hook
@@ -73,7 +73,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt="profile picture"
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>

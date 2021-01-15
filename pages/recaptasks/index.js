@@ -10,16 +10,19 @@ export default function RecapTasks({ session }) {
   return (
     <div>
       <AppHeader session={session} />
-      <div className={styles.graph}>
-        <ScoreGraph
-          feedbackData={session.data}
-          setSelectedData={setSelectedData}
-          taskType='Recap'
-          myName={session.name}
-        />
-      </div>
-      <div className={styles.table}>
-        <FeedbackTable selectedData={selectedData} taskType='Recap' />
+      <div className={styles.container}>
+        <h1 className={styles.title}>{session.name}'s Mastery Task Score</h1>
+        <div className={styles.graph}>
+          <ScoreGraph
+            feedbackData={session.data}
+            setSelectedData={setSelectedData}
+            taskType="Recap"
+            myName={session.name}
+          />
+        </div>
+        <div className={styles.table}>
+          <FeedbackTable selectedData={selectedData} />
+        </div>
       </div>
     </div>
   );

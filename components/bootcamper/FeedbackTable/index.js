@@ -1,22 +1,22 @@
-import React from 'react';
-import { Table, Button, Form } from 'semantic-ui-react';
-import styles from './feedbackTable.module.css';
+import React from "react";
+import { Table, Button, Form } from "semantic-ui-react";
+import styles from "./feedbackTable.module.css";
 
 export default function FeedbackTable({ selectedData, bootcamperName }) {
   // console.log(selectedData);
   const tableColumns = [
-    'Week',
-    'Subject',
-    'Score',
+    "Week",
+    "Subject",
+    "Score",
     selectedData.coachname
       ? `Comments by ${selectedData.coachname}`
-      : 'Comments',
-    'Due Date',
-    'Date Submitted',
+      : "Comments",
+    "Due Date",
+    "Date Submitted",
   ];
-  if (bootcamperName) {
-    tableColumns.push('Edit');
-  }
+  // if (bootcamperName) {
+  //   tableColumns.push('Edit');
+  // }
 
   return (
     <Table celled>
@@ -34,13 +34,25 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
           <Table.Cell>{selectedData.subject}</Table.Cell>
           <Table.Cell>
             {selectedData.passedtests === undefined
-              ? ''
+              ? ""
               : `${selectedData.passedtests}/${selectedData.totaltests}`}
           </Table.Cell>
           <Table.Cell>{selectedData.qualitative}</Table.Cell>
-          <Table.Cell>{selectedData.duedate}</Table.Cell>
-          <Table.Cell>{selectedData.datesubmitted}</Table.Cell>
-          {bootcamperName ? (
+          <Table.Cell>
+            {selectedData.duedate
+              ? selectedData.duedate
+                  .split("T")[0]
+                  .replace(/(\d{4})[-/](\d{2})[-/](\d+)/, "$3/$2/$1")
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {selectedData.datesubmitted
+              ? selectedData.datesubmitted
+                  .split("T")[0]
+                  .replace(/(\d{4})[-/](\d{2})[-/](\d+)/, "$3/$2/$1")
+              : null}
+          </Table.Cell>
+          {/* {bootcamperName ? (
             <Table.Cell>
               <Form.Field
                 className={styles.editButton}
@@ -55,7 +67,7 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
                 // onClick={submitFeedback}
               />
             </Table.Cell>
-          ) : null}
+          ) : null} */}
         </Table.Row>
       </Table.Body>
     </Table>

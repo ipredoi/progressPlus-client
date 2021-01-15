@@ -1,21 +1,21 @@
-import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
-import { Form, Select } from 'semantic-ui-react';
-import { useState, useEffect } from 'react';
-import serverSideProps from '../../libs/functions/serverSideProps';
-import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
-import AppHeader from '../../components/AppHeader';
-import styles from './progress.module.css';
-import ScoreGraph from '../../components/ScoreGraph';
-import FeedbackTable from '../../components/bootcamper/FeedbackTable';
+import { coachNavBarArr } from "../../libs/globalVariables/navBarArrays";
+import { Form, Select } from "semantic-ui-react";
+import { useState, useEffect } from "react";
+import serverSideProps from "../../libs/functions/serverSideProps";
+import bootcamperNameReducer from "../../libs/functions/bootcamperNameReducer";
+import AppHeader from "../../components/AppHeader";
+import styles from "./progress.module.css";
+import ScoreGraph from "../../components/ScoreGraph";
+import FeedbackTable from "../../components/bootcamper/FeedbackTable";
 
 import {
   sortRecapData,
   sortMasteryData,
-} from '../../libs/functions/sortFeedbackData';
+} from "../../libs/functions/sortFeedbackData";
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
-  const [bootcamperName, setBootcamperName] = useState('Name here');
+  const [bootcamperName, setBootcamperName] = useState("Name here");
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [recapFeedbackData, setRecapFeedbackData] = useState([]);
   const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
@@ -73,7 +73,7 @@ export default function Progress({ session }) {
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />
-      <div className={styles.progress}>
+      <div className={styles.container}>
         <h2 className={styles.title}>Progress tracker</h2>
         <div className={styles.dropDown}>
           <Form>
@@ -83,7 +83,7 @@ export default function Progress({ session }) {
                 options={bootcampersArr}
                 placeholder='Choose bootcamper'
                 search
-                searchInput={{ id: 'form-select-control-name' }}
+                searchInput={{ id: "form-select-control-name" }}
                 onChange={(e, data) => {
                   setBootcamperName(data.value);
                 }}
@@ -92,18 +92,22 @@ export default function Progress({ session }) {
           </Form>
         </div>
         <div className={styles.graphs}>
-          <ScoreGraph
-            feedbackData={masteryFeedbackData}
-            bootcamperName={bootcamperName}
-            taskType={'Mastery'}
-            setSelectedData={setSelectedData}
-          />
-          <ScoreGraph
-            feedbackData={recapFeedbackData}
-            bootcamperName={bootcamperName}
-            taskType={'Recap'}
-            setSelectedData={setSelectedData}
-          />
+          <div className={styles.graph}>
+            <ScoreGraph
+              feedbackData={masteryFeedbackData}
+              bootcamperName={bootcamperName}
+              taskType={"Mastery"}
+              setSelectedData={setSelectedData}
+            />
+          </div>
+          <div className={styles.graph}>
+            <ScoreGraph
+              feedbackData={recapFeedbackData}
+              bootcamperName={bootcamperName}
+              taskType={"Recap"}
+              setSelectedData={setSelectedData}
+            />
+          </div>
         </div>
         <div>
           <FeedbackTable
