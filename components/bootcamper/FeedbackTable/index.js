@@ -38,8 +38,20 @@ export default function FeedbackTable({ selectedData, bootcamperName }) {
               : `${selectedData.passedtests}/${selectedData.totaltests}`}
           </Table.Cell>
           <Table.Cell>{selectedData.qualitative}</Table.Cell>
-          <Table.Cell>{selectedData.duedate}</Table.Cell>
-          <Table.Cell>{selectedData.datesubmitted}</Table.Cell>
+          <Table.Cell>
+            {selectedData.duedate
+              ? selectedData.duedate
+                  .split("T")[0]
+                  .replace(/(\d{4})[-/](\d{2})[-/](\d+)/, "$3/$2/$1")
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {selectedData.datesubmitted
+              ? selectedData.datesubmitted
+                  .split("T")[0]
+                  .replace(/(\d{4})[-/](\d{2})[-/](\d+)/, "$3/$2/$1")
+              : null}
+          </Table.Cell>
           {bootcamperName ? (
             <Table.Cell>
               <Form.Field

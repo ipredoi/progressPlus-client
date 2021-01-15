@@ -56,7 +56,7 @@ export default function ScoreGraph({
     );
     if (taskType === "Mastery") {
       xAxesArr = graphData.map((e) => {
-        return e.subject;
+        return e.subject.charAt(0).toUpperCase() + e.subject.slice(1);
       });
     } else {
       xAxesArr.push(index + 1);
@@ -73,9 +73,9 @@ export default function ScoreGraph({
       const element = chart.getElementAtEvent(event)[0];
       const weekNum = chart.data.labels[element._index];
       const activeWeek = graphData.filter((obj) => {
-        if (taskType === "Mastery") {
-          return obj.subject === weekNum;
-        } else return obj.week === weekNum;
+        if (taskType === "Recap") {
+          return obj.week === weekNum;
+        } else return obj.subject === weekNum;
       });
       setSelectedData(activeWeek[0]);
       console.log(activeWeek);
