@@ -73,7 +73,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
