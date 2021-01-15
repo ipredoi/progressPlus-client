@@ -2,9 +2,33 @@
   margin: 1em;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  background-color: whitesmoke;
+  border-radius: 5%;
+  border-color: #e0e1e2;
+  border-width: 4px;
+  border-style: solid;
+  position: absolute;
+  top: 16vh;
+  bottom: 12vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+
+  -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
+  filter: drop-shadow(0px 0px 10px #e0e1e2);
+}
+
 .title {
   font-size: 3vh;
-  padding: 1em;
   margin: 0em;
   text-align: center;
 }
