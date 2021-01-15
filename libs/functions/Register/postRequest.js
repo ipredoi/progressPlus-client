@@ -11,7 +11,7 @@ export default function registerUser(values, token) {
       method: 'POST',
       body: JSON.stringify({
         role: values.role,
-        uid: 'PatrickcoachtestUID' /* values.uid */,
+        uid: values.uid,
         cohort: values.cohort,
         name: `${values.forename} ${values.surname}`,
       }),
