@@ -5,7 +5,7 @@ import styles from './bootcamper.module.css';
 import BootcamperDashboard from '../../components/bootcamper/BootcamperDashboard';
 import AppHeader from '../../components/AppHeader';
 import AppFooter from '../../components/AppFooter';
-import PopUp from '../../components/PopUp';
+import ModalComp from '../../components/ModalComp';
 
 export default function Bootcamper({ session }) {
   if (!session) {
@@ -14,13 +14,12 @@ export default function Bootcamper({ session }) {
     return (
       <div className={styles.bootcamper}>
         <AppHeader session={session} />
-
         <section className={styles.body}>
           <h2 className={styles.welcome}>Welcome {session.name}</h2>
           <BootcamperDashboard />
-          <PopUp />
           <QuoteHeader />
-        </section>
+        </section>{' '}
+        <ModalComp />
         <AppFooter />
       </div>
     );
