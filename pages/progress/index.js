@@ -73,15 +73,15 @@ export default function Progress({ session }) {
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />
-      <div className={styles.progress}>
+      <div className={styles.container}>
         <h2 className={styles.title}>Progress tracker</h2>
         <div className={styles.dropDown}>
           <Form>
-            <Form.Group widths='equal'>
+            <Form.Group widths="equal">
               <Form.Field
                 control={Select}
                 options={bootcampersArr}
-                placeholder='Choose bootcamper'
+                placeholder="Choose bootcamper"
                 search
                 searchInput={{ id: 'form-select-control-name' }}
                 onChange={(e, data) => {
