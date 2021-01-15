@@ -139,7 +139,7 @@ export default function ScoreGraph({
             legend: {
               display: bootcamperName ? true : false,
             },
-            // responsive: true,
+            responsive: true,
             onClick: handleClick,
             maintainAspectRatio: false,
             scales: {
