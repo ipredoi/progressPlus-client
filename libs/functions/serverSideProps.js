@@ -5,6 +5,7 @@ import { backendUrl } from '../globalVariables/urls';
 export default async function serverSideProps(context, customFetchRequest) {
   try {
     const cookies = nookies.get(context);
+    console.log(context);
     const { token } = cookies;
     const sessionData = await verifyIdToken(cookies.token);
     const { uid, picture } = sessionData;

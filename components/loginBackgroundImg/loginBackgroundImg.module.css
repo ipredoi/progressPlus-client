@@ -7,7 +7,7 @@
   position: fixed;
   right: 0px;
   top: 8vh;
-  animation: planetFloat 20s ease-in-out infinite;
+  animation: planetFloat 10s ease-in-out infinite;
 }
 
 .moonSocImg {
