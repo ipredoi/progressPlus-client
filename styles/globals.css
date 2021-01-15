@@ -164,3 +164,8 @@ body ::-webkit-scrollbar-thumb {
   font-size: 1.5rem;
   text-align: center;
 }
+
+/* solve the arrows to dropdownmenu */
+.ui.dropdown > .dropdown.icon {
+  font-family: Dropdown !important;
+}
