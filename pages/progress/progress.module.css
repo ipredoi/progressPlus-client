@@ -9,7 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: auto;
   height: auto;
   background-color: whitesmoke;
@@ -34,19 +34,22 @@
   font-size: 3vh;
   margin: 0em;
   text-align: center;
-  color: whitesmoke;
+  color: black;
 }
 
+.graph {
+  height: auto;
+  width: 40vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
 .graphs {
   display: flex;
-  height: 45vh;
+  height: auto;
   position: relative;
-  justify-content: center;
-  width: 75vw;
-  background-color: whitesmoke;
-  border-radius: 2vh;
-  border: 5px solid #e0e1e2;
-  box-shadow: 2px 2px 2px black;
+  align-items: center;
+  justify-items: center;
+  width: 100vw;
 }
 
 .table {

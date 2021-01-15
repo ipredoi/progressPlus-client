@@ -92,18 +92,22 @@ export default function Progress({ session }) {
           </Form>
         </div>
         <div className={styles.graphs}>
-          <ScoreGraph
-            feedbackData={masteryFeedbackData}
-            bootcamperName={bootcamperName}
-            taskType={'Mastery'}
-            setSelectedData={setSelectedData}
-          />
-          <ScoreGraph
-            feedbackData={recapFeedbackData}
-            bootcamperName={bootcamperName}
-            taskType={'Recap'}
-            setSelectedData={setSelectedData}
-          />
+          <div className={styles.graph}>
+            <ScoreGraph
+              feedbackData={masteryFeedbackData}
+              bootcamperName={bootcamperName}
+              taskType={'Mastery'}
+              setSelectedData={setSelectedData}
+            />
+          </div>
+          <div className={styles.graph}>
+            <ScoreGraph
+              feedbackData={recapFeedbackData}
+              bootcamperName={bootcamperName}
+              taskType={'Recap'}
+              setSelectedData={setSelectedData}
+            />
+          </div>
         </div>
         <div>
           <FeedbackTable
