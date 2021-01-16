@@ -11,7 +11,7 @@ export default function RecapTasks({ session }) {
     <div>
       <AppHeader session={session} />
       <div className={styles.container}>
-        <h1 className={styles.title}>{session.name}'s Mastery Task Score</h1>
+        <h1 className={styles.title}>{session.name}'s Recap Task Score</h1>
         <div className={styles.graph}>
           <ScoreGraph
             feedbackData={session.data}
