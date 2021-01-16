@@ -13,7 +13,6 @@ import {
 } from '../../../libs/globalVariables/coachFeedbackFormArr';
 import bootCampersArrayReducer from '../../../libs/functions/bootCampersArrayReducer.js';
 import Image from 'next/image';
-import { database } from 'firebase-admin';
 
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
@@ -34,18 +33,8 @@ export default function FeedbackForm({ session }) {
   // initial state for the errors occurs from server when will attempt to submit data to database
   const [bootcamperUid, setBootcamperUid] = useState('');
   const [serverErr, setServerErr] = useState(null);
-  const [postSuccesfull, setPostSuccesfull] = useState(false);
+
   const { token } = session;
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (postSuccesfull) {
-        setPostSuccesfull(false);
-      }
-    }, 6000);
-  }, [postSuccesfull]);
-
-  console.log(postSuccesfull);
 
   // router used on the redirect button
   const router = useRouter();
@@ -56,9 +45,11 @@ export default function FeedbackForm({ session }) {
     handleChange,
     handleSubmit,
     dropDownHandleChange,
+    setPostSuccesfull,
     isSubmitting,
     values,
     errors,
+    postSuccesfull,
   } = useFormSubmit(valuesInitialState, validateFeedbackForm, feedbackPost);
 
   //current date and time -> send it to database when the form is submitted
@@ -123,14 +114,10 @@ export default function FeedbackForm({ session }) {
         mode: 'cors',
       })
         .then((response) => response.json())
-        // .then((response) => console.log(response))
-        .then((data) => console.log(data));
-      //  .then((data) => {
-      //   if (data.success === true) {
-      //     console.log('success');
-      //     setPostSuccesfull(true);
-      //   }
-      // });
+        .then((data) => {
+          console.log(data);
+          setPostSuccesfull(true);
+        });
 
       // console.log('handlesubmit working');
     } catch (err) {
@@ -268,22 +255,25 @@ export default function FeedbackForm({ session }) {
           {serverErr && <p className={styles.errorText}>{serverErr}</p>}
         </div>
       )}
-      {postSuccesfull && <p>Form was succesfully Submited</p>}
-      <Button
-        className={styles.submitButton}
-        disabled={isSubmitting}
-        onClick={handleSubmit}
-        type='submit'
-        content='Submit Feedback'
-      />
       {postSuccesfull && (
-        <Image
-          src='/success_icon.png'
-          alt='School of Code Logo'
-          width={100}
-          height={100}
-        />
+        <p className={styles.postSuccess}>Form was succesfully Submited</p>
       )}
+      <div className={styles.buttonContainer}>
+        <Button
+          className={styles.submitButton}
+          disabled={isSubmitting}
+          onClick={handleSubmit}
+          type='submit'
+          content='Submit Feedback'
+        />
+        {postSuccesfull && (
+          <img
+            className={styles.successIcon}
+            src='/success_icon.png'
+            alt='Successfuly submitted'
+          />
+        )}
+      </div>
     </Form>
   );
 }

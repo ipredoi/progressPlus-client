@@ -24,3 +24,26 @@
   font-style: bold;
   font-size: 0.8rem;
 }
+
+.successIcon {
+  height: 40px;
+  width: auto;
+  margin-left: 13px;
+  margin-top: 4px;
+}
+
+.buttonContainer {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.postSuccess {
+  margin: 0.1em 0 0 0;
+  padding: 0;
+  color: #2d8b61;
+  font-style: bold;
+}

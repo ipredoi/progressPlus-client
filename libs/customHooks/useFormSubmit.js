@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // creating a submit form hook which takes in an initial state object,a validate for errors function, and a function to create a post request
 let useFormSubmit = (initialState, validate, postRequest, token) => {
@@ -10,6 +10,9 @@ let useFormSubmit = (initialState, validate, postRequest, token) => {
 
   // creating a state for attempting to submit the form and set the initial value to false .. this will be changed when the submit button is pressed
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // create a state to display a message if the form was succesfully submited in the database
+  const [postSuccesfull, setPostSuccesfull] = useState(false);
 
   // after the submit button is pressed,check if there is no error (all required fields are filled)and if no error then execute the post request function, emptu the fields and set the state for submiting to false
   //if there are errors , then set the state for submitting to false
@@ -56,14 +59,25 @@ let useFormSubmit = (initialState, validate, postRequest, token) => {
     setIsSubmitting(true);
   }
 
+  //this function changes the state for successfully submitted from true to false after 4 seconds ....this is helping us to display the message on the page 4 seconds
+  useEffect(() => {
+    setTimeout(() => {
+      if (postSuccesfull) {
+        setPostSuccesfull(false);
+      }
+    }, 4000);
+  }, [postSuccesfull]);
+
   // returning the functions, the values, the errors, and the submitting state(used on submit button)
   return {
     handleSubmit,
     handleChange,
     dropDownHandleChange,
+    setPostSuccesfull,
     values,
     errors,
     isSubmitting,
+    postSuccesfull,
   };
 };
 
