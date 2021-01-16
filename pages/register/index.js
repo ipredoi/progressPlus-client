@@ -6,7 +6,7 @@ import nookies from 'nookies';
 import useFormSubmit from '../../libs/customHooks/useFormSubmit';
 import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
 import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
-import LoginBackgroundImg from '../../components/LoginBackgroundImg/LoginBackgroundImg';
+import LoginBackgroundImg from '../../components/LoginBackgroundImg';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';
@@ -73,7 +73,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
