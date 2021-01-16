@@ -64,9 +64,11 @@
   display: flex !important;
   height: 5vh !important;
   justify-content: center !important;
-  width: 50vw !important;
+  width: 80vw !important;
   text-align: center !important;
-  margin-bottom: 10vh;
+  margin-bottom: 9vh;
+  margin-top: 1vh;
+  margin-right: 10vw;
 }
 
 /* .progress {
