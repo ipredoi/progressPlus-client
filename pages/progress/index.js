@@ -78,11 +78,11 @@ export default function Progress({ session }) {
         <h2 className={styles.title}>Progress tracker</h2>
         <div className={styles.dropDown}>
           <Form>
-            <Form.Group widths='equal'>
+            <Form.Group widths="equal">
               <Form.Field
                 control={Select}
                 options={bootcampersArr}
-                placeholder='Bootcampers'
+                placeholder="Bootcampers"
                 search
                 searchInput={{ id: 'form-select-control-name' }}
                 onChange={(e, data) => {

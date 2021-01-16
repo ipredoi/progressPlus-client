@@ -8,41 +8,34 @@
   height: max(18vh, 70px);
 }
 .avatar {
-  position: absolute;
   border-radius: 50%;
   width: auto;
   height: max(8vh, 30px);
   margin: 1vh 2vh 1vh 2vh;
-  right: 0;
-  top: 0;
 }
 .container {
-  width: 100%;
+  width: 100vw;
   /* background-color: #4a90e2; */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: max(14vh, 70px);
 }
 .progressPlus {
-  position: relative;
-  height: max(7vh, 50px);
+  padding-left: 3.4vw;
+  height: min(max(6vh, 4vw, 55px), 90px);
   width: auto;
-  left: 40vw;
 }
 .socLogo {
   width: auto;
-  position: relative;
-  left: 40vw;
+
   height: max(10vh, 60px);
   margin: 2vh 2vh 2vh 2vh;
 }
 
 .hamburgerIcon {
-  position: relative;
-  left: 0;
   color: white;
   width: 40px;
   height: auto;
-  left: 2em;
-  bottom: 1em;
+  margin-left: 1vw;
 }
