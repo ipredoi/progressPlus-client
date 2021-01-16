@@ -21,7 +21,9 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   //set the initial state of the user to null
   const [user, setUser] = useState();
+  //state for navbar
   const [open, setOpen] = useState(false);
+
   //save the useRouter hook in a const named router
   const router = useRouter();
 
@@ -64,7 +66,6 @@ export function AuthContextProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
-
         logOut,
         setOpen,
         open,
