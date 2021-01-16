@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import AppHeader from '../../components/AppHeader';
-import ScoreGraph from '../../components/ScoreGraph';
-import FeedbackTable from '../../components/bootcamper/FeedbackTable';
-import serverSideProps from '../../libs/functions/serverSideProps';
-import styles from './masterytasks.module.css';
+import AppHeader from '../../../components/AppHeader';
+import serverSideProps from '../../../libs/functions/serverSideProps';
+import ScoreGraph from '../../../components/ScoreGraph';
+import FeedbackTable from '../../../components/bootcamper/FeedbackTable';
+import styles from './recaptasks.module.css';
 
-export default function MasteryTasks({ session }) {
+export default function RecapTasks({ session }) {
   const [selectedData, setSelectedData] = useState(1);
   return (
-    <>
+    <div>
       <AppHeader session={session} />
       <div className={styles.container}>
         <h1 className={styles.title}>{session.name}'s Mastery Task Score</h1>
@@ -16,7 +16,7 @@ export default function MasteryTasks({ session }) {
           <ScoreGraph
             feedbackData={session.data}
             setSelectedData={setSelectedData}
-            taskType="Mastery"
+            taskType="Recap"
             myName={session.name}
           />
         </div>
@@ -24,15 +24,15 @@ export default function MasteryTasks({ session }) {
           <FeedbackTable selectedData={selectedData} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 export async function getServerSideProps(context) {
   async function fetchFeedbackData(url, uid, token) {
-    const res = await fetch(`${url}feedback?uid=${uid}&type=mastery`, {
+    const res = await fetch(`${url}feedback?uid=${uid}&type=recap`, {
       headers: { authorization: `Bearer ${token}` },
-    }); // mastery task score
+    }); // recap task score
     const { data } = await res.json();
     return data;
   }

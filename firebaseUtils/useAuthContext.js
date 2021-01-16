@@ -47,15 +47,15 @@ export function AuthContextProvider({ children }) {
       if (!user) {
         console.log('no user found');
         setUser(null);
-        nookies.destroy(null, 'token');
-        nookies.set(null, 'token', '', {});
+       // nookies.destroy(null, 'token');
+        nookies.set(null, 'token', '', { path: '/' });
         return;
       }
 
       const token = await user.getIdToken();
       setUser(user);
-      nookies.destroy(null, 'token');
-      nookies.set(null, 'token', token, {});
+     // nookies.destroy(null, 'token');
+      nookies.set(null, 'token', token, { path: '/' });
     });
   }, []);
 

@@ -1,17 +1,17 @@
-import { coachNavBarArr } from "../../libs/globalVariables/navBarArrays";
+import { coachNavBarArr } from "../../../libs/globalVariables/navBarArrays";
 import { Form, Select } from "semantic-ui-react";
 import { useState, useEffect } from "react";
-import serverSideProps from "../../libs/functions/serverSideProps";
-import bootcamperNameReducer from "../../libs/functions/bootcamperNameReducer";
-import AppHeader from "../../components/AppHeader";
+import serverSideProps from "../../../libs/functions/serverSideProps";
+import bootcamperNameReducer from "../../../libs/functions/bootcamperNameReducer";
+import AppHeader from "../../../components/AppHeader";
 import styles from "./progress.module.css";
-import ScoreGraph from "../../components/ScoreGraph";
-import FeedbackTable from "../../components/bootcamper/FeedbackTable";
+import ScoreGraph from "../../../components/ScoreGraph";
+import FeedbackTable from "../../../components/bootcamper/FeedbackTable";
 
 import {
   sortRecapData,
   sortMasteryData,
-} from "../../libs/functions/sortFeedbackData";
+} from "../../../libs/functions/sortFeedbackData";
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
