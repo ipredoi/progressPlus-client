@@ -3,7 +3,6 @@ import { Table } from 'semantic-ui-react';
 import styles from './feedbackTable.module.css';
 
 export default function FeedbackTable({ selectedData, bootcamperName }) {
-  console.log(selectedData);
   const tableColumns = [
     'Week',
     'Subject',

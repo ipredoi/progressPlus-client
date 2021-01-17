@@ -36,7 +36,6 @@ export default function ScoreGraph({
   // for mastery tasks, x-axis array will be filled with subject name for both botcamper and coach sides
   feedbackData.forEach((object, index) => {
     // object = object.slice(object.length - 1);
-    console.log(object);
     percentagesArr.push(
       Math.round((object.passedtests / object.totaltests) * 100)
     );
