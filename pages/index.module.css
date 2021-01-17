@@ -37,6 +37,16 @@
 
 .socImage {
   text-align: center;
+  margin-top: 10px;
+  position: relative;
+  display: inline-block;
+  
+}
+.progressPlus {
+  position: absolute;
+  bottom: 61%;
+  right: 34%;
+  width: 92px;
 }
 
 .h1 {

@@ -32,8 +32,14 @@ export default function AppHeader({
             className={styles.progressPlus}
           />
         </div>
-        <div className={styles.avatarPic}>
-          <img src={session.picture} className={styles.avatar} />
+        <div className={styles.profile}>
+          <p className={styles.user}>{session.name}</p>
+
+          <img
+            className={styles.avatarPic}
+            src={session.picture}
+            className={styles.avatar}
+          />
         </div>
       </div>
       <NavBar linksAndTitles={navBarArr} />

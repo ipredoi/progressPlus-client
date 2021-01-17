@@ -5,25 +5,41 @@
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: max(18vh, 70px);
+  height: max(7vh, 70px);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 35, 71, 0) 0%,
+    rgba(1, 82, 104, 0.1) 100%
+  );
 }
 .avatar {
   border-radius: 50%;
   width: auto;
-  height: max(8vh, 30px);
+  height: 60px;
   margin: 1vh 2vh 1vh 2vh;
 }
 .container {
   width: 100vw;
-  /* background-color: #4a90e2; */
+
+  background: linear-gradient(
+    90deg,
+    rgba(23, 35, 71, 0.2) 0%,
+    rgba(2, 83, 133, 0.2) 20%,
+    rgba(4, 226, 183, 0.2) 40%,
+    rgba(4, 226, 183, 0.2) 60%,
+    rgba(3, 130, 152, 0.2) 80%,
+    rgba(1, 82, 104, 0.2) 100%
+  );
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: max(14vh, 70px);
+  height: max(7vh, 70px);
 }
 .progressPlus {
-  padding-left: 3.4vw;
-  height: min(max(6vh, 4vw, 55px), 90px);
+  margin-top: 1vh;
+  padding-left: 7.4vw;
+  height: min(max(5vh, 4vw, 55px), 50px);
   width: auto;
 }
 .socLogo {
@@ -35,7 +51,23 @@
 
 .hamburgerIcon {
   color: white;
-  width: 40px;
+  width: 30px;
   height: auto;
-  margin-left: 1vw;
+  margin-left: 24px;
+}
+
+.profile {
+  display: flex;
+  /* // flex-direction: row-reverse; */
+  height: 50px;
+  align-items: center;
+}
+
+.user {
+  margin: -5px;
+
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 0.8px;
 }

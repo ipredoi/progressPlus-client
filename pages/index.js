@@ -11,11 +11,11 @@ export default function Login() {
           <Image
             src='/Logo.png'
             alt='School of Code Logo'
-            width={100}
-            height={100}
+            width={230}
+            height={230}
           />
         </div>
-        <div>
+        <div className={styles.progressPlus}>
           <Image
             src='/progressPlus.png'
             alt='Progress Plus'
