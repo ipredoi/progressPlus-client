@@ -12,6 +12,7 @@ import {
   tasksArray,
 } from '../../../libs/globalVariables/coachFeedbackFormArr';
 import bootCampersArrayReducer from '../../../libs/functions/bootCampersArrayReducer.js';
+import Image from 'next/image';
 
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
@@ -25,6 +26,15 @@ const valuesInitialState = {
   passedTests: '',
   totalTests: '',
   comments: '',
+};
+
+// what fields we want cleared after submit
+const resetState = {
+  bootcamperName: '',
+  passedTests: '',
+  totalTests: '',
+  comments: '',
+  dateSubmitted: '',
 };
 
 export default function FeedbackForm({ session }) {
@@ -44,13 +54,20 @@ export default function FeedbackForm({ session }) {
     handleChange,
     handleSubmit,
     dropDownHandleChange,
+    setPostSuccesfull,
     isSubmitting,
     values,
     errors,
-  } = useFormSubmit(valuesInitialState, validateFeedbackForm, feedbackPost);
+    postSuccesfull,
+  } = useFormSubmit(
+    valuesInitialState,
+    resetState,
+    validateFeedbackForm,
+    feedbackPost
+  );
 
   //current date and time -> send it to database when the form is submitted
-  let dateTime = new Date().toLocaleString();
+  let dateTime = new Date().toISOString().split('T')[0];
 
   // the coach name is comming from the page session
   let coachName = session.name;
@@ -111,7 +128,11 @@ export default function FeedbackForm({ session }) {
         mode: 'cors',
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          console.log(data);
+          setPostSuccesfull(true);
+        });
+
       // console.log('handlesubmit working');
     } catch (err) {
       console.error('Server error', err);
@@ -159,7 +180,6 @@ export default function FeedbackForm({ session }) {
         value={values.taskType}
         onChange={dropDownHandleChange}
       />
-
       <Form.Field className={errors.subject && `${styles.errorInput}`}>
         <label>Subject</label>
         <Input
@@ -169,7 +189,6 @@ export default function FeedbackForm({ session }) {
           onChange={handleChange}
         />
       </Form.Field>
-
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Due Date</label>
         <Input
@@ -179,7 +198,6 @@ export default function FeedbackForm({ session }) {
           onChange={handleChange}
         />
       </Form.Field>
-
       <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
         <label>Date Submitted</label>
         <Input
@@ -189,7 +207,6 @@ export default function FeedbackForm({ session }) {
           onChange={handleChange}
         />
       </Form.Field>
-
       <Form.Field className={errors.passedTests && `${styles.errorInput}`}>
         <label>Passed Tests</label>
         <Input
@@ -201,7 +218,6 @@ export default function FeedbackForm({ session }) {
           onChange={handleChange}
         />
       </Form.Field>
-
       <Form.Field className={errors.totalTests && `${styles.errorInput}`}>
         <label>Total Tests</label>
         <Input
@@ -213,7 +229,6 @@ export default function FeedbackForm({ session }) {
           onChange={handleChange}
         />
       </Form.Field>
-
       <Form.Field
         className={errors.comments && `${styles.errorInput}`}
         control={TextArea}
@@ -223,7 +238,6 @@ export default function FeedbackForm({ session }) {
         value={values.comments}
         onChange={handleChange}
       />
-
       {/* if errors, they will be displayed here */}
       {errors && (
         <div>
@@ -255,14 +269,52 @@ export default function FeedbackForm({ session }) {
           {serverErr && <p className={styles.errorText}>{serverErr}</p>}
         </div>
       )}
+      {postSuccesfull && (
+        <p className={styles.postSuccess}>Form was succesfully Submited</p>
+      )}
+      <div className={styles.buttonContainer}>
+        <Button
+          className={styles.submitButton}
+          disabled={isSubmitting}
+          onClick={handleSubmit}
+          type='submit'
+          content='Submit Feedback'
+        />
+        {postSuccesfull && (
+          <svg
+            className={styles.svg}
+            version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 130.2 130.2'>
+            <circle
+              className={`${styles.path} ${styles.circle}`}
+              fill='none'
+              stroke='#2d8b61'
+              strokeWidth='6'
+              strokeMiterlimit='10'
+              cx='65.1'
+              cy='65.1'
+              r='62.1'
+            />
+            <polyline
+              className={`${styles.path} ${styles.check}`}
+              fill='none'
+              stroke='#2d8b61'
+              strokeWidth='6'
+              strokeLinecap='round'
+              strokeMiterlimit='10'
+              points='100.2,40.2 51.5,88.8 29.8,67.5 '
+            />
+          </svg>
+        )}
 
-      <Button
-        className={styles.submitButton}
-        disabled={isSubmitting}
-        onClick={handleSubmit}
-        type='submit'
-        content='Submit Feedback'
-      />
+        {/* 
+        <img
+          className={styles.successIcon}
+          src='/submit_success.gif'
+          alt='Successfuly submitted'
+        /> */}
+      </div>
     </Form>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Bar } from 'react-chartjs-2';
 // import "chartjs-plugin-labels";
@@ -7,6 +7,7 @@ import {
   setBarBorColorArr,
   // setIconArr,
 } from '../../libs/functions/setChartColors.js';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext.js';
 
 //initial data to populate graph in case there is no data / gaps in data
 let placeholderData = new Array(16).fill({
@@ -88,9 +89,7 @@ export default function ScoreGraph({
 
   return (
     <div>
-      {feedbackData[0] === undefined ? (
-        <p>No data to display</p>
-      ) : (
+      {feedbackData[0] === undefined && bootcamperName ? null : (
         <Bar
           data={{
             labels: xAxesArr,

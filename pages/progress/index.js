@@ -1,21 +1,22 @@
-import { coachNavBarArr } from "../../libs/globalVariables/navBarArrays";
-import { Form, Select } from "semantic-ui-react";
-import { useState, useEffect } from "react";
-import serverSideProps from "../../libs/functions/serverSideProps";
-import bootcamperNameReducer from "../../libs/functions/bootcamperNameReducer";
-import AppHeader from "../../components/AppHeader";
-import styles from "./progress.module.css";
-import ScoreGraph from "../../components/ScoreGraph";
-import FeedbackTable from "../../components/bootcamper/FeedbackTable";
+import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
+import { Form, Select } from 'semantic-ui-react';
+import { useState, useEffect } from 'react';
+import serverSideProps from '../../libs/functions/serverSideProps';
+import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
+import AppHeader from '../../components/AppHeader';
+import styles from './progress.module.css';
+import ScoreGraph from '../../components/ScoreGraph';
+import FeedbackTable from '../../components/bootcamper/FeedbackTable';
 
 import {
   sortRecapData,
   sortMasteryData,
-} from "../../libs/functions/sortFeedbackData";
+} from '../../libs/functions/sortFeedbackData';
+import { useAuthContext } from '../../firebaseUtils/useAuthContext';
 
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
-  const [bootcamperName, setBootcamperName] = useState("Name here");
+  const [bootcamperName, setBootcamperName] = useState('Name here');
   const [bootcampersArr, setBootcampersArr] = useState([]);
   const [recapFeedbackData, setRecapFeedbackData] = useState([]);
   const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
@@ -77,13 +78,13 @@ export default function Progress({ session }) {
         <h2 className={styles.title}>Progress tracker</h2>
         <div className={styles.dropDown}>
           <Form>
-            <Form.Group widths='equal'>
+            <Form.Group widths="equal">
               <Form.Field
                 control={Select}
                 options={bootcampersArr}
-                placeholder='Choose bootcamper'
+                placeholder="Bootcampers"
                 search
-                searchInput={{ id: "form-select-control-name" }}
+                searchInput={{ id: 'form-select-control-name' }}
                 onChange={(e, data) => {
                   setBootcamperName(data.value);
                 }}
@@ -91,12 +92,18 @@ export default function Progress({ session }) {
             </Form.Group>
           </Form>
         </div>
+        {bootcamperName === 'Name here' ? (
+          <p className={styles.noDataText}>
+            Choose a Bootcamper to view their data
+          </p>
+        ) : null}
+
         <div className={styles.graphs}>
           <div className={styles.graph}>
             <ScoreGraph
               feedbackData={masteryFeedbackData}
               bootcamperName={bootcamperName}
-              taskType={"Mastery"}
+              taskType={'Mastery'}
               setSelectedData={setSelectedData}
             />
           </div>
@@ -104,14 +111,13 @@ export default function Progress({ session }) {
             <ScoreGraph
               feedbackData={recapFeedbackData}
               bootcamperName={bootcamperName}
-              taskType={"Recap"}
+              taskType={'Recap'}
               setSelectedData={setSelectedData}
             />
           </div>
         </div>
-        <div>
+        <div className={styles.table}>
           <FeedbackTable
-            className={styles.table}
             selectedData={selectedData}
             bootcamperName={bootcamperName}
           />

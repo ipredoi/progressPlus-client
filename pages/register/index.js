@@ -6,7 +6,7 @@ import nookies from 'nookies';
 import useFormSubmit from '../../libs/customHooks/useFormSubmit';
 import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
 import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
-import LoginBackgroundImg from '../../components/LoginBackgroundImg/LoginBackgroundImg';
+import LoginBackgroundImg from '../../components/LoginBackgroundImg';
 import DropdownMenu from '../../components/authentication/DropdownMenu';
 import InputField from '../../components/authentication/InputField';
 import RegisterButton from '../../components/authentication/RegisterButton';
@@ -33,6 +33,15 @@ export default function Register({ session }) {
     surname: '',
     uid: session.uid,
   };
+
+  // what fields we want cleared after submit
+  const resetState = {
+    role: '',
+    cohort: 0,
+    forename: '',
+    surname: '',
+    uid: session.uid,
+  };
   let { token } = session;
 
   // destructuring data coming from the useFormSubmit custom hook
@@ -46,6 +55,7 @@ export default function Register({ session }) {
     errors,
   } = useFormSubmit(
     valuesInitialState,
+    resetState,
     validateRegisterForm,
     registerUser,
     token

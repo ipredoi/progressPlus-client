@@ -24,3 +24,60 @@
   font-style: bold;
   font-size: 0.8rem;
 }
+
+.buttonContainer {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.postSuccess {
+  margin: 0.1em 0 0 0;
+  padding: 0;
+  color: #2d8b61;
+  font-style: bold;
+}
+
+.svg {
+  width: 40px;
+  display: block;
+  margin-left: 20px;
+  margin-top: 4px;
+}
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+.path.circle {
+  animation: dash 5s ease-in-out;
+}
+
+.path.line {
+  stroke-dashoffset: 1000;
+  animation: dash 5s 0s ease-in-out forwards;
+}
+.path.check {
+  stroke-dashoffset: -100;
+  animation: dash-check 4.9s 0.35s ease-in-out forwards;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}

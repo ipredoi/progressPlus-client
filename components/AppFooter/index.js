@@ -8,36 +8,36 @@ function AppFooter() {
         <a href='https://github.com/' target='_blank'>
           <img
             className={styles.icons}
-            src='/icons/github.png'
-            alt='gitHub image'
+            src='/icons/GitHub.png'
+            alt='GitHub Icon'
           />
         </a>
         <a href='http://freecodecamp.org/' target='_blank'>
           <img
             className={styles.icons}
             src='/icons/free-code-camp.png'
-            alt='freecodecamp image'
+            alt='Freecodecamp Icon'
           />
         </a>
         <a href='https://stackoverflow.com/' target='_blank'>
           <img
             className={styles.icons}
             src='/icons/stack-overflow.png'
-            alt='stackoverflow image'
+            alt='Stackoverflow Icon'
           />
         </a>
         <a href='https://developer.mozilla.org/en-US/' target='_blank'>
           <img
             className={styles.icons}
             src='/icons/mozilla.png'
-            alt='mdn image'
+            alt='MDN Icon'
           />
         </a>
         <a href='https://www.codewars.com/' target='_blank'>
           <img
             className={styles.icons}
             src='/icons/codewars.png'
-            alt='codewars image'
+            alt='Codewars Icon'
           />
         </a>
       </footer>
