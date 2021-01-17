@@ -63,11 +63,11 @@ export default function Register({ session }) {
     setServerErr
   );
 
-  useEffect(() => {
+ /*  useEffect(() => {
     if (postSuccessful) {
-      router.push(`/${values.role.toLowerCase()}`);
+      Router.push(`/${values.role.toLowerCase()}`);
     }
-  }, [postSuccessful]);
+  }); */
 
   return (
     <div className={styles.body}>

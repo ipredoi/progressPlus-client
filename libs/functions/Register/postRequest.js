@@ -11,7 +11,7 @@ export default async function registerUser(
       method: 'POST',
       body: JSON.stringify({
         role: values.role,
-        uid:"test1"/*  values.uid */,
+        uid: values.uid,
         cohort: values.cohort,
         name: `${values.forename} ${values.surname}`,
       }),
@@ -25,10 +25,14 @@ export default async function registerUser(
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        // redirecting the user to coach/ bootcamper page after submit
+        if (data.success) {
+          window.location.href = `/${data.data[0].role.toLowerCase()}`;
+        }
+
         setPostSuccessful(true);
       });
     console.log('handlesubmit working');
-    // redirecting the user to coach/ bootcamper page after submit
   } catch (err) {
     console.error('Server error', err);
     setServerErr(`Server error: ${err.message}. Please try again!`);
