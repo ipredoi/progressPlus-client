@@ -15,7 +15,7 @@ let placeholderData = new Array(16).fill({
 
 function sortRecapData(bootcamperName, session) {
   let allFeedback = session.data;
-  console.log(allFeedback);
+  console.log(allFeedback[0]);
   const individualFeedback = allFeedback.filter((feedbackObject) => {
     return feedbackObject.name === bootcamperName;
   });
@@ -30,6 +30,7 @@ function sortRecapData(bootcamperName, session) {
 
 function sortMasteryData(bootcamperName, session) {
   let allFeedback = session.data;
+  console.log(allFeedback);
   const individualFeedback = allFeedback.filter((feedbackObject) => {
     return feedbackObject.name === bootcamperName;
   });

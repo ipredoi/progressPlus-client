@@ -30,7 +30,7 @@ export default function useGraphSelect(state, action) {
         ),
         masteryFeedbackData: sortMasteryData(
           action.payload.bootcamperName,
-          action.payload.session
+          action.payload.session.data
         ),
       };
     case 'week selected':
