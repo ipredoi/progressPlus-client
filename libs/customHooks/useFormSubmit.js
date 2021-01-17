@@ -17,8 +17,8 @@ let useFormSubmit = (
   // creating a state for attempting to submit the form and set the initial value to false .. this will be changed when the submit button is pressed
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // create a state to display a message if the form was succesfully submited in the database
-  const [postSuccesfull, setPostSuccesfull] = useState(false);
+  // create a state to display a message if the form was Successfuly submited in the database
+  const [postSuccessful, setPostSuccessful] = useState(false);
 
   // after the submit button is pressed,check if there is no error (all required fields are filled)and if no error then execute the post request function, emptu the fields and set the state for submiting to false
   //if there are errors , then set the state for submitting to false
@@ -68,22 +68,22 @@ let useFormSubmit = (
   //this function changes the state for successfully submitted from true to false after 4 seconds ....this is helping us to display the message on the page 4 seconds
   useEffect(() => {
     setTimeout(() => {
-      if (postSuccesfull) {
-        setPostSuccesfull(false);
+      if (postSuccessful) {
+        setPostSuccessful(false);
       }
-    }, 4000);
-  }, [postSuccesfull]);
+    }, 3000);
+  }, [postSuccessful]);
 
   // returning the functions, the values, the errors, and the submitting state(used on submit button)
   return {
     handleSubmit,
     handleChange,
     dropDownHandleChange,
-    setPostSuccesfull,
+    setPostSuccessful,
     values,
     errors,
     isSubmitting,
-    postSuccesfull,
+    postSuccessful,
   };
 };
 

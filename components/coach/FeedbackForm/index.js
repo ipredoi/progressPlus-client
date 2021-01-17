@@ -54,11 +54,11 @@ export default function FeedbackForm({ session }) {
     handleChange,
     handleSubmit,
     dropDownHandleChange,
-    setPostSuccesfull,
+    setPostSuccessful,
     isSubmitting,
     values,
     errors,
-    postSuccesfull,
+    postSuccessful,
   } = useFormSubmit(
     valuesInitialState,
     resetState,
@@ -130,7 +130,7 @@ export default function FeedbackForm({ session }) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          setPostSuccesfull(true);
+          setPostSuccessful(true);
         });
 
       // console.log('handlesubmit working');
@@ -139,182 +139,184 @@ export default function FeedbackForm({ session }) {
       setServerErr(`Server error: ${err.message}. Please try again!`);
     }
   }
-  return (
-    <Form className={styles.form}>
-      <Form.Field
-        className={errors.bootcamperName && `${styles.errorInput}`}
-        control={Select}
-        options={bootcampersArr}
-        label={{
-          children: 'Bootcamper Name',
-        }}
-        placeholder='Bootcamper Name'
-        search
-        name='bootcamperName'
-        value={values.bootcamperName}
-        onChange={dropDownHandleChange}
-      />
-      <Form.Field
-        className={errors.week && `${styles.errorInput}`}
-        control={Select}
-        options={bootcampWeeks}
-        label={{
-          children: 'Week',
-        }}
-        placeholder='Week'
-        search
-        name='week'
-        value={values.week}
-        onChange={dropDownHandleChange}
-      />
-      <Form.Field
-        className={errors.taskType && `${styles.errorInput}`}
-        control={Select}
-        options={tasksArray}
-        label={{
-          children: 'Task type',
-        }}
-        placeholder='Task type'
-        search
-        name='taskType'
-        value={values.taskType}
-        onChange={dropDownHandleChange}
-      />
-      <Form.Field className={errors.subject && `${styles.errorInput}`}>
-        <label>Subject</label>
-        <Input
-          placeholder='e.g. React/ JS'
-          name='subject'
-          value={values.subject}
+  if (postSuccessful) {
+    return (
+      <div className={styles.submitMessage}>
+        <svg
+          className={styles.svg}
+          version='1.1'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 130.2 130.2'>
+          <circle
+            className={`${styles.path} ${styles.circle}`}
+            fill='none'
+            stroke='#2d8b61'
+            strokeWidth='6'
+            strokeMiterlimit='10'
+            cx='65.1'
+            cy='65.1'
+            r='62.1'
+          />
+          <polyline
+            className={`${styles.path} ${styles.check}`}
+            fill='none'
+            stroke='#2d8b61'
+            strokeWidth='6'
+            strokeLinecap='round'
+            strokeMiterlimit='10'
+            points='100.2,40.2 51.5,88.8 29.8,67.5 '
+          />
+        </svg>
+        <p className={styles.postSuccess}>Feedback submitted successfully</p>
+      </div>
+    );
+  } else
+    return (
+      <Form className={styles.form}>
+        <Form.Field
+          className={errors.bootcamperName && `${styles.errorInput}`}
+          control={Select}
+          options={bootcampersArr}
+          label={{
+            children: 'Bootcamper Name',
+          }}
+          placeholder='Bootcamper Name'
+          search
+          name='bootcamperName'
+          value={values.bootcamperName}
+          onChange={dropDownHandleChange}
+        />
+        <Form.Field
+          className={errors.week && `${styles.errorInput}`}
+          control={Select}
+          options={bootcampWeeks}
+          label={{
+            children: 'Week',
+          }}
+          placeholder='Week'
+          search
+          name='week'
+          value={values.week}
+          onChange={dropDownHandleChange}
+        />
+        <Form.Field
+          className={errors.taskType && `${styles.errorInput}`}
+          control={Select}
+          options={tasksArray}
+          label={{
+            children: 'Task type',
+          }}
+          placeholder='Task type'
+          search
+          name='taskType'
+          value={values.taskType}
+          onChange={dropDownHandleChange}
+        />
+        <Form.Field className={errors.subject && `${styles.errorInput}`}>
+          <label>Subject</label>
+          <Input
+            placeholder='e.g. React/ JS'
+            name='subject'
+            value={values.subject}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
+          <label>Due Date</label>
+          <Input
+            type='date'
+            name='dueDate'
+            value={values.dueDate}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
+          <label>Date Submitted</label>
+          <Input
+            type='date'
+            name='dateSubmitted'
+            value={values.dateSubmitted}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field className={errors.passedTests && `${styles.errorInput}`}>
+          <label>Passed Tests</label>
+          <Input
+            type='number'
+            min='0'
+            placeholder='Input the tests passed'
+            name='passedTests'
+            value={values.passedTests}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field className={errors.totalTests && `${styles.errorInput}`}>
+          <label>Total Tests</label>
+          <Input
+            type='number'
+            min={values.passedTests}
+            placeholder='Input total tests'
+            name='totalTests'
+            value={values.totalTests}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field
+          className={errors.comments && `${styles.errorInput}`}
+          control={TextArea}
+          label='Feedback'
+          placeholder='Feedback'
+          name='comments'
+          value={values.comments}
           onChange={handleChange}
         />
-      </Form.Field>
-      <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
-        <label>Due Date</label>
-        <Input
-          type='date'
-          name='dueDate'
-          value={values.dueDate}
-          onChange={handleChange}
-        />
-      </Form.Field>
-      <Form.Field className={errors.dueDate && `${styles.errorInput}`}>
-        <label>Date Submitted</label>
-        <Input
-          type='date'
-          name='dateSubmitted'
-          value={values.dateSubmitted}
-          onChange={handleChange}
-        />
-      </Form.Field>
-      <Form.Field className={errors.passedTests && `${styles.errorInput}`}>
-        <label>Passed Tests</label>
-        <Input
-          type='number'
-          min='0'
-          placeholder='Input the tests passed'
-          name='passedTests'
-          value={values.passedTests}
-          onChange={handleChange}
-        />
-      </Form.Field>
-      <Form.Field className={errors.totalTests && `${styles.errorInput}`}>
-        <label>Total Tests</label>
-        <Input
-          type='number'
-          min={values.passedTests}
-          placeholder='Input total tests'
-          name='totalTests'
-          value={values.totalTests}
-          onChange={handleChange}
-        />
-      </Form.Field>
-      <Form.Field
-        className={errors.comments && `${styles.errorInput}`}
-        control={TextArea}
-        label='Feedback'
-        placeholder='Feedback'
-        name='comments'
-        value={values.comments}
-        onChange={handleChange}
-      />
-      {/* if errors, they will be displayed here */}
-      {errors && (
-        <div>
-          {errors.bootcamperName && (
-            <p className={styles.errorText}>{errors.bootcamperName}</p>
-          )}
-          {errors.week && <p className={styles.errorText}>{errors.week}</p>}
-          {errors.taskType && (
-            <p className={styles.errorText}>{errors.taskType}</p>
-          )}
-          {errors.subject && (
-            <p className={styles.errorText}>{errors.subject}</p>
-          )}
-          {errors.passedTests && (
-            <p className={styles.errorText}>{errors.passedTests}</p>
-          )}
-          {errors.totalTests && (
-            <p className={styles.errorText}>{errors.totalTests}</p>
-          )}
-          {errors.dueDate && (
-            <p className={styles.errorText}>{errors.dueDate}</p>
-          )}
-          {errors.dateSubmitted && (
-            <p className={styles.errorText}>{errors.dateSubmitted}</p>
-          )}
-          {errors.comments && (
-            <p className={styles.errorText}>{errors.comments}</p>
-          )}
-          {serverErr && <p className={styles.errorText}>{serverErr}</p>}
-        </div>
-      )}
-      {postSuccesfull && (
-        <p className={styles.postSuccess}>Form was succesfully Submited</p>
-      )}
-      <div className={styles.buttonContainer}>
-        <Button
-          className={styles.submitButton}
-          disabled={isSubmitting}
-          onClick={handleSubmit}
-          type='submit'
-          content='Submit Feedback'
-        />
-        {postSuccesfull && (
-          <svg
-            className={styles.svg}
-            version='1.1'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 130.2 130.2'>
-            <circle
-              className={`${styles.path} ${styles.circle}`}
-              fill='none'
-              stroke='#2d8b61'
-              strokeWidth='6'
-              strokeMiterlimit='10'
-              cx='65.1'
-              cy='65.1'
-              r='62.1'
-            />
-            <polyline
-              className={`${styles.path} ${styles.check}`}
-              fill='none'
-              stroke='#2d8b61'
-              strokeWidth='6'
-              strokeLinecap='round'
-              strokeMiterlimit='10'
-              points='100.2,40.2 51.5,88.8 29.8,67.5 '
-            />
-          </svg>
+        {/* if errors, they will be displayed here */}
+        {errors && (
+          <div>
+            {errors.bootcamperName && (
+              <p className={styles.errorText}>{errors.bootcamperName}</p>
+            )}
+            {errors.week && <p className={styles.errorText}>{errors.week}</p>}
+            {errors.taskType && (
+              <p className={styles.errorText}>{errors.taskType}</p>
+            )}
+            {errors.subject && (
+              <p className={styles.errorText}>{errors.subject}</p>
+            )}
+            {errors.passedTests && (
+              <p className={styles.errorText}>{errors.passedTests}</p>
+            )}
+            {errors.totalTests && (
+              <p className={styles.errorText}>{errors.totalTests}</p>
+            )}
+            {errors.dueDate && (
+              <p className={styles.errorText}>{errors.dueDate}</p>
+            )}
+            {errors.dateSubmitted && (
+              <p className={styles.errorText}>{errors.dateSubmitted}</p>
+            )}
+            {errors.comments && (
+              <p className={styles.errorText}>{errors.comments}</p>
+            )}
+            {serverErr && <p className={styles.errorText}>{serverErr}</p>}
+          </div>
         )}
+        <div className={styles.buttonContainer}>
+          <Button
+            className={styles.submitButton}
+            disabled={isSubmitting}
+            onClick={handleSubmit}
+            type='submit'
+            content='Submit Feedback'
+          />
 
-        {/* 
+          {/*
         <img
           className={styles.successIcon}
           src='/submit_success.gif'
           alt='Successfuly submitted'
         /> */}
-      </div>
-    </Form>
-  );
+        </div>
+      </Form>
+    );
 }
