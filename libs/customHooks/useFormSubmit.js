@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 
 // creating a submit form hook which takes in an initial state object,a validate for errors function, and a function to create a post request
-let useFormSubmit = (initialState, validate, postRequest, token) => {
+let useFormSubmit = (
+  initialState,
+  resetState,
+  validate,
+  postRequest,
+  token
+) => {
   // creating a state for setting the valuse and get the initial state from the initialState object
   const [values, setValues] = useState(initialState);
   //console.log(values);
@@ -22,7 +28,7 @@ let useFormSubmit = (initialState, validate, postRequest, token) => {
       //  console.log(errors);
       if (noErrors) {
         postRequest(values, token);
-        setValues(initialState);
+        setValues({ ...values, ...resetState });
         setIsSubmitting(false);
       }
       setIsSubmitting(false);
@@ -48,7 +54,7 @@ let useFormSubmit = (initialState, validate, postRequest, token) => {
     });
     //   console.log(data.value);
   }
-
+  // console.log(values);
   // this function is used to attempt and to submit the form
   //firstly chcek if there is any error using the validateFeedbackForm function
   //setting the isSubmitting to true so the postRequest function can be executed ig there are no errors

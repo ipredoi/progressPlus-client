@@ -28,6 +28,15 @@ const valuesInitialState = {
   comments: '',
 };
 
+// what fields we want cleared after submit
+const resetState = {
+  bootcamperName: '',
+  passedTests: '',
+  totalTests: '',
+  comments: '',
+  dateSubmitted: '',
+};
+
 export default function FeedbackForm({ session }) {
   // initial states for bootcamper uid
   // initial state for the errors occurs from server when will attempt to submit data to database
@@ -50,7 +59,12 @@ export default function FeedbackForm({ session }) {
     values,
     errors,
     postSuccesfull,
-  } = useFormSubmit(valuesInitialState, validateFeedbackForm, feedbackPost);
+  } = useFormSubmit(
+    valuesInitialState,
+    resetState,
+    validateFeedbackForm,
+    feedbackPost
+  );
 
   //current date and time -> send it to database when the form is submitted
   let dateTime = new Date().toISOString().split('T')[0];
@@ -267,12 +281,39 @@ export default function FeedbackForm({ session }) {
           content='Submit Feedback'
         />
         {postSuccesfull && (
-          <img
-            className={styles.successIcon}
-            src='/success_icon.png'
-            alt='Successfuly submitted'
-          />
+          <svg
+            className={styles.svg}
+            version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 130.2 130.2'>
+            <circle
+              className={`${styles.path} ${styles.circle}`}
+              fill='none'
+              stroke='#2d8b61'
+              strokeWidth='6'
+              strokeMiterlimit='10'
+              cx='65.1'
+              cy='65.1'
+              r='62.1'
+            />
+            <polyline
+              className={`${styles.path} ${styles.check}`}
+              fill='none'
+              stroke='#2d8b61'
+              strokeWidth='6'
+              strokeLinecap='round'
+              strokeMiterlimit='10'
+              points='100.2,40.2 51.5,88.8 29.8,67.5 '
+            />
+          </svg>
         )}
+
+        {/* 
+        <img
+          className={styles.successIcon}
+          src='/submit_success.gif'
+          alt='Successfuly submitted'
+        /> */}
       </div>
     </Form>
   );

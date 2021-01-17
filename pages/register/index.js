@@ -33,6 +33,15 @@ export default function Register({ session }) {
     surname: '',
     uid: session.uid,
   };
+
+  // what fields we want cleared after submit
+  const resetState = {
+    role: '',
+    cohort: 0,
+    forename: '',
+    surname: '',
+    uid: session.uid,
+  };
   let { token } = session;
 
   // destructuring data coming from the useFormSubmit custom hook
@@ -46,6 +55,7 @@ export default function Register({ session }) {
     errors,
   } = useFormSubmit(
     valuesInitialState,
+    resetState,
     validateRegisterForm,
     registerUser,
     token
