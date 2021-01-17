@@ -24,3 +24,64 @@
   font-style: bold;
   font-size: 0.8rem;
 }
+
+.buttonContainer {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.postSuccess {
+  margin: 0.1em 0 0 0;
+  padding: 0;
+  color: #2d8b61;
+  font-style: bold;
+  font-size: 1.2em;
+}
+
+.svg {
+  display: block;
+  margin: 2em;
+}
+
+.submitMessage {
+  margin-top: 5em;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+.path.circle {
+  animation: dash 3s ease-in-out;
+}
+
+.path.line {
+  stroke-dashoffset: 1000;
+  animation: dash 3s 0s ease-in-out forwards;
+}
+.path.check {
+  stroke-dashoffset: -100;
+  animation: dash-check 2.8s 0.2s ease-in-out forwards;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
