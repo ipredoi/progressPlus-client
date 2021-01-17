@@ -73,7 +73,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
@@ -137,6 +137,7 @@ export async function getServerSideProps(context) {
       props: { session: { name, uid, email, picture, token } },
     };
   } catch (err) {
+    console.log(err);
     context.res.writeHead(302, {
       Location: `/`,
     });
