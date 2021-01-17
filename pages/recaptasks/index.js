@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import AppHeader from '../../components/AppHeader';
 import serverSideProps from '../../libs/functions/serverSideProps';
 import ScoreGraph from '../../components/ScoreGraph';
 import FeedbackTable from '../../components/bootcamper/FeedbackTable';
 import styles from './recaptasks.module.css';
+import useGraphSelect from '../../libs/customHooks/useGraphSelect';
+import { sortRecapData } from '../../libs/functions/sortFeedbackData';
 
 export default function RecapTasks({ session }) {
-  const [selectedData, setSelectedData] = useState(1);
+  const initialState = {
+    bootcamperName: session.name,
+    recapFeedbackData: [...sortRecapData(session.name, session)],
+    selectedData: {},
+  };
+  const [state, dispatch] = useReducer(useGraphSelect, initialState);
   return (
     <div>
       <AppHeader session={session} />
@@ -14,14 +21,19 @@ export default function RecapTasks({ session }) {
         <h1 className={styles.title}>{session.name}'s Recap Task Score</h1>
         <div className={styles.graph}>
           <ScoreGraph
-            feedbackData={session.data}
-            setSelectedData={setSelectedData}
-            taskType="Recap"
-            myName={session.name}
+            feedbackData={state.recapFeedbackData}
+            bootcamperName={state.bootcamperName}
+            taskType={'Recap'}
+            setSelectedData={(object) =>
+              dispatch({
+                type: 'week selected',
+                payload: object,
+              })
+            }
           />
         </div>
         <div className={styles.table}>
-          <FeedbackTable selectedData={selectedData} />
+          <FeedbackTable selectedData={state.selectedData} />
         </div>
       </div>
     </div>
