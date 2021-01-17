@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import AppHeader from '../../components/AppHeader';
+import serverSideProps from '../../libs/functions/serverSideProps';
 import ScoreGraph from '../../components/ScoreGraph';
 import FeedbackTable from '../../components/bootcamper/FeedbackTable';
-import serverSideProps from '../../libs/functions/serverSideProps';
 import styles from './masterytasks.module.css';
+import useGraphSelect from '../../libs/customHooks/useGraphSelect';
+import { sortMasteryData } from '../../libs/functions/sortFeedbackData';
 
 export default function MasteryTasks({ session }) {
-  const [selectedData, setSelectedData] = useState(1);
+  const initialState = {
+    bootcamperName: session.name,
+    masteryFeedbackData: [...sortMasteryData(session.name, session)],
+    selectedData: {},
+  };
+  const [state, dispatch] = useReducer(useGraphSelect, initialState);
   return (
     <>
       <AppHeader session={session} />
@@ -14,14 +21,19 @@ export default function MasteryTasks({ session }) {
         <h1 className={styles.title}>{session.name}'s Mastery Task Score</h1>
         <div className={styles.graph}>
           <ScoreGraph
-            feedbackData={session.data}
-            setSelectedData={setSelectedData}
-            taskType="Mastery"
-            myName={session.name}
+            feedbackData={state.masteryFeedbackData}
+            bootcamperName={state.bootcamperName}
+            taskType={'Mastery'}
+            setSelectedData={(object) =>
+              dispatch({
+                type: 'week selected',
+                payload: object,
+              })
+            }
           />
         </div>
         <div className={styles.table}>
-          <FeedbackTable selectedData={selectedData} />
+          <FeedbackTable selectedData={state.selectedData} />
         </div>
       </div>
     </>
