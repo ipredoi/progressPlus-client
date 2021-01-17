@@ -86,14 +86,11 @@
 }
 
 .registerButton {
-  position: absolute !important;
   bottom: 70px !important ;
   background-color: #2d8b61 !important;
-  border-radius: 10px !important;
   height: 40px;
-  width: 244px;
+  width: 200px !important;
   font-size: 14px !important;
-
   margin-top: 10px !important;
   color: white !important;
 }
