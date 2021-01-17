@@ -60,13 +60,15 @@
   justify-items: center;
   width: 100vw;
 }
-
 .table {
-  display: flex;
-  height: 70vh;
-  justify-content: center;
-  width: 50vw;
-  text-align: center;
+  display: flex !important;
+  height: 5vh !important;
+  justify-content: center !important;
+  width: 80vw !important;
+  text-align: center !important;
+  margin-bottom: 9vh;
+  margin-top: 1vh;
+  margin-right: 10vw;
 }
 
 /* .progress {
