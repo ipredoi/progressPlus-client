@@ -13,6 +13,9 @@
   color: white !important;
 }
 
+.submitButton:hover {
+  background-color: #25724f !important;
+}
 .errorInput > label {
   color: red !important;
 }
