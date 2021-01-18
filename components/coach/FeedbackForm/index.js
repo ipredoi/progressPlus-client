@@ -139,6 +139,7 @@ export default function FeedbackForm({ session }) {
       setServerErr(`Server error: ${err.message}. Please try again!`);
     }
   }
+  //conditional rendering to display the tick animation for few seconds when the form is successfully submited in the database
   if (postSuccessful) {
     return (
       <div className={styles.submitMessage}>
@@ -167,7 +168,7 @@ export default function FeedbackForm({ session }) {
             points='100.2,40.2 51.5,88.8 29.8,67.5 '
           />
         </svg>
-        <p className={styles.postSuccess}>Feedback submitted successfully</p>
+        <p className={styles.postSuccess}>Feedback submitted successfully!</p>
       </div>
     );
   } else
@@ -309,13 +310,6 @@ export default function FeedbackForm({ session }) {
             type='submit'
             content='Submit Feedback'
           />
-
-          {/*
-        <img
-          className={styles.successIcon}
-          src='/submit_success.gif'
-          alt='Successfuly submitted'
-        /> */}
         </div>
       </Form>
     );

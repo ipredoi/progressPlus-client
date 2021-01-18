@@ -105,3 +105,11 @@
   margin-left: 22.5px;
   align-self: center !important;
 }
+
+.errorText {
+  margin: 0.1em 0 0 0;
+  padding: 0;
+  color: red;
+  font-style: bold;
+  font-size: 0.8rem;
+}

@@ -10,7 +10,7 @@ firebaseInit();
 
 const uiConfig = {
   // popup signin flow rather than redirect
-  signInFlow: 'redirect',
+  signInFlow: 'popup',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: '/register',
   //display gitHub provider

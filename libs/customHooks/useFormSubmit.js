@@ -6,7 +6,9 @@ let useFormSubmit = (
   resetState,
   validate,
   postRequest,
-  token
+  token,
+  setServerErr,
+  
 ) => {
   // creating a state for setting the valuse and get the initial state from the initialState object
   const [values, setValues] = useState(initialState);
@@ -20,6 +22,8 @@ let useFormSubmit = (
   // create a state to display a message if the form was Successfuly submited in the database
   const [postSuccessful, setPostSuccessful] = useState(false);
 
+  // server errors
+
   // after the submit button is pressed,check if there is no error (all required fields are filled)and if no error then execute the post request function, emptu the fields and set the state for submiting to false
   //if there are errors , then set the state for submitting to false
   useEffect(() => {
@@ -27,7 +31,7 @@ let useFormSubmit = (
       const noErrors = Object.keys(errors).length === 0;
       //  console.log(errors);
       if (noErrors) {
-        postRequest(values, token);
+        postRequest(values, token, setServerErr, setPostSuccessful);
         setValues({ ...values, ...resetState });
         setIsSubmitting(false);
       }
