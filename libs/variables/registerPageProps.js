@@ -34,7 +34,7 @@ const submitButtonProps = {
 
 const logOutButtonProps = {
   className: styles.signOutButton,
-  buttonText: `Log Out`,
+  buttonText: `Back`,
   color: 'red',
 };
 
