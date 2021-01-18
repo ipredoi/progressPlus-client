@@ -78,7 +78,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt='profile picture'
+          alt="profile picture"
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
@@ -145,17 +145,17 @@ export async function getServerSideProps(context) {
 
     // ❗ redirect works fine to be uncommented after testing register page
     // checking if the user already has an account, if they do then it will redirect them to the appropriate page (bootcamper/coach)
-    // const res = await fetch(`${backendUrl}${uid}`, {
-    //   headers: { authorization: `Bearer ${token}` },
-    // });
-    // const data = await res.json();
-    // console.log(data);
-    // if (data.success === true) {
-    //   context.res.writeHead(302, {
-    //     Location: `/${data.data[0].role.toLowerCase()}`,
-    //   });
-    //   context.res.end();
-    // }
+    const res = await fetch(`${backendUrl}${uid}`, {
+      headers: { authorization: `Bearer ${token}` },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.success === true) {
+      context.res.writeHead(302, {
+        Location: `/${data.data[0].role.toLowerCase()}`,
+      });
+      context.res.end();
+    }
 
     return {
       props: { session: { name, uid, email, picture, token } },
