@@ -34,6 +34,7 @@ export default function Register({ session }) {
     role: '',
     cohort: 0,
     forename: '',
+    uid: `${session.uid}`,
   };
 
   // what fields we want cleared after submit
@@ -63,7 +64,7 @@ export default function Register({ session }) {
     setServerErr
   );
 
- /*  useEffect(() => {
+  /*  useEffect(() => {
     if (postSuccessful) {
       Router.push(`/${values.role.toLowerCase()}`);
     }
