@@ -68,6 +68,10 @@
   animation: dash-check 2.8s 0.2s ease-in-out forwards;
 }
 
+.form {
+  padding: 35px !important;
+}
+
 @keyframes dash {
   0% {
     stroke-dashoffset: 1000;
