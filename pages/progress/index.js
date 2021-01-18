@@ -1,15 +1,15 @@
-import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
-import { Form, Select } from 'semantic-ui-react';
-import { useEffect, useReducer } from 'react';
-import serverSideProps from '../../libs/functions/serverSideProps';
-import AppHeader from '../../components/AppHeader';
-import styles from './progress.module.css';
-import ScoreGraph from '../../components/ScoreGraph';
-import FeedbackTable from '../../components/bootcamper/FeedbackTable';
-import useGraphSelect from '../../libs/customHooks/useGraphSelect';
+import { coachNavBarArr } from "../../libs/globalVariables/navBarArrays";
+import { Form, Select } from "semantic-ui-react";
+import { useEffect, useReducer } from "react";
+import serverSideProps from "../../libs/functions/serverSideProps";
+import AppHeader from "../../components/AppHeader";
+import styles from "./progress.module.css";
+import ScoreGraph from "../../components/ScoreGraph";
+import FeedbackTable from "../../components/bootcamper/FeedbackTable";
+import useGraphSelect from "../../libs/customHooks/useGraphSelect";
 
 const initialState = {
-  bootcamperName: 'Name here',
+  bootcamperName: "Name here",
   bootcampersArr: [],
   recapFeedbackData: [],
   masteryFeedbackData: [],
@@ -51,7 +51,7 @@ export default function Progress({ session }) {
   useEffect(() => {
     if (session.data.data) {
       let payload = session.data.data;
-      dispatch({ type: 'new session', payload: payload });
+      dispatch({ type: "new session", payload: payload });
       session;
     }
   }, []);
@@ -62,16 +62,16 @@ export default function Progress({ session }) {
         <h2 className={styles.title}>Progress tracker</h2>
         <div className={styles.dropDown}>
           <Form>
-            <Form.Group widths="equal">
+            <Form.Group widths='equal'>
               <Form.Field
                 control={Select}
                 options={state.bootcampersArr}
-                placeholder="Bootcampers"
+                placeholder='Bootcampers'
                 search
-                searchInput={{ id: 'form-select-control-name' }}
+                searchInput={{ id: "form-select-control-name" }}
                 onChange={(e, data) => {
                   dispatch({
-                    type: 'name selected',
+                    type: "name selected",
                     payload: { session: session, bootcamperName: data.value },
                   });
                 }}
@@ -79,7 +79,7 @@ export default function Progress({ session }) {
             </Form.Group>
           </Form>
         </div>
-        {state.bootcamperName === 'Name here' ? (
+        {state.bootcamperName === "Name here" ? (
           <p className={styles.noDataText}>
             Choose a Bootcamper to view their data
           </p>
@@ -90,10 +90,10 @@ export default function Progress({ session }) {
             <ScoreGraph
               feedbackData={state.masteryFeedbackData}
               bootcamperName={state.bootcamperName}
-              taskType={'Mastery'}
+              taskType={"Mastery"}
               setSelectedData={(object) =>
                 dispatch({
-                  type: 'week selected',
+                  type: "week selected",
                   payload: object,
                 })
               }
@@ -103,22 +103,26 @@ export default function Progress({ session }) {
             <ScoreGraph
               feedbackData={state.recapFeedbackData}
               bootcamperName={state.bootcamperName}
-              taskType={'Recap'}
+              taskType={"Recap"}
               setSelectedData={(object) =>
                 dispatch({
-                  type: 'week selected',
+                  type: "week selected",
                   payload: object,
                 })
               }
             />
           </div>
         </div>
+
         <div className={styles.table}>
+          <br></br>
           <FeedbackTable
             selectedData={state.selectedData}
             bootcamperName={state.bootcamperName}
           />
         </div>
+        <br></br>
+        <br></br>
       </div>
     </div>
   );
