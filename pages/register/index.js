@@ -1,20 +1,20 @@
 // Registration page for user to submit a form with details
 // submit button sends the user information to database
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { backendUrl } from '../../libs/globalVariables/urls';
-import { useAuthContext } from '../../firebaseUtils/useAuthContext';
-import nookies from 'nookies';
-import useFormSubmit from '../../libs/customHooks/useFormSubmit';
-import validateRegisterForm from '../../libs/functions/Register/validateRegisterForm';
-import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
-import LoginBackgroundImg from '../../components/LoginBackgroundImg';
-import DropdownMenu from '../../components/authentication/DropdownMenu';
-import InputField from '../../components/authentication/InputField';
-import RegisterButton from '../../components/authentication/RegisterButton';
-import registerUser from '../../libs/functions/Register/postRequest';
-import styles from './register.module.css';
+import { backendUrl } from "../../libs/globalVariables/urls";
+import { useAuthContext } from "../../firebaseUtils/useAuthContext";
+import nookies from "nookies";
+import useFormSubmit from "../../libs/customHooks/useFormSubmit";
+import validateRegisterForm from "../../libs/functions/Register/validateRegisterForm";
+import { verifyIdToken } from "../../firebaseUtils/firebaseAdmin";
+import LoginBackgroundImg from "../../components/LoginBackgroundImg";
+import DropdownMenu from "../../components/authentication/DropdownMenu";
+import InputField from "../../components/authentication/InputField";
+import RegisterButton from "../../components/authentication/RegisterButton";
+import registerUser from "../../libs/functions/Register/postRequest";
+import styles from "./register.module.css";
 import {
   rolesDropdownProps,
   cohortDropdownProps,
@@ -22,7 +22,7 @@ import {
   forenameFieldProps,
   submitButtonProps,
   logOutButtonProps,
-} from '../../libs/variables/registerPageProps';
+} from "../../libs/variables/registerPageProps";
 // initial values object -> all the values have the initial state of ""
 // the state will be changed when the form will be updated
 
@@ -31,9 +31,9 @@ export default function Register({ session }) {
   const [serverErr, setServerErr] = useState(null);
   //we are using router to redirect the user after register to the coach/bootcamper page
   const valuesInitialState = {
-    role: '',
+    role: "",
     cohort: 0,
-    forename: '',
+    forename: "",
     uid: `${session.uid}`,
   };
 
@@ -41,7 +41,7 @@ export default function Register({ session }) {
   const resetState = {
     //role: '',
     cohort: 0,
-    surname: '',
+    surname: "",
   };
   let { token } = session;
 
@@ -78,7 +78,7 @@ export default function Register({ session }) {
         <img
           className={styles.profilePicture}
           src={session.picture}
-          alt="profile picture"
+          alt='profile picture'
         />
         <div className={styles.form}>
           <p className={styles.pWelcome}>
@@ -91,7 +91,7 @@ export default function Register({ session }) {
             {...rolesDropdownProps}
             handleClick={dropDownHandleChange}
           />
-          {values.role === 'Bootcamper' && (
+          {values.role === "Bootcamper" && (
             <DropdownMenu
               {...cohortDropdownProps}
               handleClick={dropDownHandleChange}
@@ -137,10 +137,10 @@ export async function getServerSideProps(context) {
     const sessionData = await verifyIdToken(cookies.token);
 
     let { name, uid, email, picture } = sessionData;
-
     //if user has no name on GitHub, name will be set to 'No name ❗ to test the functionality remove the exclamation mark'
+    console.log({ sessionData });
     if (!name) {
-      name = 'No name';
+      name = "No name";
     }
 
     // ❗ redirect works fine to be uncommented after testing register page
@@ -150,7 +150,7 @@ export async function getServerSideProps(context) {
     });
     const data = await res.json();
     console.log(data);
-    if (data.success === true) {
+    if (data.success === true && data.data[0] !== undefined) {
       context.res.writeHead(302, {
         Location: `/${data.data[0].role.toLowerCase()}`,
       });
