@@ -167,7 +167,7 @@ export default function FeedbackForm({ session }) {
             points='100.2,40.2 51.5,88.8 29.8,67.5 '
           />
         </svg>
-        <p className={styles.postSuccess}>Feedback submitted successfully!</p>
+        <p className={styles.postSuccess}>Feedback successfully submitted!</p>
       </div>
     );
   } else
