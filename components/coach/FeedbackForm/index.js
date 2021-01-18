@@ -34,7 +34,6 @@ const resetState = {
   passedTests: '',
   totalTests: '',
   comments: '',
-  dateSubmitted: '',
 };
 
 export default function FeedbackForm({ session }) {
