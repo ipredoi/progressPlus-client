@@ -1,27 +1,23 @@
 import { coachNavBarArr } from '../../libs/globalVariables/navBarArrays';
 import { Form, Select } from 'semantic-ui-react';
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import serverSideProps from '../../libs/functions/serverSideProps';
-import bootcamperNameReducer from '../../libs/functions/bootcamperNameReducer';
 import AppHeader from '../../components/AppHeader';
 import styles from './progress.module.css';
 import ScoreGraph from '../../components/ScoreGraph';
 import FeedbackTable from '../../components/bootcamper/FeedbackTable';
+import useGraphSelect from '../../libs/customHooks/useGraphSelect';
 
-import {
-  sortRecapData,
-  sortMasteryData,
-} from '../../libs/functions/sortFeedbackData';
-import { useAuthContext } from '../../firebaseUtils/useAuthContext';
-
+const initialState = {
+  bootcamperName: 'Name here',
+  bootcampersArr: [],
+  recapFeedbackData: [],
+  masteryFeedbackData: [],
+  selectedData: {},
+};
 // Page for coaches to check bootcampers feedback/ progress and compare
 export default function Progress({ session }) {
-  const [bootcamperName, setBootcamperName] = useState('Name here');
-  const [bootcampersArr, setBootcampersArr] = useState([]);
-  const [recapFeedbackData, setRecapFeedbackData] = useState([]);
-  const [masteryFeedbackData, setMasteryFeedbackData] = useState([]);
-  const [selectedData, setSelectedData] = useState(1);
-
+  const [state, dispatch] = useReducer(useGraphSelect, initialState);
   /* ↓↓↓ average score calculate ↓↓↓ */
   // let allData = session.data.data;
   // let filteredData = [];
@@ -53,24 +49,12 @@ export default function Progress({ session }) {
 
   //sets bootcamper names for the dropdown menu and removes duplicates
   useEffect(() => {
-    setBootcampersArr(
-      session.data.data
-        .map((bootcamper) => {
-          return bootcamper.name;
-        })
-        .filter(function (elem, index, self) {
-          return index === self.indexOf(elem);
-        })
-        .reduce(bootcamperNameReducer, [])
-    );
-  }, [session]);
-
-  //filters feedback when a name is selected
-  useEffect(() => {
-    setRecapFeedbackData(sortRecapData(bootcamperName, session));
-    setMasteryFeedbackData(sortMasteryData(bootcamperName, session));
-  }, [bootcamperName]);
-
+    if (session.data.data) {
+      let payload = session.data.data;
+      dispatch({ type: 'new session', payload: payload });
+      session;
+    }
+  }, []);
   return (
     <div>
       <AppHeader session={session} navBarArr={coachNavBarArr} />
@@ -81,18 +65,21 @@ export default function Progress({ session }) {
             <Form.Group widths="equal">
               <Form.Field
                 control={Select}
-                options={bootcampersArr}
+                options={state.bootcampersArr}
                 placeholder="Bootcampers"
                 search
                 searchInput={{ id: 'form-select-control-name' }}
                 onChange={(e, data) => {
-                  setBootcamperName(data.value);
+                  dispatch({
+                    type: 'name selected',
+                    payload: { session: session, bootcamperName: data.value },
+                  });
                 }}
               />
             </Form.Group>
           </Form>
         </div>
-        {bootcamperName === 'Name here' ? (
+        {state.bootcamperName === 'Name here' ? (
           <p className={styles.noDataText}>
             Choose a Bootcamper to view their data
           </p>
@@ -101,25 +88,35 @@ export default function Progress({ session }) {
         <div className={styles.graphs}>
           <div className={styles.graph}>
             <ScoreGraph
-              feedbackData={masteryFeedbackData}
-              bootcamperName={bootcamperName}
+              feedbackData={state.masteryFeedbackData}
+              bootcamperName={state.bootcamperName}
               taskType={'Mastery'}
-              setSelectedData={setSelectedData}
+              setSelectedData={(object) =>
+                dispatch({
+                  type: 'week selected',
+                  payload: object,
+                })
+              }
             />
           </div>
           <div className={styles.graph}>
             <ScoreGraph
-              feedbackData={recapFeedbackData}
-              bootcamperName={bootcamperName}
+              feedbackData={state.recapFeedbackData}
+              bootcamperName={state.bootcamperName}
               taskType={'Recap'}
-              setSelectedData={setSelectedData}
+              setSelectedData={(object) =>
+                dispatch({
+                  type: 'week selected',
+                  payload: object,
+                })
+              }
             />
           </div>
         </div>
         <div className={styles.table}>
           <FeedbackTable
-            selectedData={selectedData}
-            bootcamperName={bootcamperName}
+            selectedData={state.selectedData}
+            bootcamperName={state.bootcamperName}
           />
         </div>
       </div>

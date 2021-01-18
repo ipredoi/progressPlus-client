@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './loginBackgroundImg.module.css';
 import Image from 'next/image';
 
-const LoginBackgroundImg = () => {
+export default function LoginBackgroundImg() {
   return (
     <div>
       <div className={styles.planetSocImg}>
@@ -26,6 +26,4 @@ const LoginBackgroundImg = () => {
       </div>
     </div>
   );
-};
-
-export default LoginBackgroundImg;
+}

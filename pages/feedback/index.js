@@ -21,7 +21,6 @@ export async function getServerSideProps(context) {
       headers: { authorization: `Bearer ${token}` },
     });
     const { data } = await res.json();
-    console.log({ data });
     return data;
   }
   return serverSideProps(context, fetchBootcampersData);
