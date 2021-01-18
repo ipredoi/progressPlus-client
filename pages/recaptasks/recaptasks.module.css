@@ -26,7 +26,10 @@
   right: 0;
   margin: auto;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 1em;
 
   -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);
   filter: drop-shadow(0px 0px 10px #e0e1e2);
@@ -37,4 +40,5 @@
   justify-content: center !important;
   width: 50vw !important;
   text-align: center !important;
+  /* margin-bottom: 5em !important; */
 }
