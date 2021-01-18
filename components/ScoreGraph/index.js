@@ -32,8 +32,8 @@ export default function ScoreGraph({
   let xAxesArr = [];
   let averageArr = bootcamperName
     ? taskType === "Mastery"
-      ? [80, 70, 70, 65, 85, 55, 60, 80, 90, 100, 85, 70, 65] // mastery task average score arr
-      : [70, 50, 60, 30, 70, 80, 70, 50, 90, 100, 70, 85, 90] // recap task average score arr
+      ? [80, 70, 70, 65, 85, 55, 60, 80, 90, 100] // mastery task average score arr
+      : [70, 50, 60, 30, 70, 80, 70, 50, 90, 75] // recap task average score arr
     : []; // bootcamper average mockdata, only shown in coach side
 
   /* sets percentages and weeks for the graph to use as data
@@ -71,6 +71,7 @@ export default function ScoreGraph({
       /* ↓↓↓ play sound when click the bar ↓↓↓ */
       const audio = new Audio(setSound(activeWeek[0]));
       audio.play();
+      //!bootcamperName ? audio.play() : null; // sounds're only played on bootcamper side
       /* error occurs about using react hook */
       /* ↑↑↑ play sound when click the bar ↑↑↑ */
     }

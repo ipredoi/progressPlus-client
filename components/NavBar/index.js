@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Grid, Header, Segment, Sidebar, Button } from "semantic-ui-react";
-// import '../coach/FeedbackForm/node_modules/semantic-ui-css/semantic.min.css';
+// import "../coach/FeedbackForm/node_modules/semantic-ui-css/semantic.min.css";
 import LogOutButton from "../LogOutButton";
 import { useAuthContext } from "../../firebaseUtils/useAuthContext";
 import styles from "./navBar.module.css";
