@@ -3,7 +3,6 @@
   width: 244px;
   position: center;
   font-family: Roboto, Helvetica, Arial, sans-serif !important;
-  margin-top: 10px !important;
   margin-bottom: 15px !important;
   color: white !important;
   background-color: #2d8b61 !important;
@@ -29,12 +28,13 @@
 }
 
 .buttonContainer {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
+  width: auto;
+  margin-right: 0 !important;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
 }
 
 .postSuccess {
