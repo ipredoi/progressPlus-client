@@ -18,7 +18,7 @@ export default function ScoreGraph({
   taskType,
   feedbackData,
   bootcamperName,
-  myName,
+  coach,
 }) {
   //placeholderData will be replaced with real data for the weeks where there is data in DB
   // console.log(graphData);
@@ -30,11 +30,10 @@ export default function ScoreGraph({
 
   let percentagesArr = [];
   let xAxesArr = [];
-  let averageArr = bootcamperName
-    ? taskType === "Mastery"
+  let averageArr =
+    taskType === "Mastery"
       ? [80, 70, 70, 65, 85, 55, 60, 80, 90, 100] // mastery task average score arr
-      : [70, 50, 60, 30, 70, 80, 70, 50, 90, 75] // recap task average score arr
-    : []; // bootcamper average mockdata, only shown in coach side
+      : [70, 50, 60, 30, 70, 80, 70, 50, 90, 75]; // recap task average score arr
 
   /* sets percentages and weeks for the graph to use as data
    for mastery tasks, x-axis array will be filled with subject name for both botcamper and coach sides */
@@ -70,9 +69,8 @@ export default function ScoreGraph({
 
       /* ↓↓↓ play sound when click the bar ↓↓↓ */
       const audio = new Audio(setSound(activeWeek[0]));
-      audio.play();
-      //!bootcamperName ? audio.play() : null; // sounds're only played on bootcamper side
-      /* error occurs about using react hook */
+      !coach ? audio.play() : null; // sounds're only played on bootcamper side
+      // audio.play();
       /* ↑↑↑ play sound when click the bar ↑↑↑ */
     }
   }
@@ -85,7 +83,7 @@ export default function ScoreGraph({
             labels: xAxesArr,
             datasets: [
               {
-                label: bootcamperName ? `${bootcamperName}` : ``,
+                label: coach ? `${bootcamperName}` : "My Score",
                 data: percentagesArr,
                 backgroundColor: setBarBgColorArr(percentagesArr),
                 borderColor: setBarBorColorArr(percentagesArr),
@@ -97,12 +95,12 @@ export default function ScoreGraph({
                 data: averageArr,
                 type: "line",
                 fill: false,
-                borderColor: "#d46c83",
-                backgroundColor: "#d46c83",
-                pointBorderColor: "#d46c83",
-                pointBackgroundColor: "#d46c83",
-                pointHoverBackgroundColor: "#d46c83",
-                pointHoverBorderColor: "#d46c83",
+                borderColor: "#0000CD",
+                backgroundColor: "#0000CD",
+                pointBorderColor: "#0000CD",
+                pointBackgroundColor: "#0000CD",
+                pointHoverBackgroundColor: "#0000CD",
+                pointHoverBorderColor: "#0000CD",
                 order: 1,
               },
             ],

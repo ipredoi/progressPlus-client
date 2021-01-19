@@ -31,6 +31,7 @@ export default function RecapTasks({ session }) {
               })
             }
           />
+          <br></br>
         </div>
         <div className={styles.table}>
           <FeedbackTable selectedData={state.selectedData} />

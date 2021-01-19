@@ -97,6 +97,7 @@ export default function Progress({ session }) {
                   payload: object,
                 })
               }
+              coach={"true"}
             />
           </div>
           <div className={styles.graph}>
@@ -110,6 +111,7 @@ export default function Progress({ session }) {
                   payload: object,
                 })
               }
+              coach={"true"}
             />
           </div>
         </div>
