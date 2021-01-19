@@ -33,6 +33,8 @@ export default function ScoreGraph({
   let averageArr =
     taskType === "Mastery"
       ? [80, 70, 70, 65, 85, 55, 60, 80, 90, 100] // mastery task average score arr
+      : bootcamperName === "Patrick Fleming"
+      ? [70, 50, 60, 30, 70, 80, 70, 50, 90, 75, 30] // mockdata for patrick in demo
       : [70, 50, 60, 30, 70, 80, 70, 50, 90, 75]; // recap task average score arr
 
   /* sets percentages and weeks for the graph to use as data
