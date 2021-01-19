@@ -28,7 +28,7 @@
   margin: auto;
   flex-direction: column;
   font-family: "Roboto", sans-serif;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 
   -webkit-filter: drop-shadow(0px 3px 10px #e0e1e2);

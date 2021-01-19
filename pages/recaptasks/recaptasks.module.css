@@ -27,7 +27,7 @@
   margin: auto;
   flex-direction: column;
   font-family: "Roboto", sans-serif;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
   padding: 1em;
 
