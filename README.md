@@ -1,6 +1,7 @@
 ## Project Name
 
 Progress Plus+
+![image](https://user-images.githubusercontent.com/70764046/106362773-8a922600-631c-11eb-8ab2-a0615cce1a92.png)
 
 
 ## Description
