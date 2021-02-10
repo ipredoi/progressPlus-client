@@ -1,12 +1,15 @@
-import nookies from "nookies";
-import { verifyIdToken } from "../../firebaseUtils/firebaseAdmin";
-import { backendUrl } from "../globalVariables/urls";
+import nookies from 'nookies';
+import { verifyIdToken } from '../../firebaseUtils/firebaseAdmin';
+import { backendUrl } from '../globalVariables/urls';
 
-export default async function serverSideProps(context, customFetchRequest) {
+export default async function serverSideProps(
+	context,
+	customFetchRequest,
+	githubApiFetch
+) {
 	try {
 		const cookies = nookies.get(context);
-		console.log(cookies.token);
-		console.log(cookies.apiToken);
+		console.log(cookies);
 		const { token } = cookies;
 		const sessionData = await verifyIdToken(cookies.token);
 		const { uid, picture } = sessionData;
@@ -17,18 +20,22 @@ export default async function serverSideProps(context, customFetchRequest) {
 		const userData = await res.json();
 		// console.log({ userData });
 		const { name } = userData.data[0];
-		let data = "";
+		let data = '';
 		if (customFetchRequest) {
 			data = await customFetchRequest(backendUrl, uid, cookies.token);
-			// console.log(data);
+		}
+		let githubData = '';
+		if (githubApiFetch) {
+			 githubData = await githubApiFetch(cookies.gitHubApiToken);
+			//console.log(githubData);
 		}
 
 		return {
-			props: { session: { name, uid, picture, data, token } },
+			props: { session: { name, uid, picture, data, token, githubData } },
 		};
 	} catch (err) {
 		console.log(err);
-		context.res.writeHead(302, { Location: "/" });
+		context.res.writeHead(302, { Location: '/' });
 		context.res.end();
 		return { props: {} };
 	}
