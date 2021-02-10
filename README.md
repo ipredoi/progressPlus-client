@@ -8,7 +8,7 @@ Progress Plus+
 
 
 
-This is a [platform](http://3.250.192.68:3000/) to allow School of Code bootcampers and coaches to track the technical progress of bootcampers.  Coaches can register, submit written feedback, and compare the progress of bootcampers and the bootcamp as a whole.  Bootcampers can register and view their scores and written feedback for the various mastery and recap tasks they complete.
+This is a [platform](http://52.214.103.49:3000/ ) to allow School of Code bootcampers and coaches to track the technical progress of bootcampers.  Coaches can register, submit written feedback, and compare the progress of bootcampers and the bootcamp as a whole.  Bootcampers can register and view their scores and written feedback for the various mastery and recap tasks they complete.
 
 You can find the server code [here](https://github.com/ipredoi/Progress-plus-server.git).
 
