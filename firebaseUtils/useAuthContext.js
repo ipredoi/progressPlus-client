@@ -30,7 +30,8 @@ export function AuthContextProvider({ children }) {
 	function login() {
 		var provider = new firebase.auth.GithubAuthProvider();
 		firebase.auth().signInWithRedirect(provider);
-		provider.addScope('repo');
+		provider.addScope('read:org');
+		provider.addScope(`repo`);
 		// [END auth_github_provider_scopes]
 
 		// [START auth_github_provider_params]
@@ -48,6 +49,7 @@ export function AuthContextProvider({ children }) {
 				if (result.credential) {
 					// This gives you a GitHub Access Token. You can use it to access the GitHub API.
 					var gitHubApiToken = result.credential.accessToken;
+					console.log(result);
 					nookies.set(null, 'gitHubApiToken', gitHubApiToken, { path: '/' });
 					window.location = '/register';
 				}

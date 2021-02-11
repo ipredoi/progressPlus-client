@@ -60,7 +60,16 @@ export async function getServerSideProps(context) {
 			auth: `token ${githubToken}`,
 		});
 
-		const response = await octokit.request('GET /user/repos');
+		/* 		const response = await octokit.request('GET /user/repos', {
+			affiliation: 'SchoolofCode',
+			per_page: 100,
+		}); */
+		const response = await octokit.request('GET /orgs/{org}/members', {
+			org: 'SchoolOfCode',
+		});
+
+		/* const response = await octokit.request('GET /user/orgs'); */
+
 		const { data } = response;
 		return data;
 	}
