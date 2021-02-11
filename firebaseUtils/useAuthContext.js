@@ -1,15 +1,15 @@
 // Create the authContext to pass the user properties between pages as long as an user is authenticated
 
-import { useEffect, useState, createContext, useContext } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
-import nookies from "nookies";
+import { useEffect, useState, createContext, useContext } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import nookies from 'nookies';
 
 // import firebase initialisation function
-import firebaseInit from "./firebaseInit";
+import firebaseInit from './firebaseInit';
 
 // import useRouter hook from nextjs
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 // call the function to initialise firebase
 firebaseInit();
@@ -30,12 +30,13 @@ export function AuthContextProvider({ children }) {
 	function login() {
 		var provider = new firebase.auth.GithubAuthProvider();
 		firebase.auth().signInWithRedirect(provider);
-		provider.addScope("repo");
+		provider.addScope('read:org');
+		provider.addScope(`repo`);
 		// [END auth_github_provider_scopes]
 
 		// [START auth_github_provider_params]
 		provider.setCustomParameters({
-			allow_signup: "false",
+			allow_signup: 'false',
 		});
 		// [END auth_github_provider_params]
 	}
@@ -47,9 +48,10 @@ export function AuthContextProvider({ children }) {
 			.then(function (result) {
 				if (result.credential) {
 					// This gives you a GitHub Access Token. You can use it to access the GitHub API.
-					var apiToken = result.credential.accessToken;
-					nookies.set(null, "apiToken", apiToken, { path: "/" });
-					window.location = "/register";
+					var gitHubApiToken = result.credential.accessToken;
+					console.log(result);
+					nookies.set(null, 'gitHubApiToken', gitHubApiToken, { path: '/' });
+					window.location = '/register';
 				}
 			})
 			.catch(function (error) {
@@ -73,7 +75,7 @@ export function AuthContextProvider({ children }) {
 			.auth()
 			.signOut()
 			.then(() => {
-				router.push("/");
+				router.push('/');
 			})
 			.catch((e) => {
 				console.log(error(e));
@@ -88,15 +90,15 @@ export function AuthContextProvider({ children }) {
 				// console.log('no user found');
 				setUser(null);
 				// nookies.destroy(null, 'token');
-				nookies.set(null, "token", "", { path: "/" });
-				nookies.set(null, "apiToken", "", { path: "/" });
+				nookies.set(null, 'token', '', { path: '/' });
+				nookies.set(null, 'gitHubApiToken', '', { path: '/' });
 				return;
 			}
 
 			const token = await user.getIdToken();
 			//	console.log(token);
 			setUser(user);
-			nookies.set(null, "token", token, { path: "/" });
+			nookies.set(null, 'token', token, { path: '/' });
 		});
 	}, []);
 
