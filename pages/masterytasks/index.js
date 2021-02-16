@@ -6,7 +6,8 @@ import FeedbackTable from '../../components/bootcamper/FeedbackTable';
 import styles from './masterytasks.module.css';
 import useGraphSelect from '../../libs/customHooks/useGraphSelect';
 import { sortMasteryData } from '../../libs/functions/sortFeedbackData';
-import { Octokit } from '@octokit/core';
+import getTaskData from '../../libs/functions/getTaskData';
+
 export default function MasteryTasks({ session }) {
 	const initialState = {
 		bootcamperName: session.name,
@@ -15,7 +16,7 @@ export default function MasteryTasks({ session }) {
 	};
 	const [state, dispatch] = useReducer(useGraphSelect, initialState);
 
-	console.log(session);
+//	console.log(session.githubData);
 
 	return (
 		<>
@@ -55,26 +56,8 @@ export async function getServerSideProps(context) {
 		return data;
 	}
 
-	async function getMasteryTasks(githubToken) {
-		const octokit = new Octokit({
-			auth: `token ${githubToken}`,
-		});
-
-		/* 		const response = await octokit.request('GET /user/repos', {
-			affiliation: 'SchoolofCode',
-			per_page: 100,
-		}); */
-		const response = await octokit.request('GET /orgs/{org}/members', {
-			org: 'SchoolOfCode',
-		});
-
-		/* const response = await octokit.request('GET /user/orgs'); */
-
-		const { data } = response;
-		return data;
-	}
-
-	return serverSideProps(context, fetchFeedbackData, getMasteryTasks);
+	return serverSideProps(context, fetchFeedbackData, (githubToken) => {
+		// deals with searching the repos for mastery tasks and looks for pulls requests and returns the comments
+		return getTaskData(githubToken, 'mastery');
+	});
 }
-
-//function to get the feedback from the backend, may need some refactoring to have consistancy with variable names

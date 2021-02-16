@@ -18,7 +18,6 @@ export default async function serverSideProps(
 			headers: { authorization: `Bearer ${token}` },
 		});
 		const userData = await res.json();
-		// console.log({ userData });
 		const { name } = userData.data[0];
 		let data = '';
 		if (customFetchRequest) {
@@ -26,8 +25,7 @@ export default async function serverSideProps(
 		}
 		let githubData = '';
 		if (githubApiFetch) {
-			 githubData = await githubApiFetch(cookies.gitHubApiToken);
-			//console.log(githubData);
+			githubData = await githubApiFetch(cookies.gitHubApiToken);
 		}
 
 		return {
