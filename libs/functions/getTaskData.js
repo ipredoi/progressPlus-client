@@ -29,7 +29,7 @@ export default async function getTaskData(githubToken, taskType) {
 		// pullUrl looks like this "/repos/{organisation}/{repository}/pulls"
 		//console.log(repo);
 		let pullUrl = repo.pulls_url.slice(22, -9);
-		//console.log(pullUrl);
+	console.log(pullUrl);
 
 		//This is to access code blocks and specific comments in feedback
 		let response = await octokit.request(`GET ${pullUrl}/comments`, {
